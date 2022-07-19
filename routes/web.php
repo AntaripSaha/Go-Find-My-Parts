@@ -107,6 +107,7 @@ Route::controller(HomeController::class)->group(function () {
 
     //Home Page
     Route::get('/', 'index')->name('home');
+    Route::get('/home_new', 'index_new');
 
     Route::post('/home/section/featured', 'load_featured_section')->name('home.section.featured');
     Route::post('/home/section/best_selling', 'load_best_selling_section')->name('home.section.best_selling');
@@ -421,5 +422,4 @@ Route::controller(PageController::class)->group(function () {
     //Custom page
     Route::get('/{slug}', 'show_custom_page')->name('custom-pages.show_custom_page');
 });
-
 

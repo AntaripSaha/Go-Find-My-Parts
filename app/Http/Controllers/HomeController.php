@@ -37,6 +37,22 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function index_new(){
+        $featured_categories = Cache::rememberForever('featured_categories', function () {
+            return Category::where('featured', 1)->get();
+        });
+
+        $todays_deal_products = Cache::rememberForever('todays_deal_products', function () {
+            return filter_products(Product::where('published', 1)->where('todays_deal', '1'))->get();
+        });
+
+        $newest_products = Cache::remember('newest_products', 3600, function () {
+            return filter_products(Product::latest())->limit(12)->get();
+        });
+
+        return view('frontend.new_index', compact('featured_categories', 'todays_deal_products', 'newest_products'));
+    
+    }
     public function index()
     {
         $featured_categories = Cache::rememberForever('featured_categories', function () {
@@ -52,6 +68,7 @@ class HomeController extends Controller
         });
 
         return view('frontend.index', compact('featured_categories', 'todays_deal_products', 'newest_products'));
+    
     }
 
     public function login()
