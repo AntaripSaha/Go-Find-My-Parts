@@ -52,8 +52,12 @@ class HomeController extends Controller
         $featured_products = Cache::remember('featured_products', 3600, function () {
             return filter_products(Product::where('featured', 1))->get();
         });
+        $all_products = Cache::remember('featured_products', 3600, function () {
+            return filter_products(Product::where('published', 1)->limit(50))->get();
+        });
 
-        return view('frontend.new_index', compact('featured_products','featured_categories', 'todays_deal_products', 'newest_products'));
+
+        return view('frontend.new_index', compact('all_products','featured_products','featured_categories', 'todays_deal_products', 'newest_products'));
     
     }
     public function index()
