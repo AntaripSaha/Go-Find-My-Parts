@@ -5,8 +5,11 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 @endif
 <html lang="en" dir="ltr">
-   <!-- Mirrored from red-parts.html.themeforest.scompiler.ru/themes/red-ltr/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 19 Jul 2022 05:27:58 GMT -->
    <head>
+
+
+
+
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       <meta name="format-detection" content="telephone=no">
@@ -26,6 +29,31 @@
       <!-- font - fontawesome -->
       <link rel="stylesheet" href="{{static_asset('assets/vendor/fontawesome/css/all.min.css') }}">
       <script async src="https://www.googletagmanager.com/gtag/js?id=UA-97489509-8"></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag("js", new Date());gtag("config", "UA-97489509-8");</script>
+      <script>
+        var AIZ = AIZ || {};
+        AIZ.local = {
+            nothing_selected: '{!! translate('Nothing selected', null, true) !!}',
+            nothing_found: '{!! translate('Nothing found', null, true) !!}',
+            choose_file: '{{ translate('Choose file') }}',
+            file_selected: '{{ translate('File selected') }}',
+            files_selected: '{{ translate('Files selected') }}',
+            add_more_files: '{{ translate('Add more files') }}',
+            adding_more_files: '{{ translate('Adding more files') }}',
+            drop_files_here_paste_or: '{{ translate('Drop files here, paste or') }}',
+            browse: '{{ translate('Browse') }}',
+            upload_complete: '{{ translate('Upload complete') }}',
+            upload_paused: '{{ translate('Upload paused') }}',
+            resume_upload: '{{ translate('Resume upload') }}',
+            pause_upload: '{{ translate('Pause upload') }}',
+            retry_upload: '{{ translate('Retry upload') }}',
+            cancel_upload: '{{ translate('Cancel upload') }}',
+            uploading: '{{ translate('Uploading') }}',
+            processing: '{{ translate('Processing') }}',
+            complete: '{{ translate('Complete') }}',
+            file: '{{ translate('File') }}',
+            files: '{{ translate('Files') }}',
+        }
+    </script>
    </head>
    <body>
       <!-- site -->
@@ -1318,6 +1346,8 @@
                   </form>
                </div>
             </div>
+
+            
             <div class="block-features block block-features--layout--top-strip">
                <div class="container">
                   <ul class="block-features__list">
@@ -1522,7 +1552,7 @@
                      <div class="block-products-carousel__carousel-loader"></div>
                      <div class="owl-carousel">
 
-
+                     @foreach($featured_products as $product)
                         <div class="block-products-carousel__column">
                            <div class="block-products-carousel__cell">
                               <div class="product-card product-card--layout--grid">
@@ -1548,7 +1578,18 @@
                                     </button>
                                  </div>
                                  <div class="product-card__image">
-                                    <div class="image image--type--product"><a href="product-full.html" class="image__body"><img class="image__tag" src="{{static_asset('assets/frontend/images/products/product-1-245x245.jpg')}}" alt=""></a></div>
+                                 @php
+                                    $product_url = route('product', $product->slug);
+                                    if($product->auction_product == 1) {
+                                       $product_url = route('auction-product', $product->slug);
+                                    }
+                                 @endphp
+                                                
+                                    <div class="image image--type--product">
+                                       <a href="{{ $product_url }}" class="image__body">
+                                          <img class="image__tag" src="{{ uploaded_asset($product->thumbnail_img) }}" alt="">
+                                       </a>
+                                    </div>
                                     <div class="status-badge status-badge--style--success product-card__fit status-badge--has-icon status-badge--has-text">
                                        <div class="status-badge__body">
                                           <div class="status-badge__icon">
@@ -1556,24 +1597,23 @@
                                                 <path d="M12,4.4L5.5,11L1,6.5l1.4-1.4l3.1,3.1L10.6,3L12,4.4z"/>
                                              </svg>
                                           </div>
-                                          <div class="status-badge__text">Part Fit for 2011 Ford Focus S</div>
+                                          <div class="status-badge__text">{{$product->name}}</div>
                                           <div class="status-badge__tooltip" tabindex="0" data-toggle="tooltip" title="Part&#x20;Fit&#x20;for&#x20;2011&#x20;Ford&#x20;Focus&#x20;S"></div>
                                        </div>
                                     </div>
                                  </div>
                                  <div class="product-card__info">
-                                    <div class="product-card__meta"><span class="product-card__meta-title">SKU:</span> 140-10440-B</div>
                                     <div class="product-card__name">
                                        <div>
-                                          <div class="product-card__badges">
+                                          <!-- <div class="product-card__badges">
                                              <div class="tag-badge tag-badge--sale">sale</div>
                                              <div class="tag-badge tag-badge--new">new</div>
                                              <div class="tag-badge tag-badge--hot">hot</div>
-                                          </div>
-                                          <a href="product-full.html">Brandix Spark Plug Kit ASR-400</a>
+                                          </div> -->
+                                          <a href="{{ $product_url }}">{{$product->name}}</a>
                                        </div>
                                     </div>
-                                    <div class="product-card__rating">
+                                    <!-- <div class="product-card__rating">
                                        <div class="rating product-card__rating-stars">
                                           <div class="rating__body">
                                              <div class="rating__star rating__star--active"></div>
@@ -1584,14 +1624,20 @@
                                           </div>
                                        </div>
                                        <div class="product-card__rating-label">4 on 3 reviews</div>
-                                    </div>
+                                    </div> -->
                                  </div>
                                  <div class="product-card__footer">
                                     <div class="product-card__prices">
-                                       <div class="product-card__price product-card__price--current">$19.00</div>
+                                    @if(home_base_price($product) != home_discounted_base_price($product))
+                                    <del style="opacity:50%; margin-right:10px;">{{ home_base_price($product) }}</del>   
+                                    @endif
+                                    
+                                    <span class="fw-700 text-primary">{{ home_discounted_base_price($product) }}</span>
+
                                     </div>
-                                    <button class="product-card__addtocart-icon" type="button" aria-label="Add to cart">
-                                       <svg width="20" height="20">
+                                  
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                    <svg width="20" height="20">
                                           <circle cx="7" cy="17" r="2"/>
                                           <circle cx="15" cy="17" r="2"/>
                                           <path d="M20,4.4V5l-1.8,6.3c-0.1,0.4-0.5,0.7-1,0.7H6.7c-0.4,0-0.8-0.3-1-0.7L3.3,3.9C3.1,3.3,2.6,3,2.1,3H0.4C0.2,3,0,2.8,0,2.6
@@ -1603,7 +1649,10 @@
                               </div>
                            </div>
                         </div>
-                        <div class="block-products-carousel__column">
+
+                        @endforeach
+
+                        <!-- <div class="block-products-carousel__column">
                            <div class="block-products-carousel__cell">
                               <div class="product-card product-card--layout--grid">
                                  <div class="product-card__actions-list">
@@ -1675,7 +1724,7 @@
                                  </div>
                               </div>
                            </div>
-                        </div>
+                        </div> -->
 
                         
                      </div>
@@ -1686,6 +1735,9 @@
 
 
             <!-------------- Featured Product Section End------------->
+
+
+
 
 
             <!-------------- Todays Deal Section Start------------->
@@ -1762,6 +1814,8 @@
                         <div class="block-sale__carousel">
                            <div class="owl-carousel">
 
+                           @foreach($todays_deal_products as $product)
+
                               <div class="block-sale__item">
                                  <div class="product-card">
                                     <div class="product-card__actions-list">
@@ -1785,8 +1839,18 @@
                                           </svg>
                                        </button>
                                     </div>
+                                    @php
+                                       $product_url = route('product', $product->slug);
+                                       if($product->auction_product == 1) {
+                                                         $product_url = route('auction-product', $product->slug);
+                                                      }
+                                    @endphp
                                     <div class="product-card__image">
-                                       <div class="image image--type--product"><a href="product-full.html" class="image__body"><img class="image__tag" src="{{static_asset('assets/frontend/images/products/product-1-245x245.jpg')}}" alt=""></a></div>
+                                       <div class="image image--type--product">
+                                          <a href="{{ $product_url }}" class="image__body">
+                                             <img class="image__tag" src="{{ uploaded_asset($product->thumbnail_img) }}" alt="">
+                                          </a>
+                                       </div>
                                        <div class="status-badge status-badge--style--success product-card__fit status-badge--has-icon status-badge--has-text">
                                           <div class="status-badge__body">
                                              <div class="status-badge__icon">
@@ -1794,24 +1858,24 @@
                                                    <path d="M12,4.4L5.5,11L1,6.5l1.4-1.4l3.1,3.1L10.6,3L12,4.4z"/>
                                                 </svg>
                                              </div>
-                                             <div class="status-badge__text">Part Fit for 2011 Ford Focus S</div>
+                                             <div class="status-badge__text"> </div>
                                              <div class="status-badge__tooltip" tabindex="0" data-toggle="tooltip" title="Part&#x20;Fit&#x20;for&#x20;2011&#x20;Ford&#x20;Focus&#x20;S"></div>
                                           </div>
                                        </div>
                                     </div>
                                     <div class="product-card__info">
-                                       <div class="product-card__meta"><span class="product-card__meta-title">SKU:</span> 140-10440-B</div>
+                                       <div class="product-card__meta"><span class="product-card__meta-title"></div>
                                        <div class="product-card__name">
                                           <div>
-                                             <div class="product-card__badges">
+                                             <!-- <div class="product-card__badges">
                                                 <div class="tag-badge tag-badge--sale">sale</div>
                                                 <div class="tag-badge tag-badge--new">new</div>
                                                 <div class="tag-badge tag-badge--hot">hot</div>
-                                             </div>
-                                             <a href="product-full.html">Brandix Spark Plug Kit ASR-400</a>
+                                             </div> -->
+                                             <a href="{{ $product_url }}">{{$product->name}}</a>
                                           </div>
                                        </div>
-                                       <div class="product-card__rating">
+                                       <!-- <div class="product-card__rating">
                                           <div class="rating product-card__rating-stars">
                                              <div class="rating__body">
                                                 <div class="rating__star rating__star--active"></div>
@@ -1822,97 +1886,30 @@
                                              </div>
                                           </div>
                                           <div class="product-card__rating-label">4 on 3 reviews</div>
-                                       </div>
+                                       </div> -->
                                     </div>
                                     <div class="product-card__footer">
                                        <div class="product-card__prices">
-                                          <div class="product-card__price product-card__price--current">$19.00</div>
+                                          @if(home_base_price($product) != home_discounted_base_price($product))
+                                             <del style="opacity:50%; margin-right:10px;">{{ home_base_price($product) }}</del>   
+                                          @endif
+                                          
+                                          <span class="fw-700 text-primary">{{ home_discounted_base_price($product) }}</span>
                                        </div>
-                                       <button class="product-card__addtocart-icon" type="button" aria-label="Add to cart">
+                                       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                                           <svg width="20" height="20">
-                                             <circle cx="7" cy="17" r="2"/>
-                                             <circle cx="15" cy="17" r="2"/>
-                                             <path d="M20,4.4V5l-1.8,6.3c-0.1,0.4-0.5,0.7-1,0.7H6.7c-0.4,0-0.8-0.3-1-0.7L3.3,3.9C3.1,3.3,2.6,3,2.1,3H0.4C0.2,3,0,2.8,0,2.6
-                                                V1.4C0,1.2,0.2,1,0.4,1h2.5c1,0,1.8,0.6,2.1,1.6L5.1,3l2.3,6.8c0,0.1,0.2,0.2,0.3,0.2h8.6c0.1,0,0.3-0.1,0.3-0.2l1.3-4.4
-                                                C17.9,5.2,17.7,5,17.5,5H9.4C9.2,5,9,4.8,9,4.6V3.4C9,3.2,9.2,3,9.4,3h9.2C19.4,3,20,3.6,20,4.4z"/>
-                                          </svg>
-                                       </button>
+                                          <circle cx="7" cy="17" r="2"/>
+                                          <circle cx="15" cy="17" r="2"/>
+                                          <path d="M20,4.4V5l-1.8,6.3c-0.1,0.4-0.5,0.7-1,0.7H6.7c-0.4,0-0.8-0.3-1-0.7L3.3,3.9C3.1,3.3,2.6,3,2.1,3H0.4C0.2,3,0,2.8,0,2.6
+                                             V1.4C0,1.2,0.2,1,0.4,1h2.5c1,0,1.8,0.6,2.1,1.6L5.1,3l2.3,6.8c0,0.1,0.2,0.2,0.3,0.2h8.6c0.1,0,0.3-0.1,0.3-0.2l1.3-4.4
+                                             C17.9,5.2,17.7,5,17.5,5H9.4C9.2,5,9,4.8,9,4.6V3.4C9,3.2,9.2,3,9.4,3h9.2C19.4,3,20,3.6,20,4.4z"/>
+                                       </svg>
+                                    </button>
                                     </div>
                                  </div>
                               </div>
 
-                              <div class="block-sale__item">
-                                 <div class="product-card">
-                                    <div class="product-card__actions-list">
-                                       <button class="product-card__action product-card__action--quickview" type="button" aria-label="Quick view">
-                                          <svg width="16" height="16">
-                                             <path d="M14,15h-4v-2h3v-3h2v4C15,14.6,14.6,15,14,15z M13,3h-3V1h4c0.6,0,1,0.4,1,1v4h-2V3z M6,3H3v3H1V2c0-0.6,0.4-1,1-1h4V3z
-                                                M3,13h3v2H2c-0.6,0-1-0.4-1-1v-4h2V13z"/>
-                                          </svg>
-                                       </button>
-                                       <button class="product-card__action product-card__action--wishlist" type="button" aria-label="Add to wish list">
-                                          <svg width="16" height="16">
-                                             <path d="M13.9,8.4l-5.4,5.4c-0.3,0.3-0.7,0.3-1,0L2.1,8.4c-1.5-1.5-1.5-3.8,0-5.3C2.8,2.4,3.8,2,4.8,2s1.9,0.4,2.6,1.1L8,3.7
-                                                l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"/>
-                                          </svg>
-                                       </button>
-                                       <button class="product-card__action product-card__action--compare" type="button" aria-label="Add to compare">
-                                          <svg width="16" height="16">
-                                             <path d="M9,15H7c-0.6,0-1-0.4-1-1V2c0-0.6,0.4-1,1-1h2c0.6,0,1,0.4,1,1v12C10,14.6,9.6,15,9,15z"/>
-                                             <path d="M1,9h2c0.6,0,1,0.4,1,1v4c0,0.6-0.4,1-1,1H1c-0.6,0-1-0.4-1-1v-4C0,9.4,0.4,9,1,9z"/>
-                                             <path d="M15,5h-2c-0.6,0-1,0.4-1,1v8c0,0.6,0.4,1,1,1h2c0.6,0,1-0.4,1-1V6C16,5.4,15.6,5,15,5z"/>
-                                          </svg>
-                                       </button>
-                                    </div>
-                                    <div class="product-card__image">
-                                       <div class="image image--type--product"><a href="product-full.html" class="image__body"><img class="image__tag" src="{{static_asset('assets/frontend/images/products/product-2-245x245.jpg')}}" alt=""></a></div>
-                                       <div class="status-badge status-badge--style--success product-card__fit status-badge--has-icon status-badge--has-text">
-                                          <div class="status-badge__body">
-                                             <div class="status-badge__icon">
-                                                <svg width="13" height="13">
-                                                   <path d="M12,4.4L5.5,11L1,6.5l1.4-1.4l3.1,3.1L10.6,3L12,4.4z"/>
-                                                </svg>
-                                             </div>
-                                             <div class="status-badge__text">Part Fit for 2011 Ford Focus S</div>
-                                             <div class="status-badge__tooltip" tabindex="0" data-toggle="tooltip" title="Part&#x20;Fit&#x20;for&#x20;2011&#x20;Ford&#x20;Focus&#x20;S"></div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="product-card__info">
-                                       <div class="product-card__meta"><span class="product-card__meta-title">SKU:</span> 573-23743-C</div>
-                                       <div class="product-card__name">
-                                          <div><a href="product-full.html">Brandix Brake Kit BDX-750Z370-S</a></div>
-                                       </div>
-                                       <div class="product-card__rating">
-                                          <div class="rating product-card__rating-stars">
-                                             <div class="rating__body">
-                                                <div class="rating__star rating__star--active"></div>
-                                                <div class="rating__star rating__star--active"></div>
-                                                <div class="rating__star rating__star--active"></div>
-                                                <div class="rating__star rating__star--active"></div>
-                                                <div class="rating__star rating__star--active"></div>
-                                             </div>
-                                          </div>
-                                          <div class="product-card__rating-label">5 on 22 reviews</div>
-                                       </div>
-                                    </div>
-                                    <div class="product-card__footer">
-                                       <div class="product-card__prices">
-                                          <div class="product-card__price product-card__price--current">$224.00</div>
-                                       </div>
-                                       <button class="product-card__addtocart-icon" type="button" aria-label="Add to cart">
-                                          <svg width="20" height="20">
-                                             <circle cx="7" cy="17" r="2"/>
-                                             <circle cx="15" cy="17" r="2"/>
-                                             <path d="M20,4.4V5l-1.8,6.3c-0.1,0.4-0.5,0.7-1,0.7H6.7c-0.4,0-0.8-0.3-1-0.7L3.3,3.9C3.1,3.3,2.6,3,2.1,3H0.4C0.2,3,0,2.8,0,2.6
-                                                V1.4C0,1.2,0.2,1,0.4,1h2.5c1,0,1.8,0.6,2.1,1.6L5.1,3l2.3,6.8c0,0.1,0.2,0.2,0.3,0.2h8.6c0.1,0,0.3-0.1,0.3-0.2l1.3-4.4
-                                                C17.9,5.2,17.7,5,17.5,5H9.4C9.2,5,9,4.8,9,4.6V3.4C9,3.2,9.2,3,9.4,3h9.2C19.4,3,20,3.6,20,4.4z"/>
-                                          </svg>
-                                       </button>
-                                    </div>
-                                 </div>
-                              </div>
-
+                           @endforeach
 
                            </div>
                         </div>
@@ -1980,7 +1977,7 @@
                               <div class="block-zone__carousel-loader"></div>
                               <div class="owl-carousel">
 
-                              
+                              @foreach()
                                  <div class="block-zone__carousel-item">
                                     <div class="product-card">
                                        <div class="product-card__actions-list">
@@ -2059,6 +2056,7 @@
                                        </div>
                                     </div>
                                  </div>
+                              @endforeach
 
                            
 
@@ -3906,7 +3904,52 @@
 
 
 
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+               <div class="modal-content">
+                  <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Add To Cart</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                  </button>
+                  </div>
+                  <div class="modal-body">
+                  ...
+                  </div>
+                  <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+               </div>
+            </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+            
+
+
+
+<script>
+   $('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})
+</script>
+
+
+
       <!-- photoswipe / end --><!-- scripts -->
+      <script src="{{ static_asset('assets/js/aiz-core.js') }}"></script>
       <script src="{{static_asset('assets/frontend/vendor/jquery/jquery.min.js')}}"></script>
       <script src="{{static_asset('assets/frontend/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
       <script src="{{static_asset('assets/frontend/vendor/owl-carousel/owl.carousel.min.js')}}"></script>
@@ -3916,6 +3959,13 @@
       <script src="{{static_asset('assets/frontend/vendor/select2/js/select2.min.js')}}"></script>
       <script src="{{static_asset('assets/frontend/js/number.js')}}"></script>
       <script src="{{static_asset('assets/frontend/js/main.js')}}"></script>
+
+
+
+
+
+
+      
    </body>
    <!-- Mirrored from red-parts.html.themeforest.scompiler.ru/themes/red-ltr/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 19 Jul 2022 05:28:32 GMT -->
 </html>

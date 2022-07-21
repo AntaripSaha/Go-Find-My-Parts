@@ -49,8 +49,11 @@ class HomeController extends Controller
         $newest_products = Cache::remember('newest_products', 3600, function () {
             return filter_products(Product::latest())->limit(12)->get();
         });
+        $featured_products = Cache::remember('featured_products', 3600, function () {
+            return filter_products(Product::where('featured', 1))->get();
+        });
 
-        return view('frontend.new_index', compact('featured_categories', 'todays_deal_products', 'newest_products'));
+        return view('frontend.new_index', compact('featured_products','featured_categories', 'todays_deal_products', 'newest_products'));
     
     }
     public function index()
