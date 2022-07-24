@@ -1628,15 +1628,14 @@
                                  </div>
                                  <div class="product-card__footer">
                                     <div class="product-card__prices">
-                                    @if(home_base_price($product) != home_discounted_base_price($product))
-                                    <del style="opacity:50%; margin-right:10px;">{{ home_base_price($product) }}</del>   
-                                    @endif
+                                       @if(home_base_price($product) != home_discounted_base_price($product))
+                                       <del style="opacity:50%; margin-right:10px;">{{ home_base_price($product) }}</del>   
+                                       @endif
+                                       <span class="fw-700 text-primary">{{ home_discounted_base_price($product) }}</span>
                                     
-                                    <span class="fw-700 text-primary">{{ home_discounted_base_price($product) }}</span>
-
                                     </div>
                                   
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-{{$product->id}}">
                                     <svg width="20" height="20">
                                           <circle cx="7" cy="17" r="2"/>
                                           <circle cx="15" cy="17" r="2"/>
@@ -2155,184 +2154,146 @@
                   <div class="block-products-carousel__carousel">
                      <div class="block-products-carousel__carousel-loader"></div>
 
-                     
+
                      <div class="owl-carousel">
+                        @php
+                         $counter = 1;
+                        @endphp
 
-                     
-                        <div class="block-products-carousel__column">
+                        @foreach($all_products as $product)
 
-                        
-                     
-                        
-                           <div class="block-products-carousel__cell">
 
-                              <div class="product-card product-card--layout--horizontal">
-                                 <div class="product-card__actions-list">
-                                    <button class="product-card__action product-card__action--quickview" type="button" aria-label="Quick view">
-                                       <svg width="16" height="16">
-                                          <path d="M14,15h-4v-2h3v-3h2v4C15,14.6,14.6,15,14,15z M13,3h-3V1h4c0.6,0,1,0.4,1,1v4h-2V3z M6,3H3v3H1V2c0-0.6,0.4-1,1-1h4V3z
-                                             M3,13h3v2H2c-0.6,0-1-0.4-1-1v-4h2V13z"/>
-                                       </svg>
-                                    </button>
-                                 </div>
-                                 <div class="product-card__image">
-                                    <div class="image image--type--product"><a href="product-full.html" class="image__body"><img class="image__tag" src="{{static_asset('assets/frontend/images/products/product-1-245x245.jpg')}}" alt=""></a></div>
-                                 </div>
-                                 <div class="product-card__info">
-                                    <div class="product-card__name">
-                                       <div>
-                                          <div class="product-card__badges">
-                                             <div class="tag-badge tag-badge--sale">sale</div>
-                                             <div class="tag-badge tag-badge--new">new</div>
-                                             <div class="tag-badge tag-badge--hot">hot</div>
-                                          </div>
-                                          <a href="product-full.html">Brandix Spark Plug Kit ASR-400</a>
-                                       </div>
-                                    </div>
-                                    <div class="product-card__rating">
-                                       <div class="rating product-card__rating-stars">
-                                          <div class="rating__body">
-                                             <div class="rating__star rating__star--active"></div>
-                                             <div class="rating__star rating__star--active"></div>
-                                             <div class="rating__star rating__star--active"></div>
-                                             <div class="rating__star rating__star--active"></div>
-                                             <div class="rating__star"></div>
-                                          </div>
-                                       </div>
-                                       <div class="product-card__rating-label">4 on 3 reviews</div>
-                                    </div>
-                                 </div>
-                                 <div class="product-card__footer">
-                                    <div class="product-card__prices">
-                                       <div class="product-card__price product-card__price--current">$19.00</div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        
-                  
-                           <div class="block-products-carousel__cell">
-                              <div class="product-card product-card--layout--horizontal">
-                                 <div class="product-card__actions-list">
-                                    <button class="product-card__action product-card__action--quickview" type="button" aria-label="Quick view">
-                                       <svg width="16" height="16">
-                                          <path d="M14,15h-4v-2h3v-3h2v4C15,14.6,14.6,15,14,15z M13,3h-3V1h4c0.6,0,1,0.4,1,1v4h-2V3z M6,3H3v3H1V2c0-0.6,0.4-1,1-1h4V3z
-                                             M3,13h3v2H2c-0.6,0-1-0.4-1-1v-4h2V13z"/>
-                                       </svg>
-                                    </button>
-                                 </div>
-                                 <div class="product-card__image">
-                                    <div class="image image--type--product"><a href="product-full.html" class="image__body"><img class="image__tag" src="{{static_asset('assets/frontend/images/products/product-2-245x245.jpg') }}" alt=""></a></div>
-                                 </div>
-                                 <div class="product-card__info">
-                                    <div class="product-card__name">
-                                       <div><a href="product-full.html">Brandix Brake Kit BDX-750Z370-S</a></div>
-                                    </div>
-                                    <div class="product-card__rating">
-                                       <div class="rating product-card__rating-stars">
-                                          <div class="rating__body">
-                                             <div class="rating__star rating__star--active"></div>
-                                             <div class="rating__star rating__star--active"></div>
-                                             <div class="rating__star rating__star--active"></div>
-                                             <div class="rating__star rating__star--active"></div>
-                                             <div class="rating__star rating__star--active"></div>
-                                          </div>
-                                       </div>
-                                       <div class="product-card__rating-label">5 on 22 reviews</div>
-                                    </div>
-                                 </div>
-                                 <div class="product-card__footer">
-                                    <div class="product-card__prices">
-                                       <div class="product-card__price product-card__price--current">$224.00</div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-
-                      
-                        </div>
-                     
    
-                        <div class="block-products-carousel__column">
+                        
+                           <div class="block-products-carousel__column">
 
-                           <div class="block-products-carousel__cell">
-                                 <div class="product-card product-card--layout--horizontal">
-                                    <div class="product-card__actions-list">
-                                       <button class="product-card__action product-card__action--quickview" type="button" aria-label="Quick view">
-                                          <svg width="16" height="16">
-                                             <path d="M14,15h-4v-2h3v-3h2v4C15,14.6,14.6,15,14,15z M13,3h-3V1h4c0.6,0,1,0.4,1,1v4h-2V3z M6,3H3v3H1V2c0-0.6,0.4-1,1-1h4V3z
-                                                M3,13h3v2H2c-0.6,0-1-0.4-1-1v-4h2V13z"/>
-                                          </svg>
-                                       </button>
-                                    </div>
-                                    <div class="product-card__image">
-                                       <div class="image image--type--product"><a href="product-full.html" class="image__body"><img class="image__tag" src="{{static_asset('assets/frontend/images/products/product-2-245x245.jpg') }}" alt=""></a></div>
-                                    </div>
-                                    <div class="product-card__info">
-                                       <div class="product-card__name">
-                                          <div><a href="product-full.html">Brandix Brake Kit BDX-750Z370-S</a></div>
+                              
+                              <!-- @if($counter % 2 == 0) -->
+                                 <div class="block-products-carousel__cell">
+
+                                    <div class="product-card product-card--layout--horizontal">
+                                       <div class="product-card__actions-list">
+                                          <button class="product-card__action product-card__action--quickview" type="button" aria-label="Quick view">
+                                             <svg width="16" height="16">
+                                                <path d="M14,15h-4v-2h3v-3h2v4C15,14.6,14.6,15,14,15z M13,3h-3V1h4c0.6,0,1,0.4,1,1v4h-2V3z M6,3H3v3H1V2c0-0.6,0.4-1,1-1h4V3z
+                                                   M3,13h3v2H2c-0.6,0-1-0.4-1-1v-4h2V13z"/>
+                                             </svg>
+                                          </button>
                                        </div>
-                                       <div class="product-card__rating">
-                                          <div class="rating product-card__rating-stars">
-                                             <div class="rating__body">
-                                                <div class="rating__star rating__star--active"></div>
-                                                <div class="rating__star rating__star--active"></div>
-                                                <div class="rating__star rating__star--active"></div>
-                                                <div class="rating__star rating__star--active"></div>
-                                                <div class="rating__star rating__star--active"></div>
+                                       <div class="product-card__image">
+                                       @php
+                                          $product_url = route('product', $product->slug);
+                                          if($product->auction_product == 1) {
+                                             $product_url = route('auction-product', $product->slug);
+                                          }
+                                       @endphp
+                                          <div class="image image--type--product">
+                                             <a href="{{ $product_url }}" class="image__body">
+                                                <img class="image__tag" src="{{ uploaded_asset($product->thumbnail_img) }}" alt="">
+                                             </a>
+                                          </div>
+                                       </div>
+                                       <div class="product-card__info">
+                                          <div class="product-card__name">
+                                             <div>
+                                                <!-- <div class="product-card__badges">
+                                                   <div class="tag-badge tag-badge--sale">sale</div>
+                                                   <div class="tag-badge tag-badge--new">new</div>
+                                                   <div class="tag-badge tag-badge--hot">hot</div>
+                                                </div> -->
+                                                <a href="{{ $product_url }}">{{$product->name}}</a>
                                              </div>
                                           </div>
-                                          <div class="product-card__rating-label">5 on 22 reviews</div>
+                                          <div class="product-card__rating">
+                                             <div class="rating product-card__rating-stars">
+                                                <!-- <div class="rating__body">
+                                                   <div class="rating__star rating__star--active"></div>
+                                                   <div class="rating__star rating__star--active"></div>
+                                                   <div class="rating__star rating__star--active"></div>
+                                                   <div class="rating__star rating__star--active"></div>
+                                                   <div class="rating__star"></div>
+                                                </div> -->
+                                             </div>
+                                             <!-- <div class="product-card__rating-label">4 on 3 reviews</div> -->
+                                          </div>
                                        </div>
-                                    </div>
-                                    <div class="product-card__footer">
-                                       <div class="product-card__prices">
-                                          <div class="product-card__price product-card__price--current">$224.00</div>
+                                       <div class="product-card__footer">
+                                          <div class="product-card__prices">
+                                             @if(home_base_price($product) != home_discounted_base_price($product))
+                                             <del style="opacity:50%; margin-right:10px;">{{ home_base_price($product) }}</del>   
+                                             @endif
+                                             <span class="fw-700 text-primary">{{ home_discounted_base_price($product) }}</span>
+                                          </div>
                                        </div>
                                     </div>
                                  </div>
-                              </div>
-                              <div class="block-products-carousel__cell">
-                                 <div class="product-card product-card--layout--horizontal">
-                                    <div class="product-card__actions-list">
-                                       <button class="product-card__action product-card__action--quickview" type="button" aria-label="Quick view">
-                                          <svg width="16" height="16">
-                                             <path d="M14,15h-4v-2h3v-3h2v4C15,14.6,14.6,15,14,15z M13,3h-3V1h4c0.6,0,1,0.4,1,1v4h-2V3z M6,3H3v3H1V2c0-0.6,0.4-1,1-1h4V3z
-                                                M3,13h3v2H2c-0.6,0-1-0.4-1-1v-4h2V13z"/>
-                                          </svg>
-                                       </button>
-                                    </div>
-                                    <div class="product-card__image">
-                                       <div class="image image--type--product"><a href="product-full.html" class="image__body"><img class="image__tag" src="{{static_asset('assets/frontend/images/products/product-2-245x245.jpg') }}" alt=""></a></div>
-                                    </div>
-                                    <div class="product-card__info">
-                                       <div class="product-card__name">
-                                          <div><a href="product-full.html">Brandix Brake Kit BDX-750Z370-S</a></div>
+                              <!-- @else -->
+                        
+                              
+                        
+                                 <div class="block-products-carousel__cell">
+                                    <div class="product-card product-card--layout--horizontal">
+                                       <div class="product-card__actions-list">
+                                          <button class="product-card__action product-card__action--quickview" type="button" aria-label="Quick view">
+                                             <svg width="16" height="16">
+                                                <path d="M14,15h-4v-2h3v-3h2v4C15,14.6,14.6,15,14,15z M13,3h-3V1h4c0.6,0,1,0.4,1,1v4h-2V3z M6,3H3v3H1V2c0-0.6,0.4-1,1-1h4V3z
+                                                   M3,13h3v2H2c-0.6,0-1-0.4-1-1v-4h2V13z"/>
+                                             </svg>
+                                          </button>
                                        </div>
-                                       <div class="product-card__rating">
-                                          <div class="rating product-card__rating-stars">
-                                             <div class="rating__body">
-                                                <div class="rating__star rating__star--active"></div>
-                                                <div class="rating__star rating__star--active"></div>
-                                                <div class="rating__star rating__star--active"></div>
-                                                <div class="rating__star rating__star--active"></div>
-                                                <div class="rating__star rating__star--active"></div>
-                                             </div>
+                                       <div class="product-card__image">
+                                       @php
+                                          $product_url = route('product', $product->slug);
+                                          if($product->auction_product == 1) {
+                                             $product_url = route('auction-product', $product->slug);
+                                          }
+                                       @endphp
+                                          <div class="image image--type--product">
+                                             <a href="{{ $product_url }}" class="image__body">
+                                                <img class="image__tag" src="{{ uploaded_asset($product->thumbnail_img) }}" alt=""></a></div>
+                                       </div>
+                                       <div class="product-card__info">
+                                          <div class="product-card__name">
+                                             <div><a href="{{ $product_url }}">{{$product->name}}</a></div>
                                           </div>
-                                          <div class="product-card__rating-label">5 on 22 reviews</div>
+                                          <div class="product-card__rating">
+                                             <!-- <div class="rating product-card__rating-stars">
+                                                <div class="rating__body">
+                                                   <div class="rating__star rating__star--active"></div>
+                                                   <div class="rating__star rating__star--active"></div>
+                                                   <div class="rating__star rating__star--active"></div>
+                                                   <div class="rating__star rating__star--active"></div>
+                                                   <div class="rating__star rating__star--active"></div>
+                                                </div>
+                                             </div> -->
+                                             <!-- <div class="product-card__rating-label">5 on 22 reviews</div> -->
+                                          </div>
                                        </div>
-                                    </div>
-                                    <div class="product-card__footer">
-                                       <div class="product-card__prices">
-                                          <div class="product-card__price product-card__price--current">$224.00</div>
+                                       <div class="product-card__footer">
+                                          <div class="product-card__prices">
+                                             @if(home_base_price($product) != home_discounted_base_price($product))
+                                             <del style="opacity:50%; margin-right:10px;">{{ home_base_price($product) }}</del>   
+                                             @endif
+                                             
+                                             <span class="fw-700 text-primary">{{ home_discounted_base_price($product) }}</span>
+                                          </div>
                                        </div>
                                     </div>
                                  </div>
-                              </div>
+
+                              <!-- @endif -->
+
 
                            </div>
+                           @php
+                           $counter++;
+                           @endphp
+                        @endforeach
+                        
+   
+                        
 
-                        </div>
+                     </div>
 
                      </div>
                   </div>
@@ -2348,7 +2309,7 @@
 
             <div class="block-space block-space--layout--divider-nl"></div>
 
-
+            <!--------------- Testimonial Section Start  ---------->
             <div class="block block-posts-carousel block-posts-carousel--layout--grid" data-layout="grid">
                <div class="container">
                   <div class="section-header">
@@ -2419,11 +2380,12 @@
                   </div>
                </div>
             </div>
+            <!--------------- Testimonial Section End  ---------->
 
 
             <div class="block-space block-space--layout--divider-nl"></div>
 
-
+            <!------------------ Category Section  Start --------------------->
             <div class="block block-brands block-brands--layout--columns-8-full">
                <div class="container">
                   <ul class="block-brands__list">
@@ -2462,6 +2424,8 @@
                   </ul>
                </div>
             </div>
+            <!------------------ Category Section End --------------------->
+
 
             
             <div class="block-space block-space--layout--divider-nl d-xl-block d-none"></div>
@@ -2473,8 +2437,9 @@
 
 
                      <div class="col-4">
-                        <div class="block-products-columns__title">Top Rated Products</div>
+                        <div class="block-products-columns__title">Todays Deal Products</div>
                         <div class="block-products-columns__list">
+                           @foreach($todays_deal_products_footer as $product)
                            <div class="block-products-columns__list-item">
                               <div class="product-card">
                                  <div class="product-card__actions-list">
@@ -2485,22 +2450,29 @@
                                        </svg>
                                     </button>
                                  </div>
+                                 @php
+                                    $product_url = route('product', $product->slug);
+                                    if($product->auction_product == 1) {
+                                       $product_url = route('auction-product', $product->slug);
+                                    }
+                                 @endphp
                                  <div class="product-card__image">
-                                    <div class="image image--type--product"><a href="product-full.html" class="image__body"><img class="image__tag" src="{{static_asset('assets/frontend/images/products/product-1-245x245.jpg')}}" alt=""></a></div>
+                                    <div class="image image--type--product">
+                                       <a href="{{ $product_url }}" class="image__body"><img class="image__tag" src="{{ uploaded_asset($product->thumbnail_img) }}" alt=""></a></div>
                                  </div>
                                  <div class="product-card__info">
                                     <div class="product-card__name">
                                        <div>
-                                          <div class="product-card__badges">
+                                          <!-- <div class="product-card__badges">
                                              <div class="tag-badge tag-badge--sale">sale</div>
                                              <div class="tag-badge tag-badge--new">new</div>
                                              <div class="tag-badge tag-badge--hot">hot</div>
-                                          </div>
-                                          <a href="product-full.html">Brandix Spark Plug Kit ASR-400</a>
+                                          </div> -->
+                                          <a href="{{ $product_url }}">{{$product->name}}</a>
                                        </div>
                                     </div>
                                     <div class="product-card__rating">
-                                       <div class="rating product-card__rating-stars">
+                                       <!-- <div class="rating product-card__rating-stars">
                                           <div class="rating__body">
                                              <div class="rating__star rating__star--active"></div>
                                              <div class="rating__star rating__star--active"></div>
@@ -2508,17 +2480,29 @@
                                              <div class="rating__star rating__star--active"></div>
                                              <div class="rating__star"></div>
                                           </div>
-                                       </div>
-                                       <div class="product-card__rating-label">4 on 3 reviews</div>
+                                       </div> -->
+                                       <!-- <div class="product-card__rating-label">4 on 3 reviews</div> -->
                                     </div>
                                  </div>
                                  <div class="product-card__footer">
                                     <div class="product-card__prices">
-                                       <div class="product-card__price product-card__price--current">$19.00</div>
+                                       @if(home_base_price($product) != home_discounted_base_price($product))
+                                       <del style="opacity:50%; margin-right:10px;">{{ home_base_price($product) }}</del>   
+                                       @endif
+                                       <span class="fw-700 text-primary">{{ home_discounted_base_price($product) }}</span>
+                                    
                                     </div>
                                  </div>
                               </div>
                            </div>
+                           @endforeach
+                        </div>
+                     </div>
+
+                     <div class="col-4">
+                        <div class="block-products-columns__title">Newest Products</div>
+                        <div class="block-products-columns__list">
+                           @foreach($newest_products_footer as $product)
                            <div class="block-products-columns__list-item">
                               <div class="product-card">
                                  <div class="product-card__actions-list">
@@ -2529,82 +2513,58 @@
                                        </svg>
                                     </button>
                                  </div>
+                                 @php
+                                    $product_url = route('product', $product->slug);
+                                    if($product->auction_product == 1) {
+                                       $product_url = route('auction-product', $product->slug);
+                                    }
+                                 @endphp
                                  <div class="product-card__image">
-                                    <div class="image image--type--product"><a href="product-full.html" class="image__body"><img class="image__tag" src="{{static_asset('assets/frontend/images/products/product-2-245x245.jpg')}}" alt=""></a></div>
-                                 </div>
-                                 <div class="product-card__info">
-                                    <div class="product-card__name">
-                                       <div><a href="product-full.html">Brandix Brake Kit BDX-750Z370-S</a></div>
-                                    </div>
-                                    <div class="product-card__rating">
-                                       <div class="rating product-card__rating-stars">
-                                          <div class="rating__body">
-                                             <div class="rating__star rating__star--active"></div>
-                                             <div class="rating__star rating__star--active"></div>
-                                             <div class="rating__star rating__star--active"></div>
-                                             <div class="rating__star rating__star--active"></div>
-                                             <div class="rating__star rating__star--active"></div>
-                                          </div>
-                                       </div>
-                                       <div class="product-card__rating-label">5 on 22 reviews</div>
-                                    </div>
-                                 </div>
-                                 <div class="product-card__footer">
-                                    <div class="product-card__prices">
-                                       <div class="product-card__price product-card__price--current">$224.00</div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="block-products-columns__list-item">
-                              <div class="product-card">
-                                 <div class="product-card__actions-list">
-                                    <button class="product-card__action product-card__action--quickview" type="button" aria-label="Quick view">
-                                       <svg width="16" height="16">
-                                          <path d="M14,15h-4v-2h3v-3h2v4C15,14.6,14.6,15,14,15z M13,3h-3V1h4c0.6,0,1,0.4,1,1v4h-2V3z M6,3H3v3H1V2c0-0.6,0.4-1,1-1h4V3z
-                                             M3,13h3v2H2c-0.6,0-1-0.4-1-1v-4h2V13z"/>
-                                       </svg>
-                                    </button>
-                                 </div>
-                                 <div class="product-card__image">
-                                    <div class="image image--type--product"><a href="product-full.html" class="image__body"><img class="image__tag" src="{{static_asset('assets/frontend/images/products/product-3-245x245.jpg')}}" alt=""></a></div>
+                                    <div class="image image--type--product">
+                                       <a href="{{ $product_url }}" class="image__body"><img class="image__tag" src="{{ uploaded_asset($product->thumbnail_img) }}" alt=""></a></div>
                                  </div>
                                  <div class="product-card__info">
                                     <div class="product-card__name">
                                        <div>
-                                          <div class="product-card__badges">
+                                          <!-- <div class="product-card__badges">
                                              <div class="tag-badge tag-badge--sale">sale</div>
-                                          </div>
-                                          <a href="product-full.html">Left Headlight Of Brandix Z54</a>
+                                             <div class="tag-badge tag-badge--new">new</div>
+                                             <div class="tag-badge tag-badge--hot">hot</div>
+                                          </div> -->
+                                          <a href="{{ $product_url }}">{{$product->name}}</a>
                                        </div>
                                     </div>
                                     <div class="product-card__rating">
-                                       <div class="rating product-card__rating-stars">
+                                       <!-- <div class="rating product-card__rating-stars">
                                           <div class="rating__body">
                                              <div class="rating__star rating__star--active"></div>
                                              <div class="rating__star rating__star--active"></div>
                                              <div class="rating__star rating__star--active"></div>
-                                             <div class="rating__star"></div>
+                                             <div class="rating__star rating__star--active"></div>
                                              <div class="rating__star"></div>
                                           </div>
-                                       </div>
-                                       <div class="product-card__rating-label">3 on 14 reviews</div>
+                                       </div> -->
+                                       <!-- <div class="product-card__rating-label">4 on 3 reviews</div> -->
                                     </div>
                                  </div>
                                  <div class="product-card__footer">
                                     <div class="product-card__prices">
-                                       <div class="product-card__price product-card__price--new">$349.00</div>
-                                       <div class="product-card__price product-card__price--old">$415.00</div>
+                                       @if(home_base_price($product) != home_discounted_base_price($product))
+                                       <del style="opacity:50%; margin-right:10px;">{{ home_base_price($product) }}</del>   
+                                       @endif
+                                       <span class="fw-700 text-primary">{{ home_discounted_base_price($product) }}</span>
+                                    
                                     </div>
                                  </div>
                               </div>
                            </div>
+                           @endforeach
                         </div>
                      </div>
-
                      <div class="col-4">
-                        <div class="block-products-columns__title">Special Offers</div>
+                        <div class="block-products-columns__title">Featured Products</div>
                         <div class="block-products-columns__list">
+                           @foreach($featured_products_footer as $product)
                            <div class="block-products-columns__list-item">
                               <div class="product-card">
                                  <div class="product-card__actions-list">
@@ -2615,20 +2575,29 @@
                                        </svg>
                                     </button>
                                  </div>
+                                 @php
+                                    $product_url = route('product', $product->slug);
+                                    if($product->auction_product == 1) {
+                                       $product_url = route('auction-product', $product->slug);
+                                    }
+                                 @endphp
                                  <div class="product-card__image">
-                                    <div class="image image--type--product"><a href="product-full.html" class="image__body"><img class="image__tag" src="{{static_asset('assets/frontend/images/products/product-4-245x245.jpg')}}" alt=""></a></div>
+                                    <div class="image image--type--product">
+                                       <a href="{{ $product_url }}" class="image__body"><img class="image__tag" src="{{ uploaded_asset($product->thumbnail_img) }}" alt=""></a></div>
                                  </div>
                                  <div class="product-card__info">
                                     <div class="product-card__name">
                                        <div>
-                                          <div class="product-card__badges">
+                                          <!-- <div class="product-card__badges">
+                                             <div class="tag-badge tag-badge--sale">sale</div>
+                                             <div class="tag-badge tag-badge--new">new</div>
                                              <div class="tag-badge tag-badge--hot">hot</div>
-                                          </div>
-                                          <a href="product-full.html">Glossy Gray 19" Aluminium Wheel AR-19</a>
+                                          </div> -->
+                                          <a href="{{ $product_url }}">{{$product->name}}</a>
                                        </div>
                                     </div>
                                     <div class="product-card__rating">
-                                       <div class="rating product-card__rating-stars">
+                                       <!-- <div class="rating product-card__rating-stars">
                                           <div class="rating__body">
                                              <div class="rating__star rating__star--active"></div>
                                              <div class="rating__star rating__star--active"></div>
@@ -2636,211 +2605,24 @@
                                              <div class="rating__star rating__star--active"></div>
                                              <div class="rating__star"></div>
                                           </div>
-                                       </div>
-                                       <div class="product-card__rating-label">4 on 26 reviews</div>
+                                       </div> -->
+                                       <!-- <div class="product-card__rating-label">4 on 3 reviews</div> -->
                                     </div>
                                  </div>
                                  <div class="product-card__footer">
                                     <div class="product-card__prices">
-                                       <div class="product-card__price product-card__price--current">$589.00</div>
+                                       @if(home_base_price($product) != home_discounted_base_price($product))
+                                       <del style="opacity:50%; margin-right:10px;">{{ home_base_price($product) }}</del>   
+                                       @endif
+                                       <span class="fw-700 text-primary">{{ home_discounted_base_price($product) }}</span>
+                                    
                                     </div>
                                  </div>
                               </div>
                            </div>
-                           <div class="block-products-columns__list-item">
-                              <div class="product-card">
-                                 <div class="product-card__actions-list">
-                                    <button class="product-card__action product-card__action--quickview" type="button" aria-label="Quick view">
-                                       <svg width="16" height="16">
-                                          <path d="M14,15h-4v-2h3v-3h2v4C15,14.6,14.6,15,14,15z M13,3h-3V1h4c0.6,0,1,0.4,1,1v4h-2V3z M6,3H3v3H1V2c0-0.6,0.4-1,1-1h4V3z
-                                             M3,13h3v2H2c-0.6,0-1-0.4-1-1v-4h2V13z"/>
-                                       </svg>
-                                    </button>
-                                 </div>
-                                 <div class="product-card__image">
-                                    <div class="image image--type--product"><a href="product-full.html" class="image__body"><img class="image__tag" src="{{static_asset('assets/frontend/images/products/product-5-245x245.jpg')}}" alt=""></a></div>
-                                 </div>
-                                 <div class="product-card__info">
-                                    <div class="product-card__name">
-                                       <div><a href="product-full.html">Twin Exhaust Pipe From Brandix Z54</a></div>
-                                    </div>
-                                    <div class="product-card__rating">
-                                       <div class="rating product-card__rating-stars">
-                                          <div class="rating__body">
-                                             <div class="rating__star rating__star--active"></div>
-                                             <div class="rating__star rating__star--active"></div>
-                                             <div class="rating__star rating__star--active"></div>
-                                             <div class="rating__star rating__star--active"></div>
-                                             <div class="rating__star"></div>
-                                          </div>
-                                       </div>
-                                       <div class="product-card__rating-label">4 on 9 reviews</div>
-                                    </div>
-                                 </div>
-                                 <div class="product-card__footer">
-                                    <div class="product-card__prices">
-                                       <div class="product-card__price product-card__price--current">$749.00</div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="block-products-columns__list-item">
-                              <div class="product-card">
-                                 <div class="product-card__actions-list">
-                                    <button class="product-card__action product-card__action--quickview" type="button" aria-label="Quick view">
-                                       <svg width="16" height="16">
-                                          <path d="M14,15h-4v-2h3v-3h2v4C15,14.6,14.6,15,14,15z M13,3h-3V1h4c0.6,0,1,0.4,1,1v4h-2V3z M6,3H3v3H1V2c0-0.6,0.4-1,1-1h4V3z
-                                             M3,13h3v2H2c-0.6,0-1-0.4-1-1v-4h2V13z"/>
-                                       </svg>
-                                    </button>
-                                 </div>
-                                 <div class="product-card__image">
-                                    <div class="image image--type--product"><a href="product-full.html" class="image__body"><img class="image__tag" src="{{static_asset('assets/frontend/images/products/product-6-245x245.jpg')}}" alt=""></a></div>
-                                 </div>
-                                 <div class="product-card__info">
-                                    <div class="product-card__name">
-                                       <div><a href="product-full.html">Motor Oil Level 5</a></div>
-                                    </div>
-                                    <div class="product-card__rating">
-                                       <div class="rating product-card__rating-stars">
-                                          <div class="rating__body">
-                                             <div class="rating__star rating__star--active"></div>
-                                             <div class="rating__star rating__star--active"></div>
-                                             <div class="rating__star rating__star--active"></div>
-                                             <div class="rating__star rating__star--active"></div>
-                                             <div class="rating__star rating__star--active"></div>
-                                          </div>
-                                       </div>
-                                       <div class="product-card__rating-label">5 on 2 reviews</div>
-                                    </div>
-                                 </div>
-                                 <div class="product-card__footer">
-                                    <div class="product-card__prices">
-                                       <div class="product-card__price product-card__price--current">$23.00</div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
+                           @endforeach
                         </div>
                      </div>
-
-                     <div class="col-4">
-                        <div class="block-products-columns__title">Bestsellers</div>
-                        <div class="block-products-columns__list">
-                           <div class="block-products-columns__list-item">
-                              <div class="product-card">
-                                 <div class="product-card__actions-list">
-                                    <button class="product-card__action product-card__action--quickview" type="button" aria-label="Quick view">
-                                       <svg width="16" height="16">
-                                          <path d="M14,15h-4v-2h3v-3h2v4C15,14.6,14.6,15,14,15z M13,3h-3V1h4c0.6,0,1,0.4,1,1v4h-2V3z M6,3H3v3H1V2c0-0.6,0.4-1,1-1h4V3z
-                                             M3,13h3v2H2c-0.6,0-1-0.4-1-1v-4h2V13z"/>
-                                       </svg>
-                                    </button>
-                                 </div>
-                                 <div class="product-card__image">
-                                    <div class="image image--type--product"><a href="product-full.html" class="image__body"><img class="image__tag" src="{{static_asset('assets/frontend/images/products/product-7-245x245.jpg')}}" alt=""></a></div>
-                                 </div>
-                                 <div class="product-card__info">
-                                    <div class="product-card__name">
-                                       <div><a href="product-full.html">Brandix Engine Block Z4</a></div>
-                                    </div>
-                                    <div class="product-card__rating">
-                                       <div class="rating product-card__rating-stars">
-                                          <div class="rating__body">
-                                             <div class="rating__star"></div>
-                                             <div class="rating__star"></div>
-                                             <div class="rating__star"></div>
-                                             <div class="rating__star"></div>
-                                             <div class="rating__star"></div>
-                                          </div>
-                                       </div>
-                                       <div class="product-card__rating-label">0 on 0 reviews</div>
-                                    </div>
-                                 </div>
-                                 <div class="product-card__footer">
-                                    <div class="product-card__prices">
-                                       <div class="product-card__price product-card__price--current">$452.00</div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="block-products-columns__list-item">
-                              <div class="product-card">
-                                 <div class="product-card__actions-list">
-                                    <button class="product-card__action product-card__action--quickview" type="button" aria-label="Quick view">
-                                       <svg width="16" height="16">
-                                          <path d="M14,15h-4v-2h3v-3h2v4C15,14.6,14.6,15,14,15z M13,3h-3V1h4c0.6,0,1,0.4,1,1v4h-2V3z M6,3H3v3H1V2c0-0.6,0.4-1,1-1h4V3z
-                                             M3,13h3v2H2c-0.6,0-1-0.4-1-1v-4h2V13z"/>
-                                       </svg>
-                                    </button>
-                                 </div>
-                                 <div class="product-card__image">
-                                    <div class="image image--type--product"><a href="product-full.html" class="image__body"><img class="image__tag" src="{{static_asset('assets/frontend/images/products/product-8-245x245.jpg')}}" alt=""></a></div>
-                                 </div>
-                                 <div class="product-card__info">
-                                    <div class="product-card__name">
-                                       <div><a href="product-full.html">Brandix Clutch Discs Z175</a></div>
-                                    </div>
-                                    <div class="product-card__rating">
-                                       <div class="rating product-card__rating-stars">
-                                          <div class="rating__body">
-                                             <div class="rating__star rating__star--active"></div>
-                                             <div class="rating__star rating__star--active"></div>
-                                             <div class="rating__star rating__star--active"></div>
-                                             <div class="rating__star"></div>
-                                             <div class="rating__star"></div>
-                                          </div>
-                                       </div>
-                                       <div class="product-card__rating-label">3 on 7 reviews</div>
-                                    </div>
-                                 </div>
-                                 <div class="product-card__footer">
-                                    <div class="product-card__prices">
-                                       <div class="product-card__price product-card__price--current">$345.00</div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="block-products-columns__list-item">
-                              <div class="product-card">
-                                 <div class="product-card__actions-list">
-                                    <button class="product-card__action product-card__action--quickview" type="button" aria-label="Quick view">
-                                       <svg width="16" height="16">
-                                          <path d="M14,15h-4v-2h3v-3h2v4C15,14.6,14.6,15,14,15z M13,3h-3V1h4c0.6,0,1,0.4,1,1v4h-2V3z M6,3H3v3H1V2c0-0.6,0.4-1,1-1h4V3z
-                                             M3,13h3v2H2c-0.6,0-1-0.4-1-1v-4h2V13z"/>
-                                       </svg>
-                                    </button>
-                                 </div>
-                                 <div class="product-card__image">
-                                    <div class="image image--type--product"><a href="product-full.html" class="image__body"><img class="image__tag" src="{{static_asset('assets/frontend/images/products/product-9-245x245.jpg')}}" alt=""></a></div>
-                                 </div>
-                                 <div class="product-card__info">
-                                    <div class="product-card__name">
-                                       <div><a href="product-full.html">Brandix Manual Five Speed Gearbox</a></div>
-                                    </div>
-                                    <div class="product-card__rating">
-                                       <div class="rating product-card__rating-stars">
-                                          <div class="rating__body">
-                                             <div class="rating__star rating__star--active"></div>
-                                             <div class="rating__star rating__star--active"></div>
-                                             <div class="rating__star rating__star--active"></div>
-                                             <div class="rating__star rating__star--active"></div>
-                                             <div class="rating__star"></div>
-                                          </div>
-                                       </div>
-                                       <div class="product-card__rating-label">4 on 6 reviews</div>
-                                    </div>
-                                 </div>
-                                 <div class="product-card__footer">
-                                    <div class="product-card__prices">
-                                       <div class="product-card__price product-card__price--current">$879.00</div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-
 
                   </div>
                </div>
@@ -3768,11 +3550,11 @@
 
 
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="exampleModal-{{$product->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                <div class="modal-content">
                   <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Add To Cart</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">Add To Cart {{$product->id}}</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                      <span aria-hidden="true">&times;</span>
                   </button>

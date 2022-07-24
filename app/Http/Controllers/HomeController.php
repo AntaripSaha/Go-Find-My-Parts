@@ -45,19 +45,26 @@ class HomeController extends Controller
         $todays_deal_products = Cache::rememberForever('todays_deal_products', function () {
             return filter_products(Product::where('published', 1)->where('todays_deal', '1'))->get();
         });
+        
 
         $newest_products = Cache::remember('newest_products', 3600, function () {
             return filter_products(Product::latest())->limit(12)->get();
         });
+        
+        
         $featured_products = Cache::remember('featured_products', 3600, function () {
             return filter_products(Product::where('featured', 1))->get();
         });
-        $all_products = Cache::remember('featured_products', 3600, function () {
+         $all_products = Cache::remember('all_products', 3600, function () {
             return filter_products(Product::where('published', 1)->limit(50))->get();
         });
 
+        $todays_deal_products_footer = filter_products(Product::where('published', 1)->limit(3)->where('todays_deal', '1'))->get();
+        $featured_products_footer = filter_products(Product::where('featured', 1))->limit(3)->get();
+        $newest_products_footer = filter_products(Product::latest()->limit(3))->get();
+        $all_products_cart = filter_products(Product::where('published', 1))->get();
 
-        return view('frontend.new_index', compact('all_products','featured_products','featured_categories', 'todays_deal_products', 'newest_products'));
+        return view('frontend.new_index', compact('all_products_cart','featured_products_footer','newest_products_footer','todays_deal_products_footer','all_products','featured_products','featured_categories', 'todays_deal_products', 'newest_products'));
     
     }
     public function index()
