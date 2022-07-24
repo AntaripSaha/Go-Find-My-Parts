@@ -235,15 +235,14 @@
     <!-- SCRIPTS -->
     <script src="{{ static_asset('assets/js/vendors.js') }}"></script>
     <script src="{{ static_asset('assets/js/aiz-core.js') }}"></script>
-    <script src="{{ static_asset('assets/js/aiz-core.js') }}"></script>
-    <script src="{{static_asset('assets/frontend/vendor/jquery/jquery.min.js')}}"></script>
+    <!-- <script src="{{static_asset('assets/frontend/vendor/jquery/jquery.min.js')}}"></script> -->
     <script src="{{static_asset('assets/frontend/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{static_asset('assets/frontend/vendor/owl-carousel/owl.carousel.min.js')}}"></script>
-    <script src="{{static_asset('assets/frontend/vendor/nouislider/nouislider.min.js')}}"></script>
-    <script src="{{static_asset('assets/frontend/vendor/photoswipe/photoswipe.min.js')}}"></script>
-    <script src="{{static_asset('assets/frontend/vendor/photoswipe/photoswipe-ui-default.min.js')}}"></script>
+    <!-- <script src="{{static_asset('assets/frontend/vendor/nouislider/nouislider.min.js')}}"></script> -->
+    <!-- <script src="{{static_asset('assets/frontend/vendor/photoswipe/photoswipe.min.js')}}"></script> -->
+    <!-- <script src="{{static_asset('assets/frontend/vendor/photoswipe/photoswipe-ui-default.min.js')}}"></script> -->
     <script src="{{static_asset('assets/frontend/vendor/select2/js/select2.min.js')}}"></script>
-    <script src="{{static_asset('assets/frontend/js/number.js')}}"></script>
+    <!-- <script src="{{static_asset('assets/frontend/js/number.js')}}"></script> -->
     <script src="{{static_asset('assets/frontend/js/main.js')}}"></script>
 
     @if (get_setting('facebook_chat') == 1)

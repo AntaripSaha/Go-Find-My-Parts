@@ -29,6 +29,8 @@ use Illuminate\Auth\Events\PasswordReset;
 use Cache;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\View;
+use App\Models\BlogCategory;
+use App\Models\Blog;
 
 class HomeController extends Controller
 {
@@ -64,6 +66,7 @@ class HomeController extends Controller
         $newest_products_footer = filter_products(Product::latest()->limit(3))->get();
         $all_products_cart = filter_products(Product::where('published', 1))->get();
 
+        return $blog = Blog::all();
         return view('frontend.new_index', compact('all_products_cart','featured_products_footer','newest_products_footer','todays_deal_products_footer','all_products','featured_products','featured_categories', 'todays_deal_products', 'newest_products'));
     
     }
