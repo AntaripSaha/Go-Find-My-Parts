@@ -1,7 +1,62 @@
-@extends('frontend.layouts.new_app')
-@section('content')
+<!DOCTYPE html>
+@if(\App\Models\Language::where('code', Session::get('locale', Config::get('app.locale')))->first()->rtl == 1)
+<html dir="rtl" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@else
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@endif
+<html lang="en" dir="ltr">
+   <head>
 
-<body>
+
+
+
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta name="format-detection" content="telephone=no">
+      <title>@yield('meta_title', get_setting('website_name').' | '.get_setting('site_motto'))</title>
+      <link rel="icon" type="image/png" href="{{ uploaded_asset(get_setting('site_icon')) }}">
+      <!-- fonts -->
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i">
+      <!-- css -->
+      <link rel="stylesheet" href="{{static_asset('assets/frontend/vendor/bootstrap/css/bootstrap.css') }}">
+      <link rel="stylesheet" href="{{static_asset('assets/frontend/vendor/owl-carousel/assets/owl.carousel.min.css') }}">
+      <link rel="stylesheet" href="{{static_asset('assets/frontend/vendor/photoswipe/photoswipe.css') }}">
+      <link rel="stylesheet" href="{{static_asset('assets/frontend/vendor/photoswipe/default-skin/default-skin.css') }}">
+      <link rel="stylesheet" href="{{static_asset('assets/frontend/vendor/select2/css/select2.min.css') }}">
+      <link rel="stylesheet" href="{{static_asset('assets/frontend/css/style.css') }}">
+      <link rel="stylesheet" href="{{static_asset('assets/frontend/css/style.header-spaceship-variant-one.css') }}" media="(min-width: 1200px)">
+      <link rel="stylesheet" href="{{static_asset('assets/frontend/css/style.mobile-header-variant-one.css') }}" media="(max-width: 1199px)">
+      <!-- font - fontawesome -->
+      <link rel="stylesheet" href="{{static_asset('assets/vendor/fontawesome/css/all.min.css') }}">
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-97489509-8"></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag("js", new Date());gtag("config", "UA-97489509-8");</script>
+      
+      <script>
+        var AIZ = AIZ || {};
+        AIZ.local = {
+            nothing_selected: '{!! translate('Nothing selected', null, true) !!}',
+            nothing_found: '{!! translate('Nothing found', null, true) !!}',
+            choose_file: '{{ translate('Choose file') }}',
+            file_selected: '{{ translate('File selected') }}',
+            files_selected: '{{ translate('Files selected') }}',
+            add_more_files: '{{ translate('Add more files') }}',
+            adding_more_files: '{{ translate('Adding more files') }}',
+            drop_files_here_paste_or: '{{ translate('Drop files here, paste or') }}',
+            browse: '{{ translate('Browse') }}',
+            upload_complete: '{{ translate('Upload complete') }}',
+            upload_paused: '{{ translate('Upload paused') }}',
+            resume_upload: '{{ translate('Resume upload') }}',
+            pause_upload: '{{ translate('Pause upload') }}',
+            retry_upload: '{{ translate('Retry upload') }}',
+            cancel_upload: '{{ translate('Cancel upload') }}',
+            uploading: '{{ translate('Uploading') }}',
+            processing: '{{ translate('Processing') }}',
+            complete: '{{ translate('Complete') }}',
+            file: '{{ translate('File') }}',
+            files: '{{ translate('Files') }}',
+        }
+      </script>
+   </head>
+   <body>
       <!-- site -->
       <div class="site">
 
@@ -1503,13 +1558,19 @@
                            <div class="block-products-carousel__cell">
                               <div class="product-card product-card--layout--grid">
                                  <div class="product-card__actions-list">
-                                    <button class="product-card__action product-card__action--wishlist" type="button" aria-label="Add to wish list" onclick="addToWishList({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to wishlist') }}" data-placement="left">
+                                    <button class="product-card__action product-card__action--quickview" type="button" aria-label="Quick view">
+                                       <svg width="16" height="16">
+                                          <path d="M14,15h-4v-2h3v-3h2v4C15,14.6,14.6,15,14,15z M13,3h-3V1h4c0.6,0,1,0.4,1,1v4h-2V3z M6,3H3v3H1V2c0-0.6,0.4-1,1-1h4V3z
+                                             M3,13h3v2H2c-0.6,0-1-0.4-1-1v-4h2V13z"/>
+                                       </svg>
+                                    </button>
+                                    <button class="product-card__action product-card__action--wishlist" type="button" aria-label="Add to wish list">
                                        <svg width="16" height="16">
                                           <path d="M13.9,8.4l-5.4,5.4c-0.3,0.3-0.7,0.3-1,0L2.1,8.4c-1.5-1.5-1.5-3.8,0-5.3C2.8,2.4,3.8,2,4.8,2s1.9,0.4,2.6,1.1L8,3.7
                                              l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"/>
                                        </svg>
                                     </button>
-                                    <button class="product-card__action product-card__action--compare" type="button" aria-label="Add to compare"  onclick="addToCompare({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to compare') }}" data-placement="left">
+                                    <button class="product-card__action product-card__action--compare" type="button" aria-label="Add to compare">
                                        <svg width="16" height="16">
                                           <path d="M9,15H7c-0.6,0-1-0.4-1-1V2c0-0.6,0.4-1,1-1h2c0.6,0,1,0.4,1,1v12C10,14.6,9.6,15,9,15z"/>
                                           <path d="M1,9h2c0.6,0,1,0.4,1,1v4c0,0.6-0.4,1-1,1H1c-0.6,0-1-0.4-1-1v-4C0,9.4,0.4,9,1,9z"/>
@@ -1575,7 +1636,7 @@
                                     
                                     </div>
                                   
-                                    <button type="button" class="btn btn-primary" onclick="showAddToCartModal({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to cart') }}" data-placement="left">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-{{$product->id}}" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-whatever="@mdo">
                                     <svg width="20" height="20">
                                           <circle cx="7" cy="17" r="2"/>
                                           <circle cx="15" cy="17" r="2"/>
@@ -1589,7 +1650,7 @@
                            </div>
                         </div>
 
-                     @endforeach
+                        @endforeach
 
                         <!-- <div class="block-products-carousel__column">
                            <div class="block-products-carousel__cell">
@@ -1758,13 +1819,19 @@
                               <div class="block-sale__item">
                                  <div class="product-card">
                                     <div class="product-card__actions-list">
-                                       <button class="product-card__action product-card__action--wishlist" type="button" onclick="addToWishList({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to wishlist') }}" data-placement="left">
+                                       <button class="product-card__action product-card__action--quickview" type="button" aria-label="Quick view">
+                                          <svg width="16" height="16">
+                                             <path d="M14,15h-4v-2h3v-3h2v4C15,14.6,14.6,15,14,15z M13,3h-3V1h4c0.6,0,1,0.4,1,1v4h-2V3z M6,3H3v3H1V2c0-0.6,0.4-1,1-1h4V3z
+                                                M3,13h3v2H2c-0.6,0-1-0.4-1-1v-4h2V13z"/>
+                                          </svg>
+                                       </button>
+                                       <button class="product-card__action product-card__action--wishlist" type="button" aria-label="Add to wish list">
                                           <svg width="16" height="16">
                                              <path d="M13.9,8.4l-5.4,5.4c-0.3,0.3-0.7,0.3-1,0L2.1,8.4c-1.5-1.5-1.5-3.8,0-5.3C2.8,2.4,3.8,2,4.8,2s1.9,0.4,2.6,1.1L8,3.7
                                                 l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"/>
                                           </svg>
                                        </button>
-                                       <button class="product-card__action product-card__action--compare" type="button" aria-label="Add to compare" onclick="addToCompare({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to compare') }}" data-placement="left">
+                                       <button class="product-card__action product-card__action--compare" type="button" aria-label="Add to compare">
                                           <svg width="16" height="16">
                                              <path d="M9,15H7c-0.6,0-1-0.4-1-1V2c0-0.6,0.4-1,1-1h2c0.6,0,1,0.4,1,1v12C10,14.6,9.6,15,9,15z"/>
                                              <path d="M1,9h2c0.6,0,1,0.4,1,1v4c0,0.6-0.4,1-1,1H1c-0.6,0-1-0.4-1-1v-4C0,9.4,0.4,9,1,9z"/>
@@ -1829,7 +1896,7 @@
                                           
                                           <span class="fw-700 text-primary">{{ home_discounted_base_price($product) }}</span>
                                        </div>
-                                       <button type="button" class="btn btn-primary btn-sm"  onclick="showAddToCartModal({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to cart') }}" data-placement="left">
+                                       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                                           <svg width="20" height="20">
                                           <circle cx="7" cy="17" r="2"/>
                                           <circle cx="15" cy="17" r="2"/>
@@ -1914,14 +1981,19 @@
                                  <div class="block-zone__carousel-item">
                                     <div class="product-card">
                                        <div class="product-card__actions-list">
-                                          
-                                          <button class="product-card__action product-card__action--wishlist" type="button"  onclick="addToWishList({{ $product->id }})" data-placement="left" data-toggle="tooltip" data-title="{{ translate('Add to wishlist') }}">
+                                          <button class="product-card__action product-card__action--quickview" type="button" aria-label="Quick view">
+                                             <svg width="16" height="16">
+                                                <path d="M14,15h-4v-2h3v-3h2v4C15,14.6,14.6,15,14,15z M13,3h-3V1h4c0.6,0,1,0.4,1,1v4h-2V3z M6,3H3v3H1V2c0-0.6,0.4-1,1-1h4V3z
+                                                   M3,13h3v2H2c-0.6,0-1-0.4-1-1v-4h2V13z"/>
+                                             </svg>
+                                          </button>
+                                          <button class="product-card__action product-card__action--wishlist" type="button" aria-label="Add to wish list">
                                              <svg width="16" height="16">
                                                 <path d="M13.9,8.4l-5.4,5.4c-0.3,0.3-0.7,0.3-1,0L2.1,8.4c-1.5-1.5-1.5-3.8,0-5.3C2.8,2.4,3.8,2,4.8,2s1.9,0.4,2.6,1.1L8,3.7
                                                    l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"/>
                                              </svg>
                                           </button>
-                                          <button class="product-card__action product-card__action--compare" type="button" onclick="addToCompare({{ $product->id }})" data-placement="left" data-toggle="tooltip" data-title="{{ translate('Add to compare') }}">
+                                          <button class="product-card__action product-card__action--compare" type="button" aria-label="Add to compare">
                                              <svg width="16" height="16">
                                                 <path d="M9,15H7c-0.6,0-1-0.4-1-1V2c0-0.6,0.4-1,1-1h2c0.6,0,1,0.4,1,1v12C10,14.6,9.6,15,9,15z"/>
                                                 <path d="M1,9h2c0.6,0,1,0.4,1,1v4c0,0.6-0.4,1-1,1H1c-0.6,0-1-0.4-1-1v-4C0,9.4,0.4,9,1,9z"/>
@@ -1983,7 +2055,7 @@
                                              <span class="fw-700 text-primary">{{ home_discounted_base_price($product) }}</span>
 
                                           </div>
-                                          <button type="button" class="btn btn-primary btn-sm" onclick="showAddToCartModal({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to cart') }}" data-placement="left">
+                                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                                              <svg width="20" height="20">
                                                    <circle cx="7" cy="17" r="2"/>
                                                    <circle cx="15" cy="17" r="2"/>
@@ -2103,7 +2175,10 @@
                                     <div class="product-card product-card--layout--horizontal">
                                        <div class="product-card__actions-list">
                                           <button class="product-card__action product-card__action--quickview" type="button" aria-label="Quick view">
-                                            
+                                             <svg width="16" height="16">
+                                                <path d="M14,15h-4v-2h3v-3h2v4C15,14.6,14.6,15,14,15z M13,3h-3V1h4c0.6,0,1,0.4,1,1v4h-2V3z M6,3H3v3H1V2c0-0.6,0.4-1,1-1h4V3z
+                                                   M3,13h3v2H2c-0.6,0-1-0.4-1-1v-4h2V13z"/>
+                                             </svg>
                                           </button>
                                        </div>
                                        <div class="product-card__image">
@@ -2161,9 +2236,10 @@
                                     <div class="product-card product-card--layout--horizontal">
                                        <div class="product-card__actions-list">
                                           <button class="product-card__action product-card__action--quickview" type="button" aria-label="Quick view">
-                                             
-                                                
-
+                                             <svg width="16" height="16">
+                                                <path d="M14,15h-4v-2h3v-3h2v4C15,14.6,14.6,15,14,15z M13,3h-3V1h4c0.6,0,1,0.4,1,1v4h-2V3z M6,3H3v3H1V2c0-0.6,0.4-1,1-1h4V3z
+                                                   M3,13h3v2H2c-0.6,0-1-0.4-1-1v-4h2V13z"/>
+                                             </svg>
                                           </button>
                                        </div>
                                        <div class="product-card__image">
@@ -2369,7 +2445,10 @@
                               <div class="product-card">
                                  <div class="product-card__actions-list">
                                     <button class="product-card__action product-card__action--quickview" type="button" aria-label="Quick view">
-                                       
+                                       <svg width="16" height="16">
+                                          <path d="M14,15h-4v-2h3v-3h2v4C15,14.6,14.6,15,14,15z M13,3h-3V1h4c0.6,0,1,0.4,1,1v4h-2V3z M6,3H3v3H1V2c0-0.6,0.4-1,1-1h4V3z
+                                             M3,13h3v2H2c-0.6,0-1-0.4-1-1v-4h2V13z"/>
+                                       </svg>
                                     </button>
                                  </div>
                                  @php
@@ -2428,6 +2507,12 @@
                            <div class="block-products-columns__list-item">
                               <div class="product-card">
                                  <div class="product-card__actions-list">
+                                    <button class="product-card__action product-card__action--quickview" type="button" aria-label="Quick view">
+                                       <svg width="16" height="16">
+                                          <path d="M14,15h-4v-2h3v-3h2v4C15,14.6,14.6,15,14,15z M13,3h-3V1h4c0.6,0,1,0.4,1,1v4h-2V3z M6,3H3v3H1V2c0-0.6,0.4-1,1-1h4V3z
+                                             M3,13h3v2H2c-0.6,0-1-0.4-1-1v-4h2V13z"/>
+                                       </svg>
+                                    </button>
                                  </div>
                                  @php
                                     $product_url = route('product', $product->slug);
@@ -2485,7 +2570,10 @@
                               <div class="product-card">
                                  <div class="product-card__actions-list">
                                     <button class="product-card__action product-card__action--quickview" type="button" aria-label="Quick view">
-                                       
+                                       <svg width="16" height="16">
+                                          <path d="M14,15h-4v-2h3v-3h2v4C15,14.6,14.6,15,14,15z M13,3h-3V1h4c0.6,0,1,0.4,1,1v4h-2V3z M6,3H3v3H1V2c0-0.6,0.4-1,1-1h4V3z
+                                             M3,13h3v2H2c-0.6,0-1-0.4-1-1v-4h2V13z"/>
+                                       </svg>
                                     </button>
                                  </div>
                                  @php
@@ -3485,8 +3573,42 @@
 
 
 
+
+
+
+
+
+
+
+            
+
+
+
+      <script>
+         $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').trigger('focus')
+         })
+      </script>
+
+
+
+      <!-- photoswipe / end --><!-- scripts -->
+      <script src="{{ static_asset('assets/js/aiz-core.js') }}"></script>
+      <script src="{{static_asset('assets/frontend/vendor/jquery/jquery.min.js')}}"></script>
+      <script src="{{static_asset('assets/frontend/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+      <script src="{{static_asset('assets/frontend/vendor/owl-carousel/owl.carousel.min.js')}}"></script>
+      <script src="{{static_asset('assets/frontend/vendor/nouislider/nouislider.min.js')}}"></script>
+      <script src="{{static_asset('assets/frontend/vendor/photoswipe/photoswipe.min.js')}}"></script>
+      <script src="{{static_asset('assets/frontend/vendor/photoswipe/photoswipe-ui-default.min.js')}}"></script>
+      <script src="{{static_asset('assets/frontend/vendor/select2/js/select2.min.js')}}"></script>
+      <script src="{{static_asset('assets/frontend/js/number.js')}}"></script>
+      <script src="{{static_asset('assets/frontend/js/main.js')}}"></script>
+
+
+
+
+
+
       
    </body>
-
-
-@endsection
+</html>
