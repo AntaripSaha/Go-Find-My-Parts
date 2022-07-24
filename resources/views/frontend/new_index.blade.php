@@ -1047,23 +1047,34 @@
                   </div>
                   <div class="block-posts-carousel__carousel">
                      <div class="owl-carousel">
+
+                     @foreach($testimonials as $blog)
+
+                     
                         <div class="block-posts-carousel__item">
+
+                        
                            <div class="post-card">
-                              <div class="post-card__image"><a href="post-full-width.html"><img src="{{static_asset('assets/frontend/images/posts/post-1-730x485.jpg')}}" alt=""></a></div>
+                              <div class="post-card__image"><a href="{{ url("blog").'/'. $blog->slug }}"><img src="{{ uploaded_asset($blog->banner) }}" alt=""></a></div>
                               <div class="post-card__content">
-                                 <div class="post-card__category"><a href="blog-classic-right-sidebar.html">Special Offers</a></div>
+                                 
+                                 <div class="post-card__category"><a href="{{ url("blog").'/'. $blog->slug }}">{{ $blog->category_name }}</a></div>
                                  <div class="post-card__title">
-                                    <h2><a href="post-full-width.html">Philosophy That Addresses Topics Such As Goodness</a></h2>
+                                    <h2><a href="{{ url("blog").'/'. $blog->slug }}">{{ $blog->title }}</a></h2>
                                  </div>
                                  <div class="post-card__date">By <a href="#">Jessica Moore</a> on October 19, 2019</div>
-                                 <div class="post-card__excerpt">
-                                    <div class="typography">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec facilisis neque ut purus fermentum, ac pretium nibh facilisis. Vivamus venenatis viverra iaculis. Suspendisse tempor orci non sapien ullamcorper dapibus. Suspendisse at velit diam. Donec pharetra nec enim blandit vulputate.</div>
-                                 </div>
-                                 <div class="post-card__more"><a href="post-full-width.html" class="btn btn-secondary btn-sm">Read more</a></div>
+                                  
+                                 <div class="post-card__more"><a href="{{ url("blog").'/'. $blog->slug }}" class="btn btn-secondary btn-sm">Read more</a></div>
                               </div>
                            </div>
+
+
                         </div>
-                        <div class="block-posts-carousel__item">
+
+                     @endforeach
+
+                        
+                        <!-- <div class="block-posts-carousel__item">
                            <div class="post-card">
                               <div class="post-card__image"><a href="post-full-width.html"><img src="{{static_asset('assets/frontend/images/posts/post-2-730x485.jpg')}}" alt=""></a></div>
                               <div class="post-card__content">
@@ -1078,7 +1089,7 @@
                                  <div class="post-card__more"><a href="post-full-width.html" class="btn btn-secondary btn-sm">Read more</a></div>
                               </div>
                            </div>
-                        </div>
+                        </div> -->
                       
                      </div>
                   </div>
