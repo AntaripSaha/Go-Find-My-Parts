@@ -423,3 +423,8 @@ Route::controller(PageController::class)->group(function () {
     Route::get('/{slug}', 'show_custom_page')->name('custom-pages.show_custom_page');
 });
 
+Route::get('/brand', [HomeController::class, 'brand']);
+Route::get('/model/{id}', [HomeController::class, 'model']);
+Route::get('/city/{id}', [HomeController::class, 'getCities']);
+Route::get('/village/{id}', [HomeController::class, 'getVillage']);
+

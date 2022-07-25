@@ -41,6 +41,7 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index_new(){
+        
         $featured_categories = Cache::rememberForever('featured_categories', function () {
             return Category::where('featured', 1)->get();
         });
@@ -48,6 +49,7 @@ class HomeController extends Controller
         $todays_deal_products = Cache::rememberForever('todays_deal_products', function () {
             return filter_products(Product::where('published', 1)->where('todays_deal', '1'))->get();
         });
+        
         
 
         $newest_products = Cache::remember('newest_products', 3600, function () {
@@ -66,18 +68,49 @@ class HomeController extends Controller
         $featured_products_footer = filter_products(Product::where('featured', 1))->limit(3)->get();
         $newest_products_footer = filter_products(Product::latest()->limit(3))->get();
         $all_products_cart = filter_products(Product::where('published', 1))->get();
+        $brands = DB::table('brands')->get();
+        
 
         $testimonials = DB::table('blog_categories')
                             ->join('blogs', 'blog_categories.id', '=', 'blogs.category_id')
                             ->get();
-        return view('frontend.new_index', compact('testimonials','all_products_cart','featured_products_footer','newest_products_footer','todays_deal_products_footer','all_products','featured_products','featured_categories', 'todays_deal_products', 'newest_products'));
+        
+        return view('frontend.new_index', compact('brands','testimonials','all_products_cart','featured_products_footer','newest_products_footer','todays_deal_products_footer','all_products','featured_products','featured_categories', 'todays_deal_products', 'newest_products'));
     
     }
+        //For fetching states
+        public function model($id)
+        {
+            
+            $models = DB::table("models")
+                        ->where("brand_id",$id)
+                        ->pluck("model_name","id");
+            return response()->json($models);
+        }
+        
+        //For fetching cities
+        public function year($id)
+        {
+            $cities= DB::table("cities")
+                        ->where("state_id",$id)
+                        ->pluck("name","id");
+            return response()->json($cities);
+        }
+        public function chassis($id)
+        {
+            
+            $village= DB::table("villages")
+                        ->where("city_id",$id)
+                        ->pluck("name","id");
+            return response()->json($village);
+        }
     public function index()
     {
+        
         $featured_categories = Cache::rememberForever('featured_categories', function () {
             return Category::where('featured', 1)->get();
         });
+        
 
         $todays_deal_products = Cache::rememberForever('todays_deal_products', function () {
             return filter_products(Product::where('published', 1)->where('todays_deal', '1'))->get();
@@ -86,7 +119,7 @@ class HomeController extends Controller
         $newest_products = Cache::remember('newest_products', 3600, function () {
             return filter_products(Product::latest())->limit(12)->get();
         });
-
+        
         return view('frontend.index', compact('featured_categories', 'todays_deal_products', 'newest_products'));
     
     }

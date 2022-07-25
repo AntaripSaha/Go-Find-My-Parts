@@ -20,55 +20,16 @@
                <div class="block-finder__body container container--max--xl">
                   <div class="block-finder__title">Find Parts For Your Vehicle</div>
                   <div class="block-finder__subtitle">Over hundreds of brands and tens of thousands of parts</div>
-                  <form class="block-finder__form">
-                     <div class="block-finder__form-control block-finder__form-control--select">
-                        <select name="year" aria-label="Vehicle Year">
-                           <option value="none">Select Year</option>
-                           <option>2010</option>
-                           <option>2011</option>
-                           <option>2012</option>
-                           <option>2013</option>
-                           <option>2014</option>
-                           <option>2015</option>
-                           <option>2016</option>
-                           <option>2017</option>
-                           <option>2018</option>
-                           <option>2019</option>
-                           <option>2020</option>
-                        </select>
-                     </div>
-                     <div class="block-finder__form-control block-finder__form-control--select">
-                        <select name="make" aria-label="Vehicle Make" disabled="disabled">
-                           <option value="none">Select Make</option>
-                           <option>Audi</option>
-                           <option>BMW</option>
-                           <option>Ferrari</option>
-                           <option>Ford</option>
-                           <option>KIA</option>
-                           <option>Nissan</option>
-                           <option>Tesla</option>
-                           <option>Toyota</option>
-                        </select>
-                     </div>
-                     <div class="block-finder__form-control block-finder__form-control--select">
-                        <select name="model" aria-label="Vehicle Model" disabled="disabled">
-                           <option value="none">Select Model</option>
-                           <option>Explorer</option>
-                           <option>Focus S</option>
-                           <option>Fusion SE</option>
-                           <option>Mustang</option>
-                        </select>
-                     </div>
-                     <div class="block-finder__form-control block-finder__form-control--select">
-                        <select name="engine" aria-label="Vehicle Engine" disabled="disabled">
-                           <option value="none">Select Engine</option>
-                           <option>Gas 1.6L 125 hp AT/L4</option>
-                           <option>Diesel 2.5L 200 hp AT/L5</option>
-                           <option>Diesel 3.0L 250 hp MT/L5</option>
-                        </select>
-                     </div>
-                     <button class="block-finder__form-control block-finder__form-control--button" type="submit">Search</button>
-                  </form>
+
+                  @include('frontend.redparts.search')
+
+
+
+
+
+
+
+                  
                </div>
             </div>
 
@@ -250,9 +211,7 @@
 
             <!-------------- Todays Deal Section Start------------->
 
-            <div class="block-space block-space--layout--divider-nl"></div>
 
-               @include('frontend.redparts.todays_deal')
             <!-------------- Todays Deal Section End------------->
 
 
@@ -751,31 +710,61 @@
 
 
 
+<script type="text/javascript">
+
+  
+
+   $(document).ready(function(){
+      
+      $("#brand").change(function(){
+       var brand_id = $(this).val();
+       if(brand_id){
+        $.ajax({
+        type:"get",
+        url:"{{url('/model')}}/"+brand_id,
+        success:function(res)
+        {       
+                if(res)
+                {
+                     
+                    $("#model").append('<option>Select State</option>');
+                    $.each(res,function(key,value){
+                        $("#model").append('<option value="'+key+'">'+value+'</option>');
+                    });
+                }
+        }
+    
+        });
+        }
+   });
+
+
+   $('#model').change(function(){
+        var model_id = $(this).val();
+        if(model_id){
+        $.ajax({
+        type:"get",
+        url:"{{url('/model')}}/"+model_id, 
+        success:function(res)
+        {       
+                if(res)
+                {
+                     
+                    $("#model").append('<option>Select Model</option>');
+                    $.each(res,function(key,value){
+                        $("#model").append('<option value="'+key+'">'+value+'</option>');
+                    });
+                }
+        }
+    
+        });
+        }
+    }); 
 
 
 
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal-{{$product->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-               <div class="modal-content">
-                  <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Add To Cart {{$product->id}}</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                     <span aria-hidden="true">&times;</span>
-                  </button>
-                  </div>
-                  <div class="modal-body">
-                  {{$product->name}}
-                  </div>
-                  <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
-                  </div>
-               </div>
-            </div>
-            </div>
-
-
+});
+</script> 
 
       
    </body>
