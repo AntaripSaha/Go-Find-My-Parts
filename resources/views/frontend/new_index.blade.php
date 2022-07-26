@@ -726,8 +726,8 @@
         {       
                 if(res)
                 {
-                     
-                    $("#model").append('<option>Select State</option>');
+                    $("#model").empty();
+                    $("#model").append('<option>Select Model</option>');
                     $.each(res,function(key,value){
                         $("#model").append('<option value="'+key+'">'+value+'</option>');
                     });
@@ -740,19 +740,47 @@
 
 
    $('#model').change(function(){
-        var model_id = $(this).val();
+      var model_id = $(this).val();
+        
         if(model_id){
         $.ajax({
         type:"get",
-        url:"{{url('/model')}}/"+model_id, 
+        url:"{{url('/year')}}/"+model_id,
+         
+
         success:function(res)
         {       
                 if(res)
                 {
-                     
-                    $("#model").append('<option>Select Model</option>');
+                    $("#year").empty();
+                    $("#year").append('<option>Select Year</option>');
                     $.each(res,function(key,value){
-                        $("#model").append('<option value="'+key+'">'+value+'</option>');
+                        $("#year").append('<option value="'+key+'">'+value+'</option>');
+                    });
+                }
+        }
+    
+        });
+        }
+    }); 
+
+
+   $('#year').change(function(){
+        var year_id = $(this).val();
+        var model_id = $('#model').val();
+     
+        if(year_id){
+        $.ajax({
+        type:"get",
+        url:"{{url('/chassis')}}/"+year_id+'/'+model_id, 
+        success:function(res)
+        {       
+                if(res)
+                {
+                    $("#chassis").empty();
+                    $("#chassis").append('<option>Select Chassis</option>');
+                    $.each(res,function(key,value){
+                        $("#chassis").append('<option value="'+key+'">'+value+'</option>');
                     });
                 }
         }

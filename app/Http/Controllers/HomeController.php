@@ -78,7 +78,7 @@ class HomeController extends Controller
         return view('frontend.new_index', compact('brands','testimonials','all_products_cart','featured_products_footer','newest_products_footer','todays_deal_products_footer','all_products','featured_products','featured_categories', 'todays_deal_products', 'newest_products'));
     
     }
-        //For fetching states
+        //For fetching Model
         public function model($id)
         {
             
@@ -91,19 +91,48 @@ class HomeController extends Controller
         //For fetching cities
         public function year($id)
         {
-            $cities= DB::table("cities")
-                        ->where("state_id",$id)
-                        ->pluck("name","id");
-            return response()->json($cities);
+            $year= DB::table("years")
+                        ->pluck("year","id");
+            return response()->json($year);
         }
-        public function chassis($id)
+        public function chassis($id, $model_id)
         {
-            
-            $village= DB::table("villages")
-                        ->where("city_id",$id)
-                        ->pluck("name","id");
-            return response()->json($village);
+            $chassis= DB::table("chassis")
+                        ->where("year_id", $id)
+                        ->where("model_id",$model_id)
+                        ->pluck("chassis","id");
+            return response()->json($chassis);
         }
+
+        public function search(Request $req){
+            //$search =  DB::table('chassis')->where('id',$req->chassis)->pluck('chassis');
+            //return   Product::where('name', 'LIKE','%'.$search.'%')->get();
+            // return $req;
+            
+            
+         if($req->brand){
+             $products = Product::where('brand_id', $req->brand)->get();
+         }
+         if($req->model){
+             $products = Product::where('model_id', $req->model)->get();
+         }
+         if($req->chassis){
+            
+             $products = Product::where('chassis_id', $req->chassis)->get();
+         }
+         if($req->chassis && $req->model && $req->brand && $req->year){
+            $products = Product::where('chassis_id', $req->chassis)
+                                        ->where('brand_id', $req->brand)
+                                        ->where('model_id', $req->model)
+                                        ->where('year_id', $req->year)
+                                        ->get();
+         }
+         return $products;
+        
+         return view('frontend.product_listing', compact('products'));
+
+        }
+
     public function index()
     {
         

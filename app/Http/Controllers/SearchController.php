@@ -18,6 +18,7 @@ class SearchController extends Controller
 {
     public function index(Request $request, $category_id = null, $brand_id = null)
     {
+        $dependent_search_products = 0;
         $query = $request->keyword;
         $sort_by = $request->sort_by;
         $min_price = $request->min_price;
@@ -41,13 +42,14 @@ class SearchController extends Controller
         //     $conditions = array_merge($conditions, ['user_id' => Seller::findOrFail($seller_id)->user->id]);
         // }
 
-        $products = Product::where($conditions);
+          $products = Product::where($conditions);
 
         if ($category_id != null) {
             $category_ids = CategoryUtility::children_ids($category_id);
             $category_ids[] = $category_id;
 
-            $products->whereIn('category_id', $category_ids);
+         $products->whereIn('category_id', $category_ids);
+ 
 
             $attribute_ids = AttributeCategory::whereIn('category_id', $category_ids)->pluck('attribute_id')->toArray();
             $attributes = Attribute::whereIn('id', $attribute_ids)->get();
@@ -121,9 +123,29 @@ class SearchController extends Controller
             }
         }
 
-        $products = filter_products($products)->with('taxes')->paginate(12)->appends(request()->query());
+        
+        if($request->brand){
+            $dependent_search_products = Product::where('brand_id', $request->brand)->get();
+          }
+          if($request->model){
+              $dependent_search_products = Product::where('model_id', $request->model)->get();
+          }
+          if($request->chassis){
+             
+              $dependent_search_products = Product::where('chassis_id', $request->chassis)->get();
+          }
+          if($request->chassis && $request->model && $request->brand && $request->year){
+              $dependent_search_products = Product::where('chassis_id', $request->chassis)
+                                         ->where('brand_id', $request->brand)
+                                         ->where('model_id', $request->model)
+                                         ->where('year_id', $request->year)
+                                         ->get();
+          }
+          
 
-        return view('frontend.product_listing', compact('products', 'query', 'category_id', 'brand_id', 'sort_by', 'seller_id', 'min_price', 'max_price', 'attributes', 'selected_attribute_values', 'colors', 'selected_color'));
+          $products = filter_products($products)->with('taxes')->paginate(12)->appends(request()->query());
+
+        return view('frontend.product_listing', compact('dependent_search_products','products', 'query', 'category_id', 'brand_id', 'sort_by', 'seller_id', 'min_price', 'max_price', 'attributes', 'selected_attribute_values', 'colors', 'selected_color'));
     }
 
     public function listing(Request $request)

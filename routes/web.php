@@ -425,6 +425,7 @@ Route::controller(PageController::class)->group(function () {
 
 Route::get('/brand', [HomeController::class, 'brand']);
 Route::get('/model/{id}', [HomeController::class, 'model']);
-Route::get('/city/{id}', [HomeController::class, 'getCities']);
-Route::get('/village/{id}', [HomeController::class, 'getVillage']);
+Route::get('/year/{id}', [HomeController::class, 'year']);
+Route::get('/chassis/{id}/{model_id}', [HomeController::class, 'chassis']);
+Route::any('/search/parts', [SearchController::class, 'index'])->name('dependent.search');
 

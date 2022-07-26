@@ -253,16 +253,28 @@
                         </div>
                         <input type="hidden" name="min_price" value="">
                         <input type="hidden" name="max_price" value="">
+                        @if($dependent_search_products)
+                        <div class="row gutters-5 row-cols-xxl-4 row-cols-xl-3 row-cols-lg-4 row-cols-md-3 row-cols-2">
+                            @foreach ($dependent_search_products as $key => $product)
+                                <div class="col">
+                                    @include('frontend.partials.product_box_1',['product' => $product])
+                                </div>
+                            @endforeach
+                        </div>
+                        @else
                         <div class="row gutters-5 row-cols-xxl-4 row-cols-xl-3 row-cols-lg-4 row-cols-md-3 row-cols-2">
                             @foreach ($products as $key => $product)
                                 <div class="col">
                                     @include('frontend.partials.product_box_1',['product' => $product])
                                 </div>
                             @endforeach
-                        </div>
-                        <div class="aiz-pagination aiz-pagination-center mt-4">
+                            <div class="aiz-pagination aiz-pagination-center mt-4">
                             {{ $products->appends(request()->input())->links() }}
                         </div>
+                        </div>
+                        @endif
+                        
+                        
                     </div>
                 </div>
             </form>

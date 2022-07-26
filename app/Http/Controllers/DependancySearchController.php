@@ -15,9 +15,10 @@ class DependancySearchController extends Controller
     //For fetching states
     public function model($id)
     {
+        
         $models = DB::table("models")
-                    ->where("model_id",$id)
-                    ->pluck("year","id");
+                    ->where("brand_id",$id)
+                    ->pluck("model_name","id");
         return response()->json($models);
     }
     
