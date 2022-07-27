@@ -20,13 +20,9 @@
                <div class="block-finder__body container container--max--xl">
                   <div class="block-finder__title">Find Parts For Your Vehicle</div>
                   <div class="block-finder__subtitle">Over hundreds of brands and tens of thousands of parts</div>
-
                   @include('frontend.redparts.search')
-
-                  
                </div>
             </div>
-
             
             <div class="block-features block block-features--layout--top-strip">
                <div class="container">
@@ -189,26 +185,14 @@
                </div>
             </div>
 
-
             <div class="block-space block-space--layout--divider-nl"></div>
 
             <!-------------- Featured Product Section Start------------->
-
                @include('frontend.redparts.featured')
-
-
             <!-------------- Featured Product Section End------------->
 
-
-
-
-
             <!-------------- Todays Deal Section Start------------->
-
-
             <!-------------- Todays Deal Section End------------->
-
-
             <!-------------- Product Section Start------------->
 
             <div class="block-space block-space--layout--divider-sm"></div>

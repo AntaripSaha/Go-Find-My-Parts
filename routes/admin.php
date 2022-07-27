@@ -43,6 +43,7 @@ use App\Http\Controllers\SupportTicketController;
 use App\Http\Controllers\TaxController;
 use App\Http\Controllers\UpdateController;
 use App\Http\Controllers\WebsiteController;
+use App\Http\Controllers\ModelController;
 
 /*
   |--------------------------------------------------------------------------
@@ -78,6 +79,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
         Route::get('/brands/edit/{id}', 'edit')->name('brands.edit');
         Route::get('/brands/destroy/{id}', 'destroy')->name('brands.destroy');
     });
+
+    //Models
+    Route::any('/models', [ModelController::class, 'index'])->name('model.index');
+    Route::any('/models/store', [ModelController::class, 'store'])->name('model.store');
+    Route::any('/models/update', [ModelController::class, 'update'])->name('model.update');
 
     // Products
     Route::controller(ProductController::class)->group(function () {

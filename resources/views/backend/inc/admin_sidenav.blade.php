@@ -109,6 +109,11 @@
                                 </a>
                             </li>
                             <li class="aiz-side-nav-item">
+                                <a href="{{route('model.index')}}" class="aiz-side-nav-link {{ areActiveRoutes(['models.index', 'models.create', 'models.edit'])}}" >
+                                    <span class="aiz-side-nav-text">{{translate('Model')}}</span>
+                                </a>
+                            </li>
+                            <li class="aiz-side-nav-item">
                                 <a href="{{route('attributes.index')}}" class="aiz-side-nav-link {{ areActiveRoutes(['attributes.index','attributes.create','attributes.edit'])}}">
                                     <span class="aiz-side-nav-text">{{translate('Attribute')}}</span>
                                 </a>
