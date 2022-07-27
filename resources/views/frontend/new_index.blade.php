@@ -23,12 +23,6 @@
 
                   @include('frontend.redparts.search')
 
-
-
-
-
-
-
                   
                </div>
             </div>

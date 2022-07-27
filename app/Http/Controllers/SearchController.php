@@ -123,7 +123,6 @@ class SearchController extends Controller
             }
         }
 
-        
         if($request->brand){
             $dependent_search_products = Product::where('brand_id', $request->brand)->get();
           }
@@ -141,7 +140,6 @@ class SearchController extends Controller
                                          ->where('year_id', $request->year)
                                          ->get();
           }
-          
 
           $products = filter_products($products)->with('taxes')->paginate(12)->appends(request()->query());
 

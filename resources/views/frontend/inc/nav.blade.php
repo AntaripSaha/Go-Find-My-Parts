@@ -9,7 +9,7 @@
 </div>
 @endif
 <!-- Top Bar -->
-<div class="top-navbar bg-white border-bottom border-soft-secondary z-1035">
+<div class="top-navbar bg-white border-bottom border-soft-secondary z-1035" style="color: #ffff07 !important;background-color: black !important; font-size: 13px; line-height: 24px; font-weight: 600;">
     <div class="container">
         <div class="row">
             <div class="col-lg-7 col">
@@ -201,13 +201,13 @@
                                 <div class="d-lg-none" data-toggle="class-toggle" data-target=".front-header-search">
                                     <button class="btn px-2" type="button"><i class="la la-2x la-long-arrow-left"></i></button>
                                 </div>
-                                <div class="input-group">
-                                    <input type="text" class="border-0 border-lg form-control" id="search" name="keyword" @isset($query)
+                                <div class="input-group" >
+                                    <input type="text" style="border-radius: 20px !important" class="border-0 border-lg form-control" id="search" name="keyword" @isset($query)
                                         value="{{ $query }}"
                                     @endisset placeholder="{{translate('I am shopping for...')}}" autocomplete="off">
                                     <div class="input-group-append d-none d-lg-block">
-                                        <button class="btn btn-primary" type="submit">
-                                            <i class="la la-search la-flip-horizontal fs-18"></i>
+                                        <button class="btn btn-primary" style="border-radius:50% !important; background: #72b860 !important; border-color: #72b860;" type="submit">
+                                            <i class="la la-search  "></i>
                                         </button>
                                     </div>
                                 </div>
