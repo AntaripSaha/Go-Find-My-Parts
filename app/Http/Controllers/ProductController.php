@@ -154,6 +154,7 @@ class ProductController extends Controller
     {
         CoreComponentRepository::initializeCache();
 
+
         $categories = Category::where('parent_id', 0)
             ->where('digital', 0)
             ->with('childrenCategories')
@@ -183,6 +184,7 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
+        return $request;
         $product = $this->productService->store($request->except([
             '_token', 'sku', 'choice', 'tax_id', 'tax', 'tax_type', 'flash_deal_id', 'flash_discount', 'flash_discount_type'
         ]));

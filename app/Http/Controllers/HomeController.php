@@ -121,10 +121,10 @@ class HomeController extends Controller
              $products = Product::where('chassis_id', $req->chassis)->get();
          }
          if($req->chassis && $req->model && $req->brand && $req->year){
-            $products = Product::where('chassis_id', $req->chassis)
-                                        ->where('brand_id', $req->brand)
+            $products = Product::where('brand_id', $req->brand)
                                         ->where('model_id', $req->model)
                                         ->where('year_id', $req->year)
+                                        ->where('chassis_id', $req->chassis)
                                         ->get();
          }
          return $products;
