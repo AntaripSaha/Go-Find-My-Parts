@@ -83,7 +83,7 @@
                                     </a>
                                 </li>
                             @endif
-                            <li class="aiz-side-nav-item">
+                            {{-- <li class="aiz-side-nav-item">
                                 <a href="{{route('digitalproducts.index')}}" class="aiz-side-nav-link {{ areActiveRoutes(['digitalproducts.index', 'digitalproducts.create', 'digitalproducts.edit']) }}">
                                     <span class="aiz-side-nav-text">{{ translate('Digital Products') }}</span>
                                 </a>
@@ -97,7 +97,7 @@
                                 <a href="{{route('product_bulk_export.index')}}" class="aiz-side-nav-link">
                                     <span class="aiz-side-nav-text">{{translate('Bulk Export')}}</span>
                                 </a>
-                            </li>
+                            </li> --}}
                             <li class="aiz-side-nav-item">
                                 <a href="{{route('categories.index')}}" class="aiz-side-nav-link {{ areActiveRoutes(['categories.index', 'categories.create', 'categories.edit'])}}">
                                     <span class="aiz-side-nav-text">{{translate('Category')}}</span>
@@ -109,7 +109,7 @@
                                 </a>
                             </li>
                             <li class="aiz-side-nav-item">
-                                <a href="{{route('model.index')}}" class="aiz-side-nav-link {{ areActiveRoutes(['models.index', 'models.create', 'models.edit'])}}" >
+                                <a href="{{route('model.index')}}" class="aiz-side-nav-link {{ areActiveRoutes(['model.index', 'model.update', 'models.edit'])}}" >
                                     <span class="aiz-side-nav-text">{{translate('Model')}}</span>
                                 </a>
                             </li>

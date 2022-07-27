@@ -37,10 +37,10 @@
 		                        <td>{{$model->name}}</td>
 		                        <td>{{$model->model_name}}</td>
 		                        <td class="text-right">
-                                    <button type="button"  title="{{ translate('Edit') }}" class="btn btn-soft-primary btn-icon btn-circle btn-sm" data-toggle="modal" data-target="#exampleModal">
+                                    <a href="{{route('model.update', ['id'=>$model->id])}}"  title="{{ translate('Edit') }}" class="btn btn-soft-primary btn-icon btn-circle btn-sm">
                                         <i class="las la-edit"></i>
-                                    </button>
-		                            <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="#" title="{{ translate('Delete') }}">
+                                    </a>
+		                            <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('model.delete', ['id'=>$model->id])}}" title="{{ translate('Delete') }}">
 		                                <i class="las la-trash"></i>
 		                            </a>
 		                        </td>
@@ -89,12 +89,7 @@
 	</div>
 </div>
 
-
-
-
-
-@include('backend.product.models.modal')
-
+ 
 
 
 @endsection
