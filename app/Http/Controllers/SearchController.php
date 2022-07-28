@@ -17,7 +17,7 @@ use Str;
 
 class SearchController extends Controller
 {
-    public function index(Request $request, $category_id = null, $brand_id = null)
+    public function index(Request $request,$value, $category_id = null, $brand_id = null)
     {
         $dependent_search_products = 0;
         $query = $request->keyword;
@@ -125,21 +125,30 @@ class SearchController extends Controller
         }
 
          //Dependency Search Functionality Start
-        if($request->brand){
-            $dependent_search_products = Product::where('brand_id', $request->brand)->get();
-          }
-        if($request->model != 0){
-            $dependent_search_products = Product::where('model_id', $request->model)->get();
-          }
-        if($request->chassis  != 0){
-            $dependent_search_products = Product::where('id', $request->chassis)->get();
-          }
-        if($request->chassis && $request->model && $request->brand && $request->year  != 0){
-            $dependent_search_products = Product::where('id', $request->chassis)->get();
-          }
+         
+         if($request->brand_dependency){
+            if($request->brand_dependency == 0){
+                $dependent_search_products = Product::all();
+              }
+            if($request->brand_dependency != 0){
+                $dependent_search_products = Product::where('brand_id', $request->brand_dependency)->get();
+              }
+            if($request->model != 0){
+                $dependent_search_products = Product::where('model_id', $request->model)->get();
+              }
+            if($request->chassis  != 0){
+                $dependent_search_products = Product::where('id', $request->chassis)->get();
+              }
+            if($request->chassis && $request->model && $request->brand_dependency && $request->year  != 0){
+                $dependent_search_products = Product::where('id', $request->chassis)->get();
+              }
+
+         }
+         
+
            //Dependency Search Functionality End
 
-          $products = filter_products($products)->with('taxes')->paginate(12)->appends(request()->query());
+        $products = filter_products($products)->with('taxes')->paginate(12)->appends(request()->query());
 
         return view('frontend.product_listing', compact('dependent_search_products','products', 'query', 'category_id', 'brand_id', 'sort_by', 'seller_id', 'min_price', 'max_price', 'attributes', 'selected_attribute_values', 'colors', 'selected_color'));
     }

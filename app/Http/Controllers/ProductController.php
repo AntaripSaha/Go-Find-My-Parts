@@ -285,6 +285,7 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, Product $product)
     {
+        // return 'a';
         //Product
         $product = $this->productService->update($request->except([
             '_token', 'sku', 'choice', 'tax_id', 'tax', 'tax_type', 'flash_deal_id', 'flash_discount', 'flash_discount_type'
@@ -315,14 +316,14 @@ class ProductController extends Controller
         }
 
         // Product Translations
-        // ProductTranslation::updateOrCreate(
-        //     $request->only([
-        //         'lang', 'product_id'
-        //     ]),
-        //     $request->only([
-        //         'name', 'unit', 'description'
-        //     ])
-        // );
+        ProductTranslation::updateOrCreate(
+            $request->only([
+                'lang', 'product_id'
+            ]),
+            $request->only([
+                'name', 'unit', 'description'
+            ])
+        );
 
         flash(translate('Product has been updated successfully'))->success();
 

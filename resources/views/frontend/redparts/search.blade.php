@@ -2,7 +2,7 @@
 <form class="block-finder__form" action="{{route('dependent.search')}}"  method="POST">
    @csrf
    <div class="block-finder__form-control block-finder__form-control--select">
-                        <select name="brand" id='brand' aria-label="Vehicle Year" >
+                        <select name="brand_dependency" id='brand' aria-label="Vehicle Year" >
                            <option value="0" >Select Make</option>
                            @foreach($brands as $brand)
                            <option value="{{$brand->id}}">{{$brand->name}}</option>

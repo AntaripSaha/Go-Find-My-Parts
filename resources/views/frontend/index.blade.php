@@ -233,10 +233,6 @@
                </div>
             </div>
 
-
-
-
-
             
             <div class="block-space block-space--layout--divider-nl"></div>
 
@@ -250,7 +246,7 @@
             <div class="block-space block-space--layout--divider-nl"></div>
 
             <!------------------ Category Section  Start --------------------->
-            <div class="block block-brands block-brands--layout--columns-8-full">
+            {{-- <div class="block block-brands block-brands--layout--columns-8-full">
                <div class="container">
                   <ul class="block-brands__list">
                      <li class="block-brands__item"><a href="#" class="block-brands__item-link"><img src="{{static_asset('assets/frontend/images/brands/brand-1.png')}}" alt=""> <span class="block-brands__item-name">AimParts</span></a></li>
@@ -287,9 +283,8 @@
                      <li class="block-brands__divider" role="presentation"></li>
                   </ul>
                </div>
-            </div>
+            </div> --}}
             <!------------------ Category Section End --------------------->
-
 
             <!--------------All Category Products---------------->
             <div class="block-space block-space--layout--divider-nl d-xl-block d-none"></div>
@@ -373,15 +368,11 @@
 
            <div class="block-space block-space--layout--before-footer"></div>
 
-
-
-
-
          </div>
          <!-- site__body / end -->
          
          <!-- site__footer -->
-         <footer class="site__footer">
+         {{-- <footer class="site__footer">
             <div class="site-footer">
                <div class="decor site-footer__decor decor--type--bottom">
                   <div class="decor__body">
@@ -476,21 +467,10 @@
                   </div>
                </div>
             </div>
-         </footer>
+         </footer> --}}
          <!-- site__footer / end -->
       </div>
-
-
-
-
-
-
-
-
-
-
-
-
+{{-- 
 
       <div id="quickview-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
       <!-- quickview-modal / end --><!-- add-vehicle-modal -->
@@ -685,95 +665,68 @@
             </div>
          </div>
       </div>
-
+ --}}
 
 
 <script type="text/javascript">
-
-  
-
-   $(document).ready(function(){
-      
-      $("#brand").change(function(){
-       var brand_id = $(this).val();
-       if(brand_id){
-        $.ajax({
-        type:"get",
-        url:"{{url('/model')}}/"+brand_id,
-        success:function(res)
-        {       
-                if(res)
-                {
-                    $("#model").empty();
-                    $("#model").append('<option value="0">Select Model</option>');
-                    $.each(res,function(key,value){
-                        $("#model").append('<option value="'+key+'">'+value+'</option>');
-                    });
+$(document).ready(function() {
+    $("#brand").change(function() {
+        var brand_id = $(this).val();
+        if (brand_id) {
+            $.ajax({
+                type: "get",
+                url: "{{url('/model')}}/" + brand_id,
+                success: function(res) {
+                    if (res) {
+                        $("#model").empty();
+                        $("#model").append('<option value="0">Select Model</option>');
+                        $.each(res, function(key, value) {
+                            $("#model").append('<option value="' + key + '">' + value + '</option>');
+                        });
+                    }
                 }
+
+            });
         }
-    
-        });
-        }
-   });
-
-
-   $('#model').change(function(){
-      var model_id = $(this).val();
-        
-        if(model_id){
-        $.ajax({
-        type:"get",
-        url:"{{url('/year')}}/"+model_id,
-         
-
-        success:function(res)
-        {       
-                if(res)
-                {
-                    $("#year").empty();
-                    $("#year").append('<option value="0">Select Year</option>');
-                    $.each(res,function(key,value){
-                        $("#year").append('<option value="'+key+'">'+value+'</option>');
-                    });
+    });
+    $('#model').change(function() {
+        var model_id = $(this).val();
+        if (model_id) {
+            $.ajax({
+                type: "get",
+                url: "{{url('/year')}}/" + model_id,
+                success: function(res) {
+                    if (res) {
+                        $("#year").empty();
+                        $("#year").append('<option value="0">Select Year</option>');
+                        $.each(res, function(key, value) {
+                            $("#year").append('<option value="' + key + '">' + value + '</option>');
+                        });
+                    }
                 }
+            });
         }
-    
-        });
-        }
-    }); 
-
-
-   $('#year').change(function(){
+    });
+    $('#year').change(function() {
         var year_id = $(this).val();
         var model_id = $('#model').val();
-     
-        if(year_id){
-        $.ajax({
-        type:"get",
-        url:"{{url('/chassis')}}/"+year_id+'/'+model_id, 
-        success:function(res)
-        {       
-                if(res)
-                {
-                    $("#chassis").empty();
-                    $("#chassis").append('<option value="0">Select Chassis</option>');
-                    $.each(res,function(key,value){
-                        $("#chassis").append('<option value="'+key+'">'+value+'</option>');
-                    });
+        if (year_id) {
+            $.ajax({
+                type: "get",
+                url: "{{url('/chassis')}}/" + year_id + '/' + model_id,
+                success: function(res) {
+                    if (res) {
+                        $("#chassis").empty();
+                        $("#chassis").append('<option value="0">Select Chassis</option>');
+                        $.each(res, function(key, value) {
+                            $("#chassis").append('<option value="' + key + '">' + value + '</option>');
+                        });
+                    }
                 }
+            });
         }
-    
-        });
-        }
-    }); 
-
-
-
+    });
 });
 </script> 
-
-      
    </body>
-
-
 @endsection
