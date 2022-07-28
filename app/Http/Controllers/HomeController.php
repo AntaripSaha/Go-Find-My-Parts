@@ -45,18 +45,12 @@ class HomeController extends Controller
         $featured_categories = Cache::rememberForever('featured_categories', function () {
             return Category::where('featured', 1)->get();
         });
-
         $todays_deal_products = Cache::rememberForever('todays_deal_products', function () {
             return filter_products(Product::where('published', 1)->where('todays_deal', '1'))->get();
         });
-        
-        
-
         $newest_products = Cache::remember('newest_products', 3600, function () {
             return filter_products(Product::latest())->limit(12)->get();
         });
-        
-        
         $featured_products = Cache::remember('featured_products', 3600, function () {
             return filter_products(Product::where('featured', 1))->get();
         });
@@ -64,76 +58,41 @@ class HomeController extends Controller
             return filter_products(Product::where('published', 1)->limit(50))->get();
         });
         $categories = Category::select('name', 'slug')->get();
-
+        $brands = DB::table('brands')->get();
         $todays_deal_products_footer = filter_products(Product::where('published', 1)->limit(3)->where('todays_deal', '1'))->get();
         $featured_products_footer = filter_products(Product::where('featured', 1))->limit(3)->get();
         $newest_products_footer = filter_products(Product::latest()->limit(3))->get();
         $all_products_cart = filter_products(Product::where('published', 1))->get();
-        $brands = DB::table('brands')->get();
-        
-
         $testimonials = DB::table('blog_categories')
                             ->join('blogs', 'blog_categories.id', '=', 'blogs.category_id')
                             ->get();
-        
         return view('frontend.index', compact('categories','brands','testimonials','all_products_cart','featured_products_footer','newest_products_footer','todays_deal_products_footer','all_products','featured_products','featured_categories', 'todays_deal_products', 'newest_products'));
     
     }
         //For fetching Model
-        public function model($id)
-        {
-            
-            $models = DB::table("models")
-                        ->where("brand_id",$id)
-                        ->pluck("model_name","id");
-            return response()->json($models);
-        }
+    public function model($id)
+    {
+        $models = DB::table("models")
+                    ->where("brand_id",$id)
+                    ->pluck("model_name","id");
+        return response()->json($models);
+    }
         
         //For fetching cities
-        public function year($id)
-        {
-            $year= DB::table("years")
-                        ->pluck("year","id");
-            return response()->json($year);
-        }
-        public function chassis($id, $model_id)
-        {
-            $chassis= DB::table("products")
-                        ->where("year_id", $id)
-                        ->where("model_id",$model_id)
-                        ->pluck("chassis_id","id");
-            return response()->json($chassis);
-        }
-
-        public function search(Request $req){
-            //$search =  DB::table('chassis')->where('id',$req->chassis)->pluck('chassis');
-            //return   Product::where('name', 'LIKE','%'.$search.'%')->get();
-            // return $req;
-            
-            
-         if($req->brand){
-             $products = Product::where('brand_id', $req->brand)->get();
-         }
-         if($req->model){
-             $products = Product::where('model_id', $req->model)->get();
-         }
-         if($req->chassis){
-            
-             $products = Product::where('chassis_id', $req->chassis)->get();
-         }
-         if($req->chassis && $req->model && $req->brand && $req->year){
-            $products = Product::where('brand_id', $req->brand)
-                                        ->where('model_id', $req->model)
-                                        ->where('year_id', $req->year)
-                                        ->where('chassis_id', $req->chassis)
-                                        ->get();
-         }
-         return $products;
-        
-         return view('frontend.product_listing', compact('products'));
-
-        }
-
+    public function year($id)
+    {
+        $year= DB::table("years")
+                ->pluck("year","id");
+        return response()->json($year);
+    }
+    public function chassis($id, $model_id)
+    {
+        $chassis= DB::table("products")
+                    ->where("year_id", $id)
+                    ->where("model_id",$model_id)
+                    ->pluck("chassis_id","id");
+        return response()->json($chassis);
+    }
     public function index()
     {
         
