@@ -54,6 +54,34 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="form-group row" id="model">
+                            <label class="col-md-3 col-from-label">{{translate('Model')}}<span class="text-danger">*</span></label>
+                            <div class="col-md-8">
+                                <select class="form-control aiz-selectpicker" name="model_id" id="model_id" data-live-search="true" required>
+                                    <option value="">{{ translate('Select Model') }}</option>
+                                    @foreach (\App\Models\Models::all() as $model)
+                                    <option value="{{ $model->id }}" @if($product->model_id == $model->id) selected @endif>{{ $model->model_name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row" id="year">
+                            <label class="col-md-3 col-from-label">{{translate('Year')}}<span class="text-danger">*</span></label>
+                            <div class="col-md-8">
+                                <select class="form-control aiz-selectpicker" name="year_id" id="year_id" data-live-search="true" required>
+                                    <option value="">{{ translate('Select Year') }}</option>
+                                    @foreach (\App\Models\Year::all() as $year)
+                                    <option value="{{ $year->id }}" @if($product->year_id == $year->id) selected @endif>{{ $year->year }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-from-label">{{translate('Chassis Number')}} </label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="chassis_id" placeholder="{{translate('Chassis Number')}}" value="{{ $product->getTranslation('chassis_id', $lang) }}">
+                            </div>
+                        </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-from-label">{{translate('Unit')}} <i class="las la-language text-danger" title="{{translate('Translatable')}}"></i> </label>
                             <div class="col-lg-8">

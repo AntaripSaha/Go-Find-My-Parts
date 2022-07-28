@@ -76,7 +76,7 @@
                         <div class="form-group row">
                             <label class="col-md-3 col-from-label">{{translate('Chassis Number')}} </label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control" name="chassis" placeholder="{{ translate('Chassis Number') }}" >
+                                <input type="text" class="form-control" name="chassis_id" placeholder="{{ translate('Chassis Number') }}" >
                             </div>
                         </div>
                         <div class="form-group row">

@@ -153,13 +153,10 @@ class ProductController extends Controller
     public function create()
     {
         CoreComponentRepository::initializeCache();
-
-
         $categories = Category::where('parent_id', 0)
             ->where('digital', 0)
             ->with('childrenCategories')
             ->get();
-
         return view('backend.product.products.create', compact('categories'));
     }
 
@@ -184,7 +181,7 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        return $request;
+    //    return $request;
         $product = $this->productService->store($request->except([
             '_token', 'sku', 'choice', 'tax_id', 'tax', 'tax_type', 'flash_deal_id', 'flash_discount', 'flash_discount_type'
         ]));
@@ -209,9 +206,9 @@ class ProductController extends Controller
 
         // Product Translations
         $request->merge(['lang' => env('DEFAULT_LANGUAGE')]);
-        ProductTranslation::create($request->only([
-            'lang', 'name', 'unit', 'description', 'product_id'
-        ]));
+        // ProductTranslation::create($request->only([
+        //     'lang', 'name', 'unit', 'description', 'product_id'
+        // ]));
 
         flash(translate('Product has been inserted successfully'))->success();
 
@@ -318,14 +315,14 @@ class ProductController extends Controller
         }
 
         // Product Translations
-        ProductTranslation::updateOrCreate(
-            $request->only([
-                'lang', 'product_id'
-            ]),
-            $request->only([
-                'name', 'unit', 'description'
-            ])
-        );
+        // ProductTranslation::updateOrCreate(
+        //     $request->only([
+        //         'lang', 'product_id'
+        //     ]),
+        //     $request->only([
+        //         'name', 'unit', 'description'
+        //     ])
+        // );
 
         flash(translate('Product has been updated successfully'))->success();
 
