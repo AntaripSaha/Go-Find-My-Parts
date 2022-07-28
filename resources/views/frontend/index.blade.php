@@ -705,7 +705,7 @@
                 if(res)
                 {
                     $("#model").empty();
-                    $("#model").append('<option>Select Model</option>');
+                    $("#model").append('<option value="0">Select Model</option>');
                     $.each(res,function(key,value){
                         $("#model").append('<option value="'+key+'">'+value+'</option>');
                     });
@@ -731,7 +731,7 @@
                 if(res)
                 {
                     $("#year").empty();
-                    $("#year").append('<option>Select Year</option>');
+                    $("#year").append('<option value="0">Select Year</option>');
                     $.each(res,function(key,value){
                         $("#year").append('<option value="'+key+'">'+value+'</option>');
                     });
@@ -756,7 +756,7 @@
                 if(res)
                 {
                     $("#chassis").empty();
-                    $("#chassis").append('<option>Select Chassis</option>');
+                    $("#chassis").append('<option value="0">Select Chassis</option>');
                     $.each(res,function(key,value){
                         $("#chassis").append('<option value="'+key+'">'+value+'</option>');
                     });

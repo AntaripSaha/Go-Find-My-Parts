@@ -13,6 +13,7 @@ use App\Models\Shop;
 use App\Models\Attribute;
 use App\Models\AttributeCategory;
 use App\Utility\CategoryUtility;
+use Str;
 
 class SearchController extends Controller
 {
@@ -123,23 +124,20 @@ class SearchController extends Controller
             }
         }
 
+         //Dependency Search Functionality Start
         if($request->brand){
             $dependent_search_products = Product::where('brand_id', $request->brand)->get();
           }
-          if($request->model){
-              $dependent_search_products = Product::where('model_id', $request->model)->get();
+        if($request->model != 0){
+            $dependent_search_products = Product::where('model_id', $request->model)->get();
           }
-          if($request->chassis){
-             
-              $dependent_search_products = Product::where('chassis_id', $request->chassis)->get();
+        if($request->chassis  != 0){
+            $dependent_search_products = Product::where('id', $request->chassis)->get();
           }
-          if($request->chassis && $request->model && $request->brand && $request->year){
-              $dependent_search_products = Product::where('chassis_id', $request->chassis)
-                                         ->where('brand_id', $request->brand)
-                                         ->where('model_id', $request->model)
-                                         ->where('year_id', $request->year)
-                                         ->get();
+        if($request->chassis && $request->model && $request->brand && $request->year  != 0){
+            $dependent_search_products = Product::where('id', $request->chassis)->get();
           }
+           //Dependency Search Functionality End
 
           $products = filter_products($products)->with('taxes')->paginate(12)->appends(request()->query());
 

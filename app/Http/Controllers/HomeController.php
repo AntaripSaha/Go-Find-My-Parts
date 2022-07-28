@@ -97,10 +97,10 @@ class HomeController extends Controller
         }
         public function chassis($id, $model_id)
         {
-            $chassis= DB::table("chassis")
+            $chassis= DB::table("products")
                         ->where("year_id", $id)
                         ->where("model_id",$model_id)
-                        ->pluck("chassis","id");
+                        ->pluck("chassis_id","id");
             return response()->json($chassis);
         }
 
