@@ -63,6 +63,7 @@ class HomeController extends Controller
          $all_products = Cache::remember('all_products', 3600, function () {
             return filter_products(Product::where('published', 1)->limit(50))->get();
         });
+        $categories = Category::select('name', 'slug')->get();
 
         $todays_deal_products_footer = filter_products(Product::where('published', 1)->limit(3)->where('todays_deal', '1'))->get();
         $featured_products_footer = filter_products(Product::where('featured', 1))->limit(3)->get();
@@ -75,7 +76,7 @@ class HomeController extends Controller
                             ->join('blogs', 'blog_categories.id', '=', 'blogs.category_id')
                             ->get();
         
-        return view('frontend.index', compact('brands','testimonials','all_products_cart','featured_products_footer','newest_products_footer','todays_deal_products_footer','all_products','featured_products','featured_categories', 'todays_deal_products', 'newest_products'));
+        return view('frontend.index', compact('categories','brands','testimonials','all_products_cart','featured_products_footer','newest_products_footer','todays_deal_products_footer','all_products','featured_products','featured_categories', 'todays_deal_products', 'newest_products'));
     
     }
         //For fetching Model
