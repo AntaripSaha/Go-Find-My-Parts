@@ -201,11 +201,23 @@
                                 <div class="d-lg-none" data-toggle="class-toggle" data-target=".front-header-search">
                                     <button class="btn px-2" type="button"><i class="la la-2x la-long-arrow-left"></i></button>
                                 </div>
+
+                                {{-- <div class="form-group">
+                                   
+                                    <input type="text" style="border-radius: 20px" class="form-control is-invalid" id="inputSuccess3">
+                                    <div class="valid-feedback feedback-icon">
+                                        <i class="fa fa-check"></i>
+                                    </div>
+                                    <div class="invalid-feedback feedback-icon" style="background-color: red; width: 30px; height: 30px; border-radius: 20px">
+                                        <i class="fa fa-search"></i>
+                                    </div>
+                                </div> --}}
+
                                 <div class="input-group" >
                                     <input type="text" style="border-radius: 20px !important" class="border-0 border-lg form-control" id="search" name="keyword" @isset($query)
                                         value="{{ $query }}"
                                     @endisset placeholder="{{translate('I am shopping for...')}}" autocomplete="off">
-                                    <div class="  d-none d-lg-block">
+                                    <div class=" input-group-append d-none d-lg-block">
                                         <button class="btn btn-primary" style="border-radius:50% !important; background: #72b860 !important; border-color: #72b860;" type="submit">
                                             <i class="la la-search"></i>
                                         </button>
