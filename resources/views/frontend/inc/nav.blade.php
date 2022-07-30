@@ -11,15 +11,17 @@
     }
     .ico:hover{
         color:rgb(255, 254, 254);
-        -webkit-transition: color 400ms;
+        -webkit-transition: color 800ms;
     }
     .ico-background{
         border-radius:50% !important;
-        background: #ffffff !important; 
+        background: #ebebeb73 !important; 
         border-color: #ffffff; 
         height: 36px; 
         width: 36px;
         margin-left: -109%;
+        border: none;
+
 
     }
     .ico-background:hover{

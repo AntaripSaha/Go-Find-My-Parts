@@ -22,8 +22,7 @@ if (auth()->user() != null) {
         font-size: 30px !important;
     }
     .icon:hover{
-        color:#64ce49  !important; 
-        font-weight: 900;
+        color:#396130  !important; 
         -webkit-transition: color 800ms;
         
     }
