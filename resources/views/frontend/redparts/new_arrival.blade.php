@@ -72,7 +72,7 @@
                                        </div>
                                        <div class="product-card__info">
                                           <div class="product-card__name">
-                                             <div>
+                                             <div class="mb-3">
                                                 <!-- <div class="product-card__badges">
                                                    <div class="tag-badge tag-badge--sale">sale</div>
                                                    <div class="tag-badge tag-badge--new">new</div>
@@ -99,7 +99,7 @@
                                              @if(home_base_price($product) != home_discounted_base_price($product))
                                              <del style="opacity:50%; margin-right:10px;">{{ home_base_price($product) }}</del>   
                                              @endif
-                                             <span class="fw-600" style="color:black">{{ home_discounted_base_price($product) }}</span>
+                                             <span class="fw-600; color:black">{{ home_discounted_base_price($product) }}</span>
                                           </div>
                                        </div>
                                     </div>
@@ -130,7 +130,7 @@
                                        </div>
                                        <div class="product-card__info">
                                           <div class="product-card__name">
-                                             <div><a href="{{ $product_url }}">{{$product->name}}</a></div>
+                                             <div class="mb-3"><a href="{{ $product_url }}">{{$product->name}}</a></div>
                                           </div>
                                           <div class="product-card__rating">
                                              <!-- <div class="rating product-card__rating-stars">
@@ -151,7 +151,7 @@
                                              <del style="opacity:50%; margin-right:10px;">{{ home_base_price($product) }}</del>   
                                              @endif
                                              
-                                             <span  class="fw-600" style="color:black">{{ home_discounted_base_price($product) }}</span>
+                                             <span class="fw-600; color: black;">{{ home_discounted_base_price($product) }}</span>
                                           </div>
                                        </div>
                                     </div>
