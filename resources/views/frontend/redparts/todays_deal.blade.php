@@ -142,7 +142,7 @@
                                              <del style="opacity:50%; margin-right:10px;">{{ home_base_price($product) }}</del>   
                                           @endif
                                           
-                                          <span class="fw-700 text-primary">{{ home_discounted_base_price($product) }}</span>
+                                          <span  class="fw-600" style="color:black">{{ home_discounted_base_price($product) }}</span>
                                        </div>
                                        <button type="button" class="btn btn-primary btn-sm"  onclick="showAddToCartModal({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to cart') }}" data-placement="left">
                                           <svg width="20" height="20">

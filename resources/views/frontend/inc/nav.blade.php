@@ -1,3 +1,32 @@
+<style>
+    .ico{
+        transform: scaleX(-1);
+        -moz-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        -ms-transform: scaleX(-1);
+        margin-left: -10px;
+        margin-top: -4px;
+        font-size: 24px;
+        color:rgb(0, 0, 0);
+    }
+    .ico:hover{
+        color:rgb(255, 254, 254);
+        -webkit-transition: color 400ms;
+    }
+    .ico-background{
+        border-radius:50% !important;
+        background: #ffffff !important; 
+        border-color: #ffffff; 
+        height: 36px; 
+        width: 36px;
+        margin-left: -109%;
+
+    }
+    .ico-background:hover{
+        background: #72b860 !important; 
+        border-color: #72b860; 
+    }
+</style>
 @if(get_setting('topbar_banner') != null)
 <div class="position-relative top-banner removable-session z-1035 d-none" data-key="top-banner" data-value="removed">
     <a href="{{ get_setting('topbar_banner_link') }}" class="d-block text-reset">
@@ -9,7 +38,7 @@
 </div>
 @endif
 <!-- Top Bar -->
-<div class="top-navbar bg-white border-bottom border-soft-secondary z-1035" style="color: #ffff07 !important;background-color: black !important; font-size: 13px; line-height: 24px; font-weight: 600;">
+<div class="top-navbar bg-white border-bottom border-soft-secondary z-1035" style="color: #ffff07 !important; opacity:0px !important;background-color: black !important; font-size: 13px; line-height: 24px; font-weight: 600;">
     <div class="container">
         <div class="row">
             <div class="col-lg-7 col">
@@ -26,7 +55,7 @@
                         @endphp
                         <a href="javascript:void(0)" class="dropdown-toggle text-reset py-2" data-toggle="dropdown" data-display="static">
                             <img src="{{ static_asset('assets/img/placeholder.jpg') }}" data-src="{{ static_asset('assets/img/flags/'.$locale.'.png') }}" class="mr-2 lazyload" alt="{{ \App\Models\Language::where('code', $locale)->first()->name }}" height="11">
-                            <span class="opacity-60">{{ \App\Models\Language::where('code', $locale)->first()->name }}</span>
+                            <span class="">{{ \App\Models\Language::where('code', $locale)->first()->name }}</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-left">
                             @foreach (\App\Models\Language::where('status', 1)->get() as $key => $language)
@@ -51,7 +80,7 @@
                                 $currency_code = \App\Models\Currency::findOrFail(get_setting('system_default_currency'))->code;
                             }
                         @endphp
-                        <a href="javascript:void(0)" class="dropdown-toggle text-reset py-2 opacity-60" data-toggle="dropdown" data-display="static">
+                        <a href="javascript:void(0)" class="dropdown-toggle text-reset py-2" data-toggle="dropdown" data-display="static">
                             {{ \App\Models\Currency::where('code', $currency_code)->first()->name }} {{ (\App\Models\Currency::where('code', $currency_code)->first()->symbol) }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
@@ -70,7 +99,7 @@
                 <ul class="list-inline mb-0 h-100 d-flex justify-content-end align-items-center">
                     @if (get_setting('helpline_number'))
                         <li class="list-inline-item mr-3 border-right border-left-0 pr-3 pl-0">
-                            <a href="tel:{{ get_setting('helpline_number') }}" class="text-reset d-inline-block opacity-60 py-2">
+                            <a href="tel:{{ get_setting('helpline_number') }}" class="text-reset d-inline-block py-2">
                                 <i class="la la-phone"></i>
                                 <span>{{ translate('Help line')}}</span>  
                                 <span>{{ get_setting('helpline_number') }}</span>    
@@ -80,7 +109,7 @@
                     @auth
                         @if(isAdmin())
                             <li class="list-inline-item mr-3 border-right border-left-0 pr-3 pl-0">
-                                <a href="{{ route('admin.dashboard') }}" class="text-reset d-inline-block opacity-60 py-2">{{ translate('My Panel')}}</a>
+                                <a href="{{ route('admin.dashboard') }}" class="text-reset d-inline-block py-2">{{ translate('My Panel')}}</a>
                             </li>
                         @else
 
@@ -138,21 +167,21 @@
 
                             <li class="list-inline-item mr-3 border-right border-left-0 pr-3 pl-0">
                                 @if (Auth::user()->user_type == 'seller')
-                                    <a href="{{ route('seller.dashboard') }}" class="text-reset d-inline-block opacity-60 py-2">{{ translate('My Panel')}}</a>
+                                    <a href="{{ route('seller.dashboard') }}" class="text-reset d-inline-block py-2">{{ translate('My Panel')}}</a>
                                 @else
-                                    <a href="{{ route('dashboard') }}" class="text-reset d-inline-block opacity-60 py-2">{{ translate('My Panel')}}</a>
+                                    <a href="{{ route('dashboard') }}" class="text-reset d-inline-block py-2">{{ translate('My Panel')}}</a>
                                 @endif
                             </li>
                         @endif
                         <li class="list-inline-item">
-                            <a href="{{ route('logout') }}" class="text-reset d-inline-block opacity-60 py-2">{{ translate('Logout')}}</a>
+                            <a href="{{ route('logout') }}" class="text-reset d-inline-block py-2">{{ translate('Logout')}}</a>
                         </li>
                     @else
                         <li class="list-inline-item mr-3 border-right border-left-0 pr-3 pl-0">
-                            <a href="{{ route('user.login') }}" class="text-reset d-inline-block opacity-60 py-2">{{ translate('Login')}}</a>
+                            <a href="{{ route('user.login') }}" class="text-reset d-inline-block py-2">{{ translate('Login')}}</a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="{{ route('user.registration') }}" class="text-reset d-inline-block opacity-60 py-2">{{ translate('Registration')}}</a>
+                            <a href="{{ route('user.registration') }}" class="text-reset d-inline-block py-2">{{ translate('Registration')}}</a>
                         </li>
                     @endauth
                 </ul>
@@ -201,6 +230,7 @@
                                 <div class="d-lg-none" data-toggle="class-toggle" data-target=".front-header-search">
                                     <button class="btn px-2" type="button"><i class="la la-2x la-long-arrow-left"></i></button>
                                 </div>
+                                
 
                                 {{-- <div class="form-group">
                                    
@@ -213,7 +243,7 @@
                                     </div>
                                 </div> --}}
 
-                                <div class="input-group" >
+                                {{-- <div class="input-group" >
                                     <input type="text" style="border-radius: 20px !important" class="border-0 border-lg form-control" id="search" name="keyword" @isset($query)
                                         value="{{ $query }}"
                                     @endisset placeholder="{{translate('I am shopping for...')}}" autocomplete="off">
@@ -222,7 +252,19 @@
                                             <i class="la la-search"></i>
                                         </button>
                                     </div>
-                                </div>
+                                </div> --}}
+
+                                
+                                    <input type="text" style="border-radius: 20px !important; " class="border-0 border-lg form-control" id="search" name="keyword" @isset($query)
+                                        value="{{ $query }}"
+                                    @endisset placeholder="{{translate('I am shopping for...')}}" autocomplete="off">
+                                    
+                                    <div class=>
+                                        <button class="btn btn-outline-secondary border-left-0 ico-background"  style="" type="submit">
+                                            <i class="ico las la-search"></i>
+                                        </button>
+                                    </div>
+                                
                             </div>
                         </form>
                         <div class="typed-search-box stop-propagation document-click-d-none d-none bg-white rounded shadow-lg position-absolute left-0 top-100 w-100" style="min-height: 200px">

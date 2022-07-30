@@ -260,6 +260,9 @@
                                     @include('frontend.partials.product_box_1',['product' => $product])
                                 </div>
                             @endforeach
+                            <div class="aiz-pagination aiz-pagination-center mt-4">
+                                {{ $dependent_search_products->appends(request()->input())->links() }}
+                            </div>
                         </div>
                         @else
                         <div class="row gutters-5 row-cols-xxl-4 row-cols-xl-3 row-cols-lg-4 row-cols-md-3 row-cols-2">
@@ -269,8 +272,8 @@
                                 </div>
                             @endforeach
                             <div class="aiz-pagination aiz-pagination-center mt-4">
-                            {{ $products->appends(request()->input())->links() }}
-                        </div>
+                                {{ $products->appends(request()->input())->links() }}
+                            </div>
                         </div>
                         @endif
                         

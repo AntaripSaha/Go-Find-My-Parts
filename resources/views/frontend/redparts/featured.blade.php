@@ -76,7 +76,7 @@
                                              </svg>
                                           </div>
                                           <div class="status-badge__text">{{$product->name}}</div>
-                                          <div class="status-badge__tooltip" tabindex="0" data-toggle="tooltip" title="Part&#x20;Fit&#x20;for&#x20;2011&#x20;Ford&#x20;Focus&#x20;S"></div>
+                                          <div class="status-badge__tooltip" tabindex="0" data-toggle="tooltip" title="{{$product->name}}"></div>
                                        </div>
                                     </div>
                                  </div>
@@ -109,7 +109,7 @@
                                        @if(home_base_price($product) != home_discounted_base_price($product))
                                        <del style="opacity:50%; margin-right:10px;">{{ home_base_price($product) }}</del>   
                                        @endif
-                                       <span class="fw-700 text-primary">{{ home_discounted_base_price($product) }}</span>
+                                       <span class="fw-600" style="color:black">{{ home_discounted_base_price($product) }}</span>
                                     
                                     </div>
                                   

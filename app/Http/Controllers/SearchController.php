@@ -128,19 +128,19 @@ class SearchController extends Controller
          
          if($request->brand_dependency){
             if($request->brand_dependency == 0){
-                $dependent_search_products = Product::all();
+                $dependent_search_products = Product::all()->paginate(12)->appends(request()->query());
               }
             if($request->brand_dependency != 0){
-                $dependent_search_products = Product::where('brand_id', $request->brand_dependency)->get();
+                $dependent_search_products = Product::where('brand_id', $request->brand_dependency)->paginate(12)->appends(request()->query());
               }
             if($request->model != 0){
-                $dependent_search_products = Product::where('model_id', $request->model)->get();
+                $dependent_search_products = Product::where('model_id', $request->model)->paginate(12)->appends(request()->query());
               }
             if($request->chassis  != 0){
-                $dependent_search_products = Product::where('id', $request->chassis)->get();
+                $dependent_search_products = Product::where('id', $request->chassis)->paginate(12)->appends(request()->query());
               }
             if($request->chassis && $request->model && $request->brand_dependency && $request->year  != 0){
-                $dependent_search_products = Product::where('id', $request->chassis)->get();
+                $dependent_search_products = Product::where('id', $request->chassis)->paginate(12)->appends(request()->query());
               }
 
          }

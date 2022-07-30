@@ -99,7 +99,7 @@
                                              @if(home_base_price($product) != home_discounted_base_price($product))
                                              <del style="opacity:50%; margin-right:10px;">{{ home_base_price($product) }}</del>   
                                              @endif
-                                             <span class="fw-700 text-primary">{{ home_discounted_base_price($product) }}</span>
+                                             <span class="fw-600" style="color:black">{{ home_discounted_base_price($product) }}</span>
                                           </div>
                                        </div>
                                     </div>
@@ -151,7 +151,7 @@
                                              <del style="opacity:50%; margin-right:10px;">{{ home_base_price($product) }}</del>   
                                              @endif
                                              
-                                             <span class="fw-700 text-primary">{{ home_discounted_base_price($product) }}</span>
+                                             <span  class="fw-600" style="color:black">{{ home_discounted_base_price($product) }}</span>
                                           </div>
                                        </div>
                                     </div>
