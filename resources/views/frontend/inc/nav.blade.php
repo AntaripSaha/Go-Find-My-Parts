@@ -217,7 +217,7 @@
                                     <input type="text" style="border-radius: 20px !important" class="border-0 border-lg form-control" id="search" name="keyword" @isset($query)
                                         value="{{ $query }}"
                                     @endisset placeholder="{{translate('I am shopping for...')}}" autocomplete="off">
-                                    <div class=" input-group-append d-none d-lg-block">
+                                    <div class="input-group-append d-none d-lg-block">
                                         <button class="btn btn-primary" style="border-radius:50% !important; background: #72b860 !important; border-color: #72b860;" type="submit">
                                             <i class="la la-search"></i>
                                         </button>

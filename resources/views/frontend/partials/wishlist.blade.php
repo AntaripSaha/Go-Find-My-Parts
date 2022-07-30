@@ -5,10 +5,6 @@
         margin-right: 4px;
         padding: 7px;
     }
-    .icon{
-        color: #f5f502 !important;
-        font-size: 35px !important;
-    }
 </style>
 <a href="{{ route('wishlists.index') }}" class="d-flex align-items-center text-reset">
     <i class="la la-heart-o la-3x opacity-90 icon"></i>

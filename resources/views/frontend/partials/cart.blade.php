@@ -10,18 +10,36 @@ if (auth()->user() != null) {
 }
 
 @endphp
+<style>
+    .cart{
+        background-color:rgb(112, 206, 112) !important;
+        margin-bottom: 26px;
+        margin-right: 4px;
+        padding: 7px;
+    }
+    .icon{
+        color: rgb(112, 206, 112) !important;
+        font-size: 30px !important;
+    }
+    .icon:hover{
+        color:rgb(37, 173, 37) !important; 
+        font-weight: 900;
+        -webkit-transition: color 800ms;
+        
+    }
+</style>
 <a href="javascript:void(0)" class="d-flex align-items-center text-reset h-100" data-toggle="dropdown"
     data-display="static">
-    <i class="la la-shopping-cart la-2x opacity-80"></i>
+    <i class="la la-shopping-cart la-3x opacity-80 icon"></i>
     <span class="flex-grow-1 ml-1">
         @if (isset($cart) && count($cart) > 0)
-            <span class="badge badge-primary badge-inline badge-pill cart-count">
+            <span class="badge badge-primary badge-inline badge-pill cart-count cart">
                 {{ count($cart) }}
             </span>
         @else
-            <span class="badge badge-primary badge-inline badge-pill cart-count">0</span>
+            <span class="badge badge-primary badge-inline badge-pill cart-count cart">0</span>
         @endif
-        <span class="nav-box-text d-none d-xl-block opacity-70">{{ translate('Cart') }}</span>
+        {{-- <span class="nav-box-text d-none d-xl-block opacity-70">{{ translate('Cart') }}</span> --}}
     </span>
 </a>
 <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg p-0 stop-propagation">

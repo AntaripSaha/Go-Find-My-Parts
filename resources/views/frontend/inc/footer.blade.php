@@ -29,16 +29,16 @@
     </div>
 </section>
 
-<section class="bg-dark py-5 text-light footer-widget">
+<section class="bg-dark py-2 text-light footer-widget">
     <div class="container">
         <div class="row">
             <div class="col-lg-5 col-xl-4 text-center text-md-left">
                 <div class="mt-4">
                     <a href="{{ route('home') }}" class="d-block">
                         @if(get_setting('footer_logo') != null)
-                            <img class="lazyload" src="{{ static_asset('assets/img/placeholder-rect.jpg') }}" data-src="{{ uploaded_asset(get_setting('footer_logo')) }}" alt="{{ env('APP_NAME') }}" height="44">
+                            <img class="lazyload" src="{{ static_asset('assets/img/placeholder-rect.jpg') }}" data-src="{{ uploaded_asset(get_setting('footer_logo')) }}" alt="{{ env('APP_NAME') }}" height="30">
                         @else
-                            <img class="lazyload" src="{{ static_asset('assets/img/placeholder-rect.jpg') }}" data-src="{{ static_asset('assets/img/logo.png') }}" alt="{{ env('APP_NAME') }}" height="44">
+                            <img class="lazyload" src="{{ static_asset('assets/img/placeholder-rect.jpg') }}" data-src="{{ static_asset('assets/img/logo.png') }}" alt="{{ env('APP_NAME') }}" height="30">
                         @endif
                     </a>
                     <div class="my-3">
