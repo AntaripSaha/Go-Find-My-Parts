@@ -57,6 +57,7 @@ class HomeController extends Controller
          $all_products = Cache::remember('all_products', 3600, function () {
             return filter_products(Product::where('published', 1)->limit(50))->get();
         });
+    //    return  $featured_products[0]->current_stock;
         $categories = Category::select('name', 'slug')->get();
         $brands = DB::table('brands')->get();
         $todays_deal_products_footer = filter_products(Product::where('published', 1)->limit(3)->where('todays_deal', '1'))->get();

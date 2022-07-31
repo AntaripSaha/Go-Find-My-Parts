@@ -1,6 +1,10 @@
 @extends('frontend.layouts.new_app')
 @section('content')
 
+<style>
+
+   
+</style>
 <body>
       <!-- site -->
       <div class="site">
@@ -185,35 +189,54 @@
                </div>
             </div>
 
-
+            
+            {{-- //owl-carousel --}}
             <div class="block-banners block">
                <div class="container">
                   <div class="block-banners__list">
-                     <a href="#" class="block-banners__item block-banners__item--style--one">
-                        <span class="block-banners__item-image">
-                           <img src="{{static_asset('assets/frontend/images/banners/banner3.jpg')}}" alt="">
-                        </span>
-                        <span class="block-banners__item-image block-banners__item-image--blur">
-                           <img src="{{static_asset('assets/frontend/images/banners/banner3.jpg')}}" alt="">
-                        </span>
-                        <span class="block-banners__item-title">Motor Oils</span>
-                        <span class="block-banners__item-details">Synthetic motor oil with free shipping<br>Friction free life guaranteed </span>
-                        <span class="block-banners__item-button btn btn-primary btn-sm" style="margin-top:95px;">Shop Now </span>
-                     </a>
-                     <a href="#" class="block-banners__item block-banners__item--style--two">
-                        <span class="block-banners__item-image">
-                           <img src="{{static_asset('assets/frontend/images/banners/banner4.jpg')}}" alt="">
-                        </span>
-                        <span class="block-banners__item-image block-banners__item-image--blur">
-                           <img src="{{static_asset('assets/frontend/images/banners/banner4.jpg')}}" alt="">
-                        </span>
-                        <span class="block-banners__item-title">Save up to $40</span> 
-                        <span class="block-banners__item-details">Luxurious interior part for real aesthetes<br>Leather, fabric, ivory and more. </span>
-                        <span class="block-banners__item-button btn btn-primary btn-sm" style="margin-top:95px;">Shop Now</span>
-                     </a>
+                     <div class="adone owl-carousel owl-theme">
+     
+                        <div class="item">
+                           <a href="#" class=" ">
+                              <span class="">
+                                 <img src="{{static_asset('assets/frontend/images/banners/banner1.jpg')}}" alt="" width="auto" height="350px">
+                              </span>
+                           </a>
+                        </div>
+                        <div class="item">
+                           <a href="#" class=" ">
+                              <span class="">
+                                 <img src="{{static_asset('assets/frontend/images/banners/banner2.jpg')}}" alt=""  width="auto" height="350px">
+                              </span>
+                           </a>
+                        </div>
+
+                        <div class="item">
+                           <a href="#" class=" ">
+                              <span class="">
+                                 <img src="{{static_asset('assets/frontend/images/banners/banner3.jpg')}}" alt=""  width="auto" height="350px">
+                              </span>
+                           </a>
+                        </div>
+
+                        <div class="item">
+                           <a href="#" class=" ">
+                              <span class="">
+                                 <img src="{{static_asset('assets/frontend/images/banners/banner4.jpg')}}" alt=""  width="auto" height="350px">
+                              </span>
+                           </a>
+                        </div>
+                        
+                    </div>
+
+
                   </div>
                </div>
             </div>
+
+
+ 
+            {{-- //owl-carousel --}}
 
             <div class="block-space block-space--layout--divider-nl"></div>
 
@@ -232,36 +255,63 @@
 
 
             <div class="block-space block-space--layout--divider-nl"></div>
+ 
 
             
+            {{-- //owl-carousel --}}
             <div class="block-banners block">
                <div class="container">
                   <div class="block-banners__list">
-                     <a href="#" class="block-banners__item block-banners__item--style--one">
-                        <span class="block-banners__item-image">
-                           <img src="{{static_asset('assets/frontend/images/banners/banner1.jpg')}}" alt="">
-                        </span>
-                        <span class="block-banners__item-image block-banners__item-image--blur">
-                           <img src="{{static_asset('assets/frontend/images/banners/banner1.jpg')}}" alt="">
-                        </span>
-                        <span class="block-banners__item-title">Motor Oils</span>
-                        <span class="block-banners__item-details">Synthetic motor oil with free shipping<br>Friction free life guaranteed </span>
-                        <span class="block-banners__item-button btn btn-primary btn-sm" style="margin-top:95px;">Shop Now </span>
-                     </a>
-                     <a href="#" class="block-banners__item block-banners__item--style--two">
-                        <span class="block-banners__item-image">
-                           <img src="{{static_asset('assets/frontend/images/banners/banner2.jpg')}}" alt="">
-                        </span>
-                        <span class="block-banners__item-image block-banners__item-image--blur">
-                           <img src="{{static_asset('assets/frontend/images/banners/banner2.jpg')}}" alt="">
-                        </span>
-                        <span class="block-banners__item-title">Save up to $40</span> 
-                        <span class="block-banners__item-details">Luxurious interior part for real aesthetes<br>Leather, fabric, ivory and more. </span>
-                        <span class="block-banners__item-button btn btn-primary btn-sm" style="margin-top:95px;">Shop Now</span>
-                     </a>
+                     <div class="ad owl-carousel owl-theme">
+     
+                        <div class="item">
+                           <a href="#" class=" ">
+                              <span class="">
+                                 <img src="{{static_asset('assets/frontend/images/banners/banner1.jpg')}}" alt=""  width="auto" height="250px">
+                              </span>
+                           </a>
+                        </div>
+                        <div class="item">
+                           <a href="#" class=" ">
+                              <span class="">
+                                 <img src="{{static_asset('assets/frontend/images/banners/banner2.jpg')}}" alt=""  width="auto" height="250px">
+                              </span>
+                           </a>
+                        </div>
+
+                        <div class="item">
+                           <a href="#" class=" ">
+                              <span class="">
+                                 <img src="{{static_asset('assets/frontend/images/banners/banner3.jpg')}}" alt=""  width="auto" height="250px">
+                              </span>
+                           </a>
+                        </div>
+
+                        <div class="item">
+                           <a href="#" class=" ">
+                              <span class="">
+                                 <img src="{{static_asset('assets/frontend/images/banners/banner4.jpg')}}" alt=""  width="auto" height="250px">
+                              </span>
+                           </a>
+                        </div>
+                        
+                    </div>
+
+
                   </div>
                </div>
             </div>
+
+
+ 
+            {{-- //owl-carousel --}}
+
+            <div class="block-space block-space--layout--divider-nl"></div>
+
+
+
+
+
 
             
             <div class="block-space block-space--layout--divider-nl"></div>
@@ -756,7 +806,119 @@ $(document).ready(function() {
             });
         }
     });
+
+
+   //  $('.adone').owlCarousel({
+   //  items:2,
+   //  loop:true,
+   //  margin:40,
+   //  nav:false,
+   //  smartSpeed: 1500,
+   //  autoplay:true,
+   //  autoplayHoverPause:true
+
+   // });
+
+
+   //  $('.ad').owlCarousel({
+   //  items:3,
+   //  loop:true,
+   //  margin:40,
+   //  nav:false,
+   //  smartSpeed: 1500,
+   //  autoplay:true,
+   //  autoplayHoverPause:true
+    
+
+   // });
+
+//    $('.ad').owlCarousel({
+//     loop:true,
+//     margin:10,
+//     nav:false,
+//     smartSpeed: 500,
+//     autoplay:true,
+//     autoplayHoverPause:true,
+//     responsiveClass:true,
+//     responsive:{
+//         0:{
+//             items:1,
+//             nav:true
+//         },
+//         600:{
+//             items:2,
+//             nav:false
+//         },
+//         1000:{
+//             items:3,
+//             nav:true,
+//             loop:false
+//         }
+//     }
+// });
+
+   $('.adone').owlCarousel({
+      loop:true,
+      margin:10,
+      autoplay:true,
+      autoplayTimeout:2500,
+      smartSpeed: 1500,
+      autoplayHoverPause:true,
+      responsiveClass:true,
+      nav:false,
+      responsive:{
+         0:{
+               items:1
+         },
+         600:{
+               items:1
+         },
+         1000:{
+               items:2
+         }
+      }
+   });
+   $('.ad').owlCarousel({
+      loop:true,
+      margin:10,
+      autoplay:true,
+      autoplayTimeout:2500,
+      smartSpeed: 1500,
+      autoplayHoverPause:true,
+      responsiveClass:true,
+      nav:false,
+      responsive:{
+         0:{
+               items:1
+         },
+         600:{
+               items:2
+         },
+         1000:{
+               items:3
+         }
+      }
+   });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 });
+
 </script> 
    </body>
 @endsection
