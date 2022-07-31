@@ -41,16 +41,16 @@
                             <img class="lazyload" src="{{ static_asset('assets/img/placeholder-rect.jpg') }}" data-src="{{ static_asset('assets/img/logo.png') }}" alt="{{ env('APP_NAME') }}" height="30">
                         @endif
                     </a>
-                    <div class="my-3">
+                    <div class="my-3" style="opacity: 70%; width: 70%;">
                         {!! get_setting('about_us_description',null,App::getLocale()) !!}
                     </div>
                     <div class="d-inline-block d-md-block mb-4">
                         <form class="form-inline" method="POST" action="{{ route('subscribers.store') }}">
                             @csrf
                             <div class="form-group mb-0">
-                                <input type="email" class="form-control" placeholder="{{ translate('Your Email Address') }}" name="email" required>
+                                <input type="email" class="form-control" style="border-radius: 0%;" placeholder="{{ translate('Your Email Address') }}" name="email" required>
                             </div>
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-primary" style="height: 42px;border-radius: 0%;">
                                 {{ translate('Subscribe') }}
                             </button>
                         </form>

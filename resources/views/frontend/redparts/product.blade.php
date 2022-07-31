@@ -1,4 +1,11 @@
 
+<style>
+   .cart-icon{
+      background: none !important;
+      border: none !important;
+      color: blue;
+   }
+</style>
             <div class="block block-zone">
                <div class="container">
                   <div class="block-zone__body">
@@ -120,14 +127,17 @@
                                              <span class="fw-600" style="color:black">{{ home_discounted_base_price($product) }}</span>
 
                                           </div>
-                                          <button type="button" class="btn btn-primary btn-sm" onclick="showAddToCartModal({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to cart') }}" data-placement="left">
-                                             <svg width="20" height="20">
+                                          <button type="button" class="btn btn-primary cart-icon" onclick="showAddToCartModal({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to cart') }}" data-placement="left">
+                                             <i style="font-size: 30px;" class="las la-plus-circle cart-icon"></i>
+                                             
+                                             
+                                             {{-- <svg width="20" height="20">
                                                    <circle cx="7" cy="17" r="2"/>
                                                    <circle cx="15" cy="17" r="2"/>
                                                    <path d="M20,4.4V5l-1.8,6.3c-0.1,0.4-0.5,0.7-1,0.7H6.7c-0.4,0-0.8-0.3-1-0.7L3.3,3.9C3.1,3.3,2.6,3,2.1,3H0.4C0.2,3,0,2.8,0,2.6
                                                       V1.4C0,1.2,0.2,1,0.4,1h2.5c1,0,1.8,0.6,2.1,1.6L5.1,3l2.3,6.8c0,0.1,0.2,0.2,0.3,0.2h8.6c0.1,0,0.3-0.1,0.3-0.2l1.3-4.4
                                                       C17.9,5.2,17.7,5,17.5,5H9.4C9.2,5,9,4.8,9,4.6V3.4C9,3.2,9.2,3,9.4,3h9.2C19.4,3,20,3.6,20,4.4z"/>
-                                                </svg>
+                                                </svg> --}}
                                           </button>
                                        </div>
                                     </div>
