@@ -157,7 +157,7 @@
                         <h4 class="fs-13 text-uppercase fw-600 border-bottom border-gray-900 pb-2 mb-4">
                             {{ translate('Be a Seller') }}
                         </h4>
-                        <a href="{{ route('shops.create') }}" class="btn btn-primary btn-sm shadow-md">
+                        <a href="{{ route('shops.create') }}" class="btn btn-primary btn-sm shadow-md" style="margin-top: -10px !important;">
                             {{ translate('Apply Now') }}
                         </a>
                     </div>
