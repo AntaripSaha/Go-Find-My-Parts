@@ -40,12 +40,13 @@ class AdvertiseController extends Controller
        
        public function update_store($id, Request $request){
         Advertise::where('id', $id)->update([
-                'model_name'=> $request->model_name,
-                'brand_id'=> $request->brand_id,
+                'name'=> $request->name,
+                'image'=> $request->logo,
+                'section'=> $request->section,
+                'url'=> $request->url,
         ]);
-    
-            flash(translate('Model has been Updated successfully'))->success();
-            return redirect()->route('model.index');
+            flash(translate('Advertise has been Updated successfully'))->success();
+            return redirect()->route('advertise.index');
        }
        public function delete($id){
         Advertise::where('id', $id)->delete();

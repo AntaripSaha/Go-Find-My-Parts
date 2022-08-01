@@ -405,6 +405,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
         Route::any('/advertise', 'index')->name('advertise.index');
         Route::any('/advertise/store', 'store')->name('advertise.store');
         Route::any('/advertise/update/{id}', 'update')->name('advertise.update');
+        Route::any('/advertise/update/store/{id}', 'update_store')->name('advertise.update.store');
     });
 
 
