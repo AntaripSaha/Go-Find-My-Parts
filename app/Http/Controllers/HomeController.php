@@ -21,6 +21,7 @@ use App\Models\Coupon;
 use Cookie;
 use Illuminate\Support\Str;
 use App\Mail\SecondEmailVerifyMailManager;
+use App\Models\Advertise;
 use App\Models\AffiliateConfig;
 use App\Models\Page;
 use App\Models\ProductQuery;
@@ -67,7 +68,9 @@ class HomeController extends Controller
         $testimonials = DB::table('blog_categories')
                             ->join('blogs', 'blog_categories.id', '=', 'blogs.category_id')
                             ->get();
-        return view('frontend.index', compact('categories','brands','testimonials','all_products_cart','featured_products_footer','newest_products_footer','todays_deal_products_footer','all_products','featured_products','featured_categories', 'todays_deal_products', 'newest_products'));
+        $advertise_upper_section = Advertise::where('section', 0)->get();
+        $advertise_lower_section = Advertise::where('section', 1)->get();
+        return view('frontend.index', compact('advertise_lower_section','advertise_upper_section','categories','brands','testimonials','all_products_cart','featured_products_footer','newest_products_footer','todays_deal_products_footer','all_products','featured_products','featured_categories', 'todays_deal_products', 'newest_products'));
     
     }
         //For fetching Model

@@ -187,11 +187,11 @@
                </div>
             </div>
 
-            <!--------------owl-carousel Advertise ------------>
+            <!--------------owl-carousel Advertise Upper Section Start------------>
             <div class="block-space block-space--layout--divider-nl"></div>
             @include('frontend.redparts.advertise_one')
 
-            <!--------------owl-carousel ------------>
+            <!--------------owl-carousel Advertise Upper Section End ------------>
 
 
             <div class="block-space block-space--layout--divider-nl"></div>
@@ -208,10 +208,10 @@
             <!-------------- Product Section End------------->
 
 
-            <!--------------owl-carousel ------------>
+            <!--------------owl-carousel Advertise Lower Section Start------------>
             <div class="block-space block-space--layout--divider-nl"></div>
             @include('frontend.redparts.advertise_two')
-            <!--------------owl-carousel ------------>
+            <!--------------owl-carousel Advertise Lower Section End------------>
             <div class="block-space block-space--layout--divider-nl"></div>
 
                @include('frontend.redparts.new_arrival')
