@@ -29,7 +29,6 @@ class AdvertiseController extends Controller
         return redirect()->route('advertise.index');
     }
     public function update($id){
-     
         $advertise = Advertise::where('id', $id)->get();
         return view('backend.product.advertisement.edit',compact('advertise'));
     }
@@ -48,5 +47,4 @@ class AdvertiseController extends Controller
         flash(translate('Advertise has been Deleted successfully'))->warning();
         return redirect()->route('advertise.index');
     }
-
 }
