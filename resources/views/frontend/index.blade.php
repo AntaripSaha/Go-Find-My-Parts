@@ -8,8 +8,6 @@
 <body>
       <!-- site -->
       <div class="site">
-
-         
          <!-- site__header / end --><!-- site__body -->
          <div class="site__body">
             <div class="block-finder block">
