@@ -70,8 +70,12 @@ class HomeController extends Controller
                             ->get();
         $advertise_upper_section = Advertise::where('section', 0)->get();
         $advertise_lower_section = Advertise::where('section', 1)->get();
-        return view('frontend.index', compact('advertise_lower_section','advertise_upper_section','categories','brands','testimonials','all_products_cart','featured_products_footer','newest_products_footer','todays_deal_products_footer','all_products','featured_products','featured_categories', 'todays_deal_products', 'newest_products'));
-    
+        return view('frontend.index', compact('advertise_lower_section','advertise_upper_section','categories',
+                    'brands','testimonials','all_products_cart',
+                    'featured_products_footer','newest_products_footer',
+                    'todays_deal_products_footer','all_products','featured_products',
+                    'featured_categories', 'todays_deal_products', 'newest_products'
+                ));
     }
         //For fetching Model
     public function model($id)

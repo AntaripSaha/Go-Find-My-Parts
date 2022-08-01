@@ -18,11 +18,11 @@ if (auth()->user() != null) {
         padding: 7px;
     }
     .icon{
-        color: #72b860  !important;
+        color:#396130  !important;
         font-size: 30px !important;
     }
     .icon:hover{
-        color:#396130  !important; 
+        color:#72b860 !important; 
         -webkit-transition: color 800ms;
         
     }

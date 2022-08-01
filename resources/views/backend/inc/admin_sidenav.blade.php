@@ -124,7 +124,7 @@
                                 </a>
                             </li>
                             <li class="aiz-side-nav-item">
-                                <a href="{{route('advertise.index')}}" class="aiz-side-nav-link">
+                                <a href="{{route('advertise.index')}}" class="aiz-side-nav-link {{ areActiveRoutes(['advertise.index','advertise.create','advertise.update'])}}">
                                     <span class="aiz-side-nav-text">{{translate('Product Advertisement')}}</span>
                                 </a>
                             </li>

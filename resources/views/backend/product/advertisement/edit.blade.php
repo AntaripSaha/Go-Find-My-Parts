@@ -6,7 +6,7 @@
 	<div class="col-lg-8 mx-auto">
 		<div class="card">
 			<div class="card-header">
-				<h5 class="mb-0 h6">{{ translate('Add New Advertise') }}</h5>
+				<h5 class="mb-0 h6">{{ translate('Update Advertise') }}</h5>
 			</div>
 			<div class="card-body">
 				<form action="{{ route('advertise.update.store', ['id'=>$advertise[0]->id]) }}" method="POST">

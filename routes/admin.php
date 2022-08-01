@@ -382,24 +382,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
         Route::get('/reviews', 'index')->name('reviews.index');
         Route::post('/reviews/published', 'updatePublished')->name('reviews.published');
     });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
     //Advertise
     Route::controller(AdvertiseController::class)->group(function () {
         Route::any('/advertise', 'index')->name('advertise.index');
@@ -408,31 +391,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
         Route::any('/advertise/update/store/{id}', 'update_store')->name('advertise.update.store');
         Route::any('/advertise/delete/{id}', 'delete')->name('advertise.delete');
     });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     //Support_Ticket
     Route::controller(SupportTicketController::class)->group(function () {
