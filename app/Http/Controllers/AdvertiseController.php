@@ -33,24 +33,20 @@ class AdvertiseController extends Controller
         $advertise = Advertise::where('id', $id)->get();
         return view('backend.product.advertisement.edit',compact('advertise'));
     }
-
-
-
-    
-       
-       public function update_store($id, Request $request){
+    public function update_store($id, Request $request){
         Advertise::where('id', $id)->update([
                 'name'=> $request->name,
                 'image'=> $request->logo,
                 'section'=> $request->section,
                 'url'=> $request->url,
         ]);
-            flash(translate('Advertise has been Updated successfully'))->success();
-            return redirect()->route('advertise.index');
-       }
-       public function delete($id){
+        flash(translate('Advertise has been Updated successfully'))->success();
+        return redirect()->route('advertise.index');
+    }
+    public function delete($id){
         Advertise::where('id', $id)->delete();
-        flash(translate('Model has been Deleted successfully'))->warning();
-        return redirect()->route('model.index');
-       }
+        flash(translate('Advertise has been Deleted successfully'))->warning();
+        return redirect()->route('advertise.index');
+    }
+
 }
