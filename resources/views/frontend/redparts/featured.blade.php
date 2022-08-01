@@ -94,7 +94,7 @@
                                           <a href="{{ $product_url }}">{{$product->name}}</a>
                                        </div>
                                     </div>
-                                    <!-- <div class="product-card__rating">
+                                     <div class="product-card__rating">
                                        <div class="rating product-card__rating-stars">
                                           <div class="rating__body">
                                              <div class="rating__star rating__star--active"></div>
@@ -105,7 +105,7 @@
                                           </div>
                                        </div>
                                        <div class="product-card__rating-label">4 on 3 reviews</div>
-                                    </div> -->
+                                    </div>
                                  </div>
                                  <div class="product-card__footer">
                                     <div class="product-card__prices">

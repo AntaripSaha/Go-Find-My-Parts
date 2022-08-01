@@ -82,7 +82,7 @@
                                           @endphp
                                              <div class="image image--type--product"><a href="{{ $product_url }}" class="image__body"><img class="image__tag" src="{{ uploaded_asset($product->thumbnail_img) }}" alt=""></a></div>
                                              <div class="status-badge status-badge--style--success product-card__fit status-badge--has-icon status-badge--has-text">
-                                                <div class="status-badge__body">
+                                                {{-- <div class="status-badge__body">
                                                    <div class="status-badge__icon">
                                                       <svg width="13" height="13">
                                                          <path d="M12,4.4L5.5,11L1,6.5l1.4-1.4l3.1,3.1L10.6,3L12,4.4z"/>
@@ -90,7 +90,7 @@
                                                    </div>
                                                    <div class="status-badge__text">{{$product->name}}</div>
                                                    <div class="status-badge__tooltip" tabindex="0" data-toggle="tooltip" title="{{$product->name}}"></div>
-                                                </div>
+                                                </div> --}}
                                              </div>
                                           </div>
                                           <div class="product-card__info">
@@ -105,7 +105,7 @@
                                                    <a href="{{ $product_url }}">{{$product->name}}</a>
                                                 </div>
                                              </div>
-                                             <!-- <div class="product-card__rating">
+                                              <div class="product-card__rating">
                                                 <div class="rating product-card__rating-stars">
                                                    <div class="rating__body">
                                                       <div class="rating__star rating__star--active"></div>
@@ -116,7 +116,7 @@
                                                    </div>
                                                 </div>
                                                 <div class="product-card__rating-label">4 on 3 reviews</div>
-                                             </div> -->
+                                             </div> 
                                           </div>
                                           <div class="product-card__footer">
                                              <div class="product-card__prices">
