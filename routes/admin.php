@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AddonController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdvertiseController;
 use App\Http\Controllers\AizUploadController;
 use App\Http\Controllers\AttributeController;
 use App\Http\Controllers\BlogCategoryController;
@@ -44,6 +45,7 @@ use App\Http\Controllers\TaxController;
 use App\Http\Controllers\UpdateController;
 use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\ModelController;
+
 
 /*
   |--------------------------------------------------------------------------
@@ -380,6 +382,55 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
         Route::get('/reviews', 'index')->name('reviews.index');
         Route::post('/reviews/published', 'updatePublished')->name('reviews.published');
     });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //Advertise
+    Route::controller(AdvertiseController::class)->group(function () {
+        Route::any('/advertise', 'index')->name('advertise.index');
+        Route::any('/advertise/store', 'store')->name('advertise.store');
+        Route::any('/advertise/update/{id}', 'update')->name('advertise.update');
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     //Support_Ticket
     Route::controller(SupportTicketController::class)->group(function () {

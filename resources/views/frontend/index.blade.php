@@ -187,10 +187,11 @@
                </div>
             </div>
 
-            {{-- //owl-carousel --}}
+            <!--------------owl-carousel Advertise ------------>
             <div class="block-space block-space--layout--divider-nl"></div>
-            @include('frontend.redparts.advertise_two')
-            {{-- //owl-carousel --}}
+            @include('frontend.redparts.advertise_one')
+
+            <!--------------owl-carousel ------------>
 
 
             <div class="block-space block-space--layout--divider-nl"></div>
@@ -199,8 +200,7 @@
                @include('frontend.redparts.featured')
             <!-------------- Featured Product Section End------------->
 
-            <!-------------- Todays Deal Section Start------------->
-            <!-------------- Todays Deal Section End------------->
+
             <!-------------- Product Section Start------------->
 
             <div class="block-space block-space--layout--divider-sm"></div>
@@ -208,10 +208,10 @@
             <!-------------- Product Section End------------->
 
 
-            {{-- //owl-carousel --}}
+            <!--------------owl-carousel ------------>
             <div class="block-space block-space--layout--divider-nl"></div>
-            @include('frontend.redparts.advertise_one')
-            {{-- //owl-carousel --}}
+            @include('frontend.redparts.advertise_two')
+            <!--------------owl-carousel ------------>
             <div class="block-space block-space--layout--divider-nl"></div>
 
                @include('frontend.redparts.new_arrival')
@@ -797,18 +797,6 @@ $(document).ready(function() {
          }
       }
    });
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
