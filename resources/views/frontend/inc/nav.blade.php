@@ -55,7 +55,7 @@
                                 $locale = 'en';
                             }
                         @endphp
-                        <a href="javascript:void(0)" class="dropdown-toggle text-reset py-2" data-toggle="dropdown" data-display="static">
+                        <a href="javascript:void(0)" class="dropdown-toggle text-reset py-2 mr-3 border-right border-left-0 pr-3" data-toggle="dropdown" data-display="static">
                             <img src="{{ static_asset('assets/img/placeholder.jpg') }}" data-src="{{ static_asset('assets/img/flags/'.$locale.'.png') }}" class="mr-2 lazyload" alt="{{ \App\Models\Language::where('code', $locale)->first()->name }}" height="11">
                             <span class="">{{ \App\Models\Language::where('code', $locale)->first()->name }}</span>
                         </a>
