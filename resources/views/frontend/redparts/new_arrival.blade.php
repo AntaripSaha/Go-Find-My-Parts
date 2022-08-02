@@ -83,23 +83,18 @@
                                           </div>
                                           <div class="product-card__rating">
                                              <div class="rating product-card__rating-stars">
-                                                <!-- <div class="rating__body">
-                                                   <div class="rating__star rating__star--active"></div>
-                                                   <div class="rating__star rating__star--active"></div>
-                                                   <div class="rating__star rating__star--active"></div>
-                                                   <div class="rating__star rating__star--active"></div>
-                                                   <div class="rating__star"></div>
-                                                </div> -->
+                                                <div class="rating rating-sm mt-1">
+                                                   {{ renderStarRating($product->rating) }} ({{$product->rating}})
+                                               </div>
                                              </div>
-                                             <!-- <div class="product-card__rating-label">4 on 3 reviews</div> -->
                                           </div>
                                        </div>
                                        <div class="product-card__footer">
-                                          <div class="product-card__prices">
+                                          <div class="product-card__prices  fw-600" style="color: black;">
                                              @if(home_base_price($product) != home_discounted_base_price($product))
                                              <del style="opacity:50%; margin-right:10px;">{{ home_base_price($product) }}</del>   
                                              @endif
-                                             <span class="fw-600; color:black">{{ home_discounted_base_price($product) }}</span>
+                                             <span>{{ home_discounted_base_price($product) }}</span>
                                           </div>
                                        </div>
                                     </div>
@@ -133,25 +128,18 @@
                                              <div class="mb-3"><a href="{{ $product_url }}">{{$product->name}}</a></div>
                                           </div>
                                           <div class="product-card__rating">
-                                             <!-- <div class="rating product-card__rating-stars">
-                                                <div class="rating__body">
-                                                   <div class="rating__star rating__star--active"></div>
-                                                   <div class="rating__star rating__star--active"></div>
-                                                   <div class="rating__star rating__star--active"></div>
-                                                   <div class="rating__star rating__star--active"></div>
-                                                   <div class="rating__star rating__star--active"></div>
-                                                </div>
-                                             </div> -->
-                                             <!-- <div class="product-card__rating-label">5 on 22 reviews</div> -->
+                                             <div class="rating rating-sm">
+                                                {{ renderStarRating($product->rating) }} ({{$product->rating}})
+                                            </div> 
                                           </div>
                                        </div>
                                        <div class="product-card__footer">
-                                          <div class="product-card__prices">
+                                          <div class="product-card__prices fw-600" style="color: black;">
                                              @if(home_base_price($product) != home_discounted_base_price($product))
                                              <del style="opacity:50%; margin-right:10px;">{{ home_base_price($product) }}</del>   
                                              @endif
                                              
-                                             <span class="fw-600; color: black;">{{ home_discounted_base_price($product) }}</span>
+                                             <span >{{ home_discounted_base_price($product) }}</span>
                                           </div>
                                        </div>
                                     </div>

@@ -5,6 +5,19 @@
       border: none !important;
       color: blue;
    }
+   .img-size{
+      max-height: 100% !important;
+      width: 100% !important;
+      object-fit: cover !important;
+      border-radius: 5px !important; 
+
+   }
+   hr{
+      border-color: #abafb926 !important;
+      border: 0.1px solid;
+      width: 90%;
+      height: auto;
+   }
 </style>
             <div class="block block-zone">
                <div class="container">
@@ -56,7 +69,7 @@
 
                                  @foreach($all_products as $product)
                                     <div class="block-zone__carousel-item">
-                                       <div class="product-card">
+                                       <div class="product-card" style="border-radius: 5px !important; ">
                                           <div class="product-card__actions-list">
                                              
                                              <button class="product-card__action product-card__action--wishlist" type="button"  onclick="addToWishList({{ $product->id }})" data-placement="left" data-toggle="tooltip" data-title="{{ translate('Add to wishlist') }}">
@@ -80,7 +93,7 @@
                                                 $product_url = route('auction-product', $product->slug);
                                              }
                                           @endphp
-                                             <div class="image image--type--product"><a href="{{ $product_url }}" class="image__body"><img class="image__tag" src="{{ uploaded_asset($product->thumbnail_img) }}" alt=""></a></div>
+                                             <div class="image image--type--product"><a href="{{ $product_url }}" class="image__body"><img class="img-size image__tag" src="{{ uploaded_asset($product->thumbnail_img) }}" alt=""></a></div>
                                              <div class="status-badge status-badge--style--success product-card__fit status-badge--has-icon status-badge--has-text">
                                                 {{-- <div class="status-badge__body">
                                                    <div class="status-badge__icon">
@@ -94,8 +107,7 @@
                                              </div>
                                           </div>
                                           <div class="product-card__info">
-                                             <div class="product-card__meta"><span class="product-card__meta-title"> </div>
-                                             <div class="product-card__name">
+                                             <div class="product-card__name mt-4">
                                                 <div>
                                                    <!-- <div class="product-card__badges">
                                                       <div class="tag-badge tag-badge--sale">sale</div>
@@ -106,18 +118,12 @@
                                                 </div>
                                              </div>
                                               <div class="product-card__rating">
-                                                <div class="rating product-card__rating-stars">
-                                                   <div class="rating__body">
-                                                      <div class="rating__star rating__star--active"></div>
-                                                      <div class="rating__star rating__star--active"></div>
-                                                      <div class="rating__star rating__star--active"></div>
-                                                      <div class="rating__star rating__star--active"></div>
-                                                      <div class="rating__star"></div>
-                                                   </div>
-                                                </div>
-                                                <div class="product-card__rating-label">4 on 3 reviews</div>
+                                                <div class="rating rating-sm mt-1">
+                                                   {{ renderStarRating($product->rating) }} ({{$product->rating}})
+                                               </div>
                                              </div> 
                                           </div>
+                                          <hr>
                                           <div class="product-card__footer">
                                              <div class="product-card__prices">
                                                 @if(home_base_price($product) != home_discounted_base_price($product))

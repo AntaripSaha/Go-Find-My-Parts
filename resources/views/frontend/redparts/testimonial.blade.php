@@ -47,7 +47,7 @@
                                  <div class="post-card__title">
                                     <h2><a href="{{ url("blog").'/'. $blog->slug }}">{{ $blog->title }}</a></h2>
                                  </div>
-                                 <div class="post-card__date">By <a href="#">Jessica Moore</a> on October 19, 2019</div>
+                                 <div class="post-card__date">By <a href="#">{{ $blog->meta_keywords }}</div>
                                   
                                  <div class="post-card__more"><a href="{{ url("blog").'/'. $blog->slug }}" class="btn btn-secondary btn-sm">Read more</a></div>
                               </div>

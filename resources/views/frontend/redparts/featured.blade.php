@@ -39,7 +39,7 @@
                      @foreach($featured_products as $product)
                         <div class="block-products-carousel__column">
                            <div class="block-products-carousel__cell">
-                              <div class="product-card product-card--layout--grid">
+                              <div class="product-card product-card--layout--grid"  style="border-radius: 5px !important; ">
                                  <div class="product-card__actions-list">
                                     <button class="product-card__action product-card__action--wishlist" type="button" aria-label="Add to wish list" onclick="addToWishList({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to wishlist') }}" data-placement="left">
                                        <svg width="16" height="16">
@@ -65,7 +65,7 @@
                                                 
                                     <div class="image image--type--product">
                                        <a href="{{ $product_url }}" class="image__body">
-                                          <img class="image__tag" src="{{ uploaded_asset($product->thumbnail_img) }}" alt="">
+                                          <img class="img-size image__tag" src="{{ uploaded_asset($product->thumbnail_img) }}" alt="">
                                        </a>
                                     </div>
                                     
@@ -84,7 +84,7 @@
                                     @endif --}}
                                  </div>
                                  <div class="product-card__info">
-                                    <div class="product-card__name">
+                                    <div class="product-card__name mt-4">
                                        <div>
                                           <!-- <div class="product-card__badges">
                                              <div class="tag-badge tag-badge--sale">sale</div>
@@ -96,17 +96,13 @@
                                     </div>
                                      <div class="product-card__rating">
                                        <div class="rating product-card__rating-stars">
-                                          <div class="rating__body">
-                                             <div class="rating__star rating__star--active"></div>
-                                             <div class="rating__star rating__star--active"></div>
-                                             <div class="rating__star rating__star--active"></div>
-                                             <div class="rating__star rating__star--active"></div>
-                                             <div class="rating__star"></div>
-                                          </div>
+                                          <div class="rating rating-sm mt-1">
+                                             {{ renderStarRating($product->rating) }} ({{$product->rating}})
+                                         </div>
                                        </div>
-                                       <div class="product-card__rating-label">4 on 3 reviews</div>
                                     </div>
                                  </div>
+                                 <hr>
                                  <div class="product-card__footer">
                                     <div class="product-card__prices">
                                        @if(home_base_price($product) != home_discounted_base_price($product))
