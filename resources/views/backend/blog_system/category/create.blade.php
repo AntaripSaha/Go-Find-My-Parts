@@ -6,7 +6,7 @@
     <div class="col-lg-8 mx-auto">
         <div class="card">
             <div class="card-header">
-                <h5 class="mb-0 h6">{{translate('Blog Category Information')}}</h5>
+                <h5 class="mb-0 h6">{{translate('Testimonial Category Information')}}</h5>
             </div>
             <div class="card-body">
                 <form class="form-horizontal" method="POST" action="{{ route('blog-category.store') }}">

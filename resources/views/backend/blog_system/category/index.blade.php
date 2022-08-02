@@ -4,7 +4,7 @@
 <div class="aiz-titlebar text-left mt-2 mb-3">
     <div class="row align-items-center">
         <div class="col-md-6">
-            <h1 class="h3">{{translate('All Blog Categories')}}</h1>
+            <h1 class="h3">{{translate('All Testimonial Categories')}}</h1>
         </div>
         <div class="col-md-6 text-md-right">
             <a href="{{ url('admin/blog-category/create') }}" class="btn btn-primary">
@@ -15,7 +15,7 @@
 </div>
 <div class="card">
     <div class="card-header d-block d-md-flex">
-        <h5 class="mb-0 h6">{{ translate('Blog Categories') }}</h5>
+        <h5 class="mb-0 h6">{{ translate('Testimonial Categories') }}</h5>
         <form class="" id="sort_categories" action="" method="GET">
             <div class="box-inline pad-rgt pull-left">
                 <div class="" style="min-width: 200px;">
