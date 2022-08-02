@@ -102,7 +102,7 @@
                                        </div>
                                     </div>
                                  </div>
-                                 <hr>
+                                 <hr class="hr-modified">
                                  <div class="product-card__footer">
                                     <div class="product-card__prices">
                                        @if(home_base_price($product) != home_discounted_base_price($product))

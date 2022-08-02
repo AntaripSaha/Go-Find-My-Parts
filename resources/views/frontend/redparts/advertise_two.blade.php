@@ -7,7 +7,7 @@
                   <div class="item">
                      <a href="{{url($advertise->url)}}" class=" ">
                         <span class="">
-                           <img src="{{ uploaded_asset($advertise->image) }}" alt=""  width="auto" height="250px">
+                           <img src="{{ uploaded_asset($advertise->image) }}" alt=""  width="100%" height="auto">
                         </span>
                      </a>
                   </div>

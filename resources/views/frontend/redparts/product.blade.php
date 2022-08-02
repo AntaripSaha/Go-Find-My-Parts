@@ -12,11 +12,14 @@
       border-radius: 5px !important; 
 
    }
-   hr{
+   .hr-modified{
       border-color: #abafb926 !important;
       border: 0.1px solid;
       width: 90%;
       height: auto;
+      margin-top: 0.5rem !important;
+      margin-bottom: -1.0rem !important;
+
    }
 </style>
             <div class="block block-zone">
@@ -46,6 +49,8 @@
                      </div>
                      <div class="block-zone__widget">
                         <div class="block-zone__widget-header">
+                              <h2 class="section-header__title" style="margin:4px !important; margin-right: 85px!important">All Products</h2>
+
                            <div class="arrow block-zone__arrow block-zone__arrow--prev arrow--prev">
                               <button class="arrow__button" type="button">
                                  <svg width="7" height="11">
@@ -123,7 +128,7 @@
                                                </div>
                                              </div> 
                                           </div>
-                                          <hr>
+                                          <hr class="hr-modified">
                                           <div class="product-card__footer">
                                              <div class="product-card__prices">
                                                 @if(home_base_price($product) != home_discounted_base_price($product))

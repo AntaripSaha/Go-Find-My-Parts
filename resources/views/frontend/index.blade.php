@@ -749,7 +749,7 @@ $(document).ready(function() {
 //         }
 //     }
 // });
-
+   // Advertise Slider Upper Section 
    $('.adone').owlCarousel({
       loop:true,
       margin:10,
@@ -771,6 +771,7 @@ $(document).ready(function() {
          }
       }
    });
+   // Advertise Slider Lower Section 
    $('.ad').owlCarousel({
       loop:true,
       margin:10,
@@ -789,6 +790,29 @@ $(document).ready(function() {
          },
          1000:{
                items:3
+         }
+      }
+   });
+
+   // products slider
+   $('.owl-carousel').owlCarousel({
+      loop:true,
+      margin:10,
+      autoplay:true,
+      autoplayTimeout:3500,
+      smartSpeed: 2000,
+      autoplayHoverPause:true,
+      responsiveClass:true,
+      nav:false,
+      responsive:{
+         0:{
+               items:2
+         },
+         600:{
+               items:2
+         },
+         1000:{
+               items:5
          }
       }
    });
