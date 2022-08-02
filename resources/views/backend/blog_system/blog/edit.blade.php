@@ -6,7 +6,7 @@
     <div class="col-lg-8 mx-auto">
         <div class="card">
             <div class="card-header">
-                <h5 class="mb-0 h6">{{translate('Blog Information')}}</h5>
+                <h5 class="mb-0 h6">{{translate('Testimonial Information')}}</h5>
             </div>
             <div class="card-body">
                 <form id="add_form" class="form-horizontal" action="{{ route('blog.update',$blog->id) }}" method="POST">
@@ -14,11 +14,11 @@
                     @method('PATCH')
                     <div class="form-group row">
                         <label class="col-md-3 col-form-label">
-                            {{translate('Blog Title')}}
+                            {{translate('Testimonial Title')}}
                             <span class="text-danger">*</span>
                         </label>
                         <div class="col-md-9">
-                            <input type="text" placeholder="{{translate('Blog Title')}}" onkeyup="makeSlug(this.value)" id="title" name="title" value="{{ $blog->title }}" class="form-control" required>
+                            <input type="text" placeholder="{{translate('Testimonial Title')}}" onkeyup="makeSlug(this.value)" id="title" name="title" value="{{ $blog->title }}" class="form-control" required>
                         </div>
                     </div>
                     <div class="form-group row" id="category">
@@ -130,10 +130,10 @@
 
                     <div class="form-group row">
                         <label class="col-md-3 col-form-label">
-                            {{translate('Meta Keywords')}}
+                            {{translate('Author Name')}}
                         </label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" id="meta_keywords" name="meta_keywords" value="{{ $blog->meta_keywords }}" placeholder="{{translate('Meta Keywords')}}">
+                            <input type="text" class="form-control" id="meta_keywords" name="meta_keywords" value="{{ $blog->meta_keywords }}" placeholder="{{translate('Author Name')}}">
                         </div>
                     </div>
                     

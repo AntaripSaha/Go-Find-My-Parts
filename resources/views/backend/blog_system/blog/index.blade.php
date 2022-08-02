@@ -17,18 +17,18 @@
 <br>
 
 <div class="card">
-    <form class="" id="sort_blogs" action="" method="GET">
-        <div class="card-header row gutters-5">
-            <div class="col text-center text-md-left">
-                <h5 class="mb-md-0 h6">{{ translate('All blog posts') }}</h5>
-            </div>
-            
-            <div class="col-md-2">
-                <div class="form-group mb-0">
-                    <input type="text" class="form-control form-control-sm" id="search" name="search"@isset($sort_search) value="{{ $sort_search }}" @endisset placeholder="{{ translate('Type & Enter') }}">
+        <form class="" id="sort_blogs" action="" method="GET">
+            <div class="card-header row gutters-5">
+                <div class="col text-center text-md-left">
+                    <h5 class="mb-md-0 h6">{{ translate('All testimonial posts') }}</h5>
+                </div>
+                
+                <div class="col-md-2">
+                    <div class="form-group mb-0">
+                        <input type="text" class="form-control form-control-sm" id="search" name="search"@isset($sort_search) value="{{ $sort_search }}" @endisset placeholder="{{ translate('Type & Enter') }}">
+                    </div>
                 </div>
             </div>
-        </div>
         </from>
         <div class="card-body">
             <table class="table mb-0 aiz-table">
