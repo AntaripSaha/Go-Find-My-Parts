@@ -1,6 +1,6 @@
 <style>
    .search-button{
-    border-top-right-radius: 30px !important;
+    /* border-top-right-radius: 30px !important;
     border: none;
     padding: 0px 40px;
     height: 30px !important;
@@ -10,7 +10,7 @@
     border-bottom-right-radius: 30px !important;
    
 
-
+ */
 
    }
    .make-new{
@@ -45,7 +45,7 @@
                         </select>
                      </div>
            
-   <button class="block-finder__form-control block-finder__form-control--button search-button" style="backgoruond-color:#72b860 !important;" type="submit">Search</button>
+   <button class="block-finder__form-control block-finder__form-control--button" style="backgoruond-color:#72b860 !important;" type="submit">Search</button>
 </form>
 
 <script type="text/javascript">
