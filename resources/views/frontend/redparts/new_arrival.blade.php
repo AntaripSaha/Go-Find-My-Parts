@@ -48,7 +48,7 @@
                            <div class="block-products-carousel__column">
 
                               
-                              <!-- @if($counter % 2 == 0) -->
+                            @if($counter % 2 == 0) 
                                  <div class="block-products-carousel__cell">
 
                                     <div class="product-card product-card--layout--horizontal">
@@ -99,7 +99,7 @@
                                        </div>
                                     </div>
                                  </div>
-                              <!-- @else -->
+                               @else 
                         
                               
                         
@@ -145,7 +145,7 @@
                                     </div>
                                  </div>
 
-                              <!-- @endif -->
+                             @endif
 
 
                            </div>

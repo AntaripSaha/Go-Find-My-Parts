@@ -28,6 +28,16 @@
         background: #72b860 !important; 
         border-color: #72b860; 
     }
+    .border-right-new{
+        border-right: 1px solid #dee2e6!important;
+        height: 17px;
+    }
+    .hr{
+        border-right: 1px solid #dee2e6;
+        height: 18px !important;
+        margin-left: -31px;
+        margin-right: 20px;
+    }
 </style>
 @if(get_setting('topbar_banner') != null)
 <div class="position-relative top-banner removable-session z-1035 d-none" data-key="top-banner" data-value="removed">
@@ -55,11 +65,11 @@
                                 $locale = 'en';
                             }
                         @endphp
-                        <a href="javascript:void(0)" class="dropdown-toggle text-reset py-2 mr-3 border-right border-left-0 pr-3" data-toggle="dropdown" data-display="static">
+                        <a href="javascript:void(0)" class="dropdown-toggle text-reset py-2 mr-3 border-left-0 pr-3" style="margin-top: 3px !important;" data-toggle="dropdown" data-display="static">
                             <img src="{{ static_asset('assets/img/placeholder.jpg') }}" data-src="{{ static_asset('assets/img/flags/'.$locale.'.png') }}" class="mr-2 lazyload" alt="{{ \App\Models\Language::where('code', $locale)->first()->name }}" height="11">
                             <span class="">{{ \App\Models\Language::where('code', $locale)->first()->name }}</span>
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-left">
+                        <ul class="dropdown-menu dropdown-menu-left" style="margin-top: 3px !important;" >
                             @foreach (\App\Models\Language::where('status', 1)->get() as $key => $language)
                                 <li>
                                     <a href="javascript:void(0)" data-flag="{{ $language->code }}" class="dropdown-item @if($locale == $language) active @endif">
@@ -71,9 +81,10 @@
                         </ul>
                     </li>
                     @endif
-
+                   
                     @if(get_setting('show_currency_switcher') == 'on')
-                    <li class="list-inline-item dropdown ml-auto ml-lg-0 mr-0" id="currency-change">
+                    <hr class="hr">
+                    <li class="list-inline-item dropdown ml-auto ml-lg-0 mr-0" style="margin-top: 4px !important;" id="currency-change">
                         @php
                             if(Session::has('currency_code')){
                                 $currency_code = Session::get('currency_code');
@@ -85,7 +96,7 @@
                         <a href="javascript:void(0)" class="dropdown-toggle text-reset py-2" data-toggle="dropdown" data-display="static">
                             {{ \App\Models\Currency::where('code', $currency_code)->first()->name }} {{ (\App\Models\Currency::where('code', $currency_code)->first()->symbol) }}
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
+                        <ul class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" style="margin-top: 4px !important;">
                             @foreach (\App\Models\Currency::where('status', 1)->get() as $key => $currency)
                                 <li>
                                     <a class="dropdown-item @if($currency_code == $currency->code) active @endif" href="javascript:void(0)" data-currency="{{ $currency->code }}">{{ $currency->name }} ({{ $currency->symbol }})</a>
@@ -100,22 +111,23 @@
             <div class="col-5 text-right d-none d-lg-block">
                 <ul class="list-inline mb-0 h-100 d-flex justify-content-end align-items-center">
                     @if (get_setting('helpline_number'))
-                        <li class="list-inline-item mr-3 border-right border-left-0 pr-3 pl-0">
+                        <li class="list-inline-item border-left-0 pr-3 pl-0">
                             <a href="tel:{{ get_setting('helpline_number') }}" class="text-reset d-inline-block py-2">
                                 <i class="la la-phone"></i>
                                 <span>{{ translate('Help line')}}</span>  
                                 <span>{{ get_setting('helpline_number') }}</span>    
                             </a>
                         </li>
+                        <hr class="hr" style="margin-left:2px !important">
                     @endif
                     @auth
                         @if(isAdmin())
-                            <li class="list-inline-item mr-3 border-right border-left-0 pr-3 pl-0">
+                            <li class="list-inline-item  border-left-0 pr-3 pl-0">
                                 <a href="{{ route('admin.dashboard') }}" class="text-reset d-inline-block py-2">{{ translate('My Panel')}}</a>
                             </li>
+                            <hr class="hr" style="margin-left:2px !important">
                         @else
-
-                            <li class="list-inline-item mr-3 border-right border-left-0 pr-3 pl-0 dropdown">
+                            <li class="list-inline-item  border-left-0 pr-3 pl-0 dropdown">
                                 <a class="dropdown-toggle no-arrow text-reset" data-toggle="dropdown" href="javascript:void(0);" role="button" aria-haspopup="false" aria-expanded="false">
                                     <span class="">
                                         <span class="position-relative d-inline-block">
@@ -125,7 +137,7 @@
                                             @endif
                                         </span>
                                     </span>
-                                </a>
+                                </a>                                
                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg py-0">
                                     <div class="p-3 bg-light border-bottom">
                                         <h6 class="mb-0">{{ translate('Notifications') }}</h6>
@@ -167,21 +179,27 @@
                                 </div>
                             </li>
 
-                            <li class="list-inline-item mr-3 border-right border-left-0 pr-3 pl-0">
+
+                            <hr class="hr" style="margin-left:2px !important">
+
+                            <li class="list-inline-item border-left-0 pr-3 pl-0">
                                 @if (Auth::user()->user_type == 'seller')
                                     <a href="{{ route('seller.dashboard') }}" class="text-reset d-inline-block py-2">{{ translate('My Panel')}}</a>
                                 @else
                                     <a href="{{ route('dashboard') }}" class="text-reset d-inline-block py-2">{{ translate('My Panel')}}</a>
                                 @endif
                             </li>
+                            
+                            <hr class="hr" style="margin-left:2px !important">
                         @endif
                         <li class="list-inline-item">
                             <a href="{{ route('logout') }}" class="text-reset d-inline-block py-2">{{ translate('Logout')}}</a>
                         </li>
                     @else
-                        <li class="list-inline-item mr-3 border-right border-left-0 pr-3 pl-0">
+                        <li class="list-inline-item border-left-0 pr-3 pl-0">
                             <a href="{{ route('user.login') }}" class="text-reset d-inline-block py-2">{{ translate('Login')}}</a>
                         </li>
+                        <hr class="hr" style="margin-left:2px !important">
                         <li class="list-inline-item">
                             <a href="{{ route('user.registration') }}" class="text-reset d-inline-block py-2">{{ translate('Registration')}}</a>
                         </li>

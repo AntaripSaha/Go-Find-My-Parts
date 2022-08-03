@@ -41,7 +41,7 @@
                             <img class="lazyload" src="{{ static_asset('assets/img/placeholder-rect.jpg') }}" data-src="{{ static_asset('assets/img/logo.png') }}" alt="{{ env('APP_NAME') }}" height="20">
                         @endif
                     </a>
-                    <div class="my-3" style="opacity: 70%; width: 70%;">
+                    <div class="my-3" style="opacity: 70%; width: 90%;">
                         {!! get_setting('about_us_description',null,App::getLocale()) !!}
                     </div>
                     <div class="d-inline-block d-md-block mb-4">
