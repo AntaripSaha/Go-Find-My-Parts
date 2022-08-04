@@ -72,7 +72,10 @@
          margin-top: -60px;
       }
       .mobile-view{
-         height: 5px;
+         height: 5px !important;
+      }
+      .mobile-view-add-two{
+         height: 35px !important;
       }
    }
 
@@ -97,10 +100,9 @@
                   @include('frontend.redparts.search')
                </div>
             </div>
-            <div style="mobile-view height:15px"></div>
+            <div class="mobile-view" style="height:15px"></div>
  
                <div class="container">
-
                      <div class="ser-up owl-carousel owl-theme mt-3">
                         <div class="item">
                            <div>
@@ -160,14 +162,14 @@
  
                
             <!--------------owl-carousel Advertise Upper Section Start------------>
-            <div style="mobile-view height:15px"></div>
+            <div class="mobile-view" style="height:35px"></div>
 
             @include('frontend.redparts.advertise_one')
 
             <!--------------owl-carousel Advertise Upper Section End ------------>
 
 
-            <div style="margin:20px;"></div>
+            <div class="mobile-view" style="height:25px"></div>
 
             <!-------------- Featured Product Section Start------------->
                @include('frontend.redparts.featured')
@@ -182,14 +184,14 @@
 
 
             <!--------------owl-carousel Advertise Lower Section Start------------>
-            <div style="margin:20px;"></div>
+            <div class="mobile-view-add-two" style="height:45px"></div>
             @include('frontend.redparts.advertise_two')
             <!--------------owl-carousel Advertise Lower Section End------------>
-            <div style="margin:20px;"></div>
+            <div class="mobile-view" style="height:25px"></div>
 
                @include('frontend.redparts.new_arrival')
 
-               <div style="height:20px !important;"></div>
+               <div class="mobile-view" style="height:15px"></div>
 
                @include('frontend.redparts.testimonial')
 
@@ -237,7 +239,7 @@
             <!------------------ Category Section End --------------------->
 
             <!--------------All Category Products---------------->
-            <div style="margin:20px;"></div>
+            <div class="mobile-view" style="height:15px"></div>
            
             <div class="block block-products-columns">
               
@@ -311,7 +313,7 @@
               </div>
 
 
-            <div style="margin:20px;"></div>
+            <div class="mobile-view" style="height:15px"></div>
 
          </div>
 

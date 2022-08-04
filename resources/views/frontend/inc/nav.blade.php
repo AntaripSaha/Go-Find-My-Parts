@@ -21,8 +21,6 @@
         width: 36px;
         margin-left: -109%;
         border: none;
-
-
     }
     .ico-background:hover{
         background: #72b860 !important; 
@@ -37,6 +35,9 @@
         height: 18px !important;
         margin-left: -31px;
         margin-right: 20px;
+    }
+    .hov-opacity-100:hover{
+        color: #72b860 !important;
     }
     @media only screen and (max-width: 600px){
         .hr{
@@ -351,11 +352,12 @@
             <div class="container">
                 <ul class="list-inline mb-0 pl-0 mobile-hor-swipe text-center">
                     @foreach (json_decode( get_setting('header_menu_labels'), true) as $key => $value)
-                    <li class="list-inline-item mr-0">
-                        <a href="{{ json_decode( get_setting('header_menu_links'), true)[$key] }}" class="opacity-60 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
+                    <li class="list-inline-item border-right" style="margin-left:-2px !important; margin-right: -2px !important;">
+                        <a href="{{ json_decode( get_setting('header_menu_links'), true)[$key] }}" class="opacity-90 fs-14 px-3 py-2 d-inline-block fw-700 hov-opacity-100 text-reset">
                             {{ translate($value) }}
                         </a>
                     </li>
+                    
                     @endforeach
                 </ul>
             </div>
