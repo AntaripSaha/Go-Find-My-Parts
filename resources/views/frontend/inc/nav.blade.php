@@ -38,6 +38,11 @@
         margin-left: -31px;
         margin-right: 20px;
     }
+    @media only screen and (max-width: 600px){
+        .hr{
+            display: none;
+        }
+    }
 </style>
 @if(get_setting('topbar_banner') != null)
 <div class="position-relative top-banner removable-session z-1035 d-none" data-key="top-banner" data-value="removed">

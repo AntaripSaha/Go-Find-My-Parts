@@ -3,75 +3,78 @@
 
 <style>
 
-.make-new{
-      border-top-left-radius: 30px !important;
-      height: 60px !important;
-      border-bottom-left-radius: 30px !important;
+   .make-new{
+         border-top-left-radius: 30px !important;
+         height: 60px !important;
+         border-bottom-left-radius: 30px !important;
+      }
+   .service{
+      background: #e6e6e6;
+      content: "";
+      width: 61px;
+      height: 61px;
+      display: inline-block;
+      border-radius: 100%;
    }
-.service{
-   background: #e6e6e6;
-   content: "";
-   width: 61px;
-   height: 61px;
-   display: inline-block;
-   border-radius: 100%;
-}
-.service:hover{
-   background: #b2b7b8;
-   content: "";
-   width: 61px;
-   height: 61px;
-   display: inline-block;
-   border-radius: 100%;
-}
-.service-image{
-   position: relative;
-   width: 70% !important;
-   margin-left: 12px;
-   margin-top: 6px;
-   top: 0;
-   transition: top 320ms;
-}
-.service-image:hover{
-   top: -8px;
-   margin-left: 12px;
-   margin-top: 8px;
-}
-.service-p{
-   color: #999999;
-   display: block;
-   font-size: 14px;
-   line-height: 18px;
-   margin-left: 85px;
-}
-.service-titile{
-    font-size: 15px;
-    font-weight: 400;
-    margin-left: 85px;
-    margin-top: -60px;
-}
-.service-titile:hover{
-    color: #5faf4b;
-    font-size: 15px;
-    font-weight: 400;
-    margin-left: 85px;
-    margin-top: -60px;
-}
-@media only screen and (max-width: 600px){
+   .service:hover{
+      background: #b2b7b8;
+      content: "";
+      width: 61px;
+      height: 61px;
+      display: inline-block;
+      border-radius: 100%;
+   }
+   .service-image{
+      position: relative;
+      width: 70% !important;
+      margin-left: 12px;
+      margin-top: 6px;
+      top: 0;
+      transition: top 320ms;
+   }
+   .service-image:hover{
+      top: -8px;
+      margin-left: 12px;
+      margin-top: 8px;
+   }
    .service-p{
       color: #999999;
       display: block;
-      font-size: 10px;
-      line-height: 17px;
-      margin-left: 70px;
+      font-size: 14px;
+      line-height: 18px;
+      margin-left: 85px;
    }
    .service-titile{
-      font-size: 13px;
+      font-size: 15px;
       font-weight: 400;
-      margin-left: 70px;
+      margin-left: 85px;
       margin-top: -60px;
    }
-}
+   .service-titile:hover{
+      color: #5faf4b;
+      font-size: 15px;
+      font-weight: 400;
+      margin-left: 85px;
+      margin-top: -60px;
+   }
+   @media only screen and (max-width: 600px){
+      .service-p{
+         color: #999999;
+         display: block;
+         font-size: 10px;
+         line-height: 17px;
+         margin-left: 70px;
+      }
+      .service-titile{
+         font-size: 13px;
+         font-weight: 400;
+         margin-left: 70px;
+         margin-top: -60px;
+      }
+      .mobile-view{
+         height: 5px;
+      }
+   }
 
 </style>
 <body>
@@ -94,7 +97,7 @@
                   @include('frontend.redparts.search')
                </div>
             </div>
-            
+            <div style="mobile-view height:15px"></div>
  
                <div class="container">
 
@@ -155,22 +158,22 @@
                         </div>
                </div>
  
-
+               
             <!--------------owl-carousel Advertise Upper Section Start------------>
-            <div style="margin:20px;"></div>
+            <div style="mobile-view height:15px"></div>
 
             @include('frontend.redparts.advertise_one')
 
             <!--------------owl-carousel Advertise Upper Section End ------------>
 
 
-            <div class="block-space block-space--layout--divider-nl"></div>
+            <div style="margin:20px;"></div>
 
             <!-------------- Featured Product Section Start------------->
                @include('frontend.redparts.featured')
             <!-------------- Featured Product Section End------------->
 
-            <div style="height:40px !important;"></div>
+            <div style="height:20px !important;"></div>
             <!-------------- Product Section Start------------->
 
              
@@ -179,14 +182,14 @@
 
 
             <!--------------owl-carousel Advertise Lower Section Start------------>
-            <div class="block-space block-space--layout--divider-nl"></div>
+            <div style="margin:20px;"></div>
             @include('frontend.redparts.advertise_two')
             <!--------------owl-carousel Advertise Lower Section End------------>
-            <div class="block-space block-space--layout--divider-nl"></div>
+            <div style="margin:20px;"></div>
 
                @include('frontend.redparts.new_arrival')
 
-               <div style="height:40px !important;"></div>
+               <div style="height:20px !important;"></div>
 
                @include('frontend.redparts.testimonial')
 
@@ -234,7 +237,7 @@
             <!------------------ Category Section End --------------------->
 
             <!--------------All Category Products---------------->
-            <div class="block-space block-space--layout--divider-nl"></div>
+            <div style="margin:20px;"></div>
            
             <div class="block block-products-columns">
               
@@ -308,7 +311,7 @@
               </div>
 
 
-            <div class="block-space block-space--layout--divider-nl"></div>
+            <div style="margin:20px;"></div>
 
          </div>
 
