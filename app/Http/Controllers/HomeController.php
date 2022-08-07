@@ -86,7 +86,7 @@ class HomeController extends Controller
         return response()->json($models);
     }
         
-        //For fetching cities
+        //For fetching years
     public function year($id)
     {
         $year= DB::table("years")
