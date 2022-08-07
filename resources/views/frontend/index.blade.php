@@ -80,6 +80,8 @@
    }
 
 </style>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 <body>
       <!-- site -->
       <div class="site">
@@ -97,7 +99,30 @@
                <div class="block-finder__body container container--max--xl">
                   <div class="block-finder__title">Find Parts For Your Vehicle</div>
                   <div class="block-finder__subtitle">Over hundreds of brands and tens of thousands of parts</div>
-                  @include('frontend.redparts.search')
+
+
+                  <div class="w3-bar">
+                     <button class="tablink w3-yellow block-finder__form-control block-finder__form-control--button" onclick="openCity(event,'London')">Basic</button>
+                     <button class="tablink block-finder__form-control block-finder__form-control--button" onclick="openCity(event,'Paris')">Advance</button>
+                   </div>
+                   
+                   <div id="London" class="w3-container city">
+                     @include('frontend.redparts.search')
+                   </div>
+                 
+                   <div id="Paris" class="w3-container city" style="display:none">
+                     @include('frontend.redparts.advanced_search')
+                   </div>
+                
+
+
+
+
+
+
+
+
+                  
                </div>
             </div>
             <div class="mobile-view" style="height:15px"></div>
@@ -321,6 +346,21 @@
 
 
 <script type="text/javascript">
+
+function openCity(evt, cityName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("city");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" w3-yellow", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " w3-yellow";
+}
+
 $(document).ready(function() {
 
    // Dependency Search Start
@@ -471,6 +511,8 @@ $(document).ready(function() {
          }
       }
    });
+
+
 
 
 });
