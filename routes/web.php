@@ -423,9 +423,19 @@ Route::controller(PageController::class)->group(function () {
     Route::get('/{slug}', 'show_custom_page')->name('custom-pages.show_custom_page');
 });
 
+//Basic Dependency Search Start
 Route::get('/brand', [HomeController::class, 'brand']);
 Route::get('/model/{id}', [HomeController::class, 'model']);
 Route::get('/year/{id}', [HomeController::class, 'year']);
 Route::get('/chassis/{id}/{model_id}', [HomeController::class, 'chassis']);
 Route::any('/search/parts', [SearchController::class, 'index'])->name('dependent.search');
+//Basic Dependency Search End
 
+
+//Advance Dependency Search Start
+Route::get('advance/brand', [HomeController::class, 'brand']);
+Route::get('advance/model/{id}', [HomeController::class, 'model']);
+Route::get('advance/year/{id}', [HomeController::class, 'year_two']);
+Route::get('advance/chassis/{id}/{model_id}', [HomeController::class, 'chassis']);
+Route::any('advance/search/parts', [SearchController::class, 'index'])->name('advance.dependent.search');
+//Advance Dependency Search End

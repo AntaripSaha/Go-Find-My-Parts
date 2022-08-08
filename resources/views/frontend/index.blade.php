@@ -343,175 +343,175 @@
 
 <script type="text/javascript">
 
-function openCity(evt, cityName) {
-  var i, x, tablinks;
-  x = document.getElementsByClassName("city");
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablink");
-  for (i = 0; i < x.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" w3-yellow", "");
-  }
-  document.getElementById(cityName).style.display = "block";
-  evt.currentTarget.className += " w3-yellow";
-}
+   function openCity(evt, cityName) {
+   var i, x, tablinks;
+   x = document.getElementsByClassName("city");
+   for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+   }
+   tablinks = document.getElementsByClassName("tablink");
+   for (i = 0; i < x.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" w3-yellow", "");
+   }
+   document.getElementById(cityName).style.display = "block";
+   evt.currentTarget.className += " w3-yellow";
+   }
 
-$(document).ready(function() {
+   $(document).ready(function() {
 
-   // Dependency Search Start
-    $("#brand").change(function() {
-        var brand_id = $(this).val();
-        if (brand_id) {
-            $.ajax({
-                type: "get",
-                url: "{{url('/model')}}/" + brand_id,
-                success: function(res) {
-                    if (res) {
-                        $("#model").empty();
-                        $("#model").append('<option value="0">Select Model</option>');
-                        $.each(res, function(key, value) {
-                            $("#model").append('<option value="' + key + '">' + value + '</option>');
-                        });
-                    }
-                }
+      // Dependency Search Start
+      $("#brand").change(function() {
+         var brand_id = $(this).val();
+         if (brand_id) {
+               $.ajax({
+                  type: "get",
+                  url: "{{url('/model')}}/" + brand_id,
+                  success: function(res) {
+                     if (res) {
+                           $("#model").empty();
+                           $("#model").append('<option value="0">Select Model</option>');
+                           $.each(res, function(key, value) {
+                              $("#model").append('<option value="' + key + '">' + value + '</option>');
+                           });
+                     }
+                  }
 
-            });
-        }
-    });
-    $('#model').change(function() {
-        var model_id = $(this).val();
-        if (model_id) {
-            $.ajax({
-                type: "get",
-                url: "{{url('/year')}}/" + model_id,
-                success: function(res) {
-                    if (res) {
-                        $("#year").empty();
-                        $("#year").append('<option value="0">Select Year</option>');
-                        $.each(res, function(key, value) {
-                            $("#year").append('<option value="' + key + '">' + value + '</option>');
-                        });
-                    }
-                }
-            });
-        }
-    });
-    $('#year').change(function() {
-        var year_id = $(this).val();
-        var model_id = $('#model').val();
-        if (year_id) {
-            $.ajax({
-                type: "get",
-                url: "{{url('/chassis')}}/" + year_id + '/' + model_id,
-                success: function(res) {
-                    if (res) {
-                        $("#chassis").empty();
-                        $("#chassis").append('<option value="0">Select Chassis</option>');
-                        $.each(res, function(key, value) {
-                            $("#chassis").append('<option value="' + key + '">' + value + '</option>');
-                        });
-                    }
-                }
-            });
-        }
-    });
-    // Dependency Search End
-
-   // Advertise Slider Upper Section 
-   $('.adone').owlCarousel({
-      loop:true,
-      margin:10,
-      autoplay:true,
-      autoplayTimeout:7500,
-      smartSpeed: 4000,
-      autoplayHoverPause:true,
-      responsiveClass:true,
-      nav:false,
-      responsive:{
-         0:{
-               items:1
-         },
-         600:{
-               items:1
-         },
-         1000:{
-               items:2
+               });
          }
-      }
-   });
-   // Advertise Slider Lower Section 
-   $('.ad').owlCarousel({
-      loop:true,
-      margin:10,
-      autoplay:true,
-      autoplayTimeout:7500,
-      smartSpeed: 4000,
-      autoplayHoverPause:true,
-      responsiveClass:true,
-      nav:false,
-      responsive:{
-         0:{
-               items:1
-         },
-         600:{
-               items:2
-         },
-         1000:{
-               items:3
+      });
+      $('#model').change(function() {
+         var model_id = $(this).val();
+         if (model_id) {
+               $.ajax({
+                  type: "get",
+                  url: "{{url('/year')}}/" + model_id,
+                  success: function(res) {
+                     if (res) {
+                           $("#year").empty();
+                           $("#year").append('<option value="0">Select Year</option>');
+                           $.each(res, function(key, value) {
+                              $("#year").append('<option value="' + key + '">' + value + '</option>');
+                           });
+                     }
+                  }
+               });
          }
-      }
-   });
-   // Service Slider Section 
-   $('.ser-up').owlCarousel({
-      loop:true,
-      margin:5,
-      autoplay:false,
-      autoplayTimeout:5500,
-      smartSpeed: 3000,
-      autoplayHoverPause:true,
-      responsiveClass:true,
-      nav:false,
-      responsive:{
-         0:{
-               items:2
-         },
-         600:{
-               items:2
-         },
-         1000:{
-               items:5
+      });
+      $('#year').change(function() {
+         var year_id = $(this).val();
+         var model_id = $('#model').val();
+         if (year_id) {
+               $.ajax({
+                  type: "get",
+                  url: "{{url('/chassis')}}/" + year_id + '/' + model_id,
+                  success: function(res) {
+                     if (res) {
+                           $("#chassis").empty();
+                           $("#chassis").append('<option value="0">Select Chassis</option>');
+                           $.each(res, function(key, value) {
+                              $("#chassis").append('<option value="' + key + '">' + value + '</option>');
+                           });
+                     }
+                  }
+               });
          }
-      }
-   });
+      });
+      // Dependency Search End
 
-   // products slider
-   $('.owl-carousel').owlCarousel({
-      loop:true,
-      margin:10,
-      autoplay:true,
-      autoplayTimeout:8500,
-      smartSpeed: 6000,
-      autoplayHoverPause:true,
-      responsiveClass:true,
-      nav:false,
-      responsive:{
-         0:{
-               items:2
-         },
-         600:{
-               items:2
-         },
-         1000:{
-               items:5
+      // Advertise Slider Upper Section 
+      $('.adone').owlCarousel({
+         loop:true,
+         margin:10,
+         autoplay:true,
+         autoplayTimeout:7500,
+         smartSpeed: 4000,
+         autoplayHoverPause:true,
+         responsiveClass:true,
+         nav:false,
+         responsive:{
+            0:{
+                  items:1
+            },
+            600:{
+                  items:1
+            },
+            1000:{
+                  items:2
+            }
          }
-      }
+      });
+      // Advertise Slider Lower Section 
+      $('.ad').owlCarousel({
+         loop:true,
+         margin:10,
+         autoplay:true,
+         autoplayTimeout:7500,
+         smartSpeed: 4000,
+         autoplayHoverPause:true,
+         responsiveClass:true,
+         nav:false,
+         responsive:{
+            0:{
+                  items:1
+            },
+            600:{
+                  items:2
+            },
+            1000:{
+                  items:3
+            }
+         }
+      });
+      // Service Slider Section 
+      $('.ser-up').owlCarousel({
+         loop:true,
+         margin:5,
+         autoplay:false,
+         autoplayTimeout:5500,
+         smartSpeed: 3000,
+         autoplayHoverPause:true,
+         responsiveClass:true,
+         nav:false,
+         responsive:{
+            0:{
+                  items:2
+            },
+            600:{
+                  items:2
+            },
+            1000:{
+                  items:5
+            }
+         }
+      });
+
+      // products slider
+      $('.owl-carousel').owlCarousel({
+         loop:true,
+         margin:10,
+         autoplay:true,
+         autoplayTimeout:8500,
+         smartSpeed: 6000,
+         autoplayHoverPause:true,
+         responsiveClass:true,
+         nav:false,
+         responsive:{
+            0:{
+                  items:2
+            },
+            600:{
+                  items:2
+            },
+            1000:{
+                  items:5
+            }
+         }
+      });
+
+
+
+
    });
-
-
-
-
-});
 
 </script> 
    </body>
