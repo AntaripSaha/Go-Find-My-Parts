@@ -19,6 +19,7 @@ class SearchController extends Controller
 {
     public function index(Request $request,$value, $category_id = null, $brand_id = null)
     {
+        $advance_dependent_search_products = 0;
         $dependent_search_products = 0;
         $query = $request->keyword;
         $sort_by = $request->sort_by;
@@ -124,8 +125,7 @@ class SearchController extends Controller
             }
         }
 
-         //Dependency Search Functionality Start
-         
+         //Basic Dependency Search Functionality Start
          if($request->brand_dependency){
             if($request->brand_dependency == 0){
                 $dependent_search_products = Product::all()->paginate(12)->appends(request()->query());
@@ -144,13 +144,21 @@ class SearchController extends Controller
               }
 
          }
-         
+        
+           //Basic Dependency Search Functionality End
+           if($request->fitment){
+            if($request->fitment != 0 ){
+                $advance_dependent_search_products = Product::where('id', $request->fitment)->paginate(12)->appends(request()->query());
+            }
+           }
+        //    return  $dependent_search_products;
+        //    return  $advance_dependent_search_products;
 
-           //Dependency Search Functionality End
 
-        $products = filter_products($products)->with('taxes')->paginate(12)->appends(request()->query());
 
-        return view('frontend.product_listing', compact('dependent_search_products','products', 'query', 'category_id', 'brand_id', 'sort_by', 'seller_id', 'min_price', 'max_price', 'attributes', 'selected_attribute_values', 'colors', 'selected_color'));
+      $products = filter_products($products)->with('taxes')->paginate(12)->appends(request()->query());
+
+        return view('frontend.product_listing', compact('advance_dependent_search_products','dependent_search_products','products', 'query', 'category_id', 'brand_id', 'sort_by', 'seller_id', 'min_price', 'max_price', 'attributes', 'selected_attribute_values', 'colors', 'selected_color'));
     }
 
     public function listing(Request $request)

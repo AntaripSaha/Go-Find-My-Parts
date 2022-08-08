@@ -109,16 +109,6 @@
                    <div id="Advance" class="w3-container city" style="display:none">
                      @include('frontend.redparts.advanced_search')
                    </div>
-                
-
-
-
-
-
-
-
-
-                  
                </div>
             </div>
             <div class="mobile-view" style="height:15px"></div>
@@ -197,9 +187,9 @@
             <!-------------- Featured Product Section End------------->
 
             <div style="height:20px !important;"></div>
-            <!-------------- Product Section Start------------->
 
-             
+
+            <!-------------- Product Section Start------------->
                @include('frontend.redparts.product')
             <!-------------- Product Section End------------->
 

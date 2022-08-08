@@ -38,7 +38,7 @@
                                  <div class="category-card__name"><a href="{{url("/categories")}}">Categories</a></div>
                                  <ul class="category-card__children">
                                     @foreach($categories as $category)
-                                       <li><a href="{{url("/category/{$category->slug}")}}">{{$category->name}}</a></li>
+                                       <li style="text-align: left !important;"><a href="{{url("/category/{$category->slug}")}}">{{$category->name}}</a></li>
                                     @endforeach
                                     
                                  </ul>

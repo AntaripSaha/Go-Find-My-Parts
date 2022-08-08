@@ -59,7 +59,7 @@ class HomeController extends Controller
             return filter_products(Product::where('published', 1)->limit(50))->get();
         });
     //    return  $featured_products[0]->current_stock;
-        $categories = Category::select('name', 'slug')->get();
+        $categories = Category::select('name', 'slug')->take(6)->get();
         $brands = DB::table('brands')->get();
         $todays_deal_products_footer = filter_products(Product::where('published', 1)->limit(3)->where('todays_deal', '1'))->get();
         $featured_products_footer = filter_products(Product::where('featured', 1))->limit(3)->get();
@@ -93,12 +93,7 @@ class HomeController extends Controller
                 ->pluck("year","id");
         return response()->json($year);
     }
-    public function year_two($id)
-    {
-        $year_two= DB::table("years")
-                ->pluck("year","id");
-        return response()->json($year_two);
-    }
+
     public function chassis($id, $model_id)
     {
         $chassis= DB::table("products")
@@ -107,6 +102,42 @@ class HomeController extends Controller
                     ->pluck("chassis_id","id");
         return response()->json($chassis);
     }
+    //Advance Dependency Search
+
+    public function year_two($id)
+    {
+        $year_two= DB::table("years")
+                ->pluck("year","id");
+        return response()->json($year_two);
+    }
+    public function style($model_two_id, $year_two_id){
+        $style = DB::table('styles')
+                    ->where('year_id', $year_two_id)
+                    ->where('model_id', $model_two_id)
+                    ->pluck('style', 'id');
+        return response()->json($style);
+    }
+    public function part_category(){
+        $part_category = DB::table('part_categories')
+                            ->pluck('name', 'id');
+        return response()->json($part_category);
+    }
+    public function parts($part_category_id, $style_id){
+        $parts = DB::table('parts')
+                    ->where('category_id', $part_category_id)
+                    ->where('style_id', $style_id)
+                    ->pluck('name', 'id');
+        return response()->json($parts);
+
+    }
+    public function fitment($parts_id){
+        $fitment = DB::table('products')
+                    ->where('part_id', $parts_id)
+                    ->pluck('fitment', 'id');
+        return response()->json($fitment);
+
+    }
+
     public function index()
     {
         

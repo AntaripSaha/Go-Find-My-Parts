@@ -435,7 +435,11 @@ Route::any('/search/parts', [SearchController::class, 'index'])->name('dependent
 //Advance Dependency Search Start
 Route::get('advance/brand', [HomeController::class, 'brand']);
 Route::get('advance/model/{id}', [HomeController::class, 'model']);
-Route::get('advance/year/{id}', [HomeController::class, 'year_two']);
-Route::get('advance/chassis/{id}/{model_id}', [HomeController::class, 'chassis']);
+Route::get('advance/year/{id}', [HomeController::class, 'year']);
+Route::get('advance/style/{model_two_id}/{year_two_id}', [HomeController::class, 'style']);
+Route::get('advance/part/category', [HomeController::class, 'part_category']);
+Route::get('advance/parts/{part_category_id}/{style_id}', [HomeController::class, 'parts']);
+Route::get('advance/fitment/{parts_id}', [HomeController::class, 'fitment']);
+
 Route::any('advance/search/parts', [SearchController::class, 'index'])->name('advance.dependent.search');
 //Advance Dependency Search End
