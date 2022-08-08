@@ -99,9 +99,11 @@
                <div class="block-finder__body container container--max--xl">
                   <div class="block-finder__title">Find Parts For Your Vehicle</div>
                   <div class="block-finder__subtitle">Over hundreds of brands and tens of thousands of parts</div>
-                  <div class="w3-bar" style="background:black">
-                     <button class="tablink w3-yellow block-finder__form-control block-finder__form-control--button" onclick="openCity(event,'Basic')">Basic</button>
-                     <button class="tablink block-finder__form-control block-finder__form-control--button" onclick="openCity(event,'Advance')">Advance</button>
+                  <div class="" style="width: 25%;margin-left: 35%;">
+                     <div style="background: rgb(0 0 0 / 59%)">
+                        <button class="tablink w3-yellow block-finder__form-control block-finder__form-control--button" onclick="openCity(event,'Basic')">Basic</button>
+                        <button class="tablink block-finder__form-control block-finder__form-control--button" onclick="openCity(event,'Advance')">Advance</button>
+                     </div>
                   </div>
                    <div id="Basic" class="w3-container city">
                      @include('frontend.redparts.search')
