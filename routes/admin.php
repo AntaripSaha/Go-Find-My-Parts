@@ -91,6 +91,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     Route::any('/models/delete/{id}', [ModelController::class, 'delete'])->name('model.delete');
     //Styles
     Route::any('/styles', [AdvanceSearchController::class, 'style_index'])->name('style.index');
+    Route::any('/styles/store', [AdvanceSearchController::class, 'style_store'])->name('style.store');
 
     // Products
     Route::controller(ProductController::class)->group(function () {

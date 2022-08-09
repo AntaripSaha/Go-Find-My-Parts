@@ -7,24 +7,33 @@ use App\Models\Models;
 use App\Models\Style;
 use App\Models\Year;
 use DB;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 class AdvanceSearchController extends Controller
 {
     public function style_index(Request $request){
         $sort_search =null;
-        $years = Year::all();
-        $brands = Brand::all();
-        $styles = Style::all();
-        $models = Models::where('id', $styles->model_id)->select('id', 'model_name')->get();
-        $models = Models::where('id', $styles->model_id)->select('id', 'model_name')->get();
-
+        $years = Year::select('id', 'year')->get();
+        $brands = Brand::select('id','name')->get();
+        $models = Models::select('id', 'model_name')->get();
+        $styles = Style::with('brands', 'models', 'years');
         if ($request->has('search')){
             $sort_search = $request->search;
-            $models = $models->where('name', 'like', '%'.$sort_search.'%')
-                             ->orWhere('model_name','like', '%'.$sort_search.'%');
+            $styles = $styles->where('style', 'like', '%'.$sort_search.'%');
         }
-        $models = $models->paginate(5);
-        return view('backend.product.styles.style', compact('models', 'brands', 'sort_search', 'years'));
+        $styles = $styles->paginate(5);
+        return view('backend.product.styles.style', compact('styles','models', 'brands', 'sort_search', 'years'));
+    }
+    public function style_store(Request $request){
+        $styles = new Style();
+        $styles->style = $request->style;
+        $styles->brand_id = $request->brand_id;
+        $styles->model_id = $request->model_id;
+        $styles->year_id = $request->year_id;
+        if($styles->save()){
+            flash(translate('Style has been inserted successfully'))->success();
+            return redirect()->route('style.index');
+        }
     }
 }

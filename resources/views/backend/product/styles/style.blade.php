@@ -29,12 +29,15 @@
 		                </tr>
 		            </thead>
 		            <tbody>
-                      
+						@php
+						$i = 1;
+						@endphp
+						@foreach($styles as $style)
 		                    <tr>
-                                <td> </td>
-		                        <td></td>
-		                        <td></td>
-		                        <td></td>
+                                <td>{{$i}}</td>
+		                        <td>{{$style->brands->name}}</td>
+		                        <td>{{$style->models->model_name}}</td>
+		                        <td>{{$style->style}}</td>
 		                        <td class="text-right">
                                     <a href="#"  title="{{ translate('Edit') }}" class="btn btn-soft-primary btn-icon btn-circle btn-sm">
                                         <i class="las la-edit"></i>
@@ -44,11 +47,16 @@
 		                            </a> --}}
 		                        </td>
 		                    </tr>
+							@php
+							$i++;
+							@endphp
+
+						@endforeach
                        
 		            </tbody>
 		        </table>
 		        <div class="aiz-pagination">
-                    {{ $models->appends(request()->input())->links() }}
+                    {{ $styles->appends(request()->input())->links() }}
             	</div>
 		    </div>
 		</div>
@@ -60,14 +68,14 @@
 				<h5 class="mb-0 h6">{{ translate('Add Car Style') }}</h5>
 			</div>
 			<div class="card-body">
-				<form action="{{route('model.store')}}" method="POST">
+				<form action="{{route('style.store')}}" method="POST">
 					@csrf
 					<div class="form-group mb-3">
-						<label for="model_name">{{translate('Name')}}</label>
-						<input type="text" placeholder="{{translate('Car Model')}}" name="model_name" class="form-control" required>
+						<label for="model_name">{{translate('Style')}}</label>
+						<input type="text" placeholder="{{translate('Car Style')}}" name="style" class="form-control" required>
 					</div>
                     <div class="form-group mb-3">
-						<label for="brand">{{translate('Brand')}} <span class="text-danger">*</span></label>
+						<label for="brand">{{translate('Select Brand')}} <span class="text-danger">*</span></label>
 						<div class="">
 							<select class="form-control aiz-selectpicker" name="brand_id" data-live-search="true" required>
 							@foreach($brands as $brand)
@@ -77,11 +85,11 @@
 						</div>
                     </div>
                     <div class="form-group mb-3">
-						<label for="model">{{translate('Model')}} <span class="text-danger">*</span></label>
+						<label for="model">{{translate('Select Model')}} <span class="text-danger">*</span></label>
 						<div class="">
 							<select class="form-control aiz-selectpicker" name="model_id" data-live-search="true" required>
-							@foreach($brands as $brand)
-								<option value="{{$brand->id}}">{{$brand->name}}</option>
+							@foreach($models as $model)
+								<option value="{{$model->id}}">{{$model->model_name}}</option>
 							@endforeach
 							</select>
 						</div>
