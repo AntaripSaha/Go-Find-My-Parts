@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AddonController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdvanceSearchController;
 use App\Http\Controllers\AdvertiseController;
 use App\Http\Controllers\AizUploadController;
 use App\Http\Controllers\AttributeController;
@@ -88,6 +89,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     Route::any('/models/update/{id}', [ModelController::class, 'update'])->name('model.update');
     Route::any('/models/update/store/{id}', [ModelController::class, 'update_store'])->name('model.update.store');
     Route::any('/models/delete/{id}', [ModelController::class, 'delete'])->name('model.delete');
+    //Styles
+    Route::any('/styles', [AdvanceSearchController::class, 'style_index'])->name('style.index');
 
     // Products
     Route::controller(ProductController::class)->group(function () {
