@@ -248,10 +248,12 @@ Route::group(['prefix' => 'v2', 'middleware' => ['app_language']], function() {
     //Pickup Point list
     Route::get('pickup-list', 'App\Http\Controllers\Api\V2\ShippingController@pickup_list');
     
+    // Basic Dependency Search Start
     Route::get('basic-brand-search', 'App\Http\Controllers\Api\V2\DependencySearchController@brand');
     Route::post('basic-model-search', 'App\Http\Controllers\Api\V2\DependencySearchController@model');
     Route::post('basic-year-search', 'App\Http\Controllers\Api\V2\DependencySearchController@year');
     Route::post('basic-chassis-search', 'App\Http\Controllers\Api\V2\DependencySearchController@chassis');
+    // Basic Dependency Search End
 });
 
 Route::fallback(function() {

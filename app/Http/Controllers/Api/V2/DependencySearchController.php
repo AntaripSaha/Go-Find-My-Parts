@@ -12,6 +12,7 @@ use PhpParser\Node\Stmt\TryCatch;
 
 class DependencySearchController extends Controller
 {
+    //Basic Search Start
     public function brand(){
         try {
             $brand = Brand::select('id', 'name')->get();
@@ -73,4 +74,5 @@ class DependencySearchController extends Controller
             ]);
         }
     }
+    //Basic Search End
 }
