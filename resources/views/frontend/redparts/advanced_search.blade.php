@@ -191,7 +191,7 @@
          }
       });
       $('#part_category').change(function() {
-         var part_category_id = $('#part_category').val();
+         var part_category_id = $(this).val();
          var style_id = $('#style').val();
          document.getElementById("search_button").disabled = true;
          document.getElementById("parts").disabled = false;
@@ -223,7 +223,7 @@
                   success: function(res) {
                      if (res) {
                            $("#fitment").empty();
-                           $("#fitment").append('<option value="">Select Parts</option>');
+                           $("#fitment").append('<option value="">Select Fitment</option>');
                            $.each(res, function(key, value) {
                               $("#fitment").append('<option value="' + key + '">' + value + '</option>');
                            });

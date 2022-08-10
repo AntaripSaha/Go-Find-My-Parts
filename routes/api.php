@@ -254,6 +254,14 @@ Route::group(['prefix' => 'v2', 'middleware' => ['app_language']], function() {
     Route::get('basic-year-search', 'App\Http\Controllers\Api\V2\DependencySearchController@year');
     Route::post('basic-chassis-search', 'App\Http\Controllers\Api\V2\DependencySearchController@chassis');
     // Basic Dependency Search End
+
+    // Advance Dependency Search Start
+    Route::post('advance-style-search', 'App\Http\Controllers\Api\V2\DependencySearchController@style');
+    Route::get('advance-part-category-search', 'App\Http\Controllers\Api\V2\DependencySearchController@part_category');
+    Route::post('advance-parts-search', 'App\Http\Controllers\Api\V2\DependencySearchController@parts');
+    Route::post('advance-fitment-search', 'App\Http\Controllers\Api\V2\DependencySearchController@fitment');
+    // Route::post('advance-final-product-search', 'App\Http\Controllers\Api\V2\DependencySearchController@advance_search');
+    // Advance Dependency Search End
 });
 
 Route::fallback(function() {

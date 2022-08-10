@@ -28,12 +28,12 @@
                      <div class="block-zone__card category-card category-card--layout--overlay">
                         <div class="category-card__body">
                            <div class="category-card__overlay-image">
-                              <img src="{{static_asset('assets/frontend/images/categories/category-overlay-3.jpg')}}" sizes="(max-width: 575px) 530px, 305px" alt="">
+                              <img src="{{static_asset('assets/frontend/images/categories/category-overlay-3.jpg')}}" sizes="(max-width: 575px) 530px, 305px" alt="" style="opacity: 80% !important;">
                            </div>
                            <div class="category-card__overlay-image category-card__overlay-image--blur">
-                              <img src="{{static_asset('assets/frontend/images/categories/category-overlay-3.jpg') }}" sizes="(max-width: 575px) 530px, 305px" alt="">
+                              <img src="{{static_asset('assets/frontend/images/categories/category-overlay-3.jpg') }}" sizes="(max-width: 575px) 530px, 305px" alt="" style="opacity: 80% !important;">
                            </div>
-                           <div class="category-card__content">
+                           {{-- <div class="category-card__content">
                               <div class="category-card__info">
                                  <div class="category-card__name"><a href="{{url("/categories")}}">Categories</a></div>
                                  <ul class="category-card__children">
@@ -44,7 +44,7 @@
                                  </ul>
                                  <div class="category-card__actions"><a href="{{url("/search")}}" class="btn btn-primary btn-sm">Shop All</a></div>
                               </div>
-                           </div>
+                           </div> --}}
                         </div>
                      </div>
                      <div class="block-zone__widget">

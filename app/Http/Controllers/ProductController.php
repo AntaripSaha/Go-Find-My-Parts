@@ -52,9 +52,7 @@ class ProductController extends Controller
         $col_name = null;
         $query = null;
         $sort_search = null;
-
         $products = Product::where('added_by', 'admin')->where('auction_product', 0)->where('wholesale_product', 0);
-
         if ($request->type != null) {
             $var = explode(",", $request->type);
             $col_name = $var[0];
@@ -70,9 +68,7 @@ class ProductController extends Controller
                     $q->where('sku', 'like', '%' . $sort_search . '%');
                 });
         }
-
         $products = $products->where('digital', 0)->orderBy('created_at', 'desc')->paginate(15);
-
         return view('backend.product.products.index', compact('products', 'type', 'col_name', 'query', 'sort_search'));
     }
 
@@ -104,7 +100,6 @@ class ProductController extends Controller
             $products = $products->orderBy($col_name, $query);
             $sort_type = $request->type;
         }
-
         $products = $products->where('digital', 0)->orderBy('created_at', 'desc')->paginate(15);
         $type = 'Seller';
 
