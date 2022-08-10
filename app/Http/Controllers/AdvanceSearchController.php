@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Brand;
 use App\Models\Models;
+use App\Models\Part;
 use App\Models\PartCategory;
 use App\Models\Style;
 use App\Models\Year;
@@ -58,7 +59,7 @@ class AdvanceSearchController extends Controller
     // Style End
 
     // Part Category Start
-    public function part_index(Request $request){
+    public function part_category_index(Request $request){
         $part_categories = PartCategory::orderBy('id', 'asc');
         if ($request->has('search')){
             $sort_search = $request->search;
@@ -67,7 +68,7 @@ class AdvanceSearchController extends Controller
        $part_categories = $part_categories->paginate(5);
         return view('backend.product.part_category.index', compact('part_categories'));
     }
-    public function part_store(Request $request){
+    public function part_category_store(Request $request){
         $part_categories = new PartCategory();
         $part_categories->name = $request->part_category;
         if($part_categories->save()){
@@ -87,4 +88,43 @@ class AdvanceSearchController extends Controller
         return redirect()->route('part.categories.index');
     }
     // Part Category End
+
+    // Parts Start
+    public function parts_index(Request $request){
+       $parts = Part::with('styles', 'partCategories');
+       $partCategories = PartCategory::select('id', 'name')->get();
+       $styles = Style::select('id', 'style')->get();
+        if ($request->has('search')){
+            $sort_search = $request->search;
+            $parts = $parts->where('name', 'like', '%'.$sort_search.'%');
+        }
+       $parts = $parts->paginate(5);
+        return view('backend.product.parts.index', compact('parts', 'partCategories', 'styles'));
+    }
+    public function parts_store(Request $request){
+        $parts = new Part();
+        $parts->name = $request->name;
+        $parts->category_id = $request->part_category_id;
+        $parts->style_id = $request->style_id;
+        if($parts->save()){
+            flash(translate('Part has been inserted successfully'))->success();
+            return redirect()->route('parts.index');
+        }
+    }
+    public function parts_update($id, Request $request){
+       $parts = Part::find($id);
+       $partCategories = PartCategory::select('id', 'name')->get();
+       $styles = Style::select('id', 'style')->get();
+        return view('backend.product.parts.edit', compact('parts', 'partCategories', 'styles'));
+    }
+    public function parts_update_store($id, Request $request){
+        Part::where('id', $id)->update([
+            'name'=>$request->name,
+            'category_id'=>$request->part_category_id,
+            'style_id'=>$request->style_id
+        ]);
+        flash(translate('Parts has been Updated successfully'))->success();
+        return redirect()->route('parts.index');
+    }
+    // Parts Category End
 }
