@@ -57,6 +57,7 @@
       margin-left: 85px;
       margin-top: -60px;
    }
+ 
    @media only screen and (max-width: 600px){
       .service-p{
          color: #999999;
@@ -77,6 +78,13 @@
       .mobile-view-add-two{
          height: 35px !important;
       }
+      .advance-search{
+      width: 75%;
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: auto;
+   }
    }
 
 </style>
@@ -96,13 +104,16 @@
                   </div>
                </div>
                <div class="block-finder__image" style="background-image: url('{{static_asset('assets/frontend/images/finder-1903x500.jpg') }}' );"></div>
+               
+
+
                <div class="block-finder__body container container--max--xl">
                   <div class="block-finder__title">Find Parts For Your Vehicle</div>
                   <div class="block-finder__subtitle">Over hundreds of brands and tens of thousands of parts</div>
-                  <div class="" style="width: 25%;margin-left: 35%;">
+                  <div class="" style="width: 45%;margin-left: 1%;">
                      <div style="background: rgb(0 0 0 / 59%)">
                         <button class="tablink w3-yellow block-finder__form-control block-finder__form-control--button" onclick="openCity(event,'Basic')">Basic</button>
-                        <button class="tablink block-finder__form-control block-finder__form-control--button" onclick="openCity(event,'Advance')">Advance</button>
+                        <button class="tablink block-finder__form-control block-finder__form-control--button" onclick="openCity(event,'Advance')">Interchange</button>
                      </div>
                   </div>
                    <div id="Basic" class="w3-container city">
@@ -112,6 +123,10 @@
                      @include('frontend.redparts.advanced_search')
                    </div>
                </div>
+
+
+
+
             </div>
             <div class="mobile-view" style="height:15px"></div>
  

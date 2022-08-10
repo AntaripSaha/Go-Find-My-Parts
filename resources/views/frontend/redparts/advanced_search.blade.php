@@ -19,6 +19,16 @@
       background-repeat: no-repeat;
       text-align: left; */
    }
+   @media only screen and (max-width: 600px){
+      .tables{
+         width: 99%;
+         padding-right: 12%;
+         padding-left: 12%;
+         margin-right: auto;
+         margin-left: auto;
+      }
+
+   }
 </style>
 <form class="block-finder__form" action="{{route('advance.dependent.search')}}"  method="POST">
    @csrf

@@ -76,6 +76,45 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="form-group row" id="style">
+                            <label class="col-md-3 col-from-label">{{translate('Style')}}<span class="text-danger">*</span></label>
+                            <div class="col-md-8">
+                                <select class="form-control aiz-selectpicker" name="style_id" id="style_id" data-live-search="true" required>
+                                    <option value="">{{ translate('Select Style') }}</option>
+                                    @foreach (\App\Models\Style::all() as $style)
+                                    <option value="{{ $style->id }}" @if($product->style_id == $style->id) selected @endif>{{ $style->style }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row" id="part_category">
+                            <label class="col-md-3 col-from-label">{{translate('Part Category')}}<span class="text-danger">*</span></label>
+                            <div class="col-md-8">
+                                <select class="form-control aiz-selectpicker" name="part_category_id" id="part_category_id" data-live-search="true" required>
+                                    <option value="">{{ translate('Part Category') }}</option>
+                                    @foreach (\App\Models\PartCategory::all() as $part_category)
+                                    <option value="{{ $part_category->id }}"  @if($product->part_category_id == $part_category->id ) selected @endif>{{ $part_category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row" id="part">
+                            <label class="col-md-3 col-from-label">{{translate('Parts')}}<span class="text-danger">*</span></label>
+                            <div class="col-md-8">
+                                <select class="form-control aiz-selectpicker" name="part_id" id="part_id" data-live-search="true" required>
+                                    <option value="">{{ translate('Select Parts') }}</option>
+                                    @foreach (\App\Models\Part::all() as $part)
+                                    <option value="{{ $part->id }}" @if($product->part_id == $part->id) selected @endif>{{ $part->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-from-label">{{translate('Fitments')}} </label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="fitment" placeholder="{{ translate('Fitments') }}" value="{{$product->fitment}}">
+                            </div>
+                        </div>
                         <div class="form-group row">
                             <label class="col-md-3 col-from-label">{{translate('Chassis Number')}} </label>
                             <div class="col-md-8">
