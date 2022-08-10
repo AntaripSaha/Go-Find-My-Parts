@@ -43,7 +43,6 @@ class ModelController extends Controller
             'model_name'=> $request->model_name,
             'brand_id'=> $request->brand_id,
     ]);
-
         flash(translate('Model has been Updated successfully'))->success();
         return redirect()->route('model.index');
    }

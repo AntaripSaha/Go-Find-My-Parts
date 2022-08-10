@@ -104,6 +104,11 @@
                                 </a>
                             </li>
                             <li class="aiz-side-nav-item">
+                                <a href="{{route('part.categories.index')}}" class="aiz-side-nav-link {{ areActiveRoutes(['part.categories.index', 'part.categories.create', 'part.categories.edit'])}}">
+                                    <span class="aiz-side-nav-text">{{translate('Part Category')}}</span>
+                                </a>
+                            </li>
+                            <li class="aiz-side-nav-item">
                                 <a href="{{route('brands.index')}}" class="aiz-side-nav-link {{ areActiveRoutes(['brands.index', 'brands.create', 'brands.edit'])}}" >
                                     <span class="aiz-side-nav-text">{{translate('Brand')}}</span>
                                 </a>

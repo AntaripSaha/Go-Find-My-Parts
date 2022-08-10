@@ -92,6 +92,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     //Styles
     Route::any('/styles', [AdvanceSearchController::class, 'style_index'])->name('style.index');
     Route::any('/styles/store', [AdvanceSearchController::class, 'style_store'])->name('style.store');
+    Route::any('/styles/update/{id}', [AdvanceSearchController::class, 'style_update'])->name('style.update');
+    Route::any('/styles/update/store/{id}', [AdvanceSearchController::class, 'style_update_store'])->name('style.update.store');
+    
+    Route::any('/part/category', [AdvanceSearchController::class, 'part_index'])->name('part.categories.index');
+    Route::any('/part/category/store', [AdvanceSearchController::class, 'part_store'])->name('part.categories.store');
+    Route::any('/part/category/update/{id}', [AdvanceSearchController::class, 'part_category_update'])->name('part.categories.update');
+    Route::any('/part/category/update/store/{id}', [AdvanceSearchController::class, 'part_category_update_store'])->name('part.categories.update.store');
 
     // Products
     Route::controller(ProductController::class)->group(function () {

@@ -39,7 +39,7 @@
 		                        <td>{{$style->models->model_name}}</td>
 		                        <td>{{$style->style}}</td>
 		                        <td class="text-right">
-                                    <a href="#"  title="{{ translate('Edit') }}" class="btn btn-soft-primary btn-icon btn-circle btn-sm">
+                                    <a href="{{route('style.update', [ 'id'=>$style->id])}}"  title="{{ translate('Edit') }}" class="btn btn-soft-primary btn-icon btn-circle btn-sm">
                                         <i class="las la-edit"></i>
                                     </a>
 		                            {{-- <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="#" title="{{ translate('Delete') }}">
