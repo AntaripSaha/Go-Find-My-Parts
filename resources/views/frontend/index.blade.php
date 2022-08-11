@@ -3,6 +3,14 @@
 
 <style>
 
+   .basic-btn {
+      margin: 7px !important;
+   }
+
+   .advance-btn {
+      margin: 0px !important;
+   }
+
    .make-new{
          border-top-left-radius: 30px !important;
          height: 60px !important;
@@ -57,6 +65,9 @@
       margin-left: 85px;
       margin-top: -60px;
    }
+   .btn-background{
+      background: rgb(0 0 0 / 59%);
+   }
  
    @media only screen and (max-width: 600px){
       .service-p{
@@ -78,14 +89,49 @@
       .mobile-view-add-two{
          height: 35px !important;
       }
-      .advance-search{
+      /* .advance-search{
       width: 75%;
       padding-right: 15px;
       padding-left: 15px;
       margin-right: auto;
       margin-left: auto;
    }
+   .basic-btn{
+      position: absolute;
+      width: 33% !important;
+      font-size: 11px !important;
+      margin-left: 13% !important;
    }
+   .advance-btn{
+      width: 83% !important;
+      font-size: 11px !important;
+      margin-left: 100% !important;;
+   } */
+   .btn-background{
+      background: none;
+   }
+
+.btn_dev {
+   width: 77% !important;
+   margin: 0px auto !important;
+   margin-bottom: 10px !important;
+   text-align: center !important;
+}
+
+
+.basic-btn {
+   width: 90%;
+}
+
+.advance-btn {
+   width: 90%;
+}
+
+
+
+   }
+
+
 
 </style>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -110,12 +156,10 @@
                <div class="block-finder__body container container--max--xl">
                   <div class="block-finder__title">Find Parts For Your Vehicle</div>
                   <div class="block-finder__subtitle">Over hundreds of brands and tens of thousands of parts</div>
-                  <div class="" style="width: 45%;margin-left: 1%;">
-                     <div style="background: rgb(0 0 0 / 59%)">
-                        <button class="tablink w3-yellow block-finder__form-control block-finder__form-control--button" onclick="openCity(event,'Basic')">Basic</button>
-                        <button class="tablink block-finder__form-control block-finder__form-control--button" onclick="openCity(event,'Advance')">Interchange</button>
+                  <div class="btn_dev text-left ml-2 mt-2" style="width: 45%;">
+                        <button class="tablink w3-yellow block-finder__form-control block-finder__form-control--button basic-btn" onclick="openCity(event,'Basic')">Basic</button>
+                        <button class="tablink block-finder__form-control block-finder__form-control--button advance-btn" onclick="openCity(event,'Advance')">Interchange</button>
                      </div>
-                  </div>
                    <div id="Basic" class="w3-container city">
                      @include('frontend.redparts.search')
                    </div>

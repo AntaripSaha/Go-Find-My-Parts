@@ -19,16 +19,7 @@
       background-repeat: no-repeat;
       text-align: left; */
    }
-   @media only screen and (max-width: 600px){
-      .tables{
-         width: 99%;
-         padding-right: 12%;
-         padding-left: 12%;
-         margin-right: auto;
-         margin-left: auto;
-      }
 
-   }
 </style>
 <form class="block-finder__form" action="{{route('advance.dependent.search')}}"  method="POST">
    @csrf
@@ -36,8 +27,8 @@
    <div class="container">
       <div class="row">
          <div class="col-md-3">
-            <div class="block-finder__form-control block-finder__form-control--select" >
-               <select name="brand_dependency" id='brand_two'>
+            <div class="block-finder__form-control block-finder__form-control--select tables" >
+               <select class="" name="brand_dependency" id='brand_two'>
                   <option value="0">Select Make</option>
                   @foreach($brands as $brand)
                   <option value="{{$brand->id}}">{{$brand->name}}</option>
@@ -46,19 +37,19 @@
             </div>
          </div>
          <div class="col-md-3">
-            <div class="block-finder__form-control block-finder__form-control--select" >
+            <div class="block-finder__form-control block-finder__form-control--select tables" >
                <select name="model_two" id="model_two" aria-label="Vehicle Make" disabled="disabled">
                </select>
             </div>
          </div>
          <div class="col-md-3">
-            <div class="block-finder__form-control block-finder__form-control--select" >
+            <div class="block-finder__form-control block-finder__form-control--select tables" >
                <select name="year_two" id="year_two" disabled="disabled">
                </select>
             </div>
          </div>
          <div class="col-md-3">
-            <div class="block-finder__form-control block-finder__form-control--select" >
+            <div class="block-finder__form-control block-finder__form-control--select tables" >
                <select name="style" id="style" aria-label="Vehicle Engine" disabled="disabled">
                </select>
             </div>
@@ -67,25 +58,25 @@
       
       <div class="row">
          <div class="col-md-3">
-            <div class="block-finder__form-control block-finder__form-control--select" >
+            <div class="block-finder__form-control block-finder__form-control--select tables" >
                <select name="part_category" id="part_category" aria-label="Part Category" disabled="disabled">
                </select>
             </div>
          </div>
          <div class="col-md-3">
-            <div class="block-finder__form-control block-finder__form-control--select" >
+            <div class="block-finder__form-control block-finder__form-control--select tables" >
                <select name="parts" id="parts" aria-label="Vehicle Parts" disabled="disabled">
                </select>
             </div>
          </div>
          <div class="col-md-3">
-            <div class="block-finder__form-control block-finder__form-control--select" >
+            <div class="block-finder__form-control block-finder__form-control--select tables" >
                <select name="fitment" id="fitment" disabled="disabled">
                </select>
             </div>
          </div>
          <div class="col-md-3">
-            <button class="block-finder__form-control block-finder__form-control--button" id="search_button" disabled="disabled" style="backgoruond-color:#72b860 !important; width:97% !important;" type="submit">Search</button>
+            <button class="block-finder__form-control block-finder__form-control--button btn-block custom_btn_search" id="search_button" disabled="disabled" style="" type="submit">Search</button>
          </div>
       </div>
       
@@ -255,3 +246,32 @@
 
 </script> 
 
+
+<style>
+   .custom_btn_search {
+      background-color:#ffeb3b !important; 
+      width: 95% !important;
+      margin-top: 2% !important;
+      margin: 0px auto;
+      color: #000;
+   }
+
+   .custom_btn_search:hover {
+      color: #000;
+   }
+
+
+@media only screen and (min-width: 360px) and (max-width: 700px){
+      .tables{
+         width: 74.2% !important;
+         margin-left: 12% !important;
+         margin-top: 2% !important;
+         border-radius: 2% !important;
+      }
+
+      .custom_btn_search {
+         width: 75% !important;
+      }
+
+   }
+</style>

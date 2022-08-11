@@ -41,7 +41,7 @@
                             <img class="lazyload" src="{{ static_asset('assets/img/placeholder-rect.jpg') }}" data-src="{{ static_asset('assets/img/logo.png') }}" alt="{{ env('APP_NAME') }}" height="20">
                         @endif
                     </a>
-                    <div class="my-3" style="opacity: 70%; width: 90%;">
+                    <div class="my-3" style="opacity: 70%;">
                         {!! get_setting('about_us_description',null,App::getLocale()) !!}
                     </div>
                     <div class="d-inline-block d-md-block mb-4">
@@ -69,7 +69,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 ml-xl-auto col-md-4 mr-0">
+            <div class="col-lg-3 ml-xl-auto col-md-4 mr-0 footer-web">
                 <div class="text-center text-md-left mt-4">
                     <h4 class="fs-13 text-uppercase fw-600 border-bottom border-gray-900 pb-2 mb-4">
                         {{ translate('Contact Info') }}
@@ -111,7 +111,7 @@
                 </div>
             </div>
 
-            <div class="col-md-4 col-lg-2">
+            <div class="col-md-4 col-lg-2 footer-web ">
                 <div class="text-center text-md-left mt-4">
                     <h4 class="fs-13 text-uppercase fw-600 border-bottom border-gray-900 pb-2 mb-4">
                         {{ translate('My Account') }}
@@ -166,6 +166,117 @@
         </div>
     </div>
 </section>
+
+
+
+
+
+
+
+
+
+<section class="bg-dark py-2 text-light footer-widget m-footer-widget">
+    <div class="container">
+        <div class="row" style="padding: 15px">
+
+
+
+            <div class="footer-mobile" style="width: 50%">
+                <div class="text-center text-md-left mt-4">
+                    <h4 class="fs-13 text-uppercase fw-600 border-bottom border-gray-900 pb-2 mb-4">
+                        {{ translate('Contact Info') }}
+                    </h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                           <span class="d-block opacity-30">{{ translate('Address') }}:</span>
+                           <span class="d-block opacity-70">{{ get_setting('contact_address',null,App::getLocale()) }}</span>
+                        </li>
+                        <li class="mb-2">
+                           <span class="d-block opacity-30">{{translate('Phone')}}:</span>
+                           <span class="d-block opacity-70">{{ get_setting('contact_phone') }}</span>
+                        </li>
+                        <li class="mb-2">
+                           <span class="d-block opacity-30">{{translate('Email')}}:</span>
+                           <span class="d-block opacity-70">
+                               <a href="mailto:{{ get_setting('contact_email') }}" class="text-reset">{{ get_setting('contact_email')  }}</a>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+
+            <div class="footer-mobile" style="width: 50%">
+                <div class="text-center text-md-left mt-4">
+                    <h4 class="fs-13 text-uppercase fw-600 border-bottom border-gray-900 pb-2 mb-4">
+                        {{ translate('My Account') }}
+                    </h4>
+                    <ul class="list-unstyled">
+                        @if (Auth::check())
+                            <li class="mb-2">
+                                <a class="opacity-50 hov-opacity-100 text-reset" href="{{ route('logout') }}">
+                                    {{ translate('Logout') }}
+                                </a>
+                            </li>
+                        @else
+                            <li class="mb-2">
+                                <a class="opacity-50 hov-opacity-100 text-reset" href="{{ route('user.login') }}">
+                                    {{ translate('Login') }}
+                                </a>
+                            </li>
+                        @endif
+                        <li class="mb-2">
+                            <a class="opacity-50 hov-opacity-100 text-reset" href="{{ route('purchase_history.index') }}">
+                                {{ translate('Order History') }}
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a class="opacity-50 hov-opacity-100 text-reset" href="{{ route('wishlists.index') }}">
+                                {{ translate('My Wishlist') }}
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a class="opacity-50 hov-opacity-100 text-reset" href="{{ route('orders.track') }}">
+                                {{ translate('Track Order') }}
+                            </a>
+                        </li>
+                        @if (addon_is_activated('affiliate_system'))
+                            <li class="mb-2">
+                                <a class="opacity-50 hov-opacity-100 text-light" href="{{ route('affiliate.apply') }}">{{ translate('Be an affiliate partner')}}</a>
+                            </li>
+                        @endif
+                    </ul>
+                </div>
+                @if (get_setting('vendor_system_activation') == 1)
+                    <div class="text-center text-md-left mt-4">
+                        <h4 class="fs-13 text-uppercase fw-600 border-bottom border-gray-900 pb-2 mb-4">
+                            {{ translate('Be a Seller') }}
+                        </h4>
+                        <a href="{{ route('shops.create') }}" class="btn btn-primary btn-sm shadow-md" style="margin-top: -10px !important;">
+                            {{ translate('Apply Now') }}
+                        </a>
+                    </div>
+                @endif
+            </div>
+
+
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- FOOTER -->
 <footer class="pt-3 pb-7 pb-xl-3 bg-black text-light">
@@ -319,3 +430,23 @@
         </div>
     </div>
 @endif
+
+<style>
+    .footer-web{
+        display: block;
+    }
+    .footer-mobile{
+        display: none;
+    }
+    @media only screen and (max-width: 600px){
+    .footer-mobile{
+        display: block;
+    }
+    .footer-web{
+        display: none;
+    }
+    
+
+    }
+
+</style>
