@@ -132,5 +132,87 @@
         }
     </script>
 
+
+	
+<script>
+    $(document).on('change', '[name=brand_id]', function() {
+        var brand_id = $(this).val();
+        get_models(brand_id);
+    });
+
+    $(document).on('change', '[name=model_id]', function() {
+        var model_id = $(this).val();
+        get_style(model_id);
+    });
+
+    $(document).on('change', '[name=style_id]', function() {
+        var style_id = $(this).val();
+        get_parts(style_id);
+    });
+    
+    function get_models(brand_id) {
+        $('[name="model_id"]').html("");
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: "{{route('get-model')}}",
+            type: 'POST',
+            data: {
+                brand_id  : brand_id
+            },
+            success: function (response) {
+                var obj = JSON.parse(response);
+                if(obj != '') {
+                    $('[name="model_id"]').html(obj);
+                    AIZ.plugins.bootstrapSelect('refresh');
+                }
+            }
+        });
+    }
+
+    function get_style(model_id) {
+        $('[name="style_id"]').html("");
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: "{{route('get-style')}}",
+            type: 'POST',
+            data: {
+                model_id: model_id
+            },
+            success: function (response) {
+                var obj = JSON.parse(response);
+                if(obj != '') {
+                    $('[name="style_id"]').html(obj);
+                    AIZ.plugins.bootstrapSelect('refresh');
+                }
+            }
+        });
+    }
+
+    function get_parts(style_id) {
+        $('[name="part_id"]').html("");
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: "{{route('get-part')}}",
+            type: 'POST',
+            data: {
+                style_id: style_id
+            },
+            success: function (response) {
+                var obj = JSON.parse(response);
+                if(obj != '') {
+                    $('[name="part_id"]').html(obj);
+                    AIZ.plugins.bootstrapSelect('refresh');
+                }
+            }
+        });
+    }
+</script>
+
 </body>
 </html>

@@ -32,6 +32,9 @@ use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\View;
 use App\Models\BlogCategory;
 use App\Models\Blog;
+use App\Models\Models;
+use App\Models\Part;
+use App\Models\Style;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -725,5 +728,40 @@ class HomeController extends Controller
     {
         $products = filter_products(Product::where('added_by', 'admin'))->with('taxes')->paginate(12)->appends(request()->query());
         return view('frontend.inhouse_products', compact('products'));
+    }
+
+
+    public function getModels(Request $request) {
+       
+        $models = Models::where('brand_id', $request->brand_id)->get();
+        $html = '<option value="">'.translate("Select Model").'</option>';
+        
+        foreach ($models as $model) {
+            $html .= '<option value="' . $model->id . '">' . $model->model_name . '</option>';
+        }
+        
+        echo json_encode($html);
+    }
+
+    public function getStyles(Request $request) {
+        $styles = Style::where('model_id', $request->model_id)->get();
+        $html = '<option value="">'.translate("Select Style").'</option>';
+        
+        foreach ($styles as $style) {
+            $html .= '<option value="' . $style->id . '">' . $style->style . '</option>';
+        }
+        
+        echo json_encode($html);
+    }
+
+    public function getParts(Request $request) {
+        $parts = Part::where('style_id', $request->style_id)->get();
+        $html = '<option value="">'.translate("Select Parts").'</option>';
+        
+        foreach ($parts as $part) {
+            $html .= '<option value="' . $part->id . '">' . $part->name . '</option>';
+        }
+        
+        echo json_encode($html);
     }
 }

@@ -442,4 +442,9 @@ Route::get('advance/parts/{part_category_id}/{style_id}', [HomeController::class
 Route::get('advance/fitment/{parts_id}', [HomeController::class, 'fitment']);
 
 Route::any('advance/search/parts', [SearchController::class, 'index'])->name('advance.dependent.search');
+
+
+Route::post('get-model', [HomeController::class, 'getModels'])->name('get-model');
+Route::post('get-style', [HomeController::class, 'getStyles'])->name('get-style');
+Route::post('get-part', [HomeController::class, 'getParts'])->name('get-part');
 //Advance Dependency Search End

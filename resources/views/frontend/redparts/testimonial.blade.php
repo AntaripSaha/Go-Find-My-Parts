@@ -5,11 +5,7 @@
                      <div class="section-header__body">
                         <h2 class="section-header__title">Testimonials</h2>
                         <div class="section-header__spring"></div>
-                        <!-- <ul class="section-header__links">
-                           <li class="section-header__links-item"><a href="#" class="section-header__links-link">Special Offers</a></li>
-                           <li class="section-header__links-item"><a href="#" class="section-header__links-link">New Arrivals</a></li>
-                           <li class="section-header__links-item"><a href="#" class="section-header__links-link">Reviews</a></li>
-                        </ul> -->
+
                         <div class="section-header__arrows">
                            <div class="arrow section-header__arrow section-header__arrow--prev arrow--prev">
                               <button class="arrow__button" type="button">
@@ -58,23 +54,6 @@
 
                      @endforeach
 
-                        
-                        <!-- <div class="block-posts-carousel__item">
-                           <div class="post-card">
-                              <div class="post-card__image"><a href="post-full-width.html"><img src="{{static_asset('assets/frontend/images/posts/post-2-730x485.jpg')}}" alt=""></a></div>
-                              <div class="post-card__content">
-                                 <div class="post-card__category"><a href="blog-classic-right-sidebar.html">Latest News</a></div>
-                                 <div class="post-card__title">
-                                    <h2><a href="post-full-width.html">Logic Is The Study Of Reasoning And Argument Part 2</a></h2>
-                                 </div>
-                                 <div class="post-card__date">By <a href="#">Jessica Moore</a> on September 5, 2019</div>
-                                 <div class="post-card__excerpt">
-                                    <div class="typography">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec facilisis neque ut purus fermentum, ac pretium nibh facilisis. Vivamus venenatis viverra iaculis. Suspendisse tempor orci non sapien ullamcorper dapibus. Suspendisse at velit diam. Donec pharetra nec enim blandit vulputate.</div>
-                                 </div>
-                                 <div class="post-card__more"><a href="post-full-width.html" class="btn btn-secondary btn-sm">Read more</a></div>
-                              </div>
-                           </div>
-                        </div> -->
                       
                      </div>
                   </div>

@@ -262,6 +262,10 @@ Route::group(['prefix' => 'v2', 'middleware' => ['app_language']], function() {
     Route::post('advance-fitment-search', 'App\Http\Controllers\Api\V2\DependencySearchController@fitment');
     // Route::post('advance-final-product-search', 'App\Http\Controllers\Api\V2\DependencySearchController@advance_search');
     // Advance Dependency Search End
+    //Advertise Start
+    Route::get('advartise-all', 'App\Http\Controllers\Api\V2\AdvertiseController@advertise');
+    //Advertise End
+
 });
 
 Route::fallback(function() {

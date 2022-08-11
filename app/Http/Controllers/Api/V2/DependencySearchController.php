@@ -241,25 +241,4 @@ class DependencySearchController extends Controller
             ]);
         }
     }
-    // public function advance_search(Request $request){
-    //     try {
-    //         $product = Product::where('id', $request->productId)->get();
-    //         return response()->json([
-    //             'data'=>$product->map(
-    //                 function($data){
-    //                     return [
-    //                         'thumbnail_image' => uploaded_asset($data->thumbnail_img),   
-    //                         'product' =>$data ,
-    //                     ];
-    //                 }
-    //             ),
-    //             'status'=>200
-    //         ]);
-    //     } catch (\Throwable $e) {
-    //         return response()->json([
-    //             'status'=>404,
-    //             'message'=> $e->getMessage()
-    //         ]);
-    //     }
-    // }
 }
