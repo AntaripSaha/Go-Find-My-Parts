@@ -85,7 +85,7 @@ class HomeController extends Controller
     {
         $models = DB::table("models")
                     ->where("brand_id",$id)
-                    ->pluck("model_name","id");
+                    ->pluck("model_name","id","year_id",);
         return response()->json($models);
     }
         
@@ -93,7 +93,8 @@ class HomeController extends Controller
     public function year($id)
     {
         $year= DB::table("years")
-                ->pluck("year","id");
+                    ->where('model_id', $id)
+                    ->pluck("year","id");
         return response()->json($year);
     }
 

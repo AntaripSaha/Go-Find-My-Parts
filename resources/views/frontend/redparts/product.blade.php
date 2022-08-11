@@ -111,16 +111,9 @@
                                                 </div> --}}
                                              </div>
                                           </div>
-                                          <div class="product-card__info">
-                                             <div class="product-card__name mt-4">
-                                                <div>
-                                                   <!-- <div class="product-card__badges">
-                                                      <div class="tag-badge tag-badge--sale">sale</div>
-                                                      <div class="tag-badge tag-badge--new">new</div>
-                                                      <div class="tag-badge tag-badge--hot">hot</div>
-                                                   </div> -->
-                                                   <a href="{{ $product_url }}">{{$product->name}}</a>
-                                                </div>
+                                          <div class="product-card__info" style="height: 28% !important;">
+                                             <div class="product-card__name mt-4" >
+                                                <a href="{{ $product_url }}">{{ Str::limit($product->name, 26) }}</a>
                                              </div>
                                               <div class="product-card__rating">
                                                 <div class="rating rating-sm mt-1">

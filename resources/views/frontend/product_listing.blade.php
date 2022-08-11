@@ -50,7 +50,7 @@
                                         <i class="las la-times la-2x"></i>
                                     </button>
                                 </div>
-                                <div class="bg-white shadow-sm rounded mb-3">
+                                {{-- <div class="bg-white shadow-sm rounded mb-3">
                                     <div class="fs-15 fw-600 p-3 border-bottom">
                                         {{ translate('Categories')}}
                                     </div>
@@ -91,7 +91,7 @@
                                             @endif
                                         </ul>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="bg-white shadow-sm rounded mb-3">
                                     <div class="fs-15 fw-600 p-3 border-bottom">
                                         {{ translate('Price range')}}
@@ -134,7 +134,7 @@
                                     </div>
                                 </div>
 
-                                @foreach ($attributes as $attribute)
+                                {{-- @foreach ($attributes as $attribute)
                                     <div class="bg-white shadow-sm rounded mb-3">
                                         <div class="fs-15 fw-600 p-3 border-bottom">
                                             {{ translate('Filter by') }} {{ $attribute->getTranslation('name') }}
@@ -182,7 +182,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                @endif
+                                @endif --}}
 
                                 {{-- <button type="submit" class="btn btn-styled btn-block btn-base-4">Apply filter</button> --}}
                             </div>

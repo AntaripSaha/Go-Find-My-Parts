@@ -1,4 +1,15 @@
-                <!-------------- New Arrival Product Section Start------------->
+   
+<style>
+   @media only screen and (min-width: 360px) and (max-width: 700px){
+      .mobile-price{
+         font-size: 12px !important;
+      }
+   
+   }
+
+</style>
+   
+   <!-------------- New Arrival Product Section Start------------->
                 <div class="block block-products-carousel" data-layout="horizontal">
                <div class="container">
                   <div class="section-header">
@@ -71,14 +82,9 @@
                                           </div>
                                        </div>
                                        <div class="product-card__info">
-                                          <div class="product-card__name">
+                                          <div class="product-card__name mobile-price">
                                              <div class="mb-3">
-                                                <!-- <div class="product-card__badges">
-                                                   <div class="tag-badge tag-badge--sale">sale</div>
-                                                   <div class="tag-badge tag-badge--new">new</div>
-                                                   <div class="tag-badge tag-badge--hot">hot</div>
-                                                </div> -->
-                                                <a href="{{ $product_url }}">{{$product->name}}</a>
+                                                <a href="{{ $product_url }}">{{ Str::limit($product->name, 12) }}</a>
                                              </div>
                                           </div>
                                           <div class="product-card__rating">
@@ -89,8 +95,8 @@
                                              </div>
                                           </div>
                                        </div>
-                                       <div class="product-card__footer">
-                                          <div class="product-card__prices  fw-600" style="color: black;">
+                                       <div class="product-card__footer ">
+                                          <div class="product-card__prices  fw-600 mobile-price" style="color: black;">
                                              @if(home_base_price($product) != home_discounted_base_price($product))
                                              <del style="opacity:50%; margin-right:10px;">{{ home_base_price($product) }}</del>   
                                              @endif
@@ -124,8 +130,8 @@
                                                 <img class="image__tag" src="{{ uploaded_asset($product->thumbnail_img) }}" alt=""></a></div>
                                        </div>
                                        <div class="product-card__info">
-                                          <div class="product-card__name">
-                                             <div class="mb-3"><a href="{{ $product_url }}">{{$product->name}}</a></div>
+                                          <div class="product-card__name  mobile-price">
+                                             <div class="mb-3"><a href="{{ $product_url }}">{{ Str::limit($product->name, 12) }}</a></div>
                                           </div>
                                           <div class="product-card__rating">
                                              <div class="rating rating-sm">
@@ -134,7 +140,7 @@
                                           </div>
                                        </div>
                                        <div class="product-card__footer">
-                                          <div class="product-card__prices fw-600" style="color: black;">
+                                          <div class="product-card__prices fw-600 mobile-price" style="color: black;">
                                              @if(home_base_price($product) != home_discounted_base_price($product))
                                              <del style="opacity:50%; margin-right:10px;">{{ home_base_price($product) }}</del>   
                                              @endif
@@ -153,17 +159,11 @@
                            $counter++;
                            @endphp
                         @endforeach
-                        
-   
-                        
-
                      </div>
-
                      </div>
                   </div>
                </div>
             </div>
 
                <!-------------- New Arrival Product Section End------------->
-
 

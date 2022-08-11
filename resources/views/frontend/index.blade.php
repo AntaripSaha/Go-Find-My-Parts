@@ -394,6 +394,7 @@
 
 <script type="text/javascript">
 
+
    function openCity(evt, cityName) {
    var i, x, tablinks;
    x = document.getElementsByClassName("city");
@@ -413,6 +414,7 @@
       // Dependency Search Start
       $("#brand").change(function() {
          var brand_id = $(this).val();
+         document.getElementById("model").disabled = false;
          if (brand_id) {
                $.ajax({
                   type: "get",
@@ -432,6 +434,8 @@
       });
       $('#model').change(function() {
          var model_id = $(this).val();
+       
+         document.getElementById("year").disabled = false;
          if (model_id) {
                $.ajax({
                   type: "get",
@@ -451,6 +455,7 @@
       $('#year').change(function() {
          var year_id = $(this).val();
          var model_id = $('#model').val();
+         document.getElementById("chassis").disabled = false;
          if (year_id) {
                $.ajax({
                   type: "get",
@@ -558,7 +563,6 @@
             }
          }
       });
-
 
 
 

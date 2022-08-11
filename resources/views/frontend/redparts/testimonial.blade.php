@@ -5,7 +5,6 @@
                      <div class="section-header__body">
                         <h2 class="section-header__title">Testimonials</h2>
                         <div class="section-header__spring"></div>
-
                         <div class="section-header__arrows">
                            <div class="arrow section-header__arrow section-header__arrow--prev arrow--prev">
                               <button class="arrow__button" type="button">
@@ -28,35 +27,41 @@
                   </div>
                   <div class="block-posts-carousel__carousel">
                      <div class="owl-carousel">
-
                      @foreach($testimonials as $blog)
-
-                     
                         <div class="block-posts-carousel__item">
 
-                        
                            <div class="post-card">
-                              <div class="post-card__image"><a href="{{ url("blog").'/'. $blog->slug }}"><img src="{{ uploaded_asset($blog->banner) }}" alt=""></a></div>
+                              <div class="custom-imgs">
+                                 <a href="#"><img src="{{ uploaded_asset($blog->meta_img) }}" alt=""></a>
+                                 </div>
+                               
                               <div class="post-card__content">
-                                 
-                                 <div class="post-card__category"><a href="{{ url("blog").'/'. $blog->slug }}">{{ $blog->category_name }}</a></div>
+                                 {{-- <div class="post-card__category">{{ $blog->category_name }}</div> --}}
                                  <div class="post-card__title">
-                                    <h2><a href="{{ url("blog").'/'. $blog->slug }}">{{ $blog->title }}</a></h2>
+                                    <h2>{{ $blog->title }}</h2>
                                  </div>
                                  <div class="post-card__date">By <a href="#">{{ $blog->meta_keywords }}</div>
                                   
-                                 <div class="post-card__more"><a href="{{ url("blog").'/'. $blog->slug }}" class="btn btn-secondary btn-sm">Read more</a></div>
+                                 <div class="post-card__more"><a href="#" class="btn btn-secondary btn-sm">Read more</a></div>
                               </div>
                            </div>
-
-
                         </div>
-
                      @endforeach
-
-                      
                      </div>
                   </div>
                </div>
             </div>
             <!--------------- Testimonial Section End  ---------->
+
+<style>
+  .custom-imgs{
+      
+      width: 50% !important;
+      margin-top: 3% !important;
+      max-width: 35% !important;
+      height: auto !important;
+      border-radius: 50% !important;
+      margin-left: 30% !important;
+   }
+
+</style>

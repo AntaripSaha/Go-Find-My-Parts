@@ -171,10 +171,6 @@
 
 
 
-
-
-
-
 <section class="bg-dark py-2 text-light footer-widget m-footer-widget">
     <div class="container">
         <div class="row" style="padding: 15px">
@@ -440,10 +436,11 @@
     }
     @media only screen and (max-width: 600px){
     .footer-mobile{
+        margin-top: -110px !important;
         display: block;
     }
     .footer-web{
-        display: none;
+        display: none !important;
     }
     
 

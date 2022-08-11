@@ -234,13 +234,13 @@
                     </a>
 
                     @if(Route::currentRouteName() != 'home')
-                        <div class="d-none d-xl-block align-self-stretch category-menu-icon-box ml-auto mr-0">
+                        {{-- <div class="d-none d-xl-block align-self-stretch category-menu-icon-box ml-auto mr-0">
                             <div class="h-100 d-flex align-items-center" id="category-menu-icon">
                                 <div class="dropdown-toggle navbar-light bg-light h-40px w-50px pl-2 rounded border c-pointer">
                                     <span class="navbar-toggler-icon"></span>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     @endif
                 </div>
                 <div class="d-lg-none ml-auto mr-0">

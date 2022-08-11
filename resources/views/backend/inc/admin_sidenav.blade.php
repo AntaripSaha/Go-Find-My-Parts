@@ -512,11 +512,11 @@
                                     <span class="aiz-side-nav-text">{{ translate('All Posts') }}</span>
                                 </a>
                             </li>
-                            <li class="aiz-side-nav-item">
+                            {{-- <li class="aiz-side-nav-item">
                                 <a href="{{ route('blog-category.index') }}" class="aiz-side-nav-link {{ areActiveRoutes(['blog-category.create', 'blog-category.edit'])}}">
                                     <span class="aiz-side-nav-text">{{ translate('Categories') }}</span>
                                 </a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </li>
                 @endif

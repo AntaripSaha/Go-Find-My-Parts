@@ -12,7 +12,14 @@ class AdvertiseController extends Controller
         try {
             $advertise = Advertise::all();
             return response()->json([
-                'data'=>$advertise,
+                'data'=>$advertise->map(
+                    function($data){
+                        return [
+                            'thumbnail_image' => uploaded_asset($data->image),   
+                            'product' =>$data ,
+                        ];
+                    }
+                ),
                 'status'=>200
             ]);
            
