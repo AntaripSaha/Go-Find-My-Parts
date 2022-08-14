@@ -60,6 +60,7 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required',
@@ -120,6 +121,30 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
+        //Mechanic User Type Start
+        if($request->user_type == 'mechanic'){
+            $this->validator($request->all())->validate();
+            if (filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
+                if(User::where('email', $request->email)->first() != null){
+                    flash(translate('Email or Phone already exists.'));
+                    return back();
+                }
+            }
+            elseif (User::where('phone', '+'.$request->country_code.$request->phone)->first() != null) {
+                flash(translate('Phone already exists.'));
+                return back();
+            }    
+            $user = new User();
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->user_type = 'mechanic';
+            $user->password = Hash::make($request->password);
+            if($user->save()){
+            $this->guard()->login($user);
+            }
+            return redirect()->route('mechanic.home');
+        }
+        //Mechanic User Type End
         if (filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
             if(User::where('email', $request->email)->first() != null){
                 flash(translate('Email or Phone already exists.'));
@@ -132,7 +157,6 @@ class RegisterController extends Controller
         }
 
         $this->validator($request->all())->validate();
-
         $user = $this->create($request->all());
 
         $this->guard()->login($user);

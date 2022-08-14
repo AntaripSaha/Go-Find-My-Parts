@@ -155,10 +155,16 @@
                 @if (get_setting('vendor_system_activation') == 1)
                     <div class="text-center text-md-left mt-4">
                         <h4 class="fs-13 text-uppercase fw-600 border-bottom border-gray-900 pb-2 mb-4">
-                            {{ translate('Be a Seller') }}
+                            {{ translate('Become a Vendor') }}
                         </h4>
                         <a href="{{ route('shops.create') }}" class="btn btn-primary btn-sm shadow-md" style="margin-top: -10px !important;">
                             {{ translate('Apply Now') }}
+                        </a>
+                        <h4 class="fs-13 text-uppercase fw-600 border-bottom border-gray-900 pb-2 mb-4 mt-3">
+                            {{ translate('Become a Mechanic') }}
+                        </h4>
+                        <a href="{{ route('mechanic.register') }}" class="btn btn-primary btn-sm shadow-md" style="margin-top: -10px !important;">
+                            {{ translate('Register Now') }}
                         </a>
                     </div>
                 @endif

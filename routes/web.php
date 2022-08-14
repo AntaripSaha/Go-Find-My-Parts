@@ -17,6 +17,7 @@ use App\Http\Controllers\DigitalProductController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\MechanicController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PageController;
@@ -448,3 +449,12 @@ Route::post('get-model', [HomeController::class, 'getModels'])->name('get-model'
 Route::post('get-style', [HomeController::class, 'getStyles'])->name('get-style');
 Route::post('get-part', [HomeController::class, 'getParts'])->name('get-part');
 //Advance Dependency Search End
+
+Route::any('mechanic/register',[MechanicController::class, 'register'] )->name('mechanic.register');
+Route::any('mechanic/home',[MechanicController::class, 'home'] )->name('mechanic.home');
+Route::any('mechanic/information/store', [MechanicController::class, 'info_store'])->name('mechanic.info.store');
+Route::any('mechanic/list', [MechanicController::class, 'list'])->name('mechanic.list');
+Route::any('mechanic/search', [MechanicController::class, 'search'])->name('mechanic.search');
+
+
+

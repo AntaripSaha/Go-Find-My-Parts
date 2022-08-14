@@ -158,7 +158,7 @@
                   <div class="block-finder__subtitle">Over hundreds of brands and tens of thousands of parts</div>
                   <div class="btn_dev text-left ml-2 mt-2" style="width: 45%;">
                         <button class="tablink w3-yellow block-finder__form-control block-finder__form-control--button basic-btn" onclick="openCity(event,'Basic')">Basic</button>
-                        <button class="tablink block-finder__form-control block-finder__form-control--button advance-btn" onclick="openCity(event,'Advance')">Interchange</button>
+                        <button class="tablink block-finder__form-control block-finder__form-control--button advance-btn" onclick="openCity(event,'Advance')" style="padding-right: 20px;padding-left: 20px;">Interchangeable</button>
                      </div>
                    <div id="Basic" class="w3-container city">
                      @include('frontend.redparts.search')
