@@ -265,6 +265,7 @@ Route::group(['prefix' => 'v2', 'middleware' => ['app_language']], function() {
     //Advertise Start
     Route::get('advartise-all', 'App\Http\Controllers\Api\V2\AdvertiseController@advertise');
     //Advertise End
+    Route::post('get-profile-details', 'App\Http\Controllers\Api\V2\ProfileController@get_details');
 
 });
 

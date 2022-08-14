@@ -326,4 +326,19 @@ class ProfileController extends Controller
             ]
         );
     }
+    public function get_details(Request $request){
+        $user = User::where('id', $request->id)->select('name', 'avatar_original')->get();
+        return response()->json([
+            'data'=>$user->map(
+                function($data){
+                    return [
+                        'avatar_original' => uploaded_asset($data->avatar_original),   
+                        'user' =>$data->name,
+                    ];
+                }
+            ),
+            'status'=>200
+        ]);
+
+    }
 }

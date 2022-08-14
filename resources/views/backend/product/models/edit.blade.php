@@ -29,6 +29,20 @@
                                 </select>
                             </div>
                     </div>
+                    <div class="form-group mb-3">
+                            <label for="year">{{translate('Year')}} <span class="text-danger">*</span></label>
+                            <div class="">
+                                <select class="form-control aiz-selectpicker" name="year_id" data-live-search="true" required>
+                                @foreach($years as $year)
+									@if($model[0]->year_id == $year->id)
+										<option value="{{$year->id}}" selected>{{$year->year}}</option>
+									@else
+										<option value="{{$year->id}}">{{$year->year}}</option>
+									@endif
+                                @endforeach
+                                </select>
+                            </div>
+                    </div>
 					<div class="form-group mb-3 text-right">
 						<button type="submit" class="btn btn-primary">{{translate('Update')}}</button>
 					</div>

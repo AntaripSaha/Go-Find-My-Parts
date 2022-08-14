@@ -12,7 +12,7 @@
 				<div class="col-md-4">
 					<form class="" id="sort_models" action="" method="GET">
 						<div class="input-group input-group-sm">
-					  		<input type="text" class="form-control" id="search" name="search"@isset($sort_search) value="{{ $sort_search }}" @endisset placeholder="{{ translate('Type name & Enter') }}">
+					  		<input type="text" class="form-control" id="search" name="search"@isset($sort_search) value="{{ $sort_search }}" @endisset placeholder="{{ translate('Type Model Name & Enter') }}">
 						</div>
 					</form>
 				</div>
@@ -24,6 +24,7 @@
 		                    <th>#</th>
                             <th>{{translate('Brand')}}</th>
 		                    <th>{{translate('Model')}}</th>
+		                    <th>{{translate('Year')}}</th>
 		                    <th class="text-right">{{translate('Options')}}</th>
 		                </tr>
 		            </thead>
@@ -34,8 +35,9 @@
                         @foreach($models as $model)
 		                    <tr>
                                 <td>{{$i}}</td>
-		                        <td>{{$model->name}}</td>
+		                        <td>{{$model->brands->name}}</td>
 		                        <td>{{$model->model_name}}</td>
+		                        <td>{{$model->years->year}}</td>
 		                        <td class="text-right">
                                     <a href="{{route('model.update', ['id'=>$model->id])}}"  title="{{ translate('Edit') }}" class="btn btn-soft-primary btn-icon btn-circle btn-sm">
                                         <i class="las la-edit"></i>
@@ -76,6 +78,16 @@
                                 <select class="form-control aiz-selectpicker" name="brand_id" data-live-search="true" required>
                                 @foreach($brands as $brand)
                                     <option value="{{$brand->id}}">{{$brand->name}}</option>
+                                @endforeach
+                                </select>
+                            </div>
+                    </div>
+                    <div class="form-group mb-3">
+                            <label for="brand">{{translate('Year')}} <span class="text-danger">*</span></label>
+                            <div class="">
+                                <select class="form-control aiz-selectpicker" name="year_id" data-live-search="true" required>
+                                @foreach($years as $year)
+                                    <option value="{{$year->id}}">{{$year->year}}</option>
                                 @endforeach
                                 </select>
                             </div>

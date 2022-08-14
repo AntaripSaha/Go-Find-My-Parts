@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 class DependancySearchController extends Controller
 {
@@ -15,7 +16,6 @@ class DependancySearchController extends Controller
     //For fetching states
     public function model($id)
     {
-        
         $models = DB::table("models")
                     ->where("brand_id",$id)
                     ->pluck("model_name","id");

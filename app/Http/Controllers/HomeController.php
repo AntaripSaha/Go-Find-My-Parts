@@ -35,6 +35,7 @@ use App\Models\Blog;
 use App\Models\Models;
 use App\Models\Part;
 use App\Models\Style;
+use App\Models\Year;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -92,9 +93,14 @@ class HomeController extends Controller
         //For fetching years
     public function year($id)
     {
-        $year= DB::table("years")
-                    ->where('model_id', $id)
-                    ->pluck("year","id");
+        $models = Models::where('id', $id)->select('year_id')->get();
+       foreach($models as $key=>$model){
+        $model_year = Models::where('id', $id)->select('year_id')->get();
+        $year= Year::where('id', $model_year[$key]->year_id)->pluck("year","id");
+        // array_push($year, $year);
+
+       }
+    //    return $year;
         return response()->json($year);
     }
 
