@@ -94,14 +94,9 @@ class HomeController extends Controller
         //For fetching years
     public function year($id)
     {
-        $models = Models::where('id', $id)->select('year_id')->get();
-       foreach($models as $key=>$model){
-        $model_year = Models::where('id', $id)->select('year_id')->get();
-        $year= Year::where('id', $model_year[$key]->year_id)->pluck("year","id");
-        // array_push($year, $year);
-
-       }
-    //    return $year;
+        
+        $year= ModelYear::where('model_id',$id)->pluck("year","id");
+       
         return response()->json($year);
     }
 
@@ -117,8 +112,7 @@ class HomeController extends Controller
 
     public function year_two($id)
     {
-        $year_two= DB::table("years")
-                ->pluck("year","id");
+        $year_two= ModelYear::where('model_id',$id)->pluck("year","id");
         return response()->json($year_two);
     }
     public function style($model_two_id, $year_two_id){
