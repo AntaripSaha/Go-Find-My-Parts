@@ -119,6 +119,11 @@
                                 </a>
                             </li>
                             <li class="aiz-side-nav-item">
+                                <a href="{{route('year.index')}}" class="aiz-side-nav-link {{ areActiveRoutes(['year.index', 'year.update', 'year.edit'])}}" >
+                                    <span class="aiz-side-nav-text">{{translate('Year')}}</span>
+                                </a>
+                            </li>
+                            <li class="aiz-side-nav-item">
                                 <a href="{{route('style.index')}}" class="aiz-side-nav-link {{ areActiveRoutes(['style.index', 'style.update', 'style.edit'])}}" >
                                     <span class="aiz-side-nav-text">{{translate('Styles')}}</span>
                                 </a>

@@ -22,8 +22,9 @@
 		            <thead>
 		                <tr>
 		                    <th>#</th>
-                            <th>{{translate('Brand')}}</th>
+		                    <th>{{translate('Brand')}}</th>
 		                    <th>{{translate('Model')}}</th>
+		                    <th>{{translate('Year')}}</th>
 		                    <th class="text-right">{{translate('Options')}}</th>
 		                </tr>
 		            </thead>
@@ -35,12 +36,13 @@
 		                    <tr>
                                 <td>{{$i}}</td>
 		                        <td>{{$model->brands->name}}</td>
-		                        <td>{{$model->model_name}}</td>
+		                        <td>{{$model->models->model_name}}</td>
+		                        <td>{{$model->year}}</td>
 		                        <td class="text-right">
-                                    <a href="{{route('model.update', ['id'=>$model->id])}}"  title="{{ translate('Edit') }}" class="btn btn-soft-primary btn-icon btn-circle btn-sm">
+                                    {{-- <a href="#"  title="{{ translate('Edit') }}" class="btn btn-soft-primary btn-icon btn-circle btn-sm">
                                         <i class="las la-edit"></i>
-                                    </a>
-		                            <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('model.delete', ['id'=>$model->id])}}" title="{{ translate('Delete') }}">
+                                    </a> --}}
+		                            <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('year.delete', ['id'=>$model->id])}}" title="{{ translate('Delete') }}">
 		                                <i class="las la-trash"></i>
 		                            </a>
 		                        </td>
@@ -64,18 +66,34 @@
 				<h5 class="mb-0 h6">{{ translate('Add Car Model') }}</h5>
 			</div>
 			<div class="card-body">
-				<form action="{{route('model.store')}}" method="POST">
+				<form action="{{route('year.store')}}" method="POST">
 					@csrf
 					<div class="form-group mb-3">
-						<label for="model_name">{{translate('Name')}}</label>
-						<input type="text" placeholder="{{translate('Car Model')}}" name="model_name" class="form-control" required>
+						<label for="brand">{{translate('Brand')}} <span class="text-danger">*</span></label>
+						<div class="">
+							<select class="form-control aiz-selectpicker" name="brand_id" data-live-search="true" required>
+							@foreach($brands as $brand)
+								<option value="{{$brand->id}}">{{$brand->name}}</option>
+							@endforeach
+							</select>
+						</div>
+					</div>
+					<div class="form-group mb-3">
+						<label for="brand">{{translate('Model')}} <span class="text-danger">*</span></label>
+						<div class="">
+							<select class="form-control aiz-selectpicker" name="model_id" data-live-search="true" required>
+							@foreach($models as $model)
+								<option value="{{$model->id}}">{{$model->model_name}}</option>
+							@endforeach
+							</select>
+						</div>
 					</div>
                     <div class="form-group mb-3">
-                            <label for="brand">{{translate('Brand')}} <span class="text-danger">*</span></label>
+                            <label for="brand">{{translate('Year')}} <span class="text-danger">*</span></label>
                             <div class="">
-                                <select class="form-control aiz-selectpicker" name="brand_id" data-live-search="true" required>
-                                @foreach($brands as $brand)
-                                    <option value="{{$brand->id}}">{{$brand->name}}</option>
+                                <select class="form-control aiz-selectpicker" name="year" data-live-search="true" required>
+                                @foreach($years as $year)
+                                    <option value="{{$year->year}}">{{$year->year}}</option>
                                 @endforeach
                                 </select>
                             </div>

@@ -15,9 +15,10 @@ class MechanicController extends Controller
     }
     public function info_store(Request $request){
         $mechanic = Mechanic::where('id', auth()->user->id)->select('id')->get();
-        if($mechanic != 0){
+        if($mechanic == 0){
             $mechanic = new Mechanic();
             $mechanic->name = $request->name;
+            $mechanic->user_id = $request->auth()->user->id;
             $mechanic->address = $request->address;
             $mechanic->contact = $request->contact;
             $mechanic->image = $request->image;

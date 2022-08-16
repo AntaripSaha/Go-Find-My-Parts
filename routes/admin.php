@@ -89,6 +89,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     Route::any('/models/update/{id}', [ModelController::class, 'update'])->name('model.update');
     Route::any('/models/update/store/{id}', [ModelController::class, 'update_store'])->name('model.update.store');
     Route::any('/models/delete/{id}', [ModelController::class, 'delete'])->name('model.delete');
+    //Years
+    Route::any('/year', [ModelController::class, 'year_index'])->name('year.index');
+    Route::any('/year/store', [ModelController::class, 'year_store'])->name('year.store');
+    Route::any('/year/update/{id}', [ModelController::class, 'year_update'])->name('year.update');
+    Route::any('/year/delete/{id}', [ModelController::class, 'year_delete'])->name('year.delete');
+
     //Styles
     Route::any('/styles', [AdvanceSearchController::class, 'style_index'])->name('style.index');
     Route::any('/styles/store', [AdvanceSearchController::class, 'style_store'])->name('style.store');
