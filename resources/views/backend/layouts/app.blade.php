@@ -143,6 +143,7 @@
     $(document).on('change', '[name=model_id]', function() {
         var model_id = $(this).val();
         get_style(model_id);
+        get_year(model_id);
     });
 
     $(document).on('change', '[name=style_id]', function() {
@@ -171,6 +172,26 @@
         });
     }
 
+    function get_year(model_id) {
+        $('[name="year_id"]').html("");
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: "{{route('get-year')}}",
+            type: 'POST',
+            data: {
+                model_id: model_id
+            },
+            success: function (response) {
+                var obj = JSON.parse(response);
+                if(obj != '') {
+                    $('[name="year_id"]').html(obj);
+                    AIZ.plugins.bootstrapSelect('refresh');
+                }
+            }
+        });
+    }
     function get_style(model_id) {
         $('[name="style_id"]').html("");
         $.ajax({

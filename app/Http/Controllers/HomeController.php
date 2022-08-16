@@ -33,6 +33,7 @@ use Illuminate\Support\Facades\View;
 use App\Models\BlogCategory;
 use App\Models\Blog;
 use App\Models\Models;
+use App\Models\ModelYear;
 use App\Models\Part;
 use App\Models\Style;
 use App\Models\Year;
@@ -745,6 +746,17 @@ class HomeController extends Controller
         
         foreach ($models as $model) {
             $html .= '<option value="' . $model->id . '">' . $model->model_name . '</option>';
+        }
+        
+        echo json_encode($html);
+    }
+
+    public function getYears(Request $request) {
+        $years = ModelYear::where('model_id', $request->model_id)->get();
+        $html = '<option value="">'.translate("Select Year").'</option>';
+        
+        foreach ($years as $year) {
+            $html .= '<option value="' . $year->id . '">' . $year->year . '</option>';
         }
         
         echo json_encode($html);

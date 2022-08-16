@@ -46,9 +46,9 @@ class DependencySearchController extends Controller
             ]);
         }
     }
-    public function year(){
+    public function year(Request $request){
         try {
-            $year = Year::select('id', 'year')->get();
+            $year = Year::where('model_id', $request->modelId)->select('id', 'year')->get();
             return response()->json([
                 'data'=>$year,
                 'status'=>200

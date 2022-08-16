@@ -446,6 +446,7 @@ Route::any('advance/search/parts', [SearchController::class, 'index'])->name('ad
 
 
 Route::post('get-model', [HomeController::class, 'getModels'])->name('get-model');
+Route::post('get-year', [HomeController::class, 'getYears'])->name('get-year');
 Route::post('get-style', [HomeController::class, 'getStyles'])->name('get-style');
 Route::post('get-part', [HomeController::class, 'getParts'])->name('get-part');
 //Advance Dependency Search End

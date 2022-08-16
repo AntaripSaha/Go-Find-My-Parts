@@ -251,7 +251,7 @@ Route::group(['prefix' => 'v2', 'middleware' => ['app_language']], function() {
     // Basic Dependency Search Start
     Route::get('basic-brand-search', 'App\Http\Controllers\Api\V2\DependencySearchController@brand');
     Route::post('basic-model-search', 'App\Http\Controllers\Api\V2\DependencySearchController@model');
-    Route::get('basic-year-search', 'App\Http\Controllers\Api\V2\DependencySearchController@year');
+    Route::post('basic-year-search', 'App\Http\Controllers\Api\V2\DependencySearchController@year');
     Route::post('basic-chassis-search', 'App\Http\Controllers\Api\V2\DependencySearchController@chassis');
     // Basic Dependency Search End
 
@@ -266,6 +266,10 @@ Route::group(['prefix' => 'v2', 'middleware' => ['app_language']], function() {
     Route::get('advartise-all', 'App\Http\Controllers\Api\V2\AdvertiseController@advertise');
     //Advertise End
     Route::post('get-profile-details', 'App\Http\Controllers\Api\V2\ProfileController@get_details');
+
+    //Mechanic Start
+    Route::get('get-mechanic-details', 'App\Http\Controllers\Api\V2\MechanicController@index');
+    //Mechanic End
 
 });
 

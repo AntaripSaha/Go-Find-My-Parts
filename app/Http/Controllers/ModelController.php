@@ -52,8 +52,6 @@ class ModelController extends Controller
     flash(translate('Model has been Deleted successfully'))->warning();
     return redirect()->route('model.index');
    }
-
-
    //Year Add Edit For Model Start
    public function year_index(Request $request){
     $years = Year::all();
