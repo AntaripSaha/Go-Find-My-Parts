@@ -65,7 +65,7 @@
          <div class="col-md-3"></div>
          <div class="col-md-3"></div>
          <div class="col-md-3">
-            <button class="block-finder__form-control block-finder__form-control--button btn-block custom_search" type="submit">Search</button>
+            <button class="sub_btn_dev block-finder__form-control block-finder__form-control--button btn-block custom_search" type="submit">Search</button>
          </div>
    
       </div>

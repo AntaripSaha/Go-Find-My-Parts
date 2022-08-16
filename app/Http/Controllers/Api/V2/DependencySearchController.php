@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V2;
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Models\Models;
+use App\Models\ModelYear;
 use App\Models\Part;
 use App\Models\PartCategory;
 use App\Models\Product;
@@ -48,7 +49,7 @@ class DependencySearchController extends Controller
     }
     public function year(Request $request){
         try {
-            $year = Year::where('model_id', $request->modelId)->select('id', 'year')->get();
+            $year = ModelYear::where('model_id', $request->modelId)->select('id', 'year')->get();
             return response()->json([
                 'data'=>$year,
                 'status'=>200

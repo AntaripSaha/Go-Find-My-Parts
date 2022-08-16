@@ -32,7 +32,7 @@
 
                            <div class="post-card">
                               <div class="custom-imgs">
-                                 <a href="#"><img src="{{ uploaded_asset($blog->meta_img) }}" alt=""></a>
+                                 <a href="#"><img class="slider-img-avater" src="{{ uploaded_asset($blog->meta_img) }}" alt=""></a>
                                  </div>
                                
                               <div class="post-card__content">
@@ -54,8 +54,7 @@
             <!--------------- Testimonial Section End  ---------->
 
 <style>
-  .custom-imgs{
-      
+  .custom-imgs img.slider-img-avater{
       width: 50% !important;
       margin-top: 3% !important;
       max-width: 35% !important;

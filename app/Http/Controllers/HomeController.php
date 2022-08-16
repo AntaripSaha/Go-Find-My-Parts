@@ -86,6 +86,7 @@ class HomeController extends Controller
     public function model($id)
     {
         $models = DB::table("models")
+                    ->where('status', 1)
                     ->where("brand_id",$id)
                     ->pluck("model_name","id","year_id",);
         return response()->json($models);
@@ -735,7 +736,7 @@ class HomeController extends Controller
 
     public function getModels(Request $request) {
        
-        $models = Models::where('brand_id', $request->brand_id)->get();
+        $models = Models::where('status', 1)->where('brand_id', $request->brand_id)->get();
         $html = '<option value="">'.translate("Select Model").'</option>';
         
         foreach ($models as $model) {

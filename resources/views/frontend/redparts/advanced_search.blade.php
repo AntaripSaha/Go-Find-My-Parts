@@ -76,7 +76,7 @@
             </div>
          </div>
          <div class="col-md-3">
-            <button class="block-finder__form-control block-finder__form-control--button btn-block custom_btn_search" id="search_button" disabled="disabled" style="" type="submit">Search</button>
+            <button class="sub_btn_dev block-finder__form-control block-finder__form-control--button btn-block custom_btn_search" id="search_button" disabled="disabled" style="" type="submit">Search</button>
          </div>
       </div>
       

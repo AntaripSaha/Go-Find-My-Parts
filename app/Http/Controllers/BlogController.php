@@ -102,7 +102,7 @@ class BlogController extends Controller
 
         $blog = Blog::find($id);
 
-        $blog->category_id = $request->category_id;
+        $blog->category_id = 1;
         $blog->title = $request->title;
         $blog->banner = $request->banner;
         $blog->slug = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $request->slug));

@@ -71,11 +71,11 @@
                                 $locale = 'en';
                             }
                         @endphp
-                        <a href="javascript:void(0)" class="dropdown-toggle text-reset py-2 mr-3 border-left-0 pr-3" style="margin-top: 3px !important;" data-toggle="dropdown" data-display="static">
+                        <a href="javascript:void(0)" class="dropdown-toggle text-reset py-2 mr-3 border-left-0 pr-3" style="margin-top: 8px !important;" data-toggle="dropdown" data-display="static">
                             <img src="{{ static_asset('assets/img/placeholder.jpg') }}" data-src="{{ static_asset('assets/img/flags/'.$locale.'.png') }}" class="mr-2 lazyload" alt="{{ \App\Models\Language::where('code', $locale)->first()->name }}" height="11">
                             <span class="">{{ \App\Models\Language::where('code', $locale)->first()->name }}</span>
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-left" style="margin-top: 3px !important;" >
+                        <ul class="dropdown-menu dropdown-menu-left" style="margin-top: 8px !important;" >
                             @foreach (\App\Models\Language::where('status', 1)->get() as $key => $language)
                                 <li>
                                     <a href="javascript:void(0)" data-flag="{{ $language->code }}" class="dropdown-item @if($locale == $language) active @endif">
@@ -90,7 +90,7 @@
                    
                     @if(get_setting('show_currency_switcher') == 'on')
                     <hr class="hr">
-                    <li class="list-inline-item dropdown ml-auto ml-lg-0 mr-0" style="margin-top: 4px !important;" id="currency-change">
+                    <li class="list-inline-item dropdown ml-auto ml-lg-0 mr-0" style="margin-top: 8px !important;" id="currency-change">
                         @php
                             if(Session::has('currency_code')){
                                 $currency_code = Session::get('currency_code');
@@ -102,7 +102,7 @@
                         <a href="javascript:void(0)" class="dropdown-toggle text-reset py-2" data-toggle="dropdown" data-display="static">
                             {{ \App\Models\Currency::where('code', $currency_code)->first()->name }} {{ (\App\Models\Currency::where('code', $currency_code)->first()->symbol) }}
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" style="margin-top: 4px !important;">
+                        <ul class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" style="margin-top: 8px !important;">
                             @foreach (\App\Models\Currency::where('status', 1)->get() as $key => $currency)
                                 <li>
                                     <a class="dropdown-item @if($currency_code == $currency->code) active @endif" href="javascript:void(0)" data-currency="{{ $currency->code }}">{{ $currency->name }} ({{ $currency->symbol }})</a>
