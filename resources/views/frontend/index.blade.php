@@ -134,8 +134,7 @@
 }
 
 
-
-   }
+}
 
 
 
@@ -262,14 +261,14 @@
 
 
             <!--------------owl-carousel Advertise Lower Section Start------------>
-            <div class="mobile-view-add-two" style="height:45px"></div>
+            <div class="mobile-view-add-two" style="height:45px;"></div>
             @include('frontend.redparts.advertise_two')
             <!--------------owl-carousel Advertise Lower Section End------------>
             <div class="mobile-view" style="height:25px"></div>
 
                @include('frontend.redparts.new_arrival')
 
-               <div class="mobile-view" style="height:15px"></div>
+               <div class="mobile-view" style="height:15px;"></div>
 
                @include('frontend.redparts.testimonial')
 
@@ -311,7 +310,7 @@
                                                <div class="tag-badge tag-badge--new">new</div>
                                                <div class="tag-badge tag-badge--hot">hot</div>
                                             </div> -->
-                                            <a href="{{ $product_url }}">{{$product->name}}</a>
+                                            <a href="{{ $product_url }}">{{ Str::limit($product->name, 40) }}</a>
                                          </div>
                                       </div>
                                       <div class="product-card__rating">

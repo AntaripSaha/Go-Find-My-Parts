@@ -9,6 +9,7 @@ use App\Http\Middleware\IsUser;
 use App\Http\Middleware\CheckoutMiddleware;
 use App\Http\Middleware\IsUnbanned;
 use App\Http\Middleware\AppLanguage;
+use App\Http\Middleware\IsMechanic;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 
@@ -66,6 +67,7 @@ class Kernel extends HttpKernel
         'admin' => IsAdmin::class,
         'seller' => IsSeller::class,
         'customer' => IsCustomer::class,
+        'mechanic' => IsMechanic::class,
         'user' => IsUser::class,
         'unbanned' => IsUnbanned::class,
         'checkout' => CheckoutMiddleware::class,

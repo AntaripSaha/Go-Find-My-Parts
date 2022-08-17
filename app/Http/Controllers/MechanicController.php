@@ -12,8 +12,8 @@ class MechanicController extends Controller
         return view('frontend.mechanic.register');
     }
     public function home(){
-        $user = User::where('id', auth()->user()->id)->select('name')->get();
-        return view('frontend.mechanic.home', compact('user'));
+        // $user = User::where('id', auth()->user()->id)->select('name')->get();
+        return view('frontend.mechanic.home');
     }
     public function info_store(Request $request){
       $mechanic = Mechanic::where('user_id', auth()->user()->id)->select('id')->get();

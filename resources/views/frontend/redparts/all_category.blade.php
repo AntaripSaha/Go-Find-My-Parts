@@ -24,7 +24,7 @@
                                                <div class="tag-badge tag-badge--new">new</div>
                                                <div class="tag-badge tag-badge--hot">hot</div>
                                             </div> -->
-                                            <a href="{{ $product_url }}">{{$product->name}}</a>
+                                            <a href="{{ $product_url }}">{{ Str::limit($product->name, 40) }}</a>
                                          </div>
                                       </div>
                                       <div class="product-card__rating">
@@ -80,7 +80,7 @@
                                                <div class="tag-badge tag-badge--new">new</div>
                                                <div class="tag-badge tag-badge--hot">hot</div>
                                             </div> -->
-                                            <a href="{{ $product_url }}">{{$product->name}}</a>
+                                            <a href="{{ $product_url }}">{{ Str::limit($product->name, 40) }}</a>
                                          </div>
                                       </div>
                                       <div class="product-card__rating">
