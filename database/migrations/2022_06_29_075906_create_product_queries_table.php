@@ -11,26 +11,26 @@ class CreateProductQueriesTable extends Migration
      *
      * @return void
      */
-    public function up()
-    {
-        Schema::create('product_queries', function (Blueprint $table) {
-            $table->id();
-            $table->integer('customer_id');
-            $table->integer('seller_id')->nullable();
-            $table->integer('product_id');
-            $table->longText('question');
-            $table->longText('reply')->nullable();
-            $table->timestamps();
-        });
-    }
+    // public function up()
+    // {
+    //     Schema::create('product_queries', function (Blueprint $table) {
+    //         $table->id();
+    //         $table->integer('customer_id');
+    //         $table->integer('seller_id')->nullable();
+    //         $table->integer('product_id');
+    //         $table->longText('question');
+    //         $table->longText('reply')->nullable();
+    //         $table->timestamps();
+    //     });
+    // }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('product_queries');
-    }
+    // /**
+    //  * Reverse the migrations.
+    //  *
+    //  * @return void
+    //  */
+    // public function down()
+    // {
+    //     Schema::dropIfExists('product_queries');
+    // }
 }

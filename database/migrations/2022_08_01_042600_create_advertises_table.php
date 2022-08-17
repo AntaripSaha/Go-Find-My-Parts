@@ -11,24 +11,24 @@ class CreateAdvertisesTable extends Migration
      *
      * @return void
      */
-    public function up()
-    {
-        Schema::create('advertises', function (Blueprint $table) {
-            $table->id();
-            $table->string('image');
-            $table->string('url');
-            $table->string('section')->comment('0 is upper_section, 1 is lower');
-            $table->timestamps();
-        });
-    }
+    // public function up()
+    // {
+    //     Schema::create('advertises', function (Blueprint $table) {
+    //         $table->id();
+    //         $table->string('image');
+    //         $table->string('url');
+    //         $table->string('section')->comment('0 is upper_section, 1 is lower');
+    //         $table->timestamps();
+    //     });
+    // }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('advertises');
-    }
+    // /**
+    //  * Reverse the migrations.
+    //  *
+    //  * @return void
+    //  */
+    // public function down()
+    // {
+    //     Schema::dropIfExists('advertises');
+    // }
 }

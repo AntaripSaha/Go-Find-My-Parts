@@ -19,5 +19,8 @@ class Brand extends Model
   public function brand_translations(){
     return $this->hasMany(BrandTranslation::class);
   }
+  public function mechanic(){
+    return $this->belongsToMany(Mechanic::class,'mechanic_brands','brand_id','mechanic_id');
+}
 
 }

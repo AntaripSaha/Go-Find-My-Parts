@@ -32,28 +32,54 @@
                         </div>
                         <div class="p-3">
                             <div class="form-group">
+                                <label for="banner_image">{{translate('Banner Image')}}</label>
+                                <div class="input-group" data-toggle="aizuploader" data-type="image">
+                                    <div class="input-group-prepend">
+                                            <div class="input-group-text bg-soft-secondary font-weight-medium">{{ translate('Browse')}}</div>
+                                    </div>
+                                    <div class="form-control file-amount">{{ translate('Choose File') }}</div>
+                                    <input type="hidden" name="banner_image" class="selected-files">
+                                </div>
+                                <div class="file-preview box sm"></div>
+                            </div>
+                            <div class="form-group">
                                 <label for="profile_picture">{{translate('Profile Picture')}}</label>
-                                    <div class="input-group" data-toggle="aizuploader" data-type="image">
-                                        <div class="input-group-prepend">
-                                                <div class="input-group-text bg-soft-secondary font-weight-medium">{{ translate('Browse')}}</div>
-                                        </div>
-                                        <div class="form-control file-amount">{{ translate('Choose File') }}</div>
-                                        <input type="hidden" name="image" class="selected-files">
+                                <div class="input-group" data-toggle="aizuploader" data-type="image">
+                                    <div class="input-group-prepend">
+                                            <div class="input-group-text bg-soft-secondary font-weight-medium">{{ translate('Browse')}}</div>
                                     </div>
-                                    <div class="file-preview box sm">
-                                    </div>
+                                    <div class="form-control file-amount">{{ translate('Choose File') }}</div>
+                                    <input type="hidden" name="profile_image" class="selected-files">
+                                </div>
+                                <div class="file-preview box sm"></div>
                             </div>
                             <div class="form-group">
                                 <label>{{ translate('Mechanic Name')}} <span class="text-primary">*</span></label>
-                                <input type="text" class="form-control" placeholder="{{ translate('Mechanic Name')}}" name="name" required>
+                                <input type="text" class="form-control" placeholder="{{ translate('Mechanic Name')}}" name="name" value="{{$user[0]->name}}" required>
+                            </div>
+                            <div class="form-group">
+                                <label>{{ translate('Contact')}} <span class="text-primary">*</span></label>
+                                <input type="text" name="contact" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>{{ translate('Address')}} <span class="text-primary">*</span></label>
-                                <textarea class="form-control" name="address" id="" cols="20" rows="10" required></textarea>
+                                <input type="text" name="address_one" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>{{ translate('Contact Number')}} <span class="text-primary">*</span></label>
-                                <input type="text" name="contact" class="form-control">
+                                <label>{{ translate('Secondary Address')}}</label>
+                                <input type="text" name="address_two" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>{{ translate('City')}} <span class="text-primary">*</span></label>
+                                <input type="text" name="city" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>{{ translate('Country')}} <span class="text-primary">*</span></label>
+                                <input type="text" name="country" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>{{ translate('Short Description')}} <span class="text-primary">*</span></label>
+                                <textarea class="form-control" name="description" id="" cols="20" rows="10" required></textarea>
                             </div>
                         </div>
                     </div>

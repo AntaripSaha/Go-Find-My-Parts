@@ -11,23 +11,23 @@ class CreateModelsTable extends Migration
      *
      * @return void
      */
-    public function up()
-    {
-        Schema::create('models', function (Blueprint $table) {
-            $table->id();
-            $table->string('model_name');
-            $table->integer('brand_id');
-            $table->timestamps();
-        });
-    }
+    // public function up()
+    // {
+    //     Schema::create('models', function (Blueprint $table) {
+    //         $table->id();
+    //         $table->string('model_name');
+    //         $table->integer('brand_id');
+    //         $table->timestamps();
+    //     });
+    // }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('models');
-    }
+    // /**
+    //  * Reverse the migrations.
+    //  *
+    //  * @return void
+    //  */
+    // public function down()
+    // {
+    //     Schema::dropIfExists('models');
+    // }
 }

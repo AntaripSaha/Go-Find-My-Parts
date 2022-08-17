@@ -70,9 +70,9 @@
                             <div class="col-md-8">
                                 <select class="form-control aiz-selectpicker" name="year_id" id="year_id" data-live-search="true" required>
                                     <option value="">{{ translate('Select Year') }}</option>
-                                    @foreach (\App\Models\Year::all() as $year)
-                                    <option value="{{ $year->id }}" @if($product->year_id == $year->id) selected @endif>{{ $year->year }}</option>
-                                    @endforeach
+                                        @foreach (\App\Models\Year::all() as $year)
+                                        <option value="{{ $year->id }}">{{ $year->year }}</option>
+                                        @endforeach
                                 </select>
                             </div>
                         </div>

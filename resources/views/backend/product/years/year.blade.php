@@ -7,12 +7,12 @@
 		<div class="card">
 		    <div class="card-header row gutters-5">
 				<div class="col text-center text-md-left">
-					<h5 class="mb-md-0 h6">{{ translate('Models') }}</h5>
+					<h5 class="mb-md-0 h6">{{ translate('Years') }}</h5>
 				</div>
 				<div class="col-md-4">
 					<form class="" id="sort_models" action="" method="GET">
 						<div class="input-group input-group-sm">
-					  		<input type="text" class="form-control" id="search" name="search"@isset($sort_search) value="{{ $sort_search }}" @endisset placeholder="{{ translate('Type Model Name & Enter') }}">
+					  		<input type="text" class="form-control" id="search" name="search"@isset($sort_search) value="{{ $sort_search }}" @endisset placeholder="{{ translate('Type Year & Enter') }}">
 						</div>
 					</form>
 				</div>

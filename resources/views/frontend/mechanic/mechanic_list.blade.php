@@ -37,7 +37,7 @@
                             <div class="item">
                           
                                 <div class="card" style="height:500px !important;">
-                                    <img class="card-img-top" src="{{ uploaded_asset($mechanic->image) }}" height="260px" width="auto" alt="Card image cap">
+                                    <img class="card-img-top" src="{{ uploaded_asset($mechanic->profile_image) }}" height="260px" width="auto" alt="Card image cap">
                                     <div class="card-body">
                                         <h5 class="card-title">{{$mechanic->name}}</h5>
                                       <p class="card-text">{{$mechanic->contact}}</p>
