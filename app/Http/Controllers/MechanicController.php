@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
 use App\Models\Mechanic;
 use App\Models\MechanicBrand;
 use App\Models\User;
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class MechanicController extends Controller
 {
@@ -55,12 +57,12 @@ class MechanicController extends Controller
         return view('frontend.mechanic.list',compact('mechanics'));
     }
     public function profile(){
-       
-          $profile = Mechanic::with('user')->where('user_id', auth()->user()->id)->first();
-        return view('frontend.mechanic.profile', compact('profile'));
+        $profile = Mechanic::with('user','brands')->where('user_id', auth()->user()->id)->first();
+        $all_brands = Brand::all();
+        //  return $profile->brands[0]->name;
+        return view('frontend.mechanic.profile', compact('profile','all_brands'));
     }
-    public function update(Request $request, Mechanic $mechanic){
-
+    public function mechanic_update(Request $request, Mechanic $mechanic){
         $mechanic->banner_image= $request->banner_image;
         $mechanic->profile_image= $request->profile_image;
         $mechanic->contact= $request->contact;
@@ -77,6 +79,6 @@ class MechanicController extends Controller
             ]);
         }
         flash(translate('Information has been inserted successfully'))->success();
-        return view('frontend.mechanic.profile');
+        return redirect()->route('mechanic.profile');
     }
 }

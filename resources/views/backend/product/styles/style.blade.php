@@ -97,10 +97,8 @@
                     <div class="form-group mb-3">
 						<label for="year">{{translate('Manufactured Year')}} <span class="text-danger">*</span></label>
 						<div class="">
-							<select class="form-control aiz-selectpicker" name="year_id" data-live-search="true" required>
-							@foreach($years as $year)
-								<option value="{{$year->id}}">{{$year->year}}</option>
-							@endforeach
+							<select class="form-control mb-3 aiz-selectpicker" data-live-search="true" name="year_id" required>
+
 							</select>
 						</div>
                     </div>

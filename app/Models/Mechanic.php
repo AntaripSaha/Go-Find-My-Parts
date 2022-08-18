@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Mechanic extends Model
 {
     use HasFactory;
+
+    protected $appends = ['my_brands'];
     
     public function user()
     {
@@ -16,6 +18,10 @@ class Mechanic extends Model
     public function brands()
     {
         return $this->belongsToMany(Brand::class,'mechanic_brands','mechanic_id','brand_id');
+    }
+
+    public function getMyBrandsAttribute(){
+        return $this->brands->pluck('id')->toArray();
     }
 
     

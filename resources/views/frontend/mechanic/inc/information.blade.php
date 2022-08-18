@@ -4,8 +4,10 @@
         <div class="fs-15 fw-600 p-3 border-bottom">
             {{ translate('Basic Info')}}
         </div>
-        <form action="{{route('mechanic.profile.update', ['mechanic'=>$profile->user->id])}}" method="POST" enctype="multipart/form-data">
-           @csrf     
+        <form action="{{route('mechanic.profile.update', ['mechanic'=>$profile->id])}}" method="POST" enctype="multipart/form-data" >
+            {{ method_field('PUT') }}
+            {{ csrf_field() }}
+
             <div class="p-3">
                 <div class="form-group">
                     <label for="banner_image">{{translate('Banner Image')}}</label>
@@ -14,10 +16,10 @@
                             <div class="input-group-text bg-soft-secondary font-weight-medium">{{ translate('Browse')}}</div>
                         </div>
                         <div class="form-control file-amount">{{ translate('Choose File') }}</div>
-                        <input type="hidden" name="banner_image" class="selected-files">
+                        <input type="hidden" name="banner_image" class="selected-files" value="{{$profile->banner_image}}">
                     </div>
                     <div class="file-preview box sm">
-                        <img src="{{uploaded_asset($profile->banner_image)}}" alt="" height="180px" width="auto">
+                         
                     </div>
                 </div>
                 <div class="form-group">
@@ -27,10 +29,10 @@
                                 <div class="input-group-text bg-soft-secondary font-weight-medium">{{ translate('Browse')}}</div>
                         </div>
                         <div class="form-control file-amount">{{ translate('Choose File') }}</div>
-                        <input type="hidden" name="profile_image" class="selected-files">
+                        <input type="hidden" name="profile_image" class="selected-files" value="{{$profile->profile_image}}">
                     </div>
                     <div class="file-preview box sm">
-                        <img src="{{uploaded_asset($profile->profile_image)}}" alt=""  height="180px" width="auto">
+                         
                     </div>
                 </div>
                 <div class="form-group">
@@ -43,10 +45,17 @@
                 </div>
                 <div class="form-group">
                     <label>{{ translate('Brands')}} <span class="text-primary">*</span></label>
-                    <select class="select2 form-control aiz-selectpicker" name="brands[]" data-toggle="select2" data-placeholder="Choose ..."data-live-search="true" data-selected=" " multiple>
-                        @foreach (\App\Models\Brand::all() as $brand)
-                            <option value="{{ $brand->id }}">{{ $brand->name }}</option>
-                        @endforeach
+                    <select class="select2 form-control aiz-selectpicker" name="brands[]" data-toggle="select2" data-placeholder="Choose ..."data-live-search="true" data-selected="{{json_encode($profile->my_brands)}}" multiple>
+                        
+                            {{-- @foreach ($brands as $brand) 
+                                <option value="{{ $brand }}" selected>{{ $brand }}</option>
+                            @endforeach --}}
+                        
+                            @foreach ($all_brands as $brand)
+                                <option value="{{ $brand->id }}" {{in_array($brand->id,$profile->my_brands) ? 'selected' : ''}}>{{ $brand->name }}</option>
+                            @endforeach
+                        
+                        
                     </select>
                 </div>
                 <div class="form-group">

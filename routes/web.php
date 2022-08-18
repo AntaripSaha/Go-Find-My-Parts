@@ -456,7 +456,7 @@ Route::middleware(['mechanic'])->group(function () {
     Route::any('mechanic/home',[MechanicController::class, 'home'] )->name('mechanic.home');
     Route::any('mechanic/information/store', [MechanicController::class, 'info_store'])->name('mechanic.info.store');
     Route::any('mechanic/profile', [MechanicController::class, 'profile'])->name('mechanic.profile');
-    Route::post('mechanic/profile/update/{mechanic}', [MechanicController::class, 'update'])->name('mechanic.profile.update');
+    Route::put('mechanic/profile/update/{mechanic}', [MechanicController::class, 'mechanic_update'])->name('mechanic.profile.update');
 });
 Route::any('mechanic/register',[MechanicController::class, 'register'] )->name('mechanic.register');
 Route::any('mechanic/list', [MechanicController::class, 'list'])->name('mechanic.list');
