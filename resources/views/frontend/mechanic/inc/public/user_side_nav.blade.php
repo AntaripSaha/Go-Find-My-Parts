@@ -8,15 +8,15 @@
                     <img src="{{ static_asset('assets/img/avatar-place.png') }}" class="image rounded-circle" onerror="this.onerror=null;this.src='{{ static_asset('assets/img/avatar-place.png') }}';">
                 @endif
             </span>
-            <h4 class="h5 fs-16 mb-1 fw-600">{{ Auth::user()->name }}</h4>
-            @if(Auth::user()->phone != null)
-                <div class="text-truncate opacity-60">{{ Auth::user()->phone }}</div>
+            <h4 class="h5 fs-16 mb-1 fw-600">{{$profile->user->name }}</h4>
+            @if($profile->user->phone != null)
+                <div class="text-truncate opacity-60">{{ $profile->user->phone }}</div>
             @else
-                <div class="text-truncate opacity-60">{{ Auth::user()->email }}</div>
+                <div class="text-truncate opacity-60">{{ $profile->user->email }}</div>
             @endif
         </div>
 
-        <div class="sidemnenu mb-3">
+        {{-- <div class="sidemnenu mb-3">
             <ul class="aiz-side-nav-list px-2" data-toggle="aiz-side-menu">
 
                 <li class="aiz-side-nav-item">
@@ -39,7 +39,7 @@
                 </li>
  
             </ul>
-        </div>
+        </div> --}}
 
     </div>
 

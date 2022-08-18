@@ -66,6 +66,11 @@ class MechanicController extends Controller
         $all_brands = Brand::all();
         return view('frontend.mechanic.dashboard', compact('profile','all_brands'));
     }
+    public function public_profile($id){
+         $profile = Mechanic::with('user','brands')->where('id', $id)->first();
+        $all_brands = Brand::all();
+        return view('frontend.mechanic.public_profile', compact('profile','all_brands'));
+    }
     public function mechanic_update(Request $request, Mechanic $mechanic){
         $mechanic->banner_image= $request->banner_image;
         $mechanic->profile_image= $request->profile_image;

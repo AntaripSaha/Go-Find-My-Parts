@@ -1,61 +1,49 @@
 
 <div class="card-body">
     <div class="bg-white rounded shadow-sm mb-4">
-        <div class="fs-15 fw-600 p-3 border-bottom">
-            {{ translate('Edit Information')}}
-        </div>
-        <form action="{{route('mechanic.profile.update', ['mechanic'=>$profile->id])}}" method="POST" enctype="multipart/form-data" >
-            {{ method_field('PUT') }}
-            {{ csrf_field() }}
-
-            <div class="p-3">
-              
-                
-                <div>
-                    <label>{{ translate('Mechanic Name')}}:</label> {{$profile->user->name}}
-                   
+            <div class="p-1">
+                <div class="fs-15 fw-600 p-1">
+                    Personal Information
                 </div>
-                <div class="form-group">
-                    <label>{{ translate('Contact')}} <span class="text-primary">*</span></label>    
-                    <input type="text" name="contact" value="{{$profile->contact}}" class="form-control" required>
+                <div class="p-3" style="background: rgb(247 248 250); border: 1.5px solid rgb(235 235 235);">
+                    <div class="form-group" >
+                        <label class=" fw-500" style="font-size: 14px;">{{ translate('Name')}}:&nbsp; {{$profile->user->name}}</label>
+                     </div>
+                     <div class="form-group">
+                        <label class=" fw-500" style="font-size: 14px;">{{ translate('Contact')}}:&nbsp; {{$profile->contact}}</label>
+                     </div>
+                     <div class="form-group">
+                        <label class=" fw-500" style="font-size: 14px;">{{ translate('Brands')}}:&nbsp;</label>{{json_encode($profile->my_brand_names)}}
+                     </div>
                 </div>
-                <div class="form-group">
-                    <label>{{ translate('Brands')}} <span class="text-primary">*</span></label>
+                <div class="fs-15 fw-600 p-2">
+                    Address
+                </div>
+                <div class="p-3" style="background: rgb(247 248 250); border: 1.5px solid rgb(235 235 235); ">
+                    <div class="form-group">
+                        <p style="font-size: 14px;" class="fw-500">
+                            {{$profile->address}}. {{$profile->address_two}}. {{$profile->city}}.{{$profile->country}}
+                        </p>
+                     </div>
+                </div>
+                <div class="fs-15 fw-600 p-2">
+                    Description
+                </div>
+                <div class="p-3" style="background: rgb(247 248 250); border: 1.5px solid rgb(235 235 235); ">
+                    <div class="form-group">
+                        <p style="font-size: 14px;" class="fw-500">
+                            {{$profile->description}}
+                        </p>
+                     </div>
+                </div>
+                {{-- <div class="form-group">
+                    <label>{{ translate('Brands')}}</label>
                     <select class="select2 form-control aiz-selectpicker" name="brands[]" data-toggle="select2" data-placeholder="Choose ..."data-live-search="true" data-selected="{{json_encode($profile->my_brands)}}" multiple>
                         @foreach ($all_brands as $brand)
                             <option value="{{ $brand->id }}" {{in_array($brand->id,$profile->my_brands) ? 'selected' : ''}}>{{ $brand->name }}</option>
                         @endforeach
                     </select>
-                </div>
-                <div class="fs-15 fw-600 p-3 border-bottom">
-                    Address
-                </div>
-                <div class="p-3" style="background: rgb(226 227 227)">
-                    <div class="form-group">
-                        <label for="address_one">Primary Address<span class="text-primary">*</span></label>
-                        <input type="text" name="address_one" class="form-control" value="{{$profile->address}}" required>
-                    </div>
-                    <div class="form-group">
-                        <label>{{ translate('Secondary Address')}}</label>
-                        <input type="text" name="address_two" value="{{$profile->address_two}}" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>{{ translate('City')}} <span class="text-primary">*</span></label>
-                        <input type="text" name="city" value="{{$profile->city}}" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>{{ translate('Country')}} <span class="text-primary">*</span></label>
-                        <input type="text" name="country" value="{{$profile->country}}" class="form-control" required>
-                    </div>
-                </div>
-                <div class="form-group mt-3">
-                    <label>{{ translate('Short Description')}} <span class="text-primary">*</span></label>
-                    <textarea class="form-control" name="description" id="" cols="20" rows="10" required>{{$profile->description}}</textarea>
-                </div>
+                </div> --}}
             </div>
-            <div class="text-right">
-                <button type="submit" class="btn btn-primary fw-600">Update</button>
-            </div>
-        </form>
     </div>
 </div>
