@@ -91,7 +91,7 @@ class AdvanceSearchController extends Controller
 
     // Parts Start
     public function parts_index(Request $request){
-       $parts = Part::with('styles', 'partCategories');
+       $parts = Part::with('styles', 'partCategories')->orderBy('id', 'desc');
        $partCategories = PartCategory::select('id', 'name')->get();
        $styles = Style::select('id', 'style')->get();
         if ($request->has('search')){

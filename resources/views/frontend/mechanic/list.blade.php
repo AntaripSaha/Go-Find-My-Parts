@@ -1,4 +1,4 @@
-@extends('frontend.layouts.new_app')
+@extends('frontend.mechanic.layouts.new_app')
 @section('content')
 
 @include('frontend.mechanic.mechanic_list')

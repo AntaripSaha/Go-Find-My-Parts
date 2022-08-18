@@ -461,3 +461,4 @@ Route::middleware(['mechanic'])->group(function () {
 Route::any('mechanic/register',[MechanicController::class, 'register'] )->name('mechanic.register');
 Route::any('mechanic/list', [MechanicController::class, 'list'])->name('mechanic.list');
 Route::any('mechanic/search', [MechanicController::class, 'search'])->name('mechanic.search');
+Route::get('mechanic/dashboard', [MechanicController::class, 'dashboard'])->name('mechanic.dashboard');

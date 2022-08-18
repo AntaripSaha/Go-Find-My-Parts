@@ -14,7 +14,7 @@
             <div class="card-header">
                 <h6 class="mb-0">{{ translate('Default Information') }}</h6>
             </div>
-            @include('frontend.mechanic.pages.information')
+            @include('frontend.mechanic.pages.dashboard')
         </div>
     </div>
 </div>
