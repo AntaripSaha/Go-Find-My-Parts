@@ -47,7 +47,7 @@ class MechanicController extends Controller
         }
     }
     public function list(){
-        $mechanics = Mechanic::where('status', 1)->get();
+        $mechanics = Mechanic::with('user')->where('status', 1)->get();
         return view('frontend.mechanic.list',compact('mechanics'));
     }
     public function search(Request $request){
