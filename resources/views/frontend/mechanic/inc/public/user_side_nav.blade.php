@@ -15,8 +15,8 @@
                 <div class="text-truncate opacity-60">{{ $profile->user->email }}</div>
             @endif
         </div>
-
-        {{-- <div class="sidemnenu mb-3">
+        @if(Auth::id() == $profile->user->id)
+        <div class="sidemnenu mb-3">
             <ul class="aiz-side-nav-list px-2" data-toggle="aiz-side-menu">
 
                 <li class="aiz-side-nav-item">
@@ -39,10 +39,10 @@
                 </li>
  
             </ul>
-        </div> --}}
-
+        </div>
+        @else
+        @endif
     </div>
-
     <div class="fixed-bottom d-xl-none bg-white border-top d-flex justify-content-between px-2" style="box-shadow: 0 -5px 10px rgb(0 0 0 / 10%);">
         <a class="btn btn-sm p-2 d-flex align-items-center" href="{{ route('logout') }}">
             <i class="las la-sign-out-alt fs-18 mr-2"></i>

@@ -4,10 +4,11 @@
 <div class="row gutters-12">
     <div class="col-md-12">
         <div class="bg-grad-1 text-white rounded-lg mb-4 overflow-hidden">
+            
             @if($profile->banner_image != null)
                 <img src="{{uploaded_asset($profile->banner_image)}}" alt="" >
             @else
-            <img src="{{ static_asset('assets/img/avatar-place.png') }}" alt="" >
+                <img src="{{ static_asset('assets/img/mechanic_banner.jpg') }}" alt="" >
             @endif
             
         </div>

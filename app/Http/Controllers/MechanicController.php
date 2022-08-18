@@ -51,8 +51,10 @@ class MechanicController extends Controller
         return view('frontend.mechanic.list',compact('mechanics'));
     }
     public function search(Request $request){
-      $mechanics = Mechanic::where('name', 'LIKE', "%$request->name%")
+      $mechanics = Mechanic::where('city', 'LIKE', "%$request->name%")
                                 ->orWhere('address', 'LIKE', "%$request->name%")
+                                ->orWhere('country', 'LIKE', "%$request->name%")
+                                ->orWhere('address_two', 'LIKE', "%$request->name%")
                                 ->get();
         return view('frontend.mechanic.list',compact('mechanics'));
     }
@@ -67,7 +69,7 @@ class MechanicController extends Controller
         return view('frontend.mechanic.dashboard', compact('profile','all_brands'));
     }
     public function public_profile($id){
-         $profile = Mechanic::with('user','brands')->where('id', $id)->first();
+        $profile = Mechanic::with('user','brands')->where('id', $id)->first();
         $all_brands = Brand::all();
         return view('frontend.mechanic.public_profile', compact('profile','all_brands'));
     }

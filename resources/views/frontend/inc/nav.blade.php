@@ -192,7 +192,7 @@
                                 @if (Auth::user()->user_type == 'seller')
                                     <a href="{{ route('seller.dashboard') }}" class="text-reset d-inline-block py-2">{{ translate('My Panel')}}</a>
                                 @elseif(Auth::user()->user_type == 'mechanic')
-                                    <a href="{{ route('mechanic.profile') }}" class="text-reset d-inline-block py-2">{{ translate('My Panel')}}</a>
+                                    <a href="{{ route('mechanic.dashboard') }}" class="text-reset d-inline-block py-2">{{ translate('My Panel')}}</a>
                                 @else
                                     <a href="{{ route('dashboard') }}" class="text-reset d-inline-block py-2">{{ translate('My Panel')}}</a>
                                 @endif
