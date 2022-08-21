@@ -12,12 +12,10 @@
                      <div class="form-group">
                         <label class=" fw-500" style="font-size: 14px;">{{ translate('Contact')}}:&nbsp; {{$profile->contact}}</label>
                      </div>
-                     <div class="form-group">
+                     {{-- <div class="form-group">
                         <label class=" fw-500" style="font-size: 14px;">{{ translate('Brands')}}:&nbsp;</label>
-                        
                             {{ implode(", ",$profile->my_brand_names) }}
-                        
-                     </div>
+                     </div> --}}
                 </div>
                 <div class="fs-15 fw-600 p-2">
                     Address

@@ -16,85 +16,85 @@
             @endif
         </div>
         @if(Auth::id() == $profile->user->id)
-        <div class="sidemnenu mb-3">
-            <ul class="aiz-side-nav-list px-2" data-toggle="aiz-side-menu">
+            <div class="sidemnenu mb-3">
+                <ul class="aiz-side-nav-list px-2" data-toggle="aiz-side-menu">
 
-                <li class="aiz-side-nav-item">
-                    <a href="{{ route('mechanic.dashboard') }}" class="aiz-side-nav-link {{ areActiveRoutes(['mechanic.dashboard'])}}">
-                        <i class="las la-home aiz-side-nav-icon"></i>
-                        <span class="aiz-side-nav-text">Dashboard</span>
-                    </a>
-                </li>
-                <li class="aiz-side-nav-item">
-                    <a href="{{ route('mechanic.profile') }}" class="aiz-side-nav-link {{ areActiveRoutes(['mechanic.profile'])}}">
-                        <i class="las la-pen aiz-side-nav-icon"></i>
-                        <span class="aiz-side-nav-text">Edit Profile</span>
-                    </a>
-                </li>
-                <li class="aiz-side-nav-item">
-                    <a href="{{route('mechanic.password')}}" class="aiz-side-nav-link {{ areActiveRoutes(['mechanic.password'])}}">
-                        <i class="las la-id-badge aiz-side-nav-icon"></i>
-                        <span class="aiz-side-nav-text">Manage Profile</span>
-                    </a>
-                </li>
- 
-            </ul>
-        </div>
-        <div class="sidemnenu mb-5 border-top">
-            <ul class="aiz-side-nav-list px-2" data-toggle="aiz-side-menu">
-                <li class="aiz-side-nav-item">
-                    <a href="#" class="aiz-side-nav-link">
-                        <i class="las la-id-badge aiz-side-nav-icon"></i>
-                        <h5 class="h5 fs-16 mb-1 fw-400"><b>Brands</b></br></h5>
-                    </a>
-                </li>
-                <li class="aiz-side-nav-item">
-                    <a href="#" class="aiz-side-nav-link"  style="text-align: left;">
-                        {{ implode(", ",$profile->my_brand_names) }}
-                    </a>
-                </li>
-                <li class="aiz-side-nav-item border-top  p-1">
-                    <a href="#" class="aiz-side-nav-link">
-                        <i class="las la-id-badge aiz-side-nav-icon"></i>
-                        <h5 class="h5 fs-16 mb-1 fw-400"><b>Description</b></br></h5>
-                    </a>
-                </li>
-                <li class="aiz-side-nav-item">
-                    <a href="#" class="aiz-side-nav-link" style="text-align: left;">{{$profile->description}}
-                    </a>
-                </li>
-            </ul>
-        </div>
+                    <li class="aiz-side-nav-item">
+                        <a href="{{ route('mechanic.dashboard') }}" class="aiz-side-nav-link {{ areActiveRoutes(['mechanic.dashboard'])}}">
+                            <i class="las la-home aiz-side-nav-icon"></i>
+                            <span class="aiz-side-nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="aiz-side-nav-item">
+                        <a href="{{ route('mechanic.profile') }}" class="aiz-side-nav-link {{ areActiveRoutes(['mechanic.profile'])}}">
+                            <i class="las la-pen aiz-side-nav-icon"></i>
+                            <span class="aiz-side-nav-text">Edit Profile</span>
+                        </a>
+                    </li>
+                    <li class="aiz-side-nav-item">
+                        <a href="{{route('mechanic.password')}}" class="aiz-side-nav-link {{ areActiveRoutes(['mechanic.password'])}}">
+                            <i class="las la-id-badge aiz-side-nav-icon"></i>
+                            <span class="aiz-side-nav-text">Manage Profile</span>
+                        </a>
+                    </li>
+    
+                </ul>
+            </div>
+            <div class="sidemnenu mb-5 border-top">
+                <ul class="aiz-side-nav-list px-2" data-toggle="aiz-side-menu">
+                    <li class="aiz-side-nav-item">
+                        <a href="#" class="aiz-side-nav-link">
+                            <i class="las la-id-badge aiz-side-nav-icon"></i>
+                            <h5 class="h5 fs-16 mb-1 fw-400"><b>Brands</b></br></h5>
+                        </a>
+                    </li>
+                    <li class="aiz-side-nav-item">
+                        <a href="#" class="aiz-side-nav-link"  style="text-align: left;">
+                            {{ implode(", ",$profile->my_brand_names) }}
+                        </a>
+                    </li>
+                    <li class="aiz-side-nav-item border-top  p-1">
+                        <a href="#" class="aiz-side-nav-link">
+                            <i class="las la-id-badge aiz-side-nav-icon"></i>
+                            <h5 class="h5 fs-16 mb-1 fw-400"><b>Description</b></br></h5>
+                        </a>
+                    </li>
+                    <li class="aiz-side-nav-item">
+                        <a href="#" class="aiz-side-nav-link" style="text-align: left;">{{$profile->description}}
+                        </a>
+                    </li>
+                </ul>
+            </div>
         @else
-        <div class="sidemnenu mb-5 ">
-            <ul class="aiz-side-nav-list px-2" data-toggle="aiz-side-menu">
-                <li class="aiz-side-nav-item">
-                    <a href="#" class="aiz-side-nav-link">
-                        <i class="las la-id-badge aiz-side-nav-icon"></i>
-                        <h5 class="h5 fs-16 mb-1 fw-400"><b>Brands</b></br></h5>
-                    </a>
-                </li>
-                <li class="aiz-side-nav-item ">
-                    <a href="#" class="aiz-side-nav-link">
-                        {{ implode(", ",$profile->my_brand_names) }}
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="sidemnenu mb-5 border-top">
-            <ul class="aiz-side-nav-list px-2" data-toggle="aiz-side-menu">
-                <li class="aiz-side-nav-item">
-                    <a href="#" class="aiz-side-nav-link">
-                        <i class="las la-id-badge aiz-side-nav-icon"></i>
-                        <h5 class="h5 fs-16 mb-1 fw-400"><b>Description</b></br></h5>
-                    </a>
-                </li>
-                <li class="aiz-side-nav-item">
-                    <a href="#" class="aiz-side-nav-link" style="text-align: left;">{{$profile->description}}
-                    </a>
-                </li>
-            </ul>
-        </div>
+            <div class="sidemnenu mb-5 ">
+                <ul class="aiz-side-nav-list px-2" data-toggle="aiz-side-menu">
+                    <li class="aiz-side-nav-item">
+                        <a href="#" class="aiz-side-nav-link">
+                            <i class="las la-id-badge aiz-side-nav-icon"></i>
+                            <h5 class="h5 fs-16 mb-1 fw-400"><b>Brands</b></br></h5>
+                        </a>
+                    </li>
+                    <li class="aiz-side-nav-item ">
+                        <a href="#" class="aiz-side-nav-link">
+                            {{ implode(", ",$profile->my_brand_names) }}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="sidemnenu mb-5 border-top">
+                <ul class="aiz-side-nav-list px-2" data-toggle="aiz-side-menu">
+                    <li class="aiz-side-nav-item">
+                        <a href="#" class="aiz-side-nav-link">
+                            <i class="las la-id-badge aiz-side-nav-icon"></i>
+                            <h5 class="h5 fs-16 mb-1 fw-400"><b>Description</b></br></h5>
+                        </a>
+                    </li>
+                    <li class="aiz-side-nav-item">
+                        <a href="#" class="aiz-side-nav-link" style="text-align: left;">{{$profile->description}}
+                        </a>
+                    </li>
+                </ul>
+            </div>
         @endif
 
     </div>
