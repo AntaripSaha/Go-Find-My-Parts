@@ -9,7 +9,15 @@
             @else
                 <img class="image_banner" src="{{ static_asset('assets/img/mechanic_banner.jpg') }}" alt="" >
             @endif
-            
+        </div>
+        <div class="profile-card">
+            @if($profile->profile_image != null)
+                <img class="avatar avatar-md mb-3 mt-2 ml-1" src="{{uploaded_asset($profile->profile_image)}}" alt="" >
+            @else
+                <img class="avatar avatar-md mb-3 mt-2 ml-1" src="{{ static_asset('assets/img/avatar-place.png') }}" alt="" >
+            @endif
+            <h4 class="profile-name">{{$profile->user->name}}</h4>
+            <h4 class="profile-mail">{{$profile->user->email}}</h4>
         </div>
     </div>
 </div>

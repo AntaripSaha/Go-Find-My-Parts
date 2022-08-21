@@ -90,8 +90,98 @@
                 max-width: 100%;
                 height: auto;
             }   
-        }    
+        }
+            
     </style>
+        <style>
+            @media screen and (min-width: 768px) and (max-width:988px){
+              .profile-card{
+                position: absolute !important;
+                max-width: 50% !important;
+                margin-top: -18% !important;
+                margin-left: 2% !important;
+                opacity: 90% !important; 
+                background: white !important;
+                width: 50% !important;
+                height: 36% !important;
+                border-radius: 2%;
+              }
+              .profile-name{
+                  color: black;
+                  margin-left: 21%;
+                  margin-top: -20%;
+                  padding-bottom: 14%;
+                  font-size: 13px;
+              } 
+              .profile-mail{
+                  color: black;
+                  margin-left: 21%;
+                  margin-top: -15%;
+                  padding-bottom: 6%;
+                  font-size: 10px;
+              }
+            }
+            @media screen and (min-width: 540px) and (max-width:767px){
+              .profile-card{
+                position: absolute !important;
+                max-width: 50% !important;
+                margin-top: -20% !important;
+                margin-left: 2% !important;
+                opacity: 90% !important; 
+                background: white !important;
+                width: 50% !important;
+                height: 36% !important;
+                border-radius: 2%;
+              }
+              .profile-name{
+                  color: black;
+                  margin-left: 30%;
+                  margin-top: -29%;
+                  padding-bottom: 15%;
+                  font-size: 13px
+              } 
+              .profile-mail{
+                  color: black;
+                  margin-left: 30%;
+                  margin-top: -16%;
+                  padding-bottom: 7%;
+                  font-size: 10px;
+              }
+            }
+            @media screen and (min-width: 340px) and (max-width:539px){
+              .profile-card{
+                position: absolute !important;
+                max-width: 50% !important;
+                margin-top: -27% !important;
+                margin-left: 2% !important;
+                opacity: 90% !important;
+                background: white !important;
+                width: 50% !important;
+                height: 50% !important;
+                border-radius: 2%;
+              }
+              .profile-name{
+                color: black;
+                margin-left: 36%;
+                margin-top: -36%;
+                padding-bottom: 7%;
+                font-size: 10px;
+              } 
+              .profile-mail{
+                color: black;
+                margin-left: 36%;
+                margin-top: -7%;
+                padding-bottom: 7%;
+                font-size: 10px;
+              }
+            }
+            @media screen and (min-width: 1200px) and (max-width:2400px){
+              .profile-card{
+                display: none !important;
+              } 
+            }
+           
+      </style>
     <style>
         body{
             font-family: 'Open Sans', sans-serif;

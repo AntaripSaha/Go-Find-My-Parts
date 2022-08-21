@@ -1,7 +1,7 @@
 @extends('frontend.mechanic.layouts.new_app')
 @section('content')
 
-@include('frontend.mechanic.mechanic_list')
+@include('frontend.mechanic.pages.mechanic_list')
 
 @endsection
 
