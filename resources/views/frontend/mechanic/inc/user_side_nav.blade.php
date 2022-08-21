@@ -1,6 +1,6 @@
 <div class="aiz-user-sidenav-wrap position-relative z-1 shadow-sm">
     <div class="aiz-user-sidenav rounded overflow-auto c-scrollbar-light pb-5 pb-xl-0">
-        <div class="p-4 text-xl-center mb-4 border-bottom bg-primary text-white position-relative">
+        <div class="p-4 text-xl-center mb-4 border-bottom text-black position-relative">
             <span class="avatar avatar-md mb-3">
                 @if ($profile->profile_image != null)
                     <img src="{{ uploaded_asset($profile->profile_image) }}" onerror="this.onerror=null;this.src='{{ static_asset('assets/img/avatar-place.png') }}';">
@@ -32,12 +32,26 @@
                     </a>
                 </li>
                 <li class="aiz-side-nav-item">
-                    <a href="# " class="aiz-side-nav-link {{ areActiveRoutes(['dashboard'])}}">
+                    <a href="{{route('mechanic.password')}}" class="aiz-side-nav-link {{ areActiveRoutes(['mechanic.password'])}}">
                         <i class="las la-id-badge aiz-side-nav-icon"></i>
                         <span class="aiz-side-nav-text">Manage Profile</span>
                     </a>
                 </li>
  
+            </ul>
+        </div>
+        <div class="sidemnenu mb-5 border-top  p-1">
+            <ul class="aiz-side-nav-list px-2" data-toggle="aiz-side-menu">
+
+                 
+                
+                <li class="aiz-side-nav-item">
+                    <a href="#" class="aiz-side-nav-link">
+                        <i class="las la-id-badge aiz-side-nav-icon"></i>
+                        <span class="aiz-side-nav-text">Brands:</span>
+                    </a>
+                </li>
+              
             </ul>
         </div>
 

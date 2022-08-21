@@ -7,6 +7,7 @@ use App\Models\Mechanic;
 use App\Models\MechanicBrand;
 use App\Models\User;
 use Auth;
+use Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 
@@ -16,35 +17,38 @@ class MechanicController extends Controller
         return view('frontend.mechanic.register');
     }
     public function home(){
-        $user = User::where('id', auth()->user()->id)->select('name')->get();
+        $profile = Mechanic::with('user','brands')->where('user_id', auth()->user()->id)->first();
+        $all_brands = Brand::all();
+        $user = Auth::user();
         $details = Mechanic::where('user_id', auth()->user()->id)->get();
-        return view('frontend.mechanic.home', compact('user', 'details'));      
+        return view('frontend.mechanic.home', compact('user', 'details', 'profile', 'all_brands'));      
     }
-    public function info_store(Request $request){
+    public function info_store(Request $request, Mechanic $mechanic){
       $mechanic = Mechanic::where('user_id', Auth::id())->get();
         if(count($mechanic)){
             flash(translate('You Can Update Your Information'))->success();
             flash(translate('Information Already Exists'))->error();
             return redirect()->route('mechanic.home');
         }else{
-            $mechanic = new Mechanic();
-            $mechanic->user_id = Auth::id();
-            $mechanic->address = $request->address_one;
-            $mechanic->address_two = $request->address_two;
-            $mechanic->city = $request->city;
-            $mechanic->country = $request->country;
-            $mechanic->contact = $request->contact;
-            $mechanic->banner_image = $request->banner_image;
-            $mechanic->profile_image = $request->profile_image;
-            $mechanic->description = $request->description;
-            if($mechanic->save()){
+            $mechanic->banner_image= $request->banner_image;
+            $mechanic->profile_image= $request->profile_image;
+            $mechanic->contact= $request->contact;
+            $mechanic->address= $request->address_one;
+            $mechanic->address_two= $request->address_two;
+            $mechanic->city= $request->city;
+            $mechanic->country= $request->country;
+            $mechanic->description= $request->description;
+            $mechanic->save();
+            $mechanic->brands()->sync($request->brands);
+            if($request->name){
                 User::where('id', Auth::id())->update([
                     'name'=>$request->name
                 ]);
+            }
                 flash(translate('Information has been inserted successfully'))->success();
                 return redirect()->route('mechanic.list');
             }
-        }
+        
     }
     public function list(){
         $mechanics = Mechanic::with('user')->where('status', 1)->get();
@@ -74,6 +78,15 @@ class MechanicController extends Controller
         return view('frontend.mechanic.public_profile', compact('profile','all_brands'));
     }
     public function mechanic_update(Request $request, Mechanic $mechanic){
+        // return $request;
+        // $validated = $request->validate([
+        //     'address_one' => 'required|max:100',
+        //     'description' => 'required|max:150',
+        // ]);
+        // $messages = [
+        //     'address_one.required' => 'The address is required and max will be 100 Characters.',
+        //     'description.required' => 'The description is required and max will be 150 Characters.',
+        // ];
         $mechanic->banner_image= $request->banner_image;
         $mechanic->profile_image= $request->profile_image;
         $mechanic->contact= $request->contact;
@@ -92,4 +105,30 @@ class MechanicController extends Controller
         flash(translate('Information has been inserted successfully'))->success();
         return redirect()->route('mechanic.profile');
     }
+    public function password(Request $request){
+
+        $profile = Mechanic::with('user','brands')->where('user_id', auth()->user()->id)->first();
+        $all_brands = Brand::all();
+        $user = Auth::user();
+        return view('frontend.mechanic.password', compact('user', 'profile', 'all_brands'));
+    }
+    public function passwordUpdate(Request $request){
+        if ($request->new_password != null && ($request->new_password == $request->confirm_password)) {
+            User::where('id', Auth::id())->update([
+                'password'=>Hash::make($request->new_password)
+            ]);
+        }else{
+            flash(translate('Password Did not match!'))->warning();
+            return back();
+        }
+        flash(translate('Your Profile has been updated successfully!'))->success();
+        return back();
+    }
+    public function test(){
+        $profile = Mechanic::with('user','brands')->where('user_id', auth()->user()->id)->first();
+        $all_brands = Brand::all();
+        $user = Auth::user();
+        return view('frontend.mechanic.test', compact('user', 'profile', 'all_brands'));
+    }
+    
 }

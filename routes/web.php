@@ -454,14 +454,19 @@ Route::post('get-part', [HomeController::class, 'getParts'])->name('get-part');
 
 Route::middleware(['mechanic'])->group(function () {
     Route::any('mechanic/home',[MechanicController::class, 'home'] )->name('mechanic.home');
-    Route::any('mechanic/information/store', [MechanicController::class, 'info_store'])->name('mechanic.info.store');
+    Route::put('mechanic/information/store/{mechanic}', [MechanicController::class, 'info_store'])->name('mechanic.info.store');
     Route::any('mechanic/profile', [MechanicController::class, 'profile'])->name('mechanic.profile');
     Route::put('mechanic/profile/update/{mechanic}', [MechanicController::class, 'mechanic_update'])->name('mechanic.profile.update');
     Route::get('mechanic/dashboard', [MechanicController::class, 'dashboard'])->name('mechanic.dashboard');
+    Route::get('mechanic/password', [MechanicController::class, 'password'])->name('mechanic.password');
+    Route::post('mechanic/password', [MechanicController::class, 'passwordUpdate'])->name('mechanic.password.update');
 });
 Route::any('mechanic/register',[MechanicController::class, 'register'] )->name('mechanic.register');
 Route::any('mechanic/list', [MechanicController::class, 'list'])->name('mechanic.list');
 Route::any('mechanic/search', [MechanicController::class, 'search'])->name('mechanic.search');
+
+
+Route::any('mechanic/test', [MechanicController::class, 'test'])->name('mechanic.test');
 
 
 Route::any('mechanic/public/profile/{id}', [MechanicController::class, 'public_profile'])->name('mechanic.public.profile');

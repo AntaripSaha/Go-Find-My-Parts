@@ -84,7 +84,14 @@
             files: '{{ translate('Files') }}',
         }
     </script>
-
+    <style>
+        @media screen and (min-width: 320px) and (max-width:780px){
+            .image_banner{
+                max-width: 100%;
+                height: auto;
+            }   
+        }    
+    </style>
     <style>
         body{
             font-family: 'Open Sans', sans-serif;

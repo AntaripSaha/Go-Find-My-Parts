@@ -32,7 +32,7 @@
                     </a>
                 </li>
                 <li class="aiz-side-nav-item">
-                    <a href="# " class="aiz-side-nav-link {{ areActiveRoutes(['dashboard'])}}">
+                    <a href="{{route('mechanic.password')}}" class="aiz-side-nav-link {{ areActiveRoutes(['mechanic.password'])}}">
                         <i class="las la-id-badge aiz-side-nav-icon"></i>
                         <span class="aiz-side-nav-text">Manage Profile</span>
                     </a>
