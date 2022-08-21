@@ -11,14 +11,17 @@ class MechanicController extends Controller
     public function index(Request $request){
         try {
             if($request->searchKey){
-                $mechanic = Mechanic::where('name','LIKE',"%$request->searchKey%")
+                $mechanic = Mechanic::where('city', 'LIKE', "%$request->searchKey%")
                                     ->orWhere('address', 'LIKE', "%$request->searchKey%")
+                                    ->orWhere('country', 'LIKE', "%$request->searchKey%")
+                                    ->orWhere('address_two', 'LIKE', "%$request->searchKey%")
                                     ->get();
                 return response()->json([
                     'data'=>$mechanic->map(
                         function($data){
                             return [
-                                'image' => uploaded_asset($data->image),   
+                                'profile_image' => uploaded_asset($data->profile_image),   
+                                'banner_image' => uploaded_asset($data->banner_image),   
                                 'mechanic' =>$data ,
                             ];
                         }
@@ -31,7 +34,8 @@ class MechanicController extends Controller
                     'data'=>$mechanic->map(
                         function($data){
                             return [
-                                'image' => uploaded_asset($data->image),   
+                                'profile_image' => uploaded_asset($data->profile_image),   
+                                'banner_image' => uploaded_asset($data->banner_image),   
                                 'mechanic' =>$data ,
                             ];
                         }
