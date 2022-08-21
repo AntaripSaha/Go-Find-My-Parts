@@ -42,15 +42,29 @@
         </div>
         <div class="sidemnenu mb-5 border-top  p-1">
             <ul class="aiz-side-nav-list px-2" data-toggle="aiz-side-menu">
-
-                 
-                
                 <li class="aiz-side-nav-item">
                     <a href="#" class="aiz-side-nav-link">
                         <i class="las la-id-badge aiz-side-nav-icon"></i>
-                        <span class="aiz-side-nav-text">Brands:</span>
+                    
+                        <h5 class="h5 fs-16 mb-1 fw-400"><b>Brands</b></br></h5>
                     </a>
                 </li>
+                <li class="aiz-side-nav-item">
+                    <a href="#" class="aiz-side-nav-link">
+                        
+                        {{ implode(", ",$profile->my_brand_names) }}</a>
+                </li>
+                <li class="aiz-side-nav-item border-top  p-1">
+                    <a href="#" class="aiz-side-nav-link">
+                        <i class="las la-id-badge aiz-side-nav-icon"></i>
+                        <h5 class="h5 fs-16 mb-1 fw-400"><b>Description</b></br></h5>
+                    </a>
+                </li>
+                <li class="aiz-side-nav-item">
+                    <a href="#" class="aiz-side-nav-link" style="text-align: left;  ">{{$profile->description}}
+                    </a>
+                </li>
+              
               
             </ul>
         </div>
