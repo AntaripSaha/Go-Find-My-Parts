@@ -68,8 +68,34 @@
    .btn-background{
       background: rgb(0 0 0 / 59%);
    }
- 
+   .footer-page-mobile{
+      display: none;
+   }
+   .footer-btn-mb{
+      display: none;
+   }
 @media only screen and (min-width: 360px) and (max-width: 800px){
+   .footer-btn-mb{
+      display: block;
+   }
+   .footer-page-mobile{
+      display: block;
+   }
+   .footer-button-mobile{
+      margin-left: 24%;
+      margin-top: -2%;
+   }
+
+   .footer-button-mobile-first{
+      margin-left: 10%;
+    margin-top: -1%;
+   }
+   .footer-font-mobile{
+      font-size: 12px !imprtant;
+   }
+   .footer-page-desktop{
+      display: none;
+   }
       .service-p{
          color: #999999;
          display: block;

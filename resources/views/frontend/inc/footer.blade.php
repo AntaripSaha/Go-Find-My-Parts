@@ -1,28 +1,58 @@
-<section class="bg-white border-top mt-auto">
+<section class="bg-white border-top mt-auto footer-page-mobile">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-6 border-bottom">
+                <a class="text-reset  text-center p-4 d-block" href="{{ route('terms') }}">
+                    <i class="la la-file-text la-3x text-primary mb-2"></i>
+                    <div style="font-size: 12px !important;">Terms & Conditions</div>
+                </a>
+            </div>
+            <div class="col-6">
+                <a class="text-reset border-left  border-bottom text-center p-4 d-block" href="{{ route('returnpolicy') }}">
+                    <i class="la la-mail-reply la-3x text-primary mb-2"></i>
+                    <div style="font-size: 12px !important;">Return Policy</div>
+                </a>
+            </div>
+            <div class="col-6">
+                <a class="text-reset text-center p-4 d-block" href="{{ route('supportpolicy') }}">
+                    <i class="la la-support la-3x text-primary mb-2"></i>
+                    <div style="font-size: 12px !important;">Support Policy</div>
+                </a>
+            </div>
+            <div class="col-6">
+                <a class="text-reset border-left  text-center p-4 d-block" href="{{ route('privacypolicy') }}">
+                    <i class="las la-exclamation-circle la-3x text-primary mb-2"></i>
+                    <div style="font-size: 12px !important;">Privacy Policy</div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="bg-white border-top mt-auto footer-page-desktop">
     <div class="container">
         <div class="row no-gutters">
             <div class="col-lg-3 col-md-6">
                 <a class="text-reset border-left text-center p-4 d-block" href="{{ route('terms') }}">
                     <i class="la la-file-text la-3x text-primary mb-2"></i>
-                    <h4 class="h6">{{ translate('Terms & conditions') }}</h4>
+                    <h4 class="h6">Terms & Conditions</h4>
                 </a>
             </div>
             <div class="col-lg-3 col-md-6">
                 <a class="text-reset border-left text-center p-4 d-block" href="{{ route('returnpolicy') }}">
                     <i class="la la-mail-reply la-3x text-primary mb-2"></i>
-                    <h4 class="h6">{{ translate('Return Policy') }}</h4>
+                    <h4 class="h6">Return Policy</h4>
                 </a>
             </div>
             <div class="col-lg-3 col-md-6">
                 <a class="text-reset border-left text-center p-4 d-block" href="{{ route('supportpolicy') }}">
                     <i class="la la-support la-3x text-primary mb-2"></i>
-                    <h4 class="h6">{{ translate('Support Policy') }}</h4>
+                    <h4 class="h6">Support Policy</h4>
                 </a>
             </div>
             <div class="col-lg-3 col-md-6">
                 <a class="text-reset border-left border-right text-center p-4 d-block" href="{{ route('privacypolicy') }}">
                     <i class="las la-exclamation-circle la-3x text-primary mb-2"></i>
-                    <h4 class="h6">{{ translate('Privacy Policy') }}</h4>
+                    <h4 class="h6">Privacy Policy</h4>
                 </a>
             </div>
         </div>
@@ -41,7 +71,7 @@
                             <img class="lazyload" src="{{ static_asset('assets/img/placeholder-rect.jpg') }}" data-src="{{ static_asset('assets/img/logo.png') }}" alt="{{ env('APP_NAME') }}" height="20">
                         @endif
                     </a>
-                    <div class="my-3" style="opacity: 70%;">
+                    <div class="my-3 text-left" style="opacity: 70%;">
                         {!! get_setting('about_us_description',null,App::getLocale()) !!}
                     </div>
                     <div class="d-inline-block d-md-block mb-4">
@@ -250,23 +280,47 @@
                         @endif
                     </ul>
                 </div>
-                @if (get_setting('vendor_system_activation') == 1)
-                    <div class="text-center text-md-left mt-4">
-                        <h4 class="fs-13 text-uppercase fw-600 border-bottom border-gray-900 pb-2 mb-4">
-                            {{ translate('Be a Seller') }}
-                        </h4>
-                        <a href="{{ route('shops.create') }}" class="btn btn-primary btn-sm shadow-md" style="margin-top: -10px !important;">
-                            {{ translate('Apply Now') }}
-                        </a>
-                    </div>
-                @endif
             </div>
-
-
-
         </div>
     </div>
 </section>
+ 
+
+<section class="bg-dark py-2 text-light footer-widget m-footer-widget footer-btn-mb">
+    
+        <div class="row" style="">
+            @if (get_setting('vendor_system_activation') == 1)
+           
+                <div class="text-center footer-button-mobile-first ">
+                    <h4 class="fs-13 text-uppercase fw-600 border-bottom border-gray-900 pb-2 mb-4">
+                        {{ translate('Be a Seller') }}
+                    </h4>
+                    <a href="{{ route('shops.create') }}" class="btn btn-primary btn-sm shadow-md" style="margin-top: -10px !important;">
+                        {{ translate('Apply Now') }}
+                    </a>
+                 
+                </div>
+     
+           
+                <div class="text-center footer-button-mobile">
+                    <h4 class="fs-13 text-uppercase fw-600 border-bottom border-gray-900 pb-2 mb-4 mt-3">
+                        {{ translate('Become a Mechanic') }}
+                    </h4>
+                    <a href="{{ route('mechanic.register') }}" class="btn btn-primary btn-sm shadow-md" style="margin-top: -10px !important;">
+                        {{ translate('Register Now') }}
+                    </a>
+                </div>
+          
+            @endif
+
+
+           
+         
+
+        </div>
+    
+</section>
+ 
 
 
 

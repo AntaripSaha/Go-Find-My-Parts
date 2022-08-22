@@ -85,6 +85,37 @@
         }
     </script>
     <style>
+        .footer-page-mobile{
+          display: none;
+       }
+       .footer-btn-mb{
+          display: none;
+       }
+    @media only screen and (min-width: 360px) and (max-width: 800px){
+       .footer-btn-mb{
+          display: block;
+       }
+       .footer-page-mobile{
+          display: block;
+       }
+       .footer-button-mobile{
+          margin-left: 24%;
+          margin-top: -5%;
+       }
+    
+       .footer-button-mobile-first{
+          margin-left: 10%;
+        margin-top: -1%;
+       }
+       .footer-font-mobile{
+          font-size: 12px !imprtant;
+       }
+       .footer-page-desktop{
+          display: none;
+       }
+    }
+    </style>
+    <style>
         .image_banner{
             max-width: 100%;
             height: auto;
