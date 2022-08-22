@@ -203,7 +203,7 @@
             font-size: 10px;
           }
         }
-        @media screen and (min-width: 1200px) and (max-width:2400px){
+        @media screen and (min-width: 900px){
           .profile-card{
             display: none !important;
           } 

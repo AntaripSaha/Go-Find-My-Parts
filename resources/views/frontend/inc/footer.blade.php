@@ -1,4 +1,4 @@
-<section class="bg-white border-top mt-auto footer-page-mobile">
+<section class="bg-white border-top mt-auto footer-page-mobile mb-2">
     <div class="container">
         <div class="row no-gutters">
             <div class="col-6 border-bottom">
@@ -284,7 +284,6 @@
         </div>
     </div>
 </section>
- 
 
 <section class="bg-dark py-2 text-light footer-widget m-footer-widget footer-btn-mb">
     
@@ -298,10 +297,7 @@
                     <a href="{{ route('shops.create') }}" class="btn btn-primary btn-sm shadow-md" style="margin-top: -10px !important;">
                         {{ translate('Apply Now') }}
                     </a>
-                 
                 </div>
-     
-           
                 <div class="text-center footer-button-mobile">
                     <h4 class="fs-13 text-uppercase fw-600 border-bottom border-gray-900 pb-2 mb-4 mt-3">
                         {{ translate('Become a Mechanic') }}
@@ -310,15 +306,8 @@
                         {{ translate('Register Now') }}
                     </a>
                 </div>
-          
             @endif
-
-
-           
-         
-
         </div>
-    
 </section>
  
 

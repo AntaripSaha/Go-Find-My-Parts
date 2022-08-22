@@ -32,10 +32,7 @@
                      <div class="block-zone__card category-card category-card--layout--overlay static-ads">
                         <div class="category-card__body">
                            <div class="category-card__overlay-image" style="z-index: 9999 !important">
-                              <img src="{{static_asset('assets/frontend/images/categories/category-overlay-3.jpg')}}" sizes="(max-width: 575px) 530px, 305px" alt="" style="opacity: 80% !important;">
-                           </div>
-                           <div class="category-card__overlay-image category-card__overlay-image--blur">
-                              <img src="{{static_asset('assets/frontend/images/categories/category-overlay-3.jpg') }}" sizes="(max-width: 575px) 530px, 305px" alt="" style="opacity: 80% !important;">
+                              <img src="{{static_asset('assets/frontend/images/categories/category-overlay-3.jpg')}}" sizes="(max-width: 575px) 530px, 305px" alt="" style="opacity: 100% !important;">
                            </div>
                         </div>
                      </div>

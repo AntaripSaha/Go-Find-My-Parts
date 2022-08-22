@@ -110,10 +110,10 @@
          margin-top: -60px;
       }
       .mobile-view{
-         height: 5px !important;
+         height: 0px !important;
       }
       .mobile-view-add-two{
-         height: 35px !important;
+         height: 25px !important;
       }
       /* .advance-search{
       width: 75%;
@@ -158,11 +158,61 @@
 .advance-btn {
    width: 90%;
 }
-
-
+.mobile-view-product{
+   margin-top:-6% !important;
+}
+.mobile-view-testimonial{
+   margin-top:-2% !important;
+}
+.mobile-view-testimonial-bottom{
+   margin-bottom:2% !important;
 }
 
+}
+@media only screen and (min-width: 375px) and (max-width: 480px){
+   .btn_dev {
+      width: 75.2% !important;
+      margin-left: 40.1px !important;
+      margin-bottom: 10px !important;
+      text-align: center !important;
+   }
+}
+@media only screen and (min-width: 390px) and (max-width: 480px){
+   .btn_dev {
+      width: 75.5% !important;
+      margin-left: 41.5px !important;
+      margin-bottom: 10px !important;
+      text-align: center !important;
+   }
+}
+@media only screen and (min-width: 400px) and (max-width: 480px){
+   .btn_dev {
+      width: 76.1% !important;
+      margin-left: 43px !important;
+      margin-bottom: 10px !important;
+      text-align: center !important;
+   }
+}
+@media only screen and (min-width: 414px) and (max-width: 480px){
+   .btn_dev {
+      width: 76.2% !important;
+      margin-left: 42.1px !important;
+      margin-bottom: 10px !important;
+      text-align: center !important;
+   }
+}
+@media only screen and (min-width: 700px) and (max-width: 1200px){
+   .btn_dev {
+      width: 76.2% !important;
+      margin-left: 42.1px !important;
+      margin-bottom: 10px !important;
+      text-align: center !important;
+   }
+}
 
+.desktop-view{
+   margin-top: 1%;
+}
 
 </style>
 <link rel="stylesheet" href="{{static_asset('assets/css/w3.css')}}">
@@ -189,7 +239,7 @@
                   <div class="block-finder__subtitle">Over hundreds of brands and tens of thousands of parts</div>
                   <div class="btn_dev text-left ml-2 mt-2" style="width: 45%;">
                         <button class="tablink block-finder__form-control block-finder__form-control--button basic-btn w3-yellow w3-web-blue" onclick="openCity(event,'Basic')">Basic</button>
-                        <button class="tablink  block-finder__form-control block-finder__form-control--button advance-btn w3-yellow" onclick="openCity(event,'Advance')" style="padding-right: 20px;padding-left: 20px;">Interchangeable</button>
+                        <button class="tablink  block-finder__form-control block-finder__form-control--button advance-btn w3-yellow" onclick="openCity(event,'Advance')" style="padding-right: 24px;padding-left: 23px;">Interchangeable</button>
                      </div>
                    <div id="Basic" class="w3-container city">
                      @include('frontend.redparts.search')
@@ -204,6 +254,7 @@
 
             </div>
             <div class="mobile-view" style="height:15px"></div>
+          
  
                <div class="container">
                      <div class="ser-up owl-carousel owl-theme mt-3">
@@ -265,22 +316,24 @@
  
                
             <!--------------owl-carousel Advertise Upper Section Start------------>
-            <div class="mobile-view" style="height:35px"></div>
+            <div class="mobile-view" style="height:15px"></div>
+            <div class="desktop-view"></div>
 
             @include('frontend.redparts.advertise_one')
 
             <!--------------owl-carousel Advertise Upper Section End ------------>
 
 
-            <div class="mobile-view" style="height:25px"></div>
+            <div class="mobile-view" style="height:15px"></div>
+            <div class="desktop-view"></div>
 
             <!-------------- Featured Product Section Start------------->
                @include('frontend.redparts.featured')
             <!-------------- Featured Product Section End------------->
 
-            <div class="static-ads" style="height:20px !important;"></div>
+            <div class="static-ads" style="height:15px !important;"></div>
 
-
+            <div class="mobile-view-product"></div>
             <!-------------- Product Section Start------------->
                @include('frontend.redparts.product')
             <!-------------- Product Section End------------->
@@ -290,23 +343,24 @@
             <div class="mobile-view-add-two" style="height:45px;"></div>
             @include('frontend.redparts.advertise_two')
             <!--------------owl-carousel Advertise Lower Section End------------>
-            <div class="mobile-view" style="height:25px"></div>
+
+            
+            <div class="mobile-view" style="height:15px"></div>
+            <div class="desktop-view"></div>
 
                @include('frontend.redparts.new_arrival')
 
-               <div class="mobile-view" style="height:15px;"></div>
-
+              
+               <div class="mobile-view-testimonial"></div>
                @include('frontend.redparts.testimonial')
+               <div class="mobile-view-testimonial-bottom"></div>
 
             <!--------------All Category Products---------------->
             <div class="mobile-view" style="height:15px"></div>
            
             <div class="block block-products-columns">
-              
-              <div class="container">
+               <div class="container">
                     <div class="row">
-
-
                        <div class="col-4">
                           <div class="block-products-columns__title">Todays Deal Products</div>
                           <div class="block-products-columns__list">
@@ -367,19 +421,11 @@
 
 
                     </div>
-                 </div>
-
-
-              </div>
-
-
+               </div>
+            </div>
             <div class="mobile-view" style="height:15px"></div>
-
          </div>
-
       </div>
-
-
 <script type="text/javascript">
 
 
