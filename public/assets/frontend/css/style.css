@@ -297,7 +297,7 @@ h6 {
     color: #fff;
 }
 .arrow__button:before {
-    background: #72b860;
+    background: #1f1fda;
 }
 .arrow__button svg {
     fill: currentColor;
@@ -322,13 +322,13 @@ h6 {
     color: #fff;
 }
 .arrow__button:hover:before {
-    background: #333;
+    background: #ffeb3b;
 }
 .arrow__button:active {
     color: #fff;
 }
 .arrow__button:active:before {
-    background: #474747;
+    background: #ffeb3b;
 }
 .arrow__button:active,
 .arrow__button:active:before {

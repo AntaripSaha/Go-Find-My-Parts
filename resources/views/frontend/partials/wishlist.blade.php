@@ -1,6 +1,6 @@
 <style>
     .heart{
-        background-color:#72b860 !important;
+        background-color:#1f1fda !important;
         margin-bottom: 26px;
         margin-right: 4px;
         padding: 7px;

@@ -59,7 +59,7 @@
       margin-top: -60px;
    }
    .service-titile:hover{
-      color: #5faf4b;
+      color: #1f1fda;
       font-size: 15px;
       font-weight: 400;
       margin-left: 85px;
@@ -139,7 +139,7 @@
 
 
 </style>
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="{{static_asset('assets/css/w3.css')}}">
 
 <body>
       <!-- site -->
@@ -162,8 +162,8 @@
                   <div class="block-finder__title">Find Parts For Your Vehicle</div>
                   <div class="block-finder__subtitle">Over hundreds of brands and tens of thousands of parts</div>
                   <div class="btn_dev text-left ml-2 mt-2" style="width: 45%;">
-                        <button class="tablink w3-yellow block-finder__form-control block-finder__form-control--button basic-btn" onclick="openCity(event,'Basic')">Basic</button>
-                        <button class="tablink block-finder__form-control block-finder__form-control--button advance-btn" onclick="openCity(event,'Advance')" style="padding-right: 20px;padding-left: 20px;">Interchangeable</button>
+                        <button class="tablink block-finder__form-control block-finder__form-control--button basic-btn w3-yellow w3-web-blue" onclick="openCity(event,'Basic')">Basic</button>
+                        <button class="tablink  block-finder__form-control block-finder__form-control--button advance-btn w3-yellow" onclick="openCity(event,'Advance')" style="padding-right: 20px;padding-left: 20px;">Interchangeable</button>
                      </div>
                    <div id="Basic" class="w3-container city">
                      @include('frontend.redparts.search')
@@ -359,16 +359,18 @@
 
    function openCity(evt, cityName) {
    var i, x, tablinks;
+   var mySpan;
+
    x = document.getElementsByClassName("city");
    for (i = 0; i < x.length; i++) {
       x[i].style.display = "none";
    }
    tablinks = document.getElementsByClassName("tablink");
    for (i = 0; i < x.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" w3-yellow", "");
+      tablinks[i].className = tablinks[i].className.replace(" w3-web-blue", " ");
    }
    document.getElementById(cityName).style.display = "block";
-   evt.currentTarget.className += " w3-yellow";
+   evt.currentTarget.className += " w3-web-blue";
    }
 
    $(document).ready(function() {

@@ -12,17 +12,17 @@ if (auth()->user() != null) {
 @endphp
 <style>
     .cart{
-        background-color:#72b860  !important;
+        background-color:#1f1fda  !important;
         margin-bottom: 26px;
         margin-right: 4px;
         padding: 7px;
     }
     .icon{
-        color:#396130  !important;
+        color:#1f1fda  !important;
         font-size: 30px !important;
     }
     .icon:hover{
-        color:#72b860 !important; 
+        color:#20207e!important; 
         -webkit-transition: color 800ms;
         
     }

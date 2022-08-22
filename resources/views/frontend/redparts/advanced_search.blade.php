@@ -76,7 +76,7 @@
             </div>
          </div>
          <div class="col-md-3">
-            <button class="sub_btn_dev block-finder__form-control block-finder__form-control--button btn-block custom_btn_search" id="search_button" disabled="disabled" style="" type="submit">Search</button>
+            <button class="sub_btn_dev block-finder__form-control block-finder__form-control--button btn-block custom_btn_search" id="search_button" disabled="disabled" type="submit">Search</button>
          </div>
       </div>
       
@@ -249,11 +249,11 @@
 
 <style>
    .custom_btn_search {
-      background-color:#ffeb3b !important; 
+      background-color: #1f1fda !important; 
       width: 95% !important;
       margin-top: 2% !important;
       margin: 0px auto;
-      color: #000;
+      color: rgb(213, 221, 221);
    }
 
    .custom_btn_search:hover {

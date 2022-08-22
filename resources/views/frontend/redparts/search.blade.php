@@ -80,10 +80,10 @@
 
 <style>
    .custom_search {
-      background-color:#ffeb3b !important;
+      background-color:#1f1fda !important;
       width: 95%;
       margin-top: 2% !important;
-      color: #000;
+      color: rgb(213, 221, 221);
       margin: 0 auto;
    }
 
