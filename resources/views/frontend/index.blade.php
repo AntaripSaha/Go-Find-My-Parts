@@ -252,7 +252,7 @@
                @include('frontend.redparts.featured')
             <!-------------- Featured Product Section End------------->
 
-            <div style="height:20px !important;"></div>
+            <div class="static-ads" style="height:20px !important;"></div>
 
 
             <!-------------- Product Section Start------------->

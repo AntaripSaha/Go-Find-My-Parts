@@ -19,13 +19,17 @@
       height: auto;
       margin-top: 0.5rem !important;
       margin-bottom: -1.0rem !important;
-
+   }
+   @media only screen and (max-width: 799px){
+      .static-ads{
+         display: none;
+      }
    }
 </style>
             <div class="block block-zone">
                <div class="container">
                   <div class="block-zone__body">
-                     <div class="block-zone__card category-card category-card--layout--overlay">
+                     <div class="block-zone__card category-card category-card--layout--overlay static-ads">
                         <div class="category-card__body">
                            <div class="category-card__overlay-image" style="z-index: 9999 !important">
                               <img src="{{static_asset('assets/frontend/images/categories/category-overlay-3.jpg')}}" sizes="(max-width: 575px) 530px, 305px" alt="" style="opacity: 80% !important;">
@@ -33,24 +37,11 @@
                            <div class="category-card__overlay-image category-card__overlay-image--blur">
                               <img src="{{static_asset('assets/frontend/images/categories/category-overlay-3.jpg') }}" sizes="(max-width: 575px) 530px, 305px" alt="" style="opacity: 80% !important;">
                            </div>
-                           {{-- <div class="category-card__content">
-                              <div class="category-card__info">
-                                 <div class="category-card__name"><a href="{{url("/categories")}}">Categories</a></div>
-                                 <ul class="category-card__children">
-                                    @foreach($categories as $category)
-                                       <li style="text-align: left !important;"><a href="{{url("/category/{$category->slug}")}}">{{$category->name}}</a></li>
-                                    @endforeach
-                                    
-                                 </ul>
-                                 <div class="category-card__actions"><a href="{{url("/search")}}" class="btn btn-primary btn-sm">Shop All</a></div>
-                              </div>
-                           </div> --}}
                         </div>
                      </div>
                      <div class="block-zone__widget">
                         <div class="block-zone__widget-header">
-                              <h2 class="section-header__title" style="margin:4px !important; margin-right: 85px!important">All Products</h2>
-
+                              <h2 class="section-header__title" style="margin:4px !important; width: 53% !important">All Products</h2>   
                            <div class="arrow block-zone__arrow block-zone__arrow--prev arrow--prev">
                               <button class="arrow__button" type="button">
                                  <svg width="7" height="11">
