@@ -96,7 +96,7 @@ class HomeController extends Controller
     public function year($id)
     {
         
-        $year= ModelYear::where('model_id',$id)->pluck("year","id");
+        $year= ModelYear::where('status', 1)->where('model_id',$id)->pluck("year","id");
        
         return response()->json($year);
     }
@@ -113,7 +113,7 @@ class HomeController extends Controller
 
     public function year_two($id)
     {
-        $year_two= ModelYear::where('model_id',$id)->pluck("year","id");
+        $year_two= ModelYear::where('status', 1)->where('model_id',$id)->pluck("year","id");
         return response()->json($year_two);
     }
     public function style($model_two_id, $year_two_id){

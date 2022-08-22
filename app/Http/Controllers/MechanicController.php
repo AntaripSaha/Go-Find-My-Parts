@@ -8,6 +8,7 @@ use App\Models\MechanicBrand;
 use App\Models\User;
 use Auth;
 use Hash;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 
@@ -55,10 +56,14 @@ class MechanicController extends Controller
         return view('frontend.mechanic.list',compact('mechanics'));
     }
     public function search(Request $request){
-      $mechanics = Mechanic::where('city', 'LIKE', "%$request->name%")
+        $queary = $request->name;
+        $mechanics = Mechanic::where('city', 'LIKE', "%$request->name%")
                                 ->orWhere('address', 'LIKE', "%$request->name%")
                                 ->orWhere('country', 'LIKE', "%$request->name%")
                                 ->orWhere('address_two', 'LIKE', "%$request->name%")
+                                ->orWhereHas('brands',  function ($q) use ($queary){
+                                    $q->where('name', 'like', '%' . $queary . '%');
+                                })
                                 ->get();
         return view('frontend.mechanic.list',compact('mechanics'));
     }

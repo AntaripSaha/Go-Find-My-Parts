@@ -11,10 +11,14 @@ class MechanicController extends Controller
     public function index(Request $request){
         try {
             if($request->searchKey){
+                $queary = $request->searchKey;
                 $mechanic = Mechanic::where('city', 'LIKE', "%$request->searchKey%")
                                     ->orWhere('address', 'LIKE', "%$request->searchKey%")
                                     ->orWhere('country', 'LIKE', "%$request->searchKey%")
                                     ->orWhere('address_two', 'LIKE', "%$request->searchKey%")
+                                    ->orWhereHas('brands',  function ($q) use ($queary){
+                                        $q->where('name', 'like', '%' . $queary . '%');
+                                    })
                                     ->get();
                 return response()->json([
                     'data'=>$mechanic->map(
