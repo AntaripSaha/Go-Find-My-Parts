@@ -56,23 +56,56 @@
                     <div class="form-group row" id="model">
                         <label class="col-md-3 col-from-label">{{translate('Model')}}<span class="text-danger">*</span></label>
                         <div class="col-md-8">
-                            <select class="form-control aiz-selectpicker" name="model_id" id="model_id" data-live-search="true" required>
-                                <option value="">{{ translate('Select Model') }}</option>
-                                @foreach (\App\Models\Models::all() as $model)
-                                <option value="{{ $model->id }}">{{ $model->model_name }}</option>
-                                @endforeach
+                            <select class="form-control mb-3 aiz-selectpicker" data-live-search="true" name="model_id" required>
+
                             </select>
                         </div>
                     </div>
                     <div class="form-group row" id="year">
                         <label class="col-md-3 col-from-label">{{translate('Year')}}<span class="text-danger">*</span></label>
                         <div class="col-md-8">
-                            <select class="form-control aiz-selectpicker" name="year_id" id="year_id" data-live-search="true" required>
-                                <option value="">{{ translate('Select Year') }}</option>
-                                @foreach (\App\Models\Year::all() as $year)
-                                <option value="{{ $year->id }}">{{ $year->year }}</option>
+                            <select class="form-control mb-3 aiz-selectpicker" data-live-search="true" name="year_id" required>
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row" id="style">
+                        <label class="col-md-3 col-from-label">{{translate('Style')}}<span class="text-danger">*</span></label>
+                        <div class="col-md-8">
+                            <select class="form-control aiz-selectpicker" name="style_id" id="style_id" data-live-search="true" required>
+                                {{-- <option value="">{{ translate('Select Style') }}</option>
+                                @foreach (\App\Models\Style::all() as $style)
+                                <option value="{{ $style->id }}">{{ $style->style }}</option>
+                                @endforeach --}}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row" id="part_category">
+                        <label class="col-md-3 col-from-label">{{translate('Part Category')}}<span class="text-danger">*</span></label>
+                        <div class="col-md-8">
+                            <select class="form-control aiz-selectpicker" name="part_category_id" id="part_category_id" data-live-search="true" required>
+                                <option value="">{{ translate('Part Category') }}</option>
+                                @foreach (\App\Models\PartCategory::all() as $part_category)
+                                <option value="{{ $part_category->id }}">{{ $part_category->name }}</option>
                                 @endforeach
                             </select>
+                        </div>
+                    </div>
+                    <div class="form-group row" id="part">
+                        <label class="col-md-3 col-from-label">{{translate('Parts')}}<span class="text-danger">*</span></label>
+                        <div class="col-md-8">
+                            <select class="form-control aiz-selectpicker" name="part_id" id="part_id" data-live-search="true" required>
+                                {{-- <option value="">{{ translate('Select Parts') }}</option>
+                                @foreach (\App\Models\Part::all() as $part)
+                                <option value="{{ $part->id }}">{{ $part->name }}</option>
+                                @endforeach --}}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-from-label">{{translate('Fitments')}} </label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="fitment" placeholder="{{ translate('Fitments') }}" >
                         </div>
                     </div>
                     <div class="form-group row">

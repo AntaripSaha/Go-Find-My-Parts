@@ -20,7 +20,7 @@
             @csrf
             <input type="hidden" name="added_by" value="seller">
             <div class="card">
-                <ul class="nav nav-tabs nav-fill border-light">
+                {{-- <ul class="nav nav-tabs nav-fill border-light">
                     @foreach (\App\Models\Language::all() as $key => $language)
                     <li class="nav-item">
                         <a class="nav-link text-reset @if ($language->code == $lang) active @else bg-soft-dark border-light border-left-0 @endif py-3"
@@ -31,7 +31,7 @@
                         </a>
                     </li>
                     @endforeach
-                </ul>
+                </ul> --}}
                 <div class="card-body">
                     <div class="form-group row">
                         <label class="col-lg-3 col-from-label">{{translate('Product Name')}}</label>
@@ -83,7 +83,7 @@
                         <div class="col-md-8">
                             <select class="form-control aiz-selectpicker" name="year_id" id="year_id" data-live-search="true" required>
                                 <option value="">{{ translate('Select Year') }}</option>
-                                @foreach (\App\Models\Year::all() as $year)
+                                @foreach (\App\Models\ModelYear::where('status', 1)->where('model_id', $product->model_id)->get() as $year)
                                 <option value="{{ $year->id }}" @if($product->year_id == $year->id) selected @endif>{{ $year->year }}</option>
                                 @endforeach
                             </select>

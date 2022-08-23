@@ -143,7 +143,7 @@
 
                                 @if ($detailedProduct->brand != null)
                                     <div class="col-auto">
-                                        <a href="{{ route('products.brand', $detailedProduct->brand->slug) }}">
+                                        <a href="#">
                                             <img src="{{ uploaded_asset($detailedProduct->brand->logo) }}"
                                                 alt="{{ $detailedProduct->brand->getTranslation('name') }}"
                                                 height="30">

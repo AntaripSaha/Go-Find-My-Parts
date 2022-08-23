@@ -157,11 +157,11 @@ class ProductController extends Controller
         }
 
         // Product Translations
-        ProductTranslation::where('lang', $request->lang)
-            ->where('product_id', $request->product_id)
-            ->update($request->only([
-            'lang', 'name', 'unit', 'description', 'product_id'
-        ]));
+        // ProductTranslation::where('lang', $request->lang)
+        //     ->where('product_id', $request->product_id)
+        //     ->update($request->only([
+        //     'lang', 'name', 'unit', 'description', 'product_id'
+        // ]));
 
         flash(translate('Product has been updated successfully'))->success();
 

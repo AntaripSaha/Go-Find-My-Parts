@@ -28,6 +28,7 @@ class CheckoutController extends Controller
     //check the selected payment gateway and redirect to that controller accordingly
     public function checkout(Request $request)
     {
+       
         // Minumum order amount check
         if(get_setting('minimum_order_amount_check') == 1){
             $subtotal = 0;
@@ -49,7 +50,7 @@ class CheckoutController extends Controller
             
             $data['combined_order_id'] = $request->session()->get('combined_order_id');
             $request->session()->put('payment_data', $data);
-
+            
             if ($request->session()->get('combined_order_id') != null) {
 
                 // If block for Online payment, wallet and cash on delivery. Else block for Offline payment
