@@ -280,7 +280,7 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, Product $product)
     {
-        // return 'a';
+        
         //Product
         $product = $this->productService->update($request->except([
             '_token', 'sku', 'choice', 'tax_id', 'tax', 'tax_type', 'flash_deal_id', 'flash_discount', 'flash_discount_type'
@@ -290,17 +290,17 @@ class ProductController extends Controller
         foreach ($product->stocks as $key => $stock) {
             $stock->delete();
         }
-
+        
         $request->merge(['product_id' => $product->id]);
         $this->productStockService->store($request->only([
             'colors_active', 'colors', 'choice_no', 'unit_price', 'sku', 'current_stock', 'product_id'
         ]), $product);
-
+       
         //Flash Deal
         $this->productFlashDealService->store($request->only([
             'flash_deal_id', 'flash_discount', 'flash_discount_type'
         ]), $product);
-
+       
         //VAT & Tax
         if ($request->tax_id) {
             ProductTax::where('product_id', $product->id)->delete();
@@ -311,14 +311,14 @@ class ProductController extends Controller
         }
 
         // Product Translations
-        ProductTranslation::updateOrCreate(
-            $request->only([
-                'lang', 'product_id'
-            ]),
-            $request->only([
-                'name', 'unit', 'description'
-            ])
-        );
+        // ProductTranslation::updateOrCreate(
+        //     $request->only([
+        //         'lang', 'product_id'
+        //     ]),
+        //     $request->only([
+        //         'name', 'unit', 'description'
+        //     ])
+        // );
 
         flash(translate('Product has been updated successfully'))->success();
 
