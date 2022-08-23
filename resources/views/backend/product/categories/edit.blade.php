@@ -14,8 +14,17 @@
 <div class="row">
     <div class="col-lg-8 mx-auto">
         <div class="card">
+            @if ($errors->any())
+					<div class="alert alert-danger">
+						<ul>
+							@foreach ($errors->all() as $error)
+								<li>{{ $error }}</li>
+							@endforeach
+						</ul>
+					</div>
+				@endif
             <div class="card-body p-0">
-                <ul class="nav nav-tabs nav-fill border-light">
+                {{-- <ul class="nav nav-tabs nav-fill border-light">
                     @foreach (\App\Models\Language::all() as $key => $language)
                     <li class="nav-item">
                         <a class="nav-link text-reset @if ($language->code == $lang) active @else bg-soft-dark border-light border-left-0 @endif py-3" href="{{ route('categories.edit', ['id'=>$category->id, 'lang'=> $language->code] ) }}">
@@ -24,7 +33,7 @@
                         </a>
                     </li>
                     @endforeach
-                </ul>
+                </ul> --}}
                 <form class="p-4" action="{{ route('categories.update', $category->id) }}" method="POST" enctype="multipart/form-data">
                     <input name="_method" type="hidden" value="PATCH">
     	            <input type="hidden" name="lang" value="{{ $lang }}">

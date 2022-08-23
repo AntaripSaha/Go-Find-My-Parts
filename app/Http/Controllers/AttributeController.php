@@ -42,13 +42,16 @@ class AttributeController extends Controller
      */
     public function store(Request $request)
     {
+         $request->validate([
+            'name'=>'required',
+         ]);
         $attribute = new Attribute;
         $attribute->name = $request->name;
         $attribute->save();
 
-        $attribute_translation = AttributeTranslation::firstOrNew(['lang' => env('DEFAULT_LANGUAGE'), 'attribute_id' => $attribute->id]);
-        $attribute_translation->name = $request->name;
-        $attribute_translation->save();
+        // $attribute_translation = AttributeTranslation::firstOrNew(['lang' => env('DEFAULT_LANGUAGE'), 'attribute_id' => $attribute->id]);
+        // $attribute_translation->name = $request->name;
+        // $attribute_translation->save();
 
         flash(translate('Attribute has been inserted successfully'))->success();
         return redirect()->route('attributes.index');
@@ -98,9 +101,9 @@ class AttributeController extends Controller
         }
         $attribute->save();
 
-        $attribute_translation = AttributeTranslation::firstOrNew(['lang' => $request->lang, 'attribute_id' => $attribute->id]);
-        $attribute_translation->name = $request->name;
-        $attribute_translation->save();
+        // $attribute_translation = AttributeTranslation::firstOrNew(['lang' => $request->lang, 'attribute_id' => $attribute->id]);
+        // $attribute_translation->name = $request->name;
+        // $attribute_translation->save();
 
         flash(translate('Attribute has been updated successfully'))->success();
         return back();

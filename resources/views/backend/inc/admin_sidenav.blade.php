@@ -139,7 +139,7 @@
                                 </a>
                             </li>
                             <li class="aiz-side-nav-item">
-                                <a href="{{route('colors')}}" class="aiz-side-nav-link {{ areActiveRoutes(['attributes.index','attributes.create','attributes.edit'])}}">
+                                <a href="{{route('colors')}}" class="aiz-side-nav-link {{ areActiveRoutes(['colors.index','colors.create','colors.edit'])}}">
                                     <span class="aiz-side-nav-text">{{translate('Colors')}}</span>
                                 </a>
                             </li>

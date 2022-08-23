@@ -54,6 +54,15 @@
 	</div>
 	<div class="col-md-5">
 		<div class="card">
+			@if ($errors->any())
+					<div class="alert alert-danger">
+						<ul>
+							@foreach ($errors->all() as $error)
+								<li>{{ $error }}</li>
+							@endforeach
+						</ul>
+					</div>
+				@endif
 			<div class="card-header">
 					<h5 class="mb-0 h6">{{ translate('Add New Attribute') }}</h5>
 			</div>
