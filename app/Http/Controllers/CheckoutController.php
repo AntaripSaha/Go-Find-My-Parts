@@ -28,7 +28,6 @@ use Auth;
     //check the selected payment gateway and redirect to that controller accordingly
     public function checkout(Request $request)
     {
-       
         // Minumum order amount check
         if(get_setting('minimum_order_amount_check') == 1){
             $subtotal = 0;
@@ -90,18 +89,22 @@ use Auth;
         Session::put('combined_order_id', $combined_order_id);
         return redirect()->route('order_confirmed');
     }
-
+ 
     public function get_shipping_info(Request $request)
     {
-
-        $carts = Cart::where('user_id', Auth::user()->id)->get();
-//        if (Session::has('cart') && count(Session::get('cart')) > 0) {
-        if ($carts && count($carts) > 0) {
-            $categories = Category::all();
-            return view('frontend.shipping_info', compact('categories', 'carts'));
+        if(auth()->user()->user_type == 'seller'){
+            flash(translate('Register As A Customer To Buy Products'))->warning();
+            return redirect()->route('home');
+        }else{
+            $carts = Cart::where('user_id', Auth::user()->id)->get();
+            if ($carts && count($carts) > 0) {
+                $categories = Category::all();
+                return view('frontend.shipping_info', compact('categories', 'carts'));
+            }
+            flash(translate('Your cart is empty'))->success();
+            return back();
         }
-        flash(translate('Your cart is empty'))->success();
-        return back();
+
     }
 
     public function store_shipping_info(Request $request)
