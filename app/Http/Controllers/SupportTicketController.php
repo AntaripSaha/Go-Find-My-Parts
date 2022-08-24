@@ -53,7 +53,10 @@ class SupportTicketController extends Controller
      */
     public function store(Request $request)
     {
-        //dd();
+        $request->validate([
+            'subject'=>'required',
+            'details'=>'required',
+        ]);
         $ticket = new Ticket;
         $ticket->code = max(100000, (Ticket::latest()->first() != null ? Ticket::latest()->first()->code + 1 : 0)).date('s');
         $ticket->user_id = Auth::user()->id;
@@ -109,6 +112,9 @@ class SupportTicketController extends Controller
 
     public function admin_store(Request $request)
     {
+        $request->validate([
+            'reply'=>'required',
+        ]);
         $ticket_reply = new TicketReply;
         $ticket_reply->ticket_id = $request->ticket_id;
         $ticket_reply->user_id = Auth::user()->id;
@@ -130,6 +136,9 @@ class SupportTicketController extends Controller
 
     public function seller_store(Request $request)
     {
+        $request->validate([
+            'reply'=>'required',
+        ]);
         $ticket_reply = new TicketReply;
         $ticket_reply->ticket_id = $request->ticket_id;
         $ticket_reply->user_id = $request->user_id;
