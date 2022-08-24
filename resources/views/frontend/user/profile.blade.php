@@ -16,6 +16,15 @@
                 <h5 class="mb-0 h6">{{ translate('Basic Info')}}</h5>
             </div>
             <div class="card-body">
+                @if ($errors->any())
+					<div class="alert alert-danger">
+						<ul>
+							@foreach ($errors->all() as $error)
+								<li>{{ $error }}</li>
+							@endforeach
+						</ul>
+					</div>
+				@endif
                 <div class="form-group row">
                     <label class="col-md-2 col-form-label">{{ translate('Your Name') }}</label>
                     <div class="col-md-10">

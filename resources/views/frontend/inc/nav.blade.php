@@ -323,11 +323,21 @@
                     </div>
                 </div>
 
+                @if(!Auth::user())
                 <div class="d-none d-lg-block ml-3 mr-0">
                     <div class="" id="wishlist">
                         @include('frontend.partials.wishlist')
                     </div>
                 </div>
+                @elseif(Auth::user()->user_type == 'seller')
+                @else
+                <div class="d-none d-lg-block ml-3 mr-0">
+                    <div class="" id="wishlist">
+                        @include('frontend.partials.wishlist')
+                    </div>
+                </div>
+                @endif
+
 
                 <div class="d-none d-lg-block  align-self-stretch ml-3 mr-0" data-hover="dropdown">
                     <div class="nav-cart-box dropdown h-100" id="cart_items">

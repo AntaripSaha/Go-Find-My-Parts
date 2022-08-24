@@ -9,7 +9,7 @@
     		</div>
     	</div>
     </div>
-    <ul class="nav nav-tabs nav-fill border-light">
+    {{-- <ul class="nav nav-tabs nav-fill border-light">
         @foreach (\App\Models\Language::all() as $key => $language)
             <li class="nav-item">
                 <a class="nav-link text-reset @if ($language->code == $lang) active @else bg-soft-dark border-light border-left-0 @endif py-3" href="{{ route('website.footer', ['lang'=> $language->code] ) }}">
@@ -18,7 +18,7 @@
                 </a>
             </li>
         @endforeach
-    </ul>
+    </ul> --}}
     <div class="card">
     	<div class="card-header">
     		<h6 class="fw-600 mb-0">{{ translate('Footer Widget') }}</h6>

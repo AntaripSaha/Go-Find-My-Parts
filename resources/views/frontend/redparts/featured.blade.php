@@ -41,12 +41,22 @@
                            <div class="block-products-carousel__cell">
                               <div class="product-card product-card--layout--grid"  style="border-radius: 5px !important; ">
                                  <div class="product-card__actions-list">
+                                    @if(!Auth::user())
                                     <button class="product-card__action product-card__action--wishlist" type="button" aria-label="Add to wish list" onclick="addToWishList({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to wishlist') }}" data-placement="left">
                                        <svg width="16" height="16">
                                           <path d="M13.9,8.4l-5.4,5.4c-0.3,0.3-0.7,0.3-1,0L2.1,8.4c-1.5-1.5-1.5-3.8,0-5.3C2.8,2.4,3.8,2,4.8,2s1.9,0.4,2.6,1.1L8,3.7
                                              l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"/>
                                        </svg>
                                     </button>
+                                    @elseif(Auth::user()->user_type == 'seller')
+                                    @else
+                                    <button class="product-card__action product-card__action--wishlist" type="button" aria-label="Add to wish list" onclick="addToWishList({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to wishlist') }}" data-placement="left">
+                                       <svg width="16" height="16">
+                                          <path d="M13.9,8.4l-5.4,5.4c-0.3,0.3-0.7,0.3-1,0L2.1,8.4c-1.5-1.5-1.5-3.8,0-5.3C2.8,2.4,3.8,2,4.8,2s1.9,0.4,2.6,1.1L8,3.7
+                                             l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"/>
+                                       </svg>
+                                    </button>
+                                    @endif
                                     <button class="product-card__action product-card__action--compare" type="button" aria-label="Add to compare"  onclick="addToCompare({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to compare') }}" data-placement="left">
                                        <svg width="16" height="16">
                                           <path d="M9,15H7c-0.6,0-1-0.4-1-1V2c0-0.6,0.4-1,1-1h2c0.6,0,1,0.4,1,1v12C10,14.6,9.6,15,9,15z"/>

@@ -17,6 +17,15 @@
         <div class="card-header">
             <h5 class="mb-0 h6">{{ translate('Basic Info') }}</h5>
         </div>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <div class="card-body">
             <form class="" action="{{ route('seller.shop.update') }}" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="shop_id" value="{{ $shop->id }}">

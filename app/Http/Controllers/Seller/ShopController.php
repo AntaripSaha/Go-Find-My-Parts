@@ -17,6 +17,11 @@ class ShopController extends Controller
 
     public function update(Request $request)
     {
+        $request->validate([
+            'name'=>'required',
+            'phone'=>'required',
+            'address'=>'required',
+        ]);
         $shop = Shop::find($request->shop_id);
 
         if ($request->has('name') && $request->has('address')) {

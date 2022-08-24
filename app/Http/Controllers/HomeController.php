@@ -262,11 +262,13 @@ class HomeController extends Controller
 
     public function userProfileUpdate(Request $request)
     {
+        $request->validate([
+            'name'=>'required',
+        ]);
         if (env('DEMO_MODE') == 'On') {
             flash(translate('Sorry! the action is not permitted in demo '))->error();
             return back();
         }
-
         $user = Auth::user();
         $user->name = $request->name;
         $user->address = $request->address;
@@ -277,6 +279,9 @@ class HomeController extends Controller
 
         if ($request->new_password != null && ($request->new_password == $request->confirm_password)) {
             $user->password = Hash::make($request->new_password);
+        }else{
+            flash(translate('Your Password Did not Match!'))->warning();
+            return back();
         }
 
         $user->avatar_original = $request->photo;
