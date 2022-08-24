@@ -58,6 +58,13 @@ class ShopController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name'=> 'required',
+            'email'=> 'email:rfc,dns',
+            'password'=> 'required',
+            'password_confirmation'=> 'required',
+            'address'=> 'required',
+        ]);
         $user = null;
         if (!Auth::check()) {
             if (User::where('email', $request->email)->first() != null) {

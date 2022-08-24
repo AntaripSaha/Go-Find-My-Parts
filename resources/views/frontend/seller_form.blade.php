@@ -28,6 +28,15 @@
                     @csrf
                     @if (!Auth::check())
                         <div class="bg-white rounded shadow-sm mb-3">
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                             <div class="fs-15 fw-600 p-3 border-bottom">
                                 {{ translate('Personal Info')}}
                             </div>
