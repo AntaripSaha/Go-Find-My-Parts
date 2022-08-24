@@ -17,6 +17,7 @@ class ShopController extends Controller
 
     public function update(Request $request)
     {
+        // return $request;
         $request->validate([
             'name'=>'required',
             'phone'=>'required',
@@ -36,6 +37,7 @@ class ShopController extends Controller
             $shop->meta_title       = $request->meta_title;
             $shop->meta_description = $request->meta_description;
             $shop->logo             = $request->logo;
+            $shop->sliders = $request->sliders;
         }
 
         if ($request->has('delivery_pickup_longitude') && $request->has('delivery_pickup_latitude')) {

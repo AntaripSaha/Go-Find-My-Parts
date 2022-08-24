@@ -89,9 +89,95 @@
                 <div class="form-group mb-0 text-right">
                     <button type="submit" class="btn btn-sm btn-primary">{{translate('Save')}}</button>
                 </div>
+            {{-- </form> --}}
+        </div>
+    </div>
+    {{-- Banner Settings --}}
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0 h6">{{ translate('Banner Settings') }}</h5>
+        </div>
+        <div class="card-body">
+            {{-- <form class="" action="{{ route('seller.shop.update') }}" method="POST" enctype="multipart/form-data"> --}}
+                <input type="hidden" name="shop_id" value="{{ $shop->id }}">
+                @csrf
+
+                <div class="row mb-3">
+                    <label class="col-md-2 col-form-label">{{ translate('Banners') }} (1500x450)</label>
+                    <div class="col-md-10">
+                        <div class="input-group" data-toggle="aizuploader" data-type="image" data-multiple="true">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text bg-soft-secondary font-weight-medium">{{ translate('Browse')}}</div>
+                            </div>
+                            <div class="form-control file-amount">{{ translate('Choose File') }}</div>
+                            <input type="hidden" name="sliders" value="{{ $shop->sliders }}" class="selected-files">
+                        </div>
+                        <div class="file-preview box sm">
+                        </div>
+                        <small class="text-muted">{{ translate('We had to limit height to maintian consistancy. In some device both side of the banner might be cropped for height limitation.') }}</small>
+                    </div>
+                </div>
+
+                <div class="form-group mb-0 text-right">
+                    <button type="submit" class="btn btn-sm btn-primary">{{translate('Save')}}</button>
+                </div>
+            {{-- </form> --}}
+        </div>
+    </div>
+
+    {{-- Social Media Link --}}
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0 h6">{{ translate('Social Media Link') }}</h5>
+        </div>
+        <div class="card-body">
+            {{-- <form class="" action="{{ route('seller.shop.update') }}" method="POST" enctype="multipart/form-data"> --}}
+                <input type="hidden" name="shop_id" value="{{ $shop->id }}">
+                @csrf
+                <div class="form-box-content p-3">
+                    <div class="row mb-3">
+                        <label class="col-md-2 col-form-label">{{ translate('Facebook') }}</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" placeholder="{{ translate('Facebook')}}" name="facebook" value="{{ $shop->facebook }}">
+                            <small class="text-muted">{{ translate('Insert link with https ') }}</small>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-md-2 col-form-label">{{ translate('Instagram') }}</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" placeholder="{{ translate('Instagram')}}" name="instagram" value="{{ $shop->instagram }}">
+                            <small class="text-muted">{{ translate('Insert link with https ') }}</small>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-md-2 col-form-label">{{ translate('Twitter') }}</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" placeholder="{{ translate('Twitter')}}" name="twitter" value="{{ $shop->twitter }}">
+                            <small class="text-muted">{{ translate('Insert link with https ') }}</small>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-md-2 col-form-label">{{ translate('Google') }}</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" placeholder="{{ translate('Google')}}" name="google" value="{{ $shop->google }}">
+                            <small class="text-muted">{{ translate('Insert link with https ') }}</small>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-md-2 col-form-label">{{ translate('Youtube') }}</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" placeholder="{{ translate('Youtube')}}" name="youtube" value="{{ $shop->youtube }}">
+                            <small class="text-muted">{{ translate('Insert link with https ') }}</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mb-0 text-right">
+                    <button type="submit" class="btn btn-sm btn-primary">{{translate('Save')}}</button>
+                </div>
             </form>
         </div>
     </div>
+
 
     @if (addon_is_activated('delivery_boy'))
         <div class="card">
@@ -158,91 +244,7 @@
         </div>
     @endif
 
-    {{-- Banner Settings --}}
-    <div class="card">
-        <div class="card-header">
-            <h5 class="mb-0 h6">{{ translate('Banner Settings') }}</h5>
-        </div>
-        <div class="card-body">
-            <form class="" action="{{ route('seller.shop.update') }}" method="POST" enctype="multipart/form-data">
-                <input type="hidden" name="shop_id" value="{{ $shop->id }}">
-                @csrf
 
-                <div class="row mb-3">
-                    <label class="col-md-2 col-form-label">{{ translate('Banners') }} (1500x450)</label>
-                    <div class="col-md-10">
-                        <div class="input-group" data-toggle="aizuploader" data-type="image" data-multiple="true">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text bg-soft-secondary font-weight-medium">{{ translate('Browse')}}</div>
-                            </div>
-                            <div class="form-control file-amount">{{ translate('Choose File') }}</div>
-                            <input type="hidden" name="sliders" value="{{ $shop->sliders }}" class="selected-files">
-                        </div>
-                        <div class="file-preview box sm">
-                        </div>
-                        <small class="text-muted">{{ translate('We had to limit height to maintian consistancy. In some device both side of the banner might be cropped for height limitation.') }}</small>
-                    </div>
-                </div>
-
-                <div class="form-group mb-0 text-right">
-                    <button type="submit" class="btn btn-sm btn-primary">{{translate('Save')}}</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    {{-- Social Media Link --}}
-    <div class="card">
-        <div class="card-header">
-            <h5 class="mb-0 h6">{{ translate('Social Media Link') }}</h5>
-        </div>
-        <div class="card-body">
-            <form class="" action="{{ route('seller.shop.update') }}" method="POST" enctype="multipart/form-data">
-                <input type="hidden" name="shop_id" value="{{ $shop->id }}">
-                @csrf
-                <div class="form-box-content p-3">
-                    <div class="row mb-3">
-                        <label class="col-md-2 col-form-label">{{ translate('Facebook') }}</label>
-                        <div class="col-md-10">
-                            <input type="text" class="form-control" placeholder="{{ translate('Facebook')}}" name="facebook" value="{{ $shop->facebook }}">
-                            <small class="text-muted">{{ translate('Insert link with https ') }}</small>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label class="col-md-2 col-form-label">{{ translate('Instagram') }}</label>
-                        <div class="col-md-10">
-                            <input type="text" class="form-control" placeholder="{{ translate('Instagram')}}" name="instagram" value="{{ $shop->instagram }}">
-                            <small class="text-muted">{{ translate('Insert link with https ') }}</small>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label class="col-md-2 col-form-label">{{ translate('Twitter') }}</label>
-                        <div class="col-md-10">
-                            <input type="text" class="form-control" placeholder="{{ translate('Twitter')}}" name="twitter" value="{{ $shop->twitter }}">
-                            <small class="text-muted">{{ translate('Insert link with https ') }}</small>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label class="col-md-2 col-form-label">{{ translate('Google') }}</label>
-                        <div class="col-md-10">
-                            <input type="text" class="form-control" placeholder="{{ translate('Google')}}" name="google" value="{{ $shop->google }}">
-                            <small class="text-muted">{{ translate('Insert link with https ') }}</small>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label class="col-md-2 col-form-label">{{ translate('Youtube') }}</label>
-                        <div class="col-md-10">
-                            <input type="text" class="form-control" placeholder="{{ translate('Youtube')}}" name="youtube" value="{{ $shop->youtube }}">
-                            <small class="text-muted">{{ translate('Insert link with https ') }}</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group mb-0 text-right">
-                    <button type="submit" class="btn btn-sm btn-primary">{{translate('Save')}}</button>
-                </div>
-            </form>
-        </div>
-    </div>
 
 @endsection
 
