@@ -369,6 +369,7 @@ class BusinessSettingsController extends Controller
 
     public function update(Request $request)
     {
+        // return $request;
 
         foreach ($request->types as $key => $type) {
             if($type == 'site_name'){
