@@ -80,7 +80,7 @@
                                 <span class="w-50 fw-600">{{ translate('Address') }}:</span>
                                 <span class="ml-2">{{ $address->address }}</span>
                             </div>
-                            <div>
+                            {{-- <div>
                                 <span class="w-50 fw-600">{{ translate('Postal Code') }}:</span>
                                 <span class="ml-2">{{ $address->postal_code }}</span>
                             </div>
@@ -95,7 +95,7 @@
                             <div>
                                 <span class="w-50 fw-600">{{ translate('Country') }}:</span>
                                 <span class="ml-2">{{ optional($address->country)->name }}</span>
-                            </div>
+                            </div> --}}
                             <div>
                                 <span class="w-50 fw-600">{{ translate('Phone') }}:</span>
                                 <span class="ml-2">{{ $address->phone }}</span>

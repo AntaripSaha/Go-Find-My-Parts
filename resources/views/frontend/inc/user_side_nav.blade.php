@@ -114,12 +114,12 @@
                             </a>
                         </li>
 
-                        <li class="aiz-side-nav-item">
+                        {{-- <li class="aiz-side-nav-item">
                             <a href="{{ route('digital_purchase_history.index') }}" class="aiz-side-nav-link {{ areActiveRoutes(['digital_purchase_history.index'])}}">
                                 <i class="las la-download aiz-side-nav-icon"></i>
                                 <span class="aiz-side-nav-text">{{ translate('Downloads') }}</span>
                             </a>
-                        </li>
+                        </li> --}}
                     @endif
 
                         @if (addon_is_activated('refund_request'))
@@ -137,13 +137,15 @@
                                 <span class="aiz-side-nav-text">{{ translate('Wishlist') }}</span>
                             </a>
                         </li>
-
+                        @if(Auth::user()->user_type == 'customer')
+                        @else
                         <li class="aiz-side-nav-item">
                             <a href="{{ route('compare') }}" class="aiz-side-nav-link {{ areActiveRoutes(['compare'])}}">
                                 <i class="la la-refresh aiz-side-nav-icon"></i>
                                 <span class="aiz-side-nav-text">{{ translate('Compare') }}</span>
                             </a>
                         </li>
+                        @endif
 
                     @if(get_setting('classified_product') == 1)
                         <li class="aiz-side-nav-item">

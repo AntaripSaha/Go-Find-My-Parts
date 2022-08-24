@@ -10,6 +10,15 @@
             <form class="form-default" role="form" action="{{ route('addresses.store') }}" method="POST">
                 @csrf
                 <div class="modal-body">
+                    @if($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                    <li>{{$error}}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <div class="p-3">
                         <div class="row">
                             <div class="col-md-2">
@@ -19,7 +28,7 @@
                                 <textarea class="form-control mb-3" placeholder="{{ translate('Your Address')}}" rows="2" name="address" required></textarea>
                             </div>
                         </div>
-                        <div class="row">
+                        {{-- <div class="row">
                             <div class="col-md-2">
                                 <label>{{ translate('Country')}}</label>
                             </div>
@@ -55,7 +64,7 @@
 
                                 </select>
                             </div>
-                        </div>
+                        </div> --}}
 
                         @if (get_setting('google_map') == 1)
                             <div class="row">
@@ -88,20 +97,20 @@
                             </div>
                         @endif
                         
-                        <div class="row">
+                        {{-- <div class="row">
                             <div class="col-md-2">
                                 <label>{{ translate('Postal code')}}</label>
                             </div>
                             <div class="col-md-10">
                                 <input type="text" class="form-control mb-3" placeholder="{{ translate('Your Postal Code')}}" name="postal_code" value="" required>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="row">
                             <div class="col-md-2">
                                 <label>{{ translate('Phone')}}</label>
                             </div>
                             <div class="col-md-10">
-                                <input type="text" class="form-control mb-3" placeholder="{{ translate('+880')}}" name="phone" value="" required>
+                                <input type="text" class="form-control mb-3" placeholder="{{ translate('1')}}" name="phone" value="" required>
                             </div>
                         </div>
                         <div class="form-group text-right">

@@ -17,7 +17,7 @@ use App\Utility\NotificationUtility;
 use Session;
 use Auth;
 
-class CheckoutController extends Controller
+    class CheckoutController extends Controller
 {
 
     public function __construct()
@@ -93,6 +93,7 @@ class CheckoutController extends Controller
 
     public function get_shipping_info(Request $request)
     {
+
         $carts = Cart::where('user_id', Auth::user()->id)->get();
 //        if (Session::has('cart') && count(Session::get('cart')) > 0) {
         if ($carts && count($carts) > 0) {
@@ -105,6 +106,7 @@ class CheckoutController extends Controller
 
     public function store_shipping_info(Request $request)
     {
+               
         if ($request->address_id == null) {
             flash(translate("Please add shipping address"))->warning();
             return back();

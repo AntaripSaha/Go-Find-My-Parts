@@ -38,6 +38,10 @@ class AddressController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'address'=>'required',
+            'phone'=>'required',
+        ]);
         $address = new Address;
         if($request->has('customer_id')){
             $address->user_id   = $request->customer_id;
@@ -46,12 +50,12 @@ class AddressController extends Controller
             $address->user_id   = Auth::user()->id;
         }
         $address->address       = $request->address;
-        $address->country_id    = $request->country_id;
-        $address->state_id      = $request->state_id;
-        $address->city_id       = $request->city_id;
+        // $address->country_id    = $request->country_id;
+        // $address->state_id      = $request->state_id;
+        // $address->city_id       = $request->city_id;
         $address->longitude     = $request->longitude;
         $address->latitude      = $request->latitude;
-        $address->postal_code   = $request->postal_code;
+        // $address->postal_code   = $request->postal_code;
         $address->phone         = $request->phone;
         $address->save();
 
@@ -95,21 +99,24 @@ class AddressController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'address'=>'required',
+            'phone'=>'required',
+        ]);
         $address = Address::findOrFail($id);
-        
         $address->address       = $request->address;
-        $address->country_id    = $request->country_id;
-        $address->state_id      = $request->state_id;
-        $address->city_id       = $request->city_id;
+        // $address->country_id    = $request->country_id;
+        // $address->state_id      = $request->state_id;
+        // $address->city_id       = $request->city_id;
         $address->longitude     = $request->longitude;
         $address->latitude      = $request->latitude;
-        $address->postal_code   = $request->postal_code;
+        // $address->postal_code   = $request->postal_code;
         $address->phone         = $request->phone;
-
-        $address->save();
-
+        
         flash(translate('Address info updated successfully'))->success();
         return back();
+       
+
     }
 
     /**
