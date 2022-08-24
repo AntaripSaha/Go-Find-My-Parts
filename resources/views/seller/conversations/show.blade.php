@@ -46,6 +46,15 @@
             </ul>
             <form class="pt-4" action="{{ route('seller.conversations.message_store') }}" method="POST">
                 @csrf
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <input type="hidden" name="conversation_id" value="{{ $conversation->id }}">
                 <div class="form-group">
                     <textarea class="form-control" rows="4" name="message" placeholder="{{ translate('Type your reply') }}" required></textarea>

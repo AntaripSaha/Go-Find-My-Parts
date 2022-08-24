@@ -36,6 +36,9 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'message'=>'required',
+        ]);
         $message = new Message;
         $message->conversation_id = $request->conversation_id;
         $message->user_id = Auth::user()->id;

@@ -66,6 +66,9 @@ class ConversationController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'message'=>'required',
+        ]);
         $user_type = Product::findOrFail($request->product_id)->user->user_type;
 
         $conversation = new Conversation;

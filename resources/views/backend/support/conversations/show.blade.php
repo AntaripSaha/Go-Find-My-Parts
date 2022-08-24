@@ -33,6 +33,15 @@
             @if (Auth::user()->id == $conversation->receiver_id)
                 <form action="{{ route('messages.store') }}" method="POST">
                     @csrf
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <input type="hidden" name="conversation_id" value="{{ $conversation->id }}">
                     <div class="row">
                         <div class="col-md-12">
