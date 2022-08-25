@@ -7,7 +7,15 @@
         <form action="{{route('mechanic.profile.update', ['mechanic'=>$profile->id])}}" method="POST" enctype="multipart/form-data" >
             {{ method_field('PUT') }}
             {{ csrf_field() }}
-
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <div class="p-3">
                 <div class="form-group">
                     <label for="banner_image">{{translate('Banner Image')}}</label>

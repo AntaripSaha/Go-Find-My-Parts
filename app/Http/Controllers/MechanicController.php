@@ -25,6 +25,24 @@ class MechanicController extends Controller
         return view('frontend.mechanic.home', compact('user', 'details', 'profile', 'all_brands'));      
     }
     public function info_store(Request $request, Mechanic $mechanic){
+        $validated = $request->validate([
+            'name' => 'required|max:50',
+            'contact' => 'required|max:50',
+            'city' => 'required|max:50',
+            'country' => 'required|max:50',
+            'address_one' => 'required|max:150',
+            'address_two' => 'max:150',
+            'description' => 'required|max:200',
+        ],[
+            'address_one.required' => 'The Primary Address is Required.',
+            'address_one.max' => 'The Primary Address max will be :max Characters.',
+            'address_two.max' => 'The Secondary Address max will be :max Characters.',
+            'description.required' => 'The Description is Required.',
+            'description.max' => 'The Description max will be :max Characters.',
+            'required' => 'The :attribute is Required.',
+            'max' => 'The :attribute max will be :max Characters.',
+        ]);
+       
       $mechanic = Mechanic::where('user_id', Auth::id())->get();
         if(count($mechanic)){
             flash(translate('You Can Update Your Information'))->success();
@@ -84,14 +102,24 @@ class MechanicController extends Controller
     }
     public function mechanic_update(Request $request, Mechanic $mechanic){
         // return $request;
-        // $validated = $request->validate([
-        //     'address_one' => 'required|max:100',
-        //     'description' => 'required|max:150',
-        // ]);
-        // $messages = [
-        //     'address_one.required' => 'The address is required and max will be 100 Characters.',
-        //     'description.required' => 'The description is required and max will be 150 Characters.',
-        // ];
+        $validated = $request->validate([
+            'name' => 'required|max:50',
+            'contact' => 'required|max:50',
+            'city' => 'required|max:50',
+            'country' => 'required|max:50',
+            'address_one' => 'required|max:150',
+            'address_two' => 'max:150',
+            'description' => 'required|max:200',
+        ],[
+            'address_one.required' => 'The Primary Address is Required.',
+            'address_one.max' => 'The Primary Address max will be :max Characters.',
+            'address_two.max' => 'The Secondary Address max will be :max Characters.',
+            'description.required' => 'The Description is Required.',
+            'description.max' => 'The Description max will be :max Characters.',
+            'required' => 'The :attribute is Required.',
+            'max' => 'The :attribute max will be :max Characters.',
+        ]);
+       
         $mechanic->banner_image= $request->banner_image;
         $mechanic->profile_image= $request->profile_image;
         $mechanic->contact= $request->contact;

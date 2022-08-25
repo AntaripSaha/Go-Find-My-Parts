@@ -27,6 +27,15 @@
                 <form action="{{route('mechanic.profile.update', ['mechanic'=>$profile->id])}}" method="POST" enctype="multipart/form-data" >
                     {{ method_field('PUT') }}
                     {{ csrf_field() }}
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <div class="bg-white rounded shadow-sm mb-4">
                         <div class="fs-15 fw-600 p-3 border-bottom">
                             {{ translate('Basic Info')}}
