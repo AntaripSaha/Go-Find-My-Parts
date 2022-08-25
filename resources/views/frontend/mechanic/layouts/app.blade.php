@@ -208,6 +208,14 @@
             display: none !important;
           } 
         }
+        @media only screen and (min-width: 390px) and (max-width: 480px) {
+        .mechanic-search {
+            width: 97% !important;
+            margin-left: 5%;
+            padding: 5px;
+            margin-bottom: 2%;
+        }
+    }
        
   </style>
 

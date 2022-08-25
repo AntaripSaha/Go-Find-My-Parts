@@ -268,7 +268,8 @@ Route::group(['prefix' => 'v2', 'middleware' => ['app_language']], function() {
     Route::post('get-profile-details', 'App\Http\Controllers\Api\V2\ProfileController@get_details');
 
     //Mechanic Start
-    Route::post('get-mechanic-details', 'App\Http\Controllers\Api\V2\MechanicController@index');
+    Route::post('get-mechanic-list', 'App\Http\Controllers\Api\V2\MechanicController@list');
+    Route::post('get-mechanic-details', 'App\Http\Controllers\Api\V2\MechanicController@details');
     //Mechanic End
 
 });

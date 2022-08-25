@@ -6,25 +6,25 @@
     <!-- site__header / end --><!-- site__body -->
     <div class="site__body">
 
-        <div class="mechanic-search">
-            <nav class="navbar-light bg-light justify-content-between">
+        <div style="width: 89% !important; padding:5px;">
+            <nav class="navbar navbar-light bg-light justify-content-between">
                 <a class="navbar-brand"></a>
                 <form action="{{route('mechanic.search')}}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <div class="d-flex position-relative align-items-center">
-                            <input type="text" style="border-radius: 20px !important; " class="border-0 border-lg form-control" id="search" name="name" placeholder="Find Mechanic..." autocomplete="off">
-                            <div class=>
-                                <button class="btn btn-outline-secondary border-left-0 ico-background"  style="" type="submit">
-                                    <i class="ico las la-search"></i>
-                                </button>
-                            </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input class="form-control mr-sm-2" style="width: 100% !important; margin-top: -1.5% !important;"  name="name" type="search" placeholder="Find Mechanic..." aria-label="Search">
+                        </div>
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-outline-success">Search</button>
+                        </div>
                     </div>
                 </form>
               </nav>
         </div>        
     {{-- //owl-carousel --}}
                 <div class="block-banners block" style="margin-top: 15px;">
-                    <div class="container" style="width: 100% !important; height: 60% !important;">
+                    <div class="container" style="width: 70% !important; height: 60% !important;">
                     <div class="block-banners__list" >
                         <div class="mechanic owl-carousel owl-theme">
                             @foreach($mechanics as $mechanic)
@@ -58,24 +58,15 @@
         .card-title{
             font-size: 10px;
         }
-        .mechanic-search {
-            width: 97% !important;
-            margin-left: 5%;
-            padding: 5px;
-            margin-bottom: 2%;
-        }
-    }
-    .mechanic-search{
-        width: 55% !important;
-        margin-left: 25%;
-        padding: 5px;
-        margin-bottom: 2%;
     }
  </style>
 
   <script type="text/javascript">
+
+ 
     $(document).ready(function() {
 
+ 
        // Advertise Slider Upper Section 
        $('.mechanic').owlCarousel({
           loop:false,
@@ -88,13 +79,13 @@
           nav:false,
           responsive:{
              0:{
-                   items:2
+                   items:1
              },
              600:{
                    items:2
              },
              1000:{
-                   items:5 
+                   items:4  
              }
           }
        });
