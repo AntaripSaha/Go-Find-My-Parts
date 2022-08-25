@@ -17,6 +17,7 @@ class MechanicResource extends ResourceCollection
         return [
             'data'=> $this->collection->map(function($item){
                 return [
+                    'mechanicId' =>$item->id,
                     'profile_image' => uploaded_asset($item->profile_image),   
                     'name' =>$item->user->name,
                     'phone' =>$item->contact,

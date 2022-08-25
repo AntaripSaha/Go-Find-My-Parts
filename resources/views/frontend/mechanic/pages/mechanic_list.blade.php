@@ -58,15 +58,17 @@
         .card-title{
             font-size: 10px;
         }
+    }
+    @media only screen and (min-width: 390px) and (max-width: 480px) {
         .mechanic-search {
             width: 97% !important;
-            margin-left: 5%;
-            padding: 5px;
-            margin-bottom: 2%;
+            margin-left: 5% !important;
+            padding: 5px !important;
+            margin-bottom: 7% !important;
         }
     }
     .mechanic-search{
-        width: 55% !important;
+        width: 55%;
         margin-left: 25%;
         padding: 5px;
         margin-bottom: 2%;
@@ -88,10 +90,10 @@
           nav:false,
           responsive:{
              0:{
-                   items:2
+                   items:1
              },
              600:{
-                   items:2
+                   items:1
              },
              1000:{
                    items:5 

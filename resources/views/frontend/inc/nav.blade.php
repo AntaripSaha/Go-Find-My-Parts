@@ -44,6 +44,13 @@
             display: none;
         }
     }
+    .mechanic-pill-btn{
+        background: #ffff07;
+        color: black;
+        font-weight: 600;
+        width: 100%;
+        font-size: 11px;
+    }
 </style>
 @if(get_setting('topbar_banner') != null)
 <div class="position-relative top-banner removable-session z-1035 d-none" data-key="top-banner" data-value="removed">
@@ -128,9 +135,10 @@
                     @endif
                     @if(!Auth::user())
                     <li class="list-inline-item border-left-0 pr-3 pl-0">
+                        
                         <a href="{{route('mechanic.register')}}" class="text-reset d-inline-block py-2">
-                            <i class="la la-wrench"></i>
-                            <span>Mechanic</span>  
+                            {{-- <i class="la la-wrench"></i> --}}
+                            <span class="badge badge-pill badge-primary mechanic-pill-btn">Mechanics</span>  
                         </a>
                     </li>
                     <hr class="hr" style="margin-left:2px !important">

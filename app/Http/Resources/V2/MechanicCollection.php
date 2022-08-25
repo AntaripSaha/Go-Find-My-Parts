@@ -17,15 +17,16 @@ class MechanicCollection extends JsonResource
     {
         return [
             'profile_image' => uploaded_asset($this->profile_image),   
-            'banner_image' => uploaded_asset($this->banner_image),   
+            'banner_image' => uploaded_asset($this->banner_image),
             'name' =>$this->user->name,
             'description' =>$this->description,
+            'email' =>$this->user->email,
             'phone' =>$this->contact,
             'address_one' =>$this->address,
             'address_two' =>$this->address_two,
             'city' =>$this->city,
             'country' =>$this->country,
+            'brands' => $this->my_brand_names,
         ];
-       
     }
 }

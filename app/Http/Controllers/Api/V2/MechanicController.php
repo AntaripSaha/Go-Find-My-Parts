@@ -41,7 +41,7 @@ class MechanicController extends Controller
     }
     public function details(Request $request){
         try {
-            $mechanic = Mechanic::with('user')->where('status', 1)->where('id', $request->Id)->first();
+            $mechanic = Mechanic::with('user')->where('status', 1)->where('id', $request->id)->first();
             return new MechanicCollection($mechanic);
         } catch (\Throwable $th) {
             return response()->json([
