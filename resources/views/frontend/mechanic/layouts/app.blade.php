@@ -207,11 +207,8 @@
           .profile-card{
             display: none !important;
           } 
-        }
-
-       
+        }       
   </style>
-
     <style>
         body{
             font-family: 'Open Sans', sans-serif;
