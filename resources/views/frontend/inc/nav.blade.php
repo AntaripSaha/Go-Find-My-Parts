@@ -126,6 +126,15 @@
                         </li>
                         <hr class="hr" style="margin-left:2px !important">
                     @endif
+                    @if(!Auth::user())
+                    <li class="list-inline-item border-left-0 pr-3 pl-0">
+                        <a href="{{route('mechanic.register')}}" class="text-reset d-inline-block py-2">
+                            <i class="la la-wrench"></i>
+                            <span>Mechanic</span>  
+                        </a>
+                    </li>
+                    <hr class="hr" style="margin-left:2px !important">
+                    @endif
                     @auth
                         @if(isAdmin())
                             <li class="list-inline-item  border-left-0 pr-3 pl-0">

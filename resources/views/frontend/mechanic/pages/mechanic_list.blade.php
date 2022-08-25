@@ -13,21 +13,17 @@
                     @csrf
                     <div class="row">
                         <div class="col-md-6">
-                            <input class="form-control mr-sm-2" style="width: 120% !important; margin-top: -1.5% !important;"  name="name" type="search" placeholder="Search" aria-label="Search">
+                            <input class="form-control mr-sm-2" style="width: 120% !important; margin-top: -1.5% !important;"  name="name" type="search" placeholder="Find Mechanic..." aria-label="Search">
 
                         </div>
                         <div class="col-md-6">
                             <button type="submit" class="btn btn-outline-success">Search</button>
-
                         </div>
 
                     </div>
                 </form>
               </nav>
-        </div>
-
-
-        
+        </div>        
     {{-- //owl-carousel --}}
                 <div class="block-banners block" style="margin-top: 15px;">
                     <div class="container" style="width: 70% !important; height: 60% !important;">
@@ -35,7 +31,6 @@
                         <div class="mechanic owl-carousel owl-theme">
                             @foreach($mechanics as $mechanic)
                             <div class="item">
-
                                 <a href="{{route('mechanic.public.profile', $mechanic->id )}}">
                                     <div class="card" style="height:500px !important;">
                                         <img class="card-img-top" src="{{ uploaded_asset($mechanic->profile_image) }}" height="250px" width="auto" alt="Card image cap">
