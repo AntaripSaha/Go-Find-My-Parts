@@ -9,6 +9,7 @@ use App\Models\BusinessSetting;
 use App\OtpConfiguration;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\OTPVerificationController;
+use App\Models\Mechanic;
 use App\Notifications\EmailVerificationNotification;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -139,7 +140,11 @@ class RegisterController extends Controller
             $user->email = $request->email;
             $user->user_type = 'mechanic';
             $user->password = Hash::make($request->password);
+            $mechanic = new Mechanic();
+            $mechanic->email = $request->email;
+            $mechanic->save();
             if($user->save()){
+
             $this->guard()->login($user);
             }
             return redirect()->route('mechanic.home');

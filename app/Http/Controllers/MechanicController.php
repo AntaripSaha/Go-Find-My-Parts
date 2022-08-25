@@ -18,13 +18,14 @@ class MechanicController extends Controller
         return view('frontend.mechanic.register');
     }
     public function home(){
-        $profile = Mechanic::with('user','brands')->where('user_id', auth()->user()->id)->first();
+        $profile = Mechanic::where('email', auth()->user()->email)->first();
         $all_brands = Brand::all();
         $user = Auth::user();
-        $details = Mechanic::where('user_id', auth()->user()->id)->get();
-        return view('frontend.mechanic.home', compact('user', 'details', 'profile', 'all_brands'));      
+        $details = Mechanic::where('user_id', auth()->user()->email)->get();
+        return view('frontend.mechanic.home', compact('user', 'all_brands', 'profile', 'details'));      
     }
     public function info_store(Request $request, Mechanic $mechanic){
+        
         $validated = $request->validate([
             'name' => 'required|max:50',
             'contact' => 'required|max:50',
@@ -86,7 +87,7 @@ class MechanicController extends Controller
         return view('frontend.mechanic.list',compact('mechanics'));
     }
     public function profile(){
-        $profile = Mechanic::with('user','brands')->where('user_id', auth()->user()->id)->first();
+       $profile = Mechanic::with('user','brands')->where('user_id', auth()->user()->id)->first();
         $all_brands = Brand::all();
         return view('frontend.mechanic.profile', compact('profile','all_brands'));
     }
@@ -128,6 +129,7 @@ class MechanicController extends Controller
         $mechanic->city= $request->city;
         $mechanic->country= $request->country;
         $mechanic->description= $request->description;
+        $mechanic->user_id= Auth::id();
         $mechanic->save();
         $mechanic->brands()->sync($request->brands);
         if($request->name){

@@ -71,7 +71,7 @@
                             </div>
                             <div class="form-group">
                                 <label>{{ translate('Mechanic Name')}} <span class="text-primary">*</span></label>
-                                <input type="text" class="form-control" placeholder="{{ translate('Mechanic Name')}}" name="name" value="{{$profile->user->name}}" required>
+                                <input type="text" class="form-control" placeholder="{{ translate('Mechanic Name')}}" name="name" value="{{$user->name}}" required>
                             </div>
                             <div class="form-group">
                                 <label>{{ translate('Contact')}} <span class="text-primary">*</span></label>
