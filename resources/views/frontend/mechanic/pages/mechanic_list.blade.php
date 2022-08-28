@@ -28,24 +28,29 @@
                     <div class="block-banners__list" >
                         <div class="mechanic owl-carousel owl-theme">
                             @foreach($mechanics as $mechanic)
+                            @if(isset($mechanic->user->name))
                             <div class="item">
                                 <a href="{{route('mechanic.public.profile', $mechanic->id )}}">
                                     <div class="card" style="height:500px !important;">
                                         <img class="card-img-top" src="{{ uploaded_asset($mechanic->profile_image) }}" height="250px" width="auto" alt="Card image cap">
                                         <div class="card-body"style="color: black !important">
                                             <h5 class="card-title">{{$mechanic->user->name}}</h5>
-                                        <p class="card-text">{{$mechanic->contact}}</p>
-                                        <p class="card-text">{{$mechanic->address}}</p>
+                                            <p class="card-text">{{$mechanic->contact}}</p>
+                                            <p class="card-text">{{$mechanic->address}}</p>
                                         </div>
                                     </div>
                                 </a>
-
                             </div>
+                            @else
+                            @endif
                             @endforeach
                         </div>
                     </div>
                     </div>
                 </div>
+                <div class="aiz-pagination">
+                	{{ $mechanics->appends(request()->input())->links() }}
+            	</div>
     {{-- //owl-carousel --}}
 
     </div>
@@ -90,13 +95,13 @@
           nav:false,
           responsive:{
              0:{
-                   items:1
+                   items:2
              },
-             600:{
-                   items:1
+             400:{
+                   items:2
              },
              1000:{
-                   items:5 
+                   items:4
              }
           }
        });
