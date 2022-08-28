@@ -48,7 +48,7 @@
                     </div>
                     </div>
                 </div>
-                <div class="aiz-pagination">
+                <div class="aiz-pagination" style="margin-bottom: 5px;">
                 	{{ $mechanics->appends(request()->input())->links() }}
             	</div>
     {{-- //owl-carousel --}}
