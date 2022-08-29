@@ -22,42 +22,43 @@
                 </form>
               </nav>
         </div>        
- 
     {{-- //owl-carousel --}}
+    <div class="container sm-px-0">
+        {{-- <div class="col-xl-3">
 
-        <div class="block-banners block" style="margin-top: 15px; width: 80%; margin-left:10%; ">
-        <div class="container" style="width: 80% !important; height: 60% !important;">
-            <div class="block-banners__list" >
+        </div> --}}
+        <div class="col-xl-12">
+            <div class="row gutters-5 row-cols-xxl-5 row-cols-xl-3 row-cols-lg-4 row-cols-md-3 row-cols-2" >
                 @foreach($mechanics as $mechanic)
-                    @if(isset($mechanic->user->name))
-                    <div class="col">
-                        <div class="">
-                            <div class="item">
-                                <a href="{{route('mechanic.public.profile', $mechanic->id )}}">
-                                    <div class="card">
-                                        <img class="img-fit lazyload mx-auto h-140px h-md-210px"
-                                        src="{{ static_asset('assets/img/placeholder.jpg') }}" data-src="{{ uploaded_asset($mechanic->profile_image) }}"
-                                        alt="{{  $mechanic->name  }}" onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder.jpg') }}';" >
-                                        <div class="card-body"style="color: black !important">
-                                            <h5 class="card-title">{{$mechanic->user->name}}</h5>
-                                            <p class="card-text">{{$mechanic->contact}}</p>
-                                            <p class="card-text">{{$mechanic->address}}</p>
-                                        </div>
-                                    </div>
-                                </a>
+                @if(isset($mechanic->user->name))
+                <div class="col">
+                    <a href="{{route('mechanic.public.profile', $mechanic->id )}}">
+                        <div class="card">
+                            <img  class="img-fit lazyload mx-auto h-140px h-md-210px"
+                                src="{{ static_asset('assets/img/placeholder.jpg') }}"
+                                data-src="{{ uploaded_asset($mechanic->profile_image) }}"
+                                alt="{{  $mechanic->name }}"
+                                onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder.jpg') }}';"
+                            >
+                            <div class="card-body"style="color: black !important">
+                                <h5 class="card-title">{{$mechanic->user->name}}</h5>
+                                <p class="card-text">{{$mechanic->contact}}</p>
+                                <p class="card-text">{{$mechanic->address}}</p>
                             </div>
                         </div>
-
-                    </div>
-                    @else
-                    @endif
+                    </a>
+                </div>
+                @else
+                @endif
                 @endforeach
             </div>
+            <div class="aiz-pagination" style="margin-bottom: 1.5%;">
+                {{ $mechanics->appends(request()->input())->links() }}
+            </div>
         </div>
-        <div class="aiz-pagination aiz-pagination-center mt-4 mb-3">
-            {{ $mechanics->appends(request()->input())->links() }}
-        </div>
+        
     </div>
+    {{-- //owl-carousel --}}
 
     </div>
 </div>
@@ -85,37 +86,5 @@
         margin-bottom: 2%;
     }
  </style>
-
-  <script type="text/javascript">
-    $(document).ready(function() {
-
-       // Advertise Slider Upper Section 
-       $('.mechanic').owlCarousel({
-          loop:false,
-          margin:10,
-          autoplay:true,
-          autoplayTimeout:7500,
-          smartSpeed: 4000,
-          autoplayHoverPause:true,
-          responsiveClass:true,
-          nav:false,
-          responsive:{
-             0:{
-                   items:1
-             },
-             360:{
-                   items:2
-             },
-             1000:{
-                   items:4 
-             }
-          }
-       });
-      
  
- 
- 
-    });
- 
- </script> 
 @endsection

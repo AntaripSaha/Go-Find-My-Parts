@@ -72,7 +72,7 @@ class MechanicController extends Controller
     }
     public function list(){
 
-        $mechanics = Mechanic::with('user')->where('status', 1)->paginate(12);
+        $mechanics = Mechanic::with('user')->where('status', 1)->paginate(15);
         return view('frontend.mechanic.list',compact('mechanics'));
     }
     public function search(Request $request){
@@ -84,7 +84,7 @@ class MechanicController extends Controller
                                 ->orWhereHas('brands',  function ($q) use ($queary){
                                     $q->where('name', 'like', '%' . $queary . '%');
                                 })
-                                ->paginate(12);
+                                ->paginate(15);
         return view('frontend.mechanic.list',compact('mechanics'));
     }
     public function profile(){
