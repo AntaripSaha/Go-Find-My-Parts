@@ -37,7 +37,7 @@
         margin-right: 20px;
     }
     .hov-opacity-100:hover{
-        color: #72b860 !important;
+        color: #1f1fda !important;
     }
     @media only screen and (max-width: 600px){
         .hr{
@@ -49,7 +49,16 @@
         color: black;
         font-weight: 600;
         width: 100%;
+        /* height: auto; */
         font-size: 11px;
+    }
+    .mechanic-pill-btn-blue{
+        background: #1f1fda;
+        color: rgb(255, 255, 255);
+        font-weight: 600;
+        width: 100%;
+        height: auto;
+        font-size: 12px;
     }
 </style>
 @if(get_setting('topbar_banner') != null)
@@ -376,6 +385,13 @@
         </div>
         @endif
     </div>
+
+
+
+
+
+
+
     @if ( get_setting('header_menu_labels') !=  null )
         <div class="bg-white border-top border-gray-200 py-1">
             <div class="container">
@@ -383,15 +399,23 @@
                     @foreach (json_decode( get_setting('header_menu_labels'), true) as $key => $value)
                     <li class="list-inline-item border-right" style="margin-left:-2px !important; margin-right: -2px !important;">
                         <a href="{{ json_decode( get_setting('header_menu_links'), true)[$key] }}" class="opacity-90 fs-14 px-3 py-2 d-inline-block fw-700 hov-opacity-100 text-reset">
+                           <p id="nav-menu">
+                            @if($value == 'Find A Mechanic')
+                            <span class="badge badge-pill badge-primary mechanic-pill-btn-blue"> {{ translate($value) }}</span>
+                            @else
                             {{ translate($value) }}
+                            @endif
+                            </p> 
                         </a>
                     </li>
-                    
                     @endforeach
                 </ul>
             </div>
         </div>
     @endif
+
+
+    
 </header>
 
 <div class="modal fade" id="order_details" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -406,6 +430,8 @@
 
 @section('script')
     <script type="text/javascript">
+//    var mecha =  $('#nav-menu').val();
+//    alert(mecha);
         
         function show_order_details(order_id)
         {
