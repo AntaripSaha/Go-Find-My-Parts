@@ -23,7 +23,7 @@
               </nav>
         </div>        
     {{-- //owl-carousel --}}
-                <div class="block-banners block" style="margin-top: 15px;">
+                {{-- <div class="block-banners block" style="margin-top: 15px;">
                     <div class="container" style="width: 100% !important; height: 60% !important;">
                     <div class="block-banners__list" >
                         <div class="mechanic owl-carousel owl-theme">
@@ -50,8 +50,42 @@
                 </div>
                 <div class="aiz-pagination" style="margin-bottom: 5px;">
                 	{{ $mechanics->appends(request()->input())->links() }}
-            	</div>
+            	</div> --}}
     {{-- //owl-carousel --}}
+
+        <div class="block-banners block" style="margin-top: 15px; width: 80%; margin-left:10%; ">
+        <div class="container" style="width: 80% !important; height: 60% !important;">
+            <div class="block-banners__list" >
+                @foreach($mechanics as $mechanic)
+                    @if(isset($mechanic->user->name))
+                    <div class="col">
+                        <div class="">
+                            <div class="item">
+                                <a href="{{route('mechanic.public.profile', $mechanic->id )}}">
+                                    <div class="card">
+                                        <img class="img-fit lazyload mx-auto h-140px h-md-210px"
+                                        src="{{ static_asset('assets/img/placeholder.jpg') }}" data-src="{{ uploaded_asset($mechanic->profile_image) }}"
+                                        alt="{{  $mechanic->name  }}" onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder.jpg') }}';" >
+                                        <div class="card-body"style="color: black !important">
+                                            <h5 class="card-title">{{$mechanic->user->name}}</h5>
+                                            <p class="card-text">{{$mechanic->contact}}</p>
+                                            <p class="card-text">{{$mechanic->address}}</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                    @else
+                    @endif
+                @endforeach
+            </div>
+        </div>
+        <div class="aiz-pagination aiz-pagination-center mt-4 mb-3">
+            {{ $mechanics->appends(request()->input())->links() }}
+        </div>
+    </div>
 
     </div>
 </div>
