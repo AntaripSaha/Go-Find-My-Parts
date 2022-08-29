@@ -23,34 +23,35 @@
               </nav>
         </div>        
     {{-- //owl-carousel --}}
-                <div class="block-banners block" style="margin-top: 15px;">
-                    <div class="container" style="width: 100% !important; height: 60% !important;">
-                    <div class="block-banners__list" >
-                        <div class="mechanic owl-carousel owl-theme">
-                            @foreach($mechanics as $mechanic)
-                            @if(isset($mechanic->user->name))
-                            <div class="item">
-                                <a href="{{route('mechanic.public.profile', $mechanic->id )}}">
-                                    <div class="card" style="height:500px !important;">
-                                        <img class="card-img-top" src="{{ uploaded_asset($mechanic->profile_image) }}" height="250px" width="auto" alt="Card image cap">
-                                        <div class="card-body"style="color: black !important">
-                                            <h5 class="card-title">{{$mechanic->user->name}}</h5>
-                                            <p class="card-text">{{$mechanic->contact}}</p>
-                                            <p class="card-text">{{$mechanic->address}}</p>
-                                        </div>
-                                    </div>
-                                </a>
+    <div class="block-banners block" style="margin-top: 15px;">
+        <div class="container" style="width: 100% !important; height: 60% !important;">
+        <div class="block-banners__list" >
+            <div class="mechanic owl-carousel owl-theme">
+                @foreach($mechanics as $mechanic)
+                @if(isset($mechanic->user->name))
+                <div class="item">
+                    <a href="{{route('mechanic.public.profile', $mechanic->id )}}">
+                        <div class="card" style="height:500px !important;">
+                            <img class="card-img-top" src="{{ uploaded_asset($mechanic->profile_image) }}" height="250px" width="auto" alt="Card image cap">
+                            <div class="card-body"style="color: black !important">
+                                <h5 class="card-title">{{$mechanic->user->name}}</h5>
+                                <p class="card-text">{{$mechanic->contact}}</p>
+                                <p class="card-text">{{$mechanic->address}}</p>
                             </div>
-                            @else
-                            @endif
-                            @endforeach
                         </div>
-                    </div>
-                    </div>
+                    </a>
                 </div>
-                <div class="aiz-pagination">
-                	{{ $mechanics->appends(request()->input())->links() }}
-            	</div>
+                @else
+                @endif
+                @endforeach
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="aiz-pagination" style="margin-bottom:5px;">
+        {{ $mechanics->appends(request()->input())->links() }}
+    </div>
+                
     {{-- //owl-carousel --}}
 
     </div>
@@ -95,13 +96,13 @@
           nav:false,
           responsive:{
              0:{
-                   items:2
+                   items:1
              },
-             400:{
+             360:{
                    items:2
              },
              1000:{
-                   items:4
+                   items:4 
              }
           }
        });
