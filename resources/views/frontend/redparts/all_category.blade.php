@@ -1,5 +1,5 @@
 <div class="col-4">
-                          <div class="block-products-columns__title">Newest Products</div>
+                          <div class="block-products-columns__title font-style-modified">Newest Products</div>
                           <div class="block-products-columns__list">
                              @foreach($newest_products_footer as $product)
                              <div class="block-products-columns__list-item">
@@ -52,7 +52,7 @@
 
                        
                        <div class="col-4">
-                          <div class="block-products-columns__title">Featured Products</div>
+                          <div class="block-products-columns__title font-style-modified">Featured Products</div>
                           <div class="block-products-columns__list">
                              @foreach($featured_products_footer as $product)
                              <div class="block-products-columns__list-item">

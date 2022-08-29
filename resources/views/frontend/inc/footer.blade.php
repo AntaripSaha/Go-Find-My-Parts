@@ -1,3 +1,5 @@
+@if(Request()->route()->getName() == 'mechanic.list')
+@else
 <section class="bg-white border-top mt-auto footer-page-mobile mb-2">
     <div class="container">
         <div class="row no-gutters">
@@ -58,6 +60,10 @@
         </div>
     </div>
 </section>
+@endif
+
+
+
 
 <section class="bg-dark py-2 text-light footer-widget">
     <div class="container">

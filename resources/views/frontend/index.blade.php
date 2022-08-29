@@ -213,6 +213,11 @@
 .desktop-view{
    margin-top: 1%;
 }
+.font-style-modified{
+   font-size: 17px;
+   font-weight: 800 !important;
+   font-family: sans-serif;
+}
 
 </style>
 <link rel="stylesheet" href="{{static_asset('assets/css/w3.css')}}">
@@ -335,16 +340,13 @@
             <div class="mobile-view" style="height:15px"></div>
             <div class="desktop-view"></div>
                @include('frontend.redparts.new_arrival')
-               <div class="mobile-view-testimonial"></div>
-               @include('frontend.redparts.testimonial')
-               <div class="mobile-view-testimonial-bottom"></div>
+               
             <!--------------All Category Products---------------->
-            <div class="mobile-view" style="height:15px"></div>
             <div class="block block-products-columns">
                <div class="container">
                     <div class="row">
                        <div class="col-4">
-                          <div class="block-products-columns__title">Todays Deal Products</div>
+                          <div class="block-products-columns__title font-style-modified">Todays Deal Products</div>
                           <div class="block-products-columns__list">
                              @foreach($todays_deal_products_footer as $product)
                              <div class="block-products-columns__list-item">
@@ -405,7 +407,11 @@
                     </div>
                </div>
             </div>
-            <div class="mobile-view" style="height:15px"></div>
+            <div class="mobile-view" style="height:5px"></div>
+            <div class="mobile-view-testimonial"></div>
+               @include('frontend.redparts.testimonial')
+               <div class="desktop-view"></div>
+            <div class="mobile-view-testimonial-bottom"></div>
          </div>
       </div>
    <script type="text/javascript">
