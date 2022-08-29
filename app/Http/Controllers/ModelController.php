@@ -54,7 +54,7 @@ class ModelController extends Controller
    }
    //Year Add Edit For Model Start
    public function year_index(Request $request){
-    $years = Year::all();
+    $years = Year::orderBy('year', 'asc')->get();
     $brands = Brand::all();
     $models = ModelYear::where('status', 1)->with('brands', 'models')->orderBy('id', 'desc');
     if ($request->has('search')){
