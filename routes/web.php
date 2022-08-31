@@ -305,14 +305,14 @@ Route::group(['middleware' => ['customer', 'verified', 'unbanned']], function() 
     });
 
 });
-Route::group(['middleware' => ['seller', 'verified', 'unbanned']], function() {
-    // Checkout Routs
-    Route::group(['prefix' => 'checkout'], function() {
-        Route::controller(CheckoutController::class)->group(function () {
-            Route::get('/', 'get_shipping_info')->name('checkout.shipping_info');
-        });
-    });
-});
+// Route::group(['middleware' => ['seller', 'verified', 'unbanned']], function() {
+//     // Checkout Routs
+//     Route::group(['prefix' => 'checkout'], function() {
+//         Route::controller(CheckoutController::class)->group(function () {
+//             Route::get('/', 'get_shipping_info')->name('checkout.shipping_info');
+//         });
+//     });
+// });
 
 Route::group(['middleware' => ['auth']], function() {
     
