@@ -203,11 +203,30 @@
 }
 @media only screen and (min-width: 700px) and (max-width: 1200px){
    .btn_dev {
-      width: 76.2% !important;
-      margin-left: 42.1px !important;
+      width: 42.1% !important;
+      margin-left: 160.1px !important;
       margin-bottom: 10px !important;
       text-align: center !important;
    }
+}
+@media only screen and (width: 800px){
+   .btn_dev {
+      width: 44.6% !important;
+      margin-left: 127.1px !important;
+      margin-bottom: 10px !important;
+      text-align: center !important;
+   }
+}
+@media only screen and (min-width: 799px) and (max-width: 850px){
+   .btn_size_tab{
+      margin-left: 16% !important;
+      width: 84%;
+   }
+}
+@media only screen and (min-width: 767px) and (max-width: 799px){
+   .tab-section{
+      margin-left: 6% !important;
+    }
 }
 
 .desktop-view{
@@ -236,27 +255,20 @@
                   </div>
                </div>
                <div class="block-finder__image" style="background-image: url('{{static_asset('assets/frontend/images/finder-1903x500.jpg') }}' );"></div>
-               
-
-
-               <div class="block-finder__body container container--max--xl">
+               <div class="tab-section block-finder__body container container--max--xl">
                   <div class="block-finder__title">Find Parts For Your Vehicle</div>
                   <div class="block-finder__subtitle">Over hundreds of brands and tens of thousands of parts</div>
-                  <div class="btn_dev text-left ml-2 mt-2" style="width: 45%;">
-                        <button class="tablink block-finder__form-control block-finder__form-control--button basic-btn w3-yellow w3-web-blue" onclick="openCity(event,'Basic')">Basic</button>
-                        <button class="tablink  block-finder__form-control block-finder__form-control--button advance-btn w3-yellow" onclick="openCity(event,'Advance')" style="padding-right: 24px;padding-left: 23px;">Interchangeable</button>
+                     <div class="btn_dev text-left ml-2 mt-2" style="width: 45%;">
+                        <button class="btn_size_tab tablink block-finder__form-control block-finder__form-control--button basic-btn w3-yellow w3-web-blue" onclick="openCity(event,'Basic')">Basic</button>
+                        <button class="btn_size_tab tablink  block-finder__form-control block-finder__form-control--button advance-btn w3-yellow" onclick="openCity(event,'Advance')" style="padding-right: 24px;padding-left: 23px;">Interchangeable</button>
                      </div>
-                   <div id="Basic" class="w3-container city">
-                     @include('frontend.redparts.search')
-                   </div>
-                   <div id="Advance" class="w3-container city" style="display:none">
-                     @include('frontend.redparts.advanced_search')
-                   </div>
+                      <div id="Basic" class="w3-container city">
+                        @include('frontend.redparts.search')
+                      </div>
+                      <div id="Advance" class="w3-container city" style="display:none">
+                        @include('frontend.redparts.advanced_search')
+                      </div>
                </div>
-
-
-
-
             </div>
             <div class="mobile-view" style="height:15px"></div>
                <div class="container">
