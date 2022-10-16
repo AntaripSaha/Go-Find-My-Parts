@@ -14,11 +14,7 @@ class CartController extends Controller
 {
     public function index(Request $request)
     {
-        if(auth()->user() == null){
-            flash(translate('Register As A Customer To Buy Products'))->warning();
-            return redirect()->route('home');
-        }
-        elseif(auth()->user()->user_type == 'seller'){
+        if(auth()->user()->user_type == 'seller'){
             flash(translate('Register As A Customer To Buy Products'))->warning();
             return redirect()->route('home');
         }else{

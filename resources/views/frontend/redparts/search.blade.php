@@ -21,13 +21,15 @@
       background-repeat: no-repeat;
       text-align: left; */
    }
-   
+   .tab{
+      display: none;
+   }
 </style>
 <form class="block-finder__form" action="{{route('dependent.search')}}"  method="POST">
    @csrf
-   <div class="container">
+   <div class="container tab-basic-search-desktop tab-basic-search">
       <div class="row">
-         <div class="col-md-3">
+         <div class="col-md-9 col-sm-9  col-lg-3">
             <div class="block-finder__form-control block-finder__form-control--select tables">
                <select name="brand_dependency" id='brand' aria-label="Vehicle Year" >
                   <option value="0">Select Make</option>
@@ -37,7 +39,7 @@
                </select>
             </div>
          </div>
-         <div class="col-md-3">
+         <div class="col-md-9 col-sm-9 col-lg-3">
             <div class="block-finder__form-control block-finder__form-control--select tables">
                <select name="model" id="model" aria-label="Vehicle Make" disabled="disabled">
 
@@ -45,7 +47,7 @@
             </div>
    
          </div>
-         <div class="col-md-3">
+         <div class="col-md-9 col-sm-9 col-lg-3">
             <div class="block-finder__form-control block-finder__form-control--select tables">
                <select name="year" id="year" aria-label="Vehicle Model" disabled="disabled">
 
@@ -53,7 +55,7 @@
             </div>
    
          </div>
-         <div class="col-md-3">
+         <div class="col-md-9 col-sm-9 col-lg-3">
             <div class="block-finder__form-control block-finder__form-control--select tables">
                <select name="chassis" id="chassis" aria-label="Vehicle Engine" disabled="disabled">
                   
@@ -64,18 +66,13 @@
          <div class="col-md-3"></div>
          <div class="col-md-3"></div>
          <div class="col-md-3"></div>
-         <div class="col-md-3">
+         <div class="col-md-7 col-sm-9 col-lg-3">
             <button class="sub_btn_dev block-finder__form-control block-finder__form-control--button btn-block custom_search" type="submit">Search</button>
          </div>
    
       </div>
 
-   </div>
-                     
-                     
-                     
-                     
-           
+   </div>         
 </form>
 
 <style>
@@ -97,7 +94,31 @@
    width: 75%;
 }
 
+
 }
+@media only screen and (min-width: 767px) and (max-width: 800px){
+.custom_search {
+   width: 104% !important;
+   margin-left: 2% !important;
+}
+}
+@media only screen and (min-width: 801px) and (max-width: 1200px){
+.custom_search {
+   width: 100% !important;
+   margin-left:15% !important;
+}
+}
+@media only screen and (min-width: 767px) and (max-width: 1200px){
+      .tab-basic-search{
+         margin-left: 17.7% !important;
+      }
+      
+   }
+ 
+@media only screen and (min-width: 1200px ){
+     
+       
+   }
 </style>
 
 <script type="text/javascript">

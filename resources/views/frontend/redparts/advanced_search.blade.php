@@ -24,9 +24,9 @@
 <form class="block-finder__form" action="{{route('advance.dependent.search')}}"  method="POST">
    @csrf
 
-   <div class="container">
+   <div class="container tab-basic-search-desktop tab-basic-search">
       <div class="row">
-         <div class="col-md-3">
+         <div class="col-md-9 col-sm-9 col-lg-3">
             <div class="block-finder__form-control block-finder__form-control--select tables" >
                <select class="" name="brand_dependency" id='brand_two'>
                   <option value="0">Select Make</option>
@@ -36,19 +36,19 @@
                </select>
             </div>
          </div>
-         <div class="col-md-3">
+         <div class="col-md-9 col-sm-9 col-lg-3">
             <div class="block-finder__form-control block-finder__form-control--select tables" >
                <select name="model_two" id="model_two" aria-label="Vehicle Make" disabled="disabled">
                </select>
             </div>
          </div>
-         <div class="col-md-3">
+         <div class="col-md-9 col-sm-9 col-lg-3">
             <div class="block-finder__form-control block-finder__form-control--select tables" >
                <select name="year_two" id="year_two" disabled="disabled">
                </select>
             </div>
          </div>
-         <div class="col-md-3">
+         <div class="col-md-9 col-sm-9 col-lg-3">
             <div class="block-finder__form-control block-finder__form-control--select tables" >
                <select name="style" id="style" aria-label="Vehicle Engine" disabled="disabled">
                </select>
@@ -57,32 +57,29 @@
       </div>
       
       <div class="row">
-         <div class="col-md-3">
+         <div class="col-md-9 col-sm-9 col-lg-3">
             <div class="block-finder__form-control block-finder__form-control--select tables" >
                <select name="part_category" id="part_category" aria-label="Part Category" disabled="disabled">
                </select>
             </div>
          </div>
-         <div class="col-md-3">
+         <div class="col-md-9 col-sm-9 col-lg-3">
             <div class="block-finder__form-control block-finder__form-control--select tables" >
                <select name="parts" id="parts" aria-label="Vehicle Parts" disabled="disabled">
                </select>
             </div>
          </div>
-         <div class="col-md-3">
+         <div class="col-md-9 col-sm-9 col-lg-3">
             <div class="block-finder__form-control block-finder__form-control--select tables" >
                <select name="fitment" id="fitment" disabled="disabled">
                </select>
             </div>
          </div>
-         <div class="col-md-3">
+         <div class="col-md-9 col-sm-9 col-lg-3">
             <button class="sub_btn_dev block-finder__form-control block-finder__form-control--button btn-block custom_btn_search" id="search_button" disabled="disabled" type="submit">Search</button>
          </div>
       </div>
-      
-
    </div>
-
 </form>
 
 <script type="text/javascript">
@@ -272,6 +269,33 @@
       .custom_btn_search {
          width: 75% !important;
       }
-
    }
+   @media only screen and (min-width: 767px) and (max-width: 800px){
+   .custom_btn_search {
+      width: 79% !important;
+      margin-left: 2% !important;
+   }
+}
+   @media only screen and (min-width: 820px) and (max-width: 990px){
+      .tables{
+         width: 74.2% !important;
+         margin-left: 12% !important;
+         margin-top: 2% !important;
+         border-radius: 2% !important;
+      }
+
+      .custom_btn_search {
+         width: 75% !important;
+      }
+   }
+
+@media only screen and (min-width: 990px) and (max-width: 1200px){
+   .tables{
+      
+      }
+      .custom_btn_search {
+         width: 75% !important;
+      }
+}
+
 </style>
