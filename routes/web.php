@@ -449,6 +449,7 @@ Route::get('advance/style/{model_two_id}/{year_two_id}', [HomeController::class,
 Route::get('advance/part/category', [HomeController::class, 'part_category']);
 Route::get('advance/parts/{part_category_id}/{style_id}', [HomeController::class, 'parts']);
 Route::get('advance/fitment/{parts_id}', [HomeController::class, 'fitment']);
+Route::post('advance/search/save', [HomeController::class, 'search_save'])->name('save.search');
 
 Route::any('advance/search/parts', [SearchController::class, 'index'])->name('advance.dependent.search');
 

@@ -143,6 +143,15 @@ class HomeController extends Controller
         return response()->json($fitment);
 
     }
+    public function search_save(Request $request){
+        // return $request;
+        $product = DB::table('products')
+                    ->where('style_id', $request->style_id)
+                    ->where('part_id', $request->parts_id)
+                    ->where('id', $request->fitment_id)
+                    ->pluck('id');
+        return response()->json(['success'=>'Your Search Saved Successfully'.$product]) ;
+    }
 
     public function index()
     {

@@ -78,6 +78,15 @@
          <div class="col-md-9 col-sm-9 col-lg-3">
             <button class="sub_btn_dev block-finder__form-control block-finder__form-control--button btn-block custom_btn_search" id="search_button" disabled="disabled" type="submit">Search</button>
          </div>
+         <div class="col-md-9 col-sm-9 col-lg-3">
+         </div>
+         <div class="col-md-9 col-sm-9 col-lg-3">
+         </div>
+         <div class="col-md-9 col-sm-9 col-lg-3">
+         </div>
+         <div class="col-md-9 col-sm-9 col-lg-3">
+            <button class="sub_btn_dev block-finder__form-control block-finder__form-control--button btn-block custom_btn_search" id="save_button" disabled="disabled" type="button">Save Search</button>
+         </div>
       </div>
    </div>
 </form>
@@ -91,6 +100,7 @@
       $("#brand_two").change(function() {
          var brand_id = $(this).val();
          document.getElementById("search_button").disabled = true;
+         document.getElementById("save_button").disabled = true;
          document.getElementById("model_two").disabled = false;
          if (brand_id) {
                $.ajax({
@@ -116,6 +126,7 @@
       $('#model_two').change(function() {
          var model_two_id = $(this).val();
          document.getElementById("search_button").disabled = true;
+         document.getElementById("save_button").disabled = true;
          document.getElementById("year_two").disabled = false;
          if (model_two_id) {
                $.ajax({
@@ -143,6 +154,7 @@
          var model_two_id = $('#model_two').val();
          var year_two_id = $(this).val();
          document.getElementById("search_button").disabled = true;
+         document.getElementById("save_button").disabled = true;
          document.getElementById("style").disabled = false;
          if (year_two_id) {
                $.ajax({
@@ -169,6 +181,7 @@
          var model_two_id = $('#model_two').val();
          var year_two_id = $(this).val();
          document.getElementById("search_button").disabled = true;
+         document.getElementById("save_button").disabled = true;
          document.getElementById("part_category").disabled = false;
          if (year_two_id) {
                $.ajax({
@@ -192,6 +205,7 @@
          var part_category_id = $(this).val();
          var style_id = $('#style').val();
          document.getElementById("search_button").disabled = true;
+         document.getElementById("save_button").disabled = true;
          document.getElementById("parts").disabled = false;
          if (part_category_id) {
                $.ajax({
@@ -213,6 +227,7 @@
       $('#parts').change(function() {
          var parts_id = $('#parts').val();
          document.getElementById("search_button").disabled = true;
+         document.getElementById("save_button").disabled = true;
          document.getElementById("fitment").disabled = false;
          if (parts_id) {
                $.ajax({
@@ -234,8 +249,35 @@
          var fitment_value = $("#fitment").val();
          if(fitment_value > 0){
             document.getElementById("search_button").disabled = false;            
+            document.getElementById("save_button").disabled = false;
+            if (fitment_value) {
+               $.ajaxSetup({
+                  headers: {
+                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                  }
+               });
+               $("#save_button").click(function(e){
+                  e.preventDefault();
+                  var product_id = $("#fitment").val();
+                  var style_id = $('#style').val();
+                  var parts_id = $('#parts').val();
+                  $.ajax({
+                     type:'POST',
+                     url:"{{ route('save.search') }}",
+                     data:{
+                        fitment_id:fitment_id,
+                        style_id:style_id,
+                        parts_id:parts_id,
+                     },
+                     success:function(data){
+                        alert(data.success);
+                     }
+                  });
+            });
+         }
          }else{
             document.getElementById("search_button").disabled = true;
+            document.getElementById("save_button").disabled = true;
          }
       });
       //Advance Dependency Search End
