@@ -11,25 +11,25 @@ class CreateMechanicBrandsTable extends Migration
      *
      * @return void
      */
-    public function up()
-    {
-        Schema::disableForeignKeyConstraints();
-        Schema::create('mechanic_brands', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('mechanic_id')->constrained('mechanics');
-            $table->foreignId('brand_id')->constrained('brands');
-            $table->timestamps();
-        });
-        Schema::enableForeignKeyConstraints();
-    }
+    // public function up()
+    // {
+    //     Schema::disableForeignKeyConstraints();
+    //     Schema::create('mechanic_brands', function (Blueprint $table) {
+    //         $table->id();
+    //         $table->foreignId('mechanic_id')->constrained('mechanics');
+    //         $table->foreignId('brand_id')->constrained('brands');
+    //         $table->timestamps();
+    //     });
+    //     Schema::enableForeignKeyConstraints();
+    // }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('mechanic_brands');
-    }
+    // /**
+    //  * Reverse the migrations.
+    //  *
+    //  * @return void
+    //  */
+    // public function down()
+    // {
+    //     Schema::dropIfExists('mechanic_brands');
+    // }
 }
