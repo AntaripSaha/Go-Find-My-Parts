@@ -15,12 +15,11 @@ class VehicleController extends Controller
    {
       $brands = Brand::all();
       $vehicles = 0;
-      $vehicles = UserVeichle::with('brand', 'model', 'year')->where('status', 1)->where('user_id', auth()->user()->id)->get();
+      $vehicles = UserVeichle::with('brand', 'model', 'year')->where('status', 1)->where('user_id', auth()->user()->id)->orderBy('id', 'asc')->get();
       return view('frontend.user.vehicle.index', compact('brands', 'vehicles'));
    }
    public function store(Request $request)
    {
-    
       $request->validate([
          'vehicle_brand' => 'required',
          'vehicle_model' => 'required',
@@ -33,7 +32,7 @@ class VehicleController extends Controller
       $vehicle->model_id = $request->vehicle_model;
       $vehicle->year_id = $request->vehicle_year;
       $vehicle->default_vehicle = $request->defaultVehicle;
-      if($request->defaultVehicle){
+      if ($request->defaultVehicle) {
          UserVeichle::where('user_id', auth()->user()->id)->update([
             'default_vehicle' => 0
          ]);
@@ -51,7 +50,7 @@ class VehicleController extends Controller
          'default_vehicle' => 0
       ]);
       UserVeichle::where('id', $id)->update([
-         'default_vehicle'=>1
+         'default_vehicle' => 1
       ]);
       flash(translate('Default Vehicle Updated successfully'))->success();
       return redirect()->back();
