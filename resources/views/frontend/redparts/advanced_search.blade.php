@@ -84,9 +84,6 @@
          </div>
          <div class="col-md-9 col-sm-9 col-lg-3">
          </div>
-         <div class="col-md-9 col-sm-9 col-lg-3">
-            <button class="sub_btn_dev block-finder__form-control block-finder__form-control--button btn-block custom_btn_search" id="save_button" disabled="disabled" type="button">Save Search</button>
-         </div>
       </div>
    </div>
 </form>

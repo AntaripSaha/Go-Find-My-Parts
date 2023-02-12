@@ -476,4 +476,9 @@ Route::any('mechanic/list', [MechanicController::class, 'list'])->name('mechanic
 Route::any('mechanic/search', [MechanicController::class, 'search'])->name('mechanic.search');
 Route::any('mechanic/test', [MechanicController::class, 'test'])->name('mechanic.test');
 Route::any('mechanic/public/profile/{id}', [MechanicController::class, 'public_profile'])->name('mechanic.public.profile');
-Route::any('vehicle/list', [VehicleController::class, 'vehicle_list'])->name('vehicle_list.index');
+
+Route::any('vehicle/list', [VehicleController::class, 'index'])->name('vehicle_list.index');
+Route::any('vehicle/store', [VehicleController::class, 'store'])->name('vehicle_list.store');
+Route::any('vehicle/delete/{id}', [VehicleController::class, 'delete'])->name('vehicle_list.delete');
+
+Route::any('vehicle/default/{id}', [VehicleController::class, 'default'])->name('vehicle_list.default');

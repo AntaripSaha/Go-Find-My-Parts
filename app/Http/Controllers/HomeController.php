@@ -36,6 +36,7 @@ use App\Models\Models;
 use App\Models\ModelYear;
 use App\Models\Part;
 use App\Models\Style;
+use App\Models\UserVeichle;
 use App\Models\Year;
 use Illuminate\Support\Facades\DB;
 
@@ -47,7 +48,8 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index_new(){
-        
+      
+        $vehicles = UserVeichle::with('brand', 'model', 'year')->where('default_vehicle', 1)->where('status', 1)->where('user_id', auth()->user()->id)->get();
         $featured_categories = Cache::rememberForever('featured_categories', function () {
             return Category::where('featured', 1)->get();
         });
@@ -75,11 +77,12 @@ class HomeController extends Controller
                             ->get();
         $advertise_upper_section = Advertise::where('section', 0)->get();
         $advertise_lower_section = Advertise::where('section', 1)->get();
-        return view('frontend.index', compact('advertise_lower_section','advertise_upper_section',
+         return view('frontend.index', compact('advertise_lower_section','advertise_upper_section',
                     'categories','brands','testimonials','all_products_cart',
                     'featured_products_footer','newest_products_footer',
                     'todays_deal_products_footer','all_products','featured_products',
-                    'featured_categories', 'todays_deal_products', 'newest_products'
+                    'featured_categories', 'todays_deal_products', 'newest_products',
+                    'vehicles'
                 ));
     }
         //For fetching Model
@@ -94,8 +97,7 @@ class HomeController extends Controller
         
         //For fetching years
     public function year($id)
-    {
-        
+    {        
         $year= ModelYear::where('status', 1)->where('model_id',$id)->pluck("year","id");
        
         return response()->json($year);
