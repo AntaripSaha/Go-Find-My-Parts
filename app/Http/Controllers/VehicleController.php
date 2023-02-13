@@ -24,6 +24,7 @@ class VehicleController extends Controller
          'vehicle_brand' => 'required',
          'vehicle_model' => 'required',
          'vehicle_year' => 'required|not_in:0',
+         'vehicle_chassis' => 'required|not_in:0',
          'defaultVehicle' => 'required',
       ]);
       $vehicle = new UserVeichle;
@@ -31,6 +32,7 @@ class VehicleController extends Controller
       $vehicle->brand_id = $request->vehicle_brand;
       $vehicle->model_id = $request->vehicle_model;
       $vehicle->year_id = $request->vehicle_year;
+      $vehicle->chassis_id = $request->vehicle_chassis;
       $vehicle->default_vehicle = $request->defaultVehicle;
       if ($request->defaultVehicle) {
          UserVeichle::where('user_id', auth()->user()->id)->update([

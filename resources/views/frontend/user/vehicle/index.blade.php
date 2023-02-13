@@ -35,19 +35,7 @@
         <div class="card-header">
             <h5 class="mb-0 h6">{{ translate('Vehicle List') }}</h5>
             <div>
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Default Vehicle
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        @foreach ($vehicles as $key => $vehicle)
-                            <a class="dropdown-item"
-                                href="{{ route('vehicle_list.default', $vehicle->id) }}">{{ $vehicle->brand->name }}
-                                {{ $vehicle->model->model_name }}</a>
-                        @endforeach
-                    </div>
-                </div>
+                @include('frontend.user.vehicle.default_vehicle')
             </div>
 
         </div>
@@ -155,6 +143,17 @@
                         </div>
                         <div class="row mt-2">
                             <div class="col-md-2">
+                                <label>{{ translate('Year') }}</label>
+                            </div>
+                            <div class="col-md-10">
+                                <select class="form-control"  name="vehicle_chassis" id="vehicle_chassis" aria-label="Vehicle Make"
+                                    disabled="disabled">
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-2">
                                 <label>{{ translate('Default Vehicle') }}</label>
                             </div>
                             <div class="col-md-10">
@@ -228,6 +227,26 @@
                 });
             }
         });
+        $('#vehicle_year').change(function() {
+            var year_id = $(this).val();
+            var model_id = $('#vehicle_model').val();
+            document.getElementById("vehicle_chassis").disabled = false;
+            if (year_id) {
+                  $.ajax({
+                     type: "get",
+                     url: "{{url('/chassis')}}/" + year_id + '/' + model_id,
+                     success: function(res) {
+                        if (res) {
+                              $("#vehicle_chassis").empty();
+                              $("#vehicle_chassis").append('<option value="0">Select Chassis</option>');
+                              $.each(res, function(key, value) {
+                                 $("#vehicle_chassis").append('<option value="' + value +'">' + value + '</option>');
+                              });
+                        }
+                     }
+                  });
+            }
+         });
         // Dependency Search End
     });
 </script>

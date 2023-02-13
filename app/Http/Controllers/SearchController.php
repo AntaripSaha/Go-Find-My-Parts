@@ -124,7 +124,7 @@ class SearchController extends Controller
                 $products->where('choice_options', 'like', '%' . $str . '%');
             }
         }
-
+ 
          //Basic Dependency Search Functionality Start
          if($request->brand_dependency){
             if($request->brand_dependency == 0){
@@ -137,10 +137,10 @@ class SearchController extends Controller
                 $dependent_search_products = Product::where('model_id', $request->model)->paginate(12)->appends(request()->query());
               }
             if($request->chassis  != 0){
-                $dependent_search_products = Product::where('id', $request->chassis)->paginate(12)->appends(request()->query());
+                $dependent_search_products = Product::where('id', $request->chassis)->orWhere('chassis_id', $request->chassis )->paginate(12)->appends(request()->query());
               }
             if($request->chassis && $request->model && $request->brand_dependency && $request->year  != 0){
-                $dependent_search_products = Product::where('id', $request->chassis)->paginate(12)->appends(request()->query());
+                $dependent_search_products = Product::where('id', $request->chassis)->orWhere('chassis_id', $request->chassis )->paginate(12)->appends(request()->query());
               }
 
          }

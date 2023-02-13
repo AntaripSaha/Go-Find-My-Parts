@@ -31,8 +31,7 @@
     @csrf
     <div class="container tab-basic-search-desktop tab-basic-search">
         <div class="row">
-
-            @if (!empty($vehicles))
+            @if (isset($vehicles[0]->brand->id))
                 @foreach ($vehicles as $key => $vehicle)
                     <div class="col-md-9 col-sm-9  col-lg-3">
                         <div class="block-finder__form-control block-finder__form-control--select tables">
@@ -62,8 +61,8 @@
                     </div>
                     <div class="col-md-9 col-sm-9 col-lg-3">
                         <div class="block-finder__form-control block-finder__form-control--select tables">
-                            <select name="chassis" id="chassis" aria-label="Vehicle Engine" disabled="disabled">
-
+                            <select name="chassis" id="chassis" aria-label="Vehicle Engine">
+                                <option value="{{ $vehicle->chassis_id }}">{{ $vehicle->chassis_id }}</option>
                             </select>
                         </div>
 

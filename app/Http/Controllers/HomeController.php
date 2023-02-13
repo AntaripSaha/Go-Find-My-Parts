@@ -47,121 +47,180 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index_new(){
-      
-        $vehicles = UserVeichle::with('brand', 'model', 'year')->where('default_vehicle', 1)->where('status', 1)->where('user_id', auth()->user()->id)->get();
-        $featured_categories = Cache::rememberForever('featured_categories', function () {
-            return Category::where('featured', 1)->get();
-        });
-        $todays_deal_products = Cache::rememberForever('todays_deal_products', function () {
-            return filter_products(Product::where('published', 1)->where('todays_deal', '1'))->get();
-        });
-        $newest_products = Cache::remember('newest_products', 3600, function () {
-            return filter_products(Product::latest())->limit(12)->get();
-        });
-        $featured_products = Cache::remember('featured_products', 3600, function () {
-            return filter_products(Product::where('featured', 1))->get();
-        });
-         $all_products = Cache::remember('all_products', 3600, function () {
-            return filter_products(Product::where('published', 1)->limit(50))->get();
-        });
-    //    return  $featured_products[0]->current_stock;
-        $categories = Category::select('name', 'slug')->take(6)->get();
-        $brands = DB::table('brands')->get();
-        $todays_deal_products_footer = filter_products(Product::where('published', 1)->limit(3)->where('todays_deal', '1'))->get();
-        $featured_products_footer = filter_products(Product::where('featured', 1))->limit(3)->get();
-        $newest_products_footer = filter_products(Product::latest()->limit(3))->get();
-        $all_products_cart = filter_products(Product::where('published', 1))->get();
-        $testimonials = DB::table('blog_categories')
-                            ->join('blogs', 'blog_categories.id', '=', 'blogs.category_id')
-                            ->get();
-        $advertise_upper_section = Advertise::where('section', 0)->get();
-        $advertise_lower_section = Advertise::where('section', 1)->get();
-         return view('frontend.index', compact('advertise_lower_section','advertise_upper_section',
-                    'categories','brands','testimonials','all_products_cart',
-                    'featured_products_footer','newest_products_footer',
-                    'todays_deal_products_footer','all_products','featured_products',
-                    'featured_categories', 'todays_deal_products', 'newest_products',
-                    'vehicles'
-                ));
+    public function index_new()
+    {
+        if (isset(auth()->user()->id)) {
+            $vehicles = UserVeichle::with('brand', 'model', 'year')->where('default_vehicle', 1)->where('status', 1)->where('user_id', auth()->user()->id)->get();
+            $featured_categories = Cache::rememberForever('featured_categories', function () {
+                return Category::where('featured', 1)->get();
+            });
+            $todays_deal_products = Cache::rememberForever('todays_deal_products', function () {
+                return filter_products(Product::where('published', 1)->where('todays_deal', '1')->limit(50))->get();
+            });
+            $newest_products = Cache::remember('newest_products', 3600, function () {
+                return filter_products(Product::latest())->limit(12)->get();
+            });
+            $featured_products = Cache::remember('featured_products', 3600, function () {
+                return filter_products(Product::where('featured', 1)->limit(50))->get();
+            });
+            $all_products = Cache::remember('all_products', 3600, function () {
+                return filter_products(Product::where('published', 1)->limit(50))->get();
+            });
+            //    return  $featured_products[0]->current_stock;
+            $categories = Category::select('name', 'slug')->take(6)->get();
+            $brands = DB::table('brands')->get();
+            $todays_deal_products_footer = filter_products(Product::where('published', 1)->limit(3)->where('todays_deal', '1'))->get();
+            $featured_products_footer = filter_products(Product::where('featured', 1))->limit(3)->get();
+            $newest_products_footer = filter_products(Product::latest()->limit(3))->get();
+            $all_products_cart = filter_products(Product::where('published', 1))->get();
+            $testimonials = DB::table('blog_categories')
+                ->join('blogs', 'blog_categories.id', '=', 'blogs.category_id')
+                ->get();
+            $advertise_upper_section = Advertise::where('section', 0)->get();
+            $advertise_lower_section = Advertise::where('section', 1)->get();
+            return view('frontend.index', compact(
+                'advertise_lower_section',
+                'advertise_upper_section',
+                'categories',
+                'brands',
+                'testimonials',
+                'all_products_cart',
+                'featured_products_footer',
+                'newest_products_footer',
+                'todays_deal_products_footer',
+                'all_products',
+                'featured_products',
+                'featured_categories',
+                'todays_deal_products',
+                'newest_products',
+                'vehicles'
+            ));
+        } else {
+            $featured_categories = Cache::rememberForever('featured_categories', function () {
+                return Category::where('featured', 1)->get();
+            });
+            $todays_deal_products = Cache::rememberForever('todays_deal_products', function () {
+                return filter_products(Product::where('published', 1)->where('todays_deal', '1'))->get();
+            });
+            $newest_products = Cache::remember('newest_products', 3600, function () {
+                return filter_products(Product::latest())->limit(12)->get();
+            });
+            $featured_products = Cache::remember('featured_products', 3600, function () {
+                return filter_products(Product::where('featured', 1))->get();
+            });
+            $all_products = Cache::remember('all_products', 3600, function () {
+                return filter_products(Product::where('published', 1)->limit(50))->get();
+            });
+            //    return  $featured_products[0]->current_stock;
+            $categories = Category::select('name', 'slug')->take(6)->get();
+            $brands = DB::table('brands')->get();
+            $todays_deal_products_footer = filter_products(Product::where('published', 1)->limit(3)->where('todays_deal', '1'))->get();
+            $featured_products_footer = filter_products(Product::where('featured', 1))->limit(3)->get();
+            $newest_products_footer = filter_products(Product::latest()->limit(3))->get();
+            $all_products_cart = filter_products(Product::where('published', 1))->get();
+            $testimonials = DB::table('blog_categories')
+                ->join('blogs', 'blog_categories.id', '=', 'blogs.category_id')
+                ->get();
+            $advertise_upper_section = Advertise::where('section', 0)->get();
+            $advertise_lower_section = Advertise::where('section', 1)->get();
+            return view('frontend.index', compact(
+                'advertise_lower_section',
+                'advertise_upper_section',
+                'categories',
+                'brands',
+                'testimonials',
+                'all_products_cart',
+                'featured_products_footer',
+                'newest_products_footer',
+                'todays_deal_products_footer',
+                'all_products',
+                'featured_products',
+                'featured_categories',
+                'todays_deal_products',
+                'newest_products'
+            ));
+        }
     }
-        //For fetching Model
+    //For fetching Model
     public function model($id)
     {
         $models = DB::table("models")
-                    ->where('status', 1)
-                    ->where("brand_id",$id)
-                    ->pluck("model_name","id","year_id",);
+            ->where('status', 1)
+            ->where("brand_id", $id)
+            ->pluck("model_name", "id", "year_id",);
         return response()->json($models);
     }
-        
-        //For fetching years
+
+    //For fetching years
     public function year($id)
-    {        
-        $year= ModelYear::where('status', 1)->where('model_id',$id)->pluck("year","id");
-       
+    {
+        $year = ModelYear::where('status', 1)->where('model_id', $id)->pluck("year", "id");
+
         return response()->json($year);
     }
 
     public function chassis($id, $model_id)
     {
-        $chassis= DB::table("products")
-                    ->where("year_id", $id)
-                    ->where("model_id",$model_id)
-                    ->pluck("chassis_id","id");
+        $chassis = DB::table("products")
+            ->where("year_id", $id)
+            ->where("model_id", $model_id)
+            ->pluck("chassis_id", "id");
         return response()->json($chassis);
     }
     //Advance Dependency Search
 
     public function year_two($id)
     {
-        $year_two= ModelYear::where('status', 1)->where('model_id',$id)->pluck("year","id");
+        $year_two = ModelYear::where('status', 1)->where('model_id', $id)->pluck("year", "id");
         return response()->json($year_two);
     }
-    public function style($model_two_id, $year_two_id){
+    public function style($model_two_id, $year_two_id)
+    {
         $style = DB::table('styles')
-                    ->where('year_id', $year_two_id)
-                    ->where('model_id', $model_two_id)
-                    ->pluck('style', 'id');
+            ->where('year_id', $year_two_id)
+            ->where('model_id', $model_two_id)
+            ->pluck('style', 'id');
         return response()->json($style);
     }
-    public function part_category(){
+    public function part_category()
+    {
         $part_category = DB::table('part_categories')
-                            ->pluck('name', 'id');
+            ->pluck('name', 'id');
         return response()->json($part_category);
     }
-    public function parts($part_category_id, $style_id){
+    public function parts($part_category_id, $style_id)
+    {
         $parts = DB::table('parts')
-                    ->where('category_id', $part_category_id)
-                    ->where('style_id', $style_id)
-                    ->pluck('name', 'id');
+            ->where('category_id', $part_category_id)
+            ->where('style_id', $style_id)
+            ->pluck('name', 'id');
         return response()->json($parts);
-
     }
-    public function fitment($parts_id){
+    public function fitment($parts_id)
+    {
         $fitment = DB::table('products')
-                    ->where('part_id', $parts_id)
-                    ->pluck('fitment', 'id');
+            ->where('part_id', $parts_id)
+            ->pluck('fitment', 'id');
         return response()->json($fitment);
-
     }
-    public function search_save(Request $request){
+    public function search_save(Request $request)
+    {
         // return $request;
         $product = DB::table('products')
-                    ->where('style_id', $request->style_id)
-                    ->where('part_id', $request->parts_id)
-                    ->where('id', $request->fitment_id)
-                    ->pluck('id');
-        return response()->json(['success'=>'Your Search Saved Successfully'.$product]) ;
+            ->where('style_id', $request->style_id)
+            ->where('part_id', $request->parts_id)
+            ->where('id', $request->fitment_id)
+            ->pluck('id');
+        return response()->json(['success' => 'Your Search Saved Successfully' . $product]);
     }
 
     public function index()
     {
-        
+
         $featured_categories = Cache::rememberForever('featured_categories', function () {
             return Category::where('featured', 1)->get();
         });
-        
+
 
         $todays_deal_products = Cache::rememberForever('todays_deal_products', function () {
             return filter_products(Product::where('published', 1)->where('todays_deal', '1'))->get();
@@ -170,9 +229,8 @@ class HomeController extends Controller
         $newest_products = Cache::remember('newest_products', 3600, function () {
             return filter_products(Product::latest())->limit(12)->get();
         });
-        
+
         return view('frontend.index', compact('featured_categories', 'todays_deal_products', 'newest_products'));
-    
     }
 
     public function login()
@@ -274,7 +332,7 @@ class HomeController extends Controller
     public function userProfileUpdate(Request $request)
     {
         $request->validate([
-            'name'=>'required',
+            'name' => 'required',
         ]);
         if (env('DEMO_MODE') == 'On') {
             flash(translate('Sorry! the action is not permitted in demo '))->error();
@@ -290,7 +348,7 @@ class HomeController extends Controller
 
         if ($request->new_password != null && ($request->new_password == $request->confirm_password)) {
             $user->password = Hash::make($request->new_password);
-        }else{
+        } else {
             flash(translate('Your Password Did not Match!'))->warning();
             return back();
         }
@@ -750,48 +808,52 @@ class HomeController extends Controller
     }
 
 
-    public function getModels(Request $request) {
-       
+    public function getModels(Request $request)
+    {
+
         $models = Models::where('status', 1)->where('brand_id', $request->brand_id)->get();
-        $html = '<option value="">'.translate("Select Model").'</option>';
-        
+        $html = '<option value="">' . translate("Select Model") . '</option>';
+
         foreach ($models as $model) {
             $html .= '<option value="' . $model->id . '">' . $model->model_name . '</option>';
         }
-        
+
         echo json_encode($html);
     }
 
-    public function getYears(Request $request) {
+    public function getYears(Request $request)
+    {
         $years = ModelYear::where('model_id', $request->model_id)->get();
-        $html = '<option value="">'.translate("Select Year").'</option>';
-        
+        $html = '<option value="">' . translate("Select Year") . '</option>';
+
         foreach ($years as $year) {
             $html .= '<option value="' . $year->id . '">' . $year->year . '</option>';
         }
-        
+
         echo json_encode($html);
     }
 
-    public function getStyles(Request $request) {
+    public function getStyles(Request $request)
+    {
         $styles = Style::where('model_id', $request->model_id)->get();
-        $html = '<option value="">'.translate("Select Style").'</option>';
-        
+        $html = '<option value="">' . translate("Select Style") . '</option>';
+
         foreach ($styles as $style) {
             $html .= '<option value="' . $style->id . '">' . $style->style . '</option>';
         }
-        
+
         echo json_encode($html);
     }
 
-    public function getParts(Request $request) {
+    public function getParts(Request $request)
+    {
         $parts = Part::where('style_id', $request->style_id)->get();
-        $html = '<option value="">'.translate("Select Parts").'</option>';
-        
+        $html = '<option value="">' . translate("Select Parts") . '</option>';
+
         foreach ($parts as $part) {
             $html .= '<option value="' . $part->id . '">' . $part->name . '</option>';
         }
-        
+
         echo json_encode($html);
     }
 }
