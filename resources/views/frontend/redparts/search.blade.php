@@ -169,13 +169,3 @@
 
     @media only screen and (min-width: 1200px) {}
 </style>
-
-<script type="text/javascript">
-    // $(document).ready(function() {
-
-
-    //    $('make').style.borderBottomLeftRadius = "30px";
-
-
-    // });
-</script>
