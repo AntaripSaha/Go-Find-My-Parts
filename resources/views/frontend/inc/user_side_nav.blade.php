@@ -136,11 +136,8 @@
                         <li class="aiz-side-nav-item">
                             <a href="{{ route('vehicle_list.index') }}"
                                 class="aiz-side-nav-link {{ areActiveRoutes(['vehicle_list.index']) }}">
-                                <i class="las la-file-alt aiz-side-nav-icon"></i>
+                                <i class="las la-car-alt aiz-side-nav-icon"></i>
                                 <span class="aiz-side-nav-text">{{ translate('Vehicle List') }}</span>
-                                @if ($delivery_viewed > 0 || $payment_status_viewed > 0)
-                                    <span class="badge badge-inline badge-success">{{ translate('New') }}</span>
-                                @endif
                             </a>
                         </li>
                         {{-- <li class="aiz-side-nav-item">

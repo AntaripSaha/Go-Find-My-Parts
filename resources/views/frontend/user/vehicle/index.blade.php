@@ -73,7 +73,7 @@
                                     class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete"
                                     data-href="{{ route('vehicle_list.delete', $vehicle->id) }}"
                                     title="{{ translate('Delete') }}">
-                                    <i class="las la-trash"></i>
+                                    <i class="las la-trash mt-1"></i>
                                 </a>
                             </td>
                         </tr>
@@ -143,11 +143,11 @@
                         </div>
                         <div class="row mt-2">
                             <div class="col-md-2">
-                                <label>{{ translate('Year') }}</label>
+                                <label>{{ translate('Chassis') }}</label>
                             </div>
                             <div class="col-md-10">
-                                <select class="form-control"  name="vehicle_chassis" id="vehicle_chassis" aria-label="Vehicle Make"
-                                    disabled="disabled">
+                                <select class="form-control" name="vehicle_chassis" id="vehicle_chassis"
+                                    aria-label="Vehicle Make" disabled="disabled">
 
                                 </select>
                             </div>
@@ -232,21 +232,23 @@
             var model_id = $('#vehicle_model').val();
             document.getElementById("vehicle_chassis").disabled = false;
             if (year_id) {
-                  $.ajax({
-                     type: "get",
-                     url: "{{url('/chassis')}}/" + year_id + '/' + model_id,
-                     success: function(res) {
+                $.ajax({
+                    type: "get",
+                    url: "{{ url('/chassis') }}/" + year_id + '/' + model_id,
+                    success: function(res) {
                         if (res) {
-                              $("#vehicle_chassis").empty();
-                              $("#vehicle_chassis").append('<option value="0">Select Chassis</option>');
-                              $.each(res, function(key, value) {
-                                 $("#vehicle_chassis").append('<option value="' + value +'">' + value + '</option>');
-                              });
+                            $("#vehicle_chassis").empty();
+                            $("#vehicle_chassis").append(
+                                '<option value="0">Select Chassis</option>');
+                            $.each(res, function(key, value) {
+                                $("#vehicle_chassis").append('<option value="' +
+                                    value + '">' + value + '</option>');
+                            });
                         }
-                     }
-                  });
+                    }
+                });
             }
-         });
+        });
         // Dependency Search End
     });
 </script>

@@ -15,8 +15,9 @@ class VehicleController extends Controller
    {
       $brands = Brand::all();
       $vehicles = 0;
+      $default_vehicle = UserVeichle::with('brand', 'model')->where('user_id', auth()->user()->id)->where('default_vehicle', 1)->first();
       $vehicles = UserVeichle::with('brand', 'model', 'year')->where('status', 1)->where('user_id', auth()->user()->id)->orderBy('id', 'asc')->get();
-      return view('frontend.user.vehicle.index', compact('brands', 'vehicles'));
+      return view('frontend.user.vehicle.index', compact('brands', 'vehicles', 'default_vehicle'));
    }
    public function store(Request $request)
    {

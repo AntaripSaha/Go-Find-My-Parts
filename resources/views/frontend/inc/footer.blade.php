@@ -292,7 +292,7 @@
 </section>
 
 <section class="bg-dark py-2 text-light footer-widget m-footer-widget footer-btn-mb">
-    
+    <div class="container">
         <div class="row" style="">
             @if (get_setting('vendor_system_activation') == 1)
            
@@ -314,6 +314,7 @@
                 </div>
             @endif
         </div>
+    </div>
 </section>
  
 

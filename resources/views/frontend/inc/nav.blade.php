@@ -297,10 +297,10 @@
                         @endphp
                         @if ($header_logo != null)
                             <img src="{{ uploaded_asset($header_logo) }}" alt="{{ env('APP_NAME') }}"
-                                class="mw-100 h-30px h-md-25px" height="20">
+                                class="mw-100 h-25px h-md-25px" height="20">
                         @else
                             <img src="{{ static_asset('assets/img/logo.png') }}" alt="{{ env('APP_NAME') }}"
-                                class="mw-100 h-30px h-md-25px" height="20">
+                                class="mw-100 h-25px h-md-25px" height="20">
                         @endif
                     </a>
 
@@ -316,20 +316,35 @@
                     <div>
                         @if (Auth::user() && Auth::user()->user_type == 'customer')
                             <div class="dropdown">
-                                <button class="badge badge-pill mechanic-pill-btn-blue dropdown-toggle" type="button"
+                                <button class="badge badge-pill mechanic-pill-btn-blue dropdown-toggle border-0" type="button"
                                     id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                                     aria-expanded="false">
-                                    @foreach (\App\Models\UserVeichle::where('user_id', Auth::user()->id)->where('default_vehicle', 1)->get() as $key => $vehicle)
-                                        Default Vehicle
-                                    @endforeach
+                                    @php
+                                        $default_vehicle = \App\Models\UserVeichle::with('brand', 'model')
+                                            ->where('user_id', auth()->user()->id)
+                                            ->where('default_vehicle', 1)
+                                            ->first();
+                                        $vehicles = \App\Models\UserVeichle::where('user_id', Auth::user()->id)
+                                            ->where('status', 1)
+                                            ->get();
+                                    @endphp
+                                    @if ($default_vehicle)
+                                        {{ $default_vehicle->brand->name }}
+                                        {{ $default_vehicle->model->model_name }}
+                                    @else
+                                        My Vehicle
+                                    @endif
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    @foreach (\App\Models\UserVeichle::where('user_id', Auth::user()->id)->where('status', 1)->get() as $key => $vehicle)
+                                    @foreach ($vehicles as $key => $vehicle)
                                         <a class="dropdown-item"
                                             href="{{ route('vehicle_list.default', $vehicle->id) }}">{{ $vehicle->brand->name }}
                                             {{ $vehicle->model->model_name }}
                                         </a>
                                     @endforeach
+                                    <a class="dropdown-item" href="{{ route('vehicle_list.index') }}">
+                                        Add Vehicles
+                                    </a>
                                 </div>
                             </div>
                         @else
@@ -338,7 +353,7 @@
                 </div>
 
                 <div class="d-lg-none ml-auto mr-0">
-                    <a class="p-2 d-block text-reset" href="javascript:void(0);" data-toggle="class-toggle"
+                    <a class="d-block text-reset" href="javascript:void(0);" data-toggle="class-toggle"
                         data-target=".front-header-search">
                         <i class="las la-search la-flip-horizontal la-2x"></i>
                     </a>
