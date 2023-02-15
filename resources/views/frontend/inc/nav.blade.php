@@ -316,9 +316,9 @@
                     <div>
                         @if (Auth::user() && Auth::user()->user_type == 'customer')
                             <div class="dropdown">
-                                <button class="badge badge-pill mechanic-pill-btn-blue dropdown-toggle border-0" type="button"
-                                    id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
+                                <button class="badge badge-pill mechanic-pill-btn-blue dropdown-toggle border-0"
+                                    type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
                                     @php
                                         $default_vehicle = \App\Models\UserVeichle::with('brand', 'model')
                                             ->where('user_id', auth()->user()->id)
@@ -367,31 +367,6 @@
                                     <button class="btn px-2" type="button"><i
                                             class="la la-2x la-long-arrow-left"></i></button>
                                 </div>
-
-
-                                {{-- <div class="form-group">
-                                   
-                                    <input type="text" style="border-radius: 20px" class="form-control is-invalid" id="inputSuccess3">
-                                    <div class="valid-feedback feedback-icon">
-                                        <i class="fa fa-check"></i>
-                                    </div>
-                                    <div class="invalid-feedback feedback-icon" style="background-color: red; width: 30px; height: 30px; border-radius: 20px">
-                                        <i class="fa fa-search"></i>
-                                    </div>
-                                </div> --}}
-
-                                {{-- <div class="input-group" >
-                                    <input type="text" style="border-radius: 20px !important" class="border-0 border-lg form-control" id="search" name="keyword" @isset($query)
-                                        value="{{ $query }}"
-                                    @endisset placeholder="{{translate('I am shopping for...')}}" autocomplete="off">
-                                    <div class="input-group-append d-none d-lg-block">
-                                        <button class="btn btn-primary" style="border-radius:50% !important; background: #72b860 !important; border-color: #72b860;" type="submit">
-                                            <i class="la la-search"></i>
-                                        </button>
-                                    </div>
-                                </div> --}}
-
-
                                 <input type="text" style="border-radius: 20px !important; "
                                     class="border-0 border-lg form-control" id="search" name="keyword"
                                     @isset($query)
@@ -405,7 +380,6 @@
                                         <i class="ico las la-search"></i>
                                     </button>
                                 </div>
-
                             </div>
                         </form>
                         <div class="typed-search-box stop-propagation document-click-d-none d-none bg-white rounded shadow-lg position-absolute left-0 top-100 w-100"
@@ -418,15 +392,12 @@
                                 </div>
                             </div>
                             <div class="search-nothing d-none p-3 text-center fs-16">
-
                             </div>
                             <div id="search-content" class="text-left">
-
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <div class="d-none d-lg-none ml-3 mr-0">
                     <div class="nav-search-box">
                         <a href="#" class="nav-box-link">
@@ -434,13 +405,11 @@
                         </a>
                     </div>
                 </div>
-
                 <div class="d-none d-lg-block ml-3 mr-0">
                     <div class="" id="compare">
                         @include('frontend.partials.compare')
                     </div>
                 </div>
-
                 @if (!Auth::user())
                     <div class="d-none d-lg-block ml-3 mr-0">
                         <div class="" id="wishlist">
@@ -455,14 +424,11 @@
                         </div>
                     </div>
                 @endif
-
-
                 <div class="d-none d-lg-block  align-self-stretch ml-3 mr-0" data-hover="dropdown">
                     <div class="nav-cart-box dropdown h-100" id="cart_items">
                         @include('frontend.partials.cart')
                     </div>
                 </div>
-
             </div>
         </div>
         @if (Route::currentRouteName() != 'home')
@@ -478,7 +444,6 @@
             </div>
         @endif
     </div>
-
     @if (get_setting('header_menu_labels') != null)
         <div class="bg-white border-top border-gray-200 py-1">
             <div class="container">
@@ -495,21 +460,15 @@
                                     @else
                                         {{ translate($value) }}
                                     @endif
-
                                 </p>
                             </a>
-
                         </li>
                     @endforeach
-
-
                 </ul>
             </div>
         </div>
     @endif
-
 </header>
-
 <div class="modal fade" id="order_details" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
@@ -520,12 +479,8 @@
         </div>
     </div>
 </div>
-
 @section('script')
     <script type="text/javascript">
-        //    var mecha =  $('#nav-menu').val();
-        //    alert(mecha);
-
         function show_order_details(order_id) {
             $('#order-details-modal-body').html(null);
 
